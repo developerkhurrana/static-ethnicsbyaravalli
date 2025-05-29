@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Package, Store, Truck, Scissors, Ruler, Factory, IndianRupee } from "lucide-react"
+import { Package, Truck, Scissors, Ruler, Factory, IndianRupee } from "lucide-react"
 import useEmblaCarousel from 'embla-carousel-react'
 import { useCallback, useEffect, useState } from "react"
 
