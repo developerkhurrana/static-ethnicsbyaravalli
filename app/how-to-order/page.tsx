@@ -1,132 +1,133 @@
-import {
-  Search,
-  MessageSquare,
-  PackageCheck,
-  ClipboardCheck,
-  Truck,
-} from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { ArrowRight, MessageCircle, Package, Truck, CreditCard } from "lucide-react"
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
+import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
 
 export const metadata = {
   title: "How to Order",
-  description:
-    "Learn how to place wholesale orders for our ethnic wear collections.",
+  description: "Learn about our simple ordering process for wholesale ethnic wear.",
 }
 
 const steps = [
   {
-    icon: Search,
-    title: "Browse Collections",
-    description:
-      "Explore our extensive range of ethnic wear collections and select the styles you're interested in.",
+    number: 1,
+    title: "Browse Our Collection",
+    description: "Explore our extensive range of ethnic wear collections. You can view our catalog online or request a physical catalog.",
+    icon: Package,
+    details: [
+      "Browse through our online catalog",
+      "View detailed product images and specifications",
+      "Check minimum order quantities (MOQ)",
+      "Request a physical catalog if needed"
+    ]
   },
   {
-    icon: MessageSquare,
+    number: 2,
     title: "Contact Us",
-    description:
-      "Get in touch via WhatsApp, phone, or email to discuss your requirements and get detailed pricing.",
+    description: "Reach out to us via WhatsApp or email with your requirements. Our team will guide you through the process.",
+    icon: MessageCircle,
+    details: [
+      "Share your business details",
+      "Specify your product requirements",
+      "Discuss customization needs",
+      "Get pricing information"
+    ]
   },
   {
-    icon: PackageCheck,
-    title: "Sample Order",
-    description:
-      "Place a sample order to check the quality and fit of our products before bulk ordering.",
+    number: 3,
+    title: "Place Your Order",
+    description: "Once you've selected your products, we'll provide you with a detailed quote and payment instructions.",
+    icon: CreditCard,
+    details: [
+      "Review the quote",
+      "Confirm order quantities",
+      "Make payment through secure channels",
+      "Receive order confirmation"
+    ]
   },
   {
-    icon: ClipboardCheck,
-    title: "Finalize Order",
-    description:
-      "Confirm your order details, including quantities, sizes, and delivery timeline.",
-  },
-  {
+    number: 4,
+    title: "Track & Receive",
+    description: "We'll process your order and provide tracking information. Our logistics team ensures safe delivery.",
     icon: Truck,
-    title: "Payment & Shipping",
-    description:
-      "Complete the payment process and receive your order within the specified timeline.",
-  },
-]
-
-const faqs = [
-  {
-    question: "What is the minimum order quantity (MOQ)?",
-    answer:
-      "Our minimum order quantity varies by product category. Generally, it's 10 pieces per design for most items, but this can be flexible for first-time buyers.",
-  },
-  {
-    question: "Do you provide customization options?",
-    answer:
-      "Yes, we offer customization in terms of colors, embroidery designs, and sizing. Custom orders may have different MOQ requirements and lead times.",
-  },
-  {
-    question: "What are the payment terms?",
-    answer:
-      "We typically require a 50% advance payment to confirm the order, with the remaining balance due before shipping. We accept bank transfers and other standard payment methods.",
-  },
-  {
-    question: "What is the delivery timeline?",
-    answer:
-      "Standard delivery time is 2-3 weeks from order confirmation. This may vary based on order size, customization requirements, and season.",
-  },
-  {
-    question: "Do you ship internationally?",
-    answer:
-      "Yes, we ship worldwide. International shipping costs and timelines will be provided during the order process.",
-  },
-  {
-    question: "What is your return/exchange policy?",
-    answer:
-      "We have a quality check process before shipping. In case of any manufacturing defects, we offer replacements within 7 days of delivery.",
-  },
+    details: [
+      "Get order processing updates",
+      "Receive tracking information",
+      "Track your shipment",
+      "Receive your order safely"
+    ]
+  }
 ]
 
 export default function HowToOrderPage() {
   return (
-    <div className="container py-12">
-      <SectionHeader
-        title="How to Order"
-        description="Follow our simple process to place your wholesale order."
-        className="mb-12"
-      />
+    <div className="min-h-[calc(100vh-4rem)] flex flex-col py-12">
+      <div className="container max-w-7xl flex-1 flex flex-col">
+        <SectionHeader
+          title="How to Order"
+          description="Follow these simple steps to start your wholesale journey with us"
+          className="mb-12"
+        />
 
-      <div className="mb-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {steps.map((step) => {
-          const Icon = step.icon
-          return (
-            <div
-              key={step.title}
-              className="flex flex-col items-center text-center"
-            >
-              <div className="mb-4 rounded-full bg-primary/10 p-3">
-                <Icon className="h-6 w-6" />
+        <div className="space-y-16">
+          {steps.map((step) => (
+            <div key={step.number} className="relative">
+              <div className="grid gap-8 lg:grid-cols-2 items-center">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xl font-bold">
+                      {step.number}
+                    </div>
+                    <h2 className="text-2xl font-bold">{step.title}</h2>
+                  </div>
+                  <p className="text-lg text-muted-foreground">
+                    {step.description}
+                  </p>
+                  <ul className="space-y-3">
+                    {step.details.map((detail, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <ArrowRight className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                  <Image
+                    src={`/images/step-${step.number}.jpg`}
+                    alt={step.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               </div>
-              <h3 className="mb-2 font-serif text-xl font-medium">
-                {step.title}
-              </h3>
-              <p className="text-muted-foreground">{step.description}</p>
+              {step.number < steps.length && (
+                <div className="hidden lg:block absolute left-1/2 top-full w-0.5 h-16 bg-gray-200" />
+              )}
             </div>
-          )
-        })}
-      </div>
-
-      <div className="mx-auto max-w-3xl">
-        <h2 className="mb-6 text-center font-serif text-2xl font-semibold">
-          Frequently Asked Questions
-        </h2>
-        <Accordion type="single" collapsible className="w-full">
-          {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger>{faq.question}</AccordionTrigger>
-              <AccordionContent>{faq.answer}</AccordionContent>
-            </AccordionItem>
           ))}
-        </Accordion>
+        </div>
+
+        <div className="mt-16 text-center">
+          <h3 className="text-2xl font-bold mb-4">Ready to Start?</h3>
+          <p className="text-lg text-muted-foreground mb-8">
+            Contact us now to begin your wholesale journey
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" asChild>
+              <Link href="/collections">
+                Browse Collection
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <Link href="/contact">
+                Contact Us
+              </Link>
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   )

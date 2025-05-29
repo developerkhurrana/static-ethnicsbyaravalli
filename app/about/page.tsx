@@ -10,24 +10,6 @@ export const metadata = {
   description: "Learn about our journey in creating premium ethnic wear for boutiques and retailers.",
 }
 
-interface TimelineItem {
-  year: string
-  title: string
-  description: string
-}
-
-interface TeamMember {
-  name: string
-  role: string
-  image: string
-}
-
-interface Achievement {
-  title: string
-  description: string
-  icon: React.ReactNode
-}
-
 const values = [
   {
     title: "Quality First",
