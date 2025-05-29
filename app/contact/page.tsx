@@ -75,7 +75,7 @@ export default function ContactPage() {
             <CardHeader>
               <CardTitle>Business Hours</CardTitle>
               <CardDescription>
-                We're available during the following hours
+                We&apos;re available during the following hours
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -101,7 +101,7 @@ export default function ContactPage() {
           <CardHeader>
             <CardTitle>Send us a Message</CardTitle>
             <CardDescription>
-              Fill out the form below and we'll get back to you as soon as
+              Fill out the form below and we&apos;ll get back to you as soon as
               possible.
             </CardDescription>
           </CardHeader>

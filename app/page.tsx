@@ -269,7 +269,7 @@ export default function Home() {
             {testimonials.map((testimonial) => (
               <Card key={testimonial.name} className="p-6">
                 <div className="space-y-4">
-                  <p className="text-gray-600 italic">"{testimonial.quote}"</p>
+                  <p className="text-gray-600 italic">&quot;{testimonial.quote}&quot;</p>
                   <div>
                     <p className="font-semibold">{testimonial.name}</p>
                     <p className="text-sm text-gray-500">{testimonial.location}</p>

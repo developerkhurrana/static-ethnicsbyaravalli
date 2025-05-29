@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { SVGProps } from "react"
 
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
@@ -32,7 +33,7 @@ const values = [
     title: "Quality First",
     description:
       "We never compromise on the quality of our products, ensuring the finest materials and craftsmanship.",
-    icon: (props: any) => (
+    icon: (props: SVGProps<SVGSVGElement>) => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -51,7 +52,7 @@ const values = [
     title: "Innovation",
     description:
       "We constantly innovate in design and manufacturing to bring you the latest trends in ethnic wear.",
-    icon: (props: any) => (
+    icon: (props: SVGProps<SVGSVGElement>) => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -70,7 +71,7 @@ const values = [
     title: "Sustainability",
     description:
       "We are committed to sustainable practices in our manufacturing process and business operations.",
-    icon: (props: any) => (
+    icon: (props: SVGProps<SVGSVGElement>) => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
