@@ -346,7 +346,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 }
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }): Promise<React.ReactElement> {
-  const post = blogPosts[params.slug as keyof typeof blogPosts]
+  const post = await Promise.resolve(blogPosts[params.slug as keyof typeof blogPosts])
 
   if (!post) {
     return (
