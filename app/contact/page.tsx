@@ -33,7 +33,7 @@ const contactInfo = [
     icon: MapPin,
     title: "Address",
     value: "H 169, Malviya Nagar Industrial Area, Malviya Nagar, Jaipur, Rajasthan 302017",
-    href: "https://maps.google.com/?q=H+169,+Malviya+Nagar+Industrial+Area,+Malviya+Nagar,+Jaipur,+Rajasthan+302017",
+    href: "https://maps.google.com/?q=26.858194,75.830806",
   },
 ]
 

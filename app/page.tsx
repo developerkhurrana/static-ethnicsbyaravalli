@@ -6,9 +6,6 @@ import { Package, Truck, Scissors, Ruler, Factory, IndianRupee } from "lucide-re
 import useEmblaCarousel from 'embla-carousel-react'
 import { useCallback, useEffect, useState } from "react"
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent } from "@/components/ui/card"
 
 const heroImages = [
@@ -316,25 +313,6 @@ const products = [
     sku: "DS003",
     fabric: "Cotton Silk",
     image: "/products/saree-1.jpg",
-  },
-]
-
-const steps = [
-  {
-    title: "Browse Collection",
-    description: "Explore our catalog of premium ethnic wear",
-  },
-  {
-    title: "Contact Us",
-    description: "Send us your requirements via WhatsApp",
-  },
-  {
-    title: "Get Quote",
-    description: "Receive pricing and delivery timeline",
-  },
-  {
-    title: "Confirm & Dispatch",
-    description: "Place order and get fast delivery",
   },
 ]
 
