@@ -345,15 +345,15 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   }
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }): Promise<React.ReactElement> {
-  const post = await Promise.resolve(blogPosts[params.slug as keyof typeof blogPosts])
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
+  const post = blogPosts[params.slug as keyof typeof blogPosts]
 
   if (!post) {
     return (
       <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center py-12">
         <div className="container max-w-7xl text-center">
           <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-          <p className="mb-8">The blog post you're looking for doesn't exist.</p>
+          <p className="mb-8">The blog post you&apos;re looking for doesn&apos;t exist.</p>
           <Link href="/blog">
             <Button>Back to Blog</Button>
           </Link>
@@ -419,6 +419,43 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </article>
+
+        <div className="mt-20">
+          <h2 className="text-2xl font-semibold mb-6 text-muted-foreground">You may also like</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {relatedProducts.map(product => (
+              <div key={product.id} className="rounded-lg border bg-card p-4 flex flex-col items-center shadow-sm transition hover:shadow-md">
+                <div className="w-full h-48 relative mb-3 rounded-md overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="w-full text-center">
+                  <h3 className="font-medium text-lg mb-1 line-clamp-2">{product.name}</h3>
+                  <div className="flex flex-col gap-2 mt-2">
+                    <Link href={product.url + '/catalog.pdf'} target="_blank" rel="noopener noreferrer">
+                      <button className="w-full px-3 py-1.5 rounded bg-[#D9A8A0] text-white text-sm font-medium hover:bg-[#C08478] transition">
+                        View or Download Catalog
+                      </button>
+                    </Link>
+                    <a
+                      href={`https://wa.me/919999999999?text=Hi, I am interested in the product: ${encodeURIComponent(product.name)} (${encodeURIComponent(product.url)})`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <button className="w-full px-3 py-1.5 rounded border border-[#D9A8A0] text-[#D9A8A0] text-sm font-medium hover:bg-[#F5E3DF] transition">
+                        Enquire on WhatsApp
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
