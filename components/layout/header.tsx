@@ -7,12 +7,10 @@ import Image from "next/image"
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Collections", href: "/collections" },
+  // { name: "Collections", href: "/collections" },
   { name: "About Us", href: "/about" },
   { name: "Manufacturing", href: "/manufacturing" },
-  { name: "How to Order", href: "/how-to-order" },
   { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" },
 ]
 
 export function Header() {
@@ -58,11 +56,10 @@ export function Header() {
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
-            href="#become-retailer"
+            href="/contact"
             className="group inline-flex items-center gap-2 rounded-md bg-[#D9A8A0] px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#C08478] transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D9A8A0] whitespace-nowrap"
           >
-            Become a Retailer
-            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+            Contact Us
           </Link>
         </div>
       </nav>
@@ -103,18 +100,7 @@ export function Header() {
                   </Link>
                 ))}
               </div>
-              <div className="py-6">
-                <Link
-                  href="#become-retailer"
-                  className="group -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white bg-[#D9A8A0] hover:bg-[#C08478] transition-all duration-200"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <div className="flex items-center gap-2">
-                    Become a Retailer
-                    <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
-                  </div>
-                </Link>
-              </div>
+              {/* Become a Retailer button removed from mobile */}
             </div>
           </div>
         </div>

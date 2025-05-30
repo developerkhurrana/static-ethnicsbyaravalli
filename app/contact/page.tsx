@@ -1,4 +1,7 @@
-import { Mail, MapPin, Phone } from "lucide-react"
+"use client"
+
+import { Mail, MapPin, Phone, MessageCircle } from "lucide-react"
+import { useRef } from "react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -13,33 +16,46 @@ import { Label } from "@/components/ui/label"
 import { SectionHeader } from "@/components/ui/section-header"
 import { siteConfig } from "@/lib/constants"
 
-export const metadata = {
-  title: "Contact Us",
-  description: "Get in touch with us for any inquiries about our ethnic wear collections.",
-}
-
 const contactInfo = [
   {
     icon: Phone,
-    title: "Phone",
-    value: siteConfig.phone,
-    href: `tel:${siteConfig.phone}`,
+    title: "Phone / WhatsApp",
+    value: "+91 98284 22208",
+    href: `tel:+919828422208`,
   },
   {
     icon: Mail,
     title: "Email",
-    value: siteConfig.email,
-    href: `mailto:${siteConfig.email}`,
+    value: "ethnicsbyaravalli@gmail.com",
+    href: `mailto:ethnicsbyaravalli@gmail.com`,
   },
   {
     icon: MapPin,
-    title: "Office",
-    value: "123 Fashion Street, Textile Market, Surat, Gujarat 395002",
-    href: "https://maps.google.com",
+    title: "Address",
+    value: "H 169, Malviya Nagar Industrial Area, Malviya Nagar, Jaipur, Rajasthan 302017",
+    href: "https://maps.google.com/?q=H+169,+Malviya+Nagar+Industrial+Area,+Malviya+Nagar,+Jaipur,+Rajasthan+302017",
   },
 ]
 
 export default function ContactPage() {
+  const formRef = useRef<HTMLFormElement>(null)
+
+  function handleWhatsAppSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const name = (formData.get("name") as string)?.trim()
+    const shop = (formData.get("shop") as string)?.trim()
+    const mobile = (formData.get("mobile") as string)?.trim()
+    const city = (formData.get("city") as string)?.trim()
+    if (!name || !mobile || !city) return
+    let message = `Hi, I'm ${name} from ${city}`
+    if (shop) message += `, I have a shop named ${shop}`
+    message += ". I would like to know more about your products."
+    const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl, "_blank")
+  }
+
   return (
     <div className="container py-12">
       <SectionHeader
@@ -106,67 +122,25 @@ export default function ContactPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form
-              action="https://api.notionforms.io/v1/forms/YOUR_FORM_ID"
-              method="POST"
-              className="space-y-4"
-            >
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="firstName">First Name</Label>
-                  <Input
-                    id="firstName"
-                    name="firstName"
-                    placeholder="John"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="lastName">Last Name</Label>
-                  <Input
-                    id="lastName"
-                    name="lastName"
-                    placeholder="Doe"
-                    required
-                  />
-                </div>
-              </div>
-
+            <form ref={formRef} onSubmit={handleWhatsAppSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="you@example.com"
-                  required
-                />
+                <Label htmlFor="name">Your Name<span className="text-red-500">*</span></Label>
+                <Input id="name" name="name" placeholder="Your Name" required />
               </div>
-
               <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number</Label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  placeholder="+91 98765 43210"
-                  required
-                />
+                <Label htmlFor="shop">Shop Name</Label>
+                <Input id="shop" name="shop" placeholder="Shop Name (optional)" />
               </div>
-
               <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
-                <textarea
-                  id="message"
-                  name="message"
-                  className="min-h-[100px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  placeholder="Your message..."
-                  required
-                />
+                <Label htmlFor="mobile">Mobile Number<span className="text-red-500">*</span></Label>
+                <Input id="mobile" name="mobile" type="tel" placeholder="Your Mobile Number" required />
               </div>
-
-              <Button type="submit" className="w-full">
-                Send Message
+              <div className="space-y-2">
+                <Label htmlFor="city">City<span className="text-red-500">*</span></Label>
+                <Input id="city" name="city" placeholder="Your City" required />
+              </div>
+              <Button type="submit" className="w-full flex items-center justify-center gap-2">
+                Send us <MessageCircle className="w-5 h-5" /> message
               </Button>
             </form>
           </CardContent>

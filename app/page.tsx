@@ -81,16 +81,17 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="#become-retailer"
+                href="/contact"
                 className="inline-flex items-center justify-center rounded-md bg-[#D9A8A0] px-6 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-[#C08478]"
               >
-                Become a Retailer
+                Contact Us
               </Link>
               <Link
-                href="/collections"
+                href="https://wa.me/919999999999"
+                target="_blank"
                 className="inline-flex items-center justify-center rounded-md border border-white bg-transparent px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-white/10"
               >
-                View Collection
+                Whatsapp Us
               </Link>
             </div>
           </div>
@@ -181,79 +182,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How to Order Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              How to Order
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Simple process to start your wholesale journey
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => (
-              <div key={step.title} className="relative">
-                <div className="rounded-lg border bg-card p-6 shadow-sm">
-                  <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mb-4 text-xl font-bold">
-                    {index + 1}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {step.description}
-                  </p>
-                </div>
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gray-200" />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Become a Retailer Section */}
-      <section id="become-retailer" className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Become a Retailer
-              </h2>
-              <p className="text-lg text-gray-600">
-                Join our network of successful boutique owners
-              </p>
-            </div>
-            <Card className="p-6">
-              <form className="space-y-6">
-                <div className="space-y-4">
-                  <Input type="text" placeholder="Your Name" required />
-                  <Input type="text" placeholder="Store Name" required />
-                  <Input type="tel" placeholder="WhatsApp Number" required />
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Product Interest" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="suits">Designer Suits</SelectItem>
-                      <SelectItem value="lehengas">Bridal Lehengas</SelectItem>
-                      <SelectItem value="sarees">Designer Sarees</SelectItem>
-                      <SelectItem value="custom">Custom Collection</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <Button className="w-full">
-                  Send Me the Catalog on WhatsApp
-                </Button>
-              </form>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Testimonials Section */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -292,9 +220,9 @@ export default function Home() {
             <div className="space-y-4">
               <h4 className="font-semibold">Contact</h4>
               <ul className="space-y-2 text-gray-600">
-                <li>📞 +91 98765 43210</li>
-                <li>✉️ hello@ethnicsbyaravalli.com</li>
-                <li>📱 WhatsApp: +91 98765 43210</li>
+                <li>📞 +91 98284 22208</li>
+                <li>✉️ ethnicsbyaravalli@gmail.com</li>
+                <li>📱 WhatsApp: +91 98284 22208</li>
               </ul>
             </div>
             <div className="space-y-4">
@@ -315,9 +243,8 @@ export default function Home() {
             <div className="space-y-4">
               <h4 className="font-semibold">Address</h4>
               <p className="text-gray-600">
-                Aravalli House<br />
-                Jaipur, Rajasthan<br />
-                India - 302001
+                H 169, Malviya Nagar Industrial Area,<br />
+                Malviya Nagar, Jaipur, Rajasthan 302017
               </p>
             </div>
           </div>

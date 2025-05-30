@@ -37,14 +37,41 @@ const blogPosts = {
       <h2>The Future of Sustainable Ethnic Fashion</h2>
       <p>As the industry continues to evolve, we can expect to see more innovations in sustainable practices. From biodegradable packaging to carbon-neutral manufacturing, the future of ethnic wear is green.</p>
     `,
-    image: "https://byshree.com/cdn/shop/articles/The-Rise-of-Sustainable-and-Ethical-Ethnic-Fashion.png?v=1695105858&width=2048",
+    image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?q=80&w=2070&auto=format&fit=crop",
     date: "March 15, 2024",
     readTime: "5 min read",
     category: "Sustainability",
     author: {
       name: "Priya Sharma",
       role: "Fashion Sustainability Expert",
-      image: "https://avatar.iran.liara.run/public/girl?username=Priya",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop",
+    },
+  },
+  "eco-friendly-dyes": {
+    title: "Revolutionizing Ethnic Wear with Natural Dyes",
+    content: `
+      <p>The art of natural dyeing is making a comeback in ethnic wear, bringing both environmental benefits and unique aesthetics to contemporary fashion.</p>
+
+      <h2>Traditional Dyeing Techniques</h2>
+      <ul>
+        <li>Indigo dyeing from natural sources</li>
+        <li>Turmeric and henna-based colors</li>
+        <li>Flower and plant-based dyes</li>
+        <li>Mineral-based natural pigments</li>
+        <li>Traditional mordant techniques</li>
+      </ul>
+
+      <h2>Environmental Benefits</h2>
+      <p>Natural dyes offer numerous environmental advantages over synthetic alternatives, including biodegradability and reduced water pollution.</p>
+    `,
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "March 12, 2024",
+    readTime: "6 min read",
+    category: "Sustainability",
+    author: {
+      name: "Arjun Mehta",
+      role: "Textile Conservationist",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop",
     },
   },
   "summer-trends-2024": {
@@ -90,14 +117,41 @@ const blogPosts = {
         <li>Focus on comfort without compromising style</li>
       </ul>
     `,
-    image: "https://www.ethnicplus.in/media/magefan_blog/ezgif-4-164a313f07.webp",
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
     date: "March 10, 2024",
     readTime: "4 min read",
     category: "Trends",
     author: {
       name: "Rahul Verma",
       role: "Fashion Trend Analyst",
-      image: "https://avatar.iran.liara.run/public?name=Rahul",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop",
+    },
+  },
+  "festival-collection": {
+    title: "Festival Season Ethnic Wear Guide 2024",
+    content: `
+      <p>Discover the perfect ethnic ensembles for the upcoming festival season, combining traditional elements with contemporary style.</p>
+
+      <h2>Festival Fashion Essentials</h2>
+      <ul>
+        <li>Statement anarkali suits</li>
+        <li>Embroidered lehengas</li>
+        <li>Designer sarees</li>
+        <li>Fusion kurtas</li>
+        <li>Traditional jewelry pairings</li>
+      </ul>
+
+      <h2>Color Trends</h2>
+      <p>This festival season embraces both traditional and modern color palettes, from rich jewel tones to contemporary pastels.</p>
+    `,
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "March 8, 2024",
+    readTime: "5 min read",
+    category: "Trends",
+    author: {
+      name: "Sneha Patel",
+      role: "Fashion Editor",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop",
     },
   },
   "modern-traditional-styling": {
@@ -141,14 +195,41 @@ const blogPosts = {
         <li>Balance traditional and modern color palettes</li>
       </ul>
     `,
-    image: "https://c.ndtvimg.com/2024-10/g3sh1kr8_cakes_625x300_18_October_24.jpg",
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
     date: "March 5, 2024",
     readTime: "6 min read",
     category: "Styling",
     author: {
       name: "Ananya Patel",
       role: "Fashion Stylist",
-      image: "https://avatar.iran.liara.run/public/girl?username=Ananya",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop",
+    },
+  },
+  "office-ethnic-wear": {
+    title: "Professional Ethnic Wear for the Modern Workplace",
+    content: `
+      <p>Discover how to incorporate ethnic wear into your professional wardrobe while maintaining a polished and contemporary look.</p>
+
+      <h2>Office-Appropriate Ethnic Wear</h2>
+      <ul>
+        <li>Tailored kurtas with formal pants</li>
+        <li>Minimalist saree drapes</li>
+        <li>Structured anarkali suits</li>
+        <li>Professional color palettes</li>
+        <li>Subtle embellishments</li>
+      </ul>
+
+      <h2>Styling Tips</h2>
+      <p>Learn how to balance traditional elements with professional requirements for a perfect office look.</p>
+    `,
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "March 3, 2024",
+    readTime: "5 min read",
+    category: "Styling",
+    author: {
+      name: "Vikram Singh",
+      role: "Corporate Fashion Consultant",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop",
     },
   },
   "hand-embroidery-art": {
@@ -195,14 +276,41 @@ const blogPosts = {
         <li>Market access for artisans</li>
       </ul>
     `,
-    image: "https://media.istockphoto.com/id/1193642393/photo/female-needlework-on-fabric-material-close-up-view-unidentified-tribal-women-sewing-ethnic.jpg?s=612x612&w=0&k=20&c=lwQ5wV5wzrnbqdoi-KciE9ec55LQD3wUvtWAc5lNJ-w=",
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
     date: "February 28, 2024",
     readTime: "7 min read",
     category: "Craftsmanship",
     author: {
       name: "Meera Kapoor",
       role: "Textile Conservationist",
-      image: "https://avatar.iran.liara.run/public/girl?username=Meera",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1888&auto=format&fit=crop",
+    },
+  },
+  "block-printing": {
+    title: "The Revival of Traditional Block Printing",
+    content: `
+      <p>Explore the ancient art of block printing and its modern applications in contemporary ethnic wear.</p>
+
+      <h2>Block Printing Techniques</h2>
+      <ul>
+        <li>Wooden block carving</li>
+        <li>Natural dye preparation</li>
+        <li>Traditional printing methods</li>
+        <li>Contemporary adaptations</li>
+        <li>Digital block printing</li>
+      </ul>
+
+      <h2>Cultural Significance</h2>
+      <p>Understanding the cultural heritage and regional variations in block printing techniques.</p>
+    `,
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "February 25, 2024",
+    readTime: "6 min read",
+    category: "Craftsmanship",
+    author: {
+      name: "Rajesh Kumar",
+      role: "Textile Artist",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop",
     },
   },
   "successful-ethnic-boutique": {
@@ -249,14 +357,41 @@ const blogPosts = {
         <li>Community engagement</li>
       </ul>
     `,
-    image: "https://i.pinimg.com/736x/4c/19/e7/4c19e7132f4b4bdf2c1106ea8c44b53a.jpg",
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
     date: "February 20, 2024",
     readTime: "8 min read",
     category: "Business",
     author: {
       name: "Vikram Singh",
       role: "Retail Business Consultant",
-      image: "https://avatar.iran.liara.run/public/boy?username=Vikram",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop",
+    },
+  },
+  "online-ethnic-retail": {
+    title: "The Future of Ethnic Wear E-commerce",
+    content: `
+      <p>Explore the evolving landscape of online ethnic wear retail and discover strategies for success in the digital marketplace.</p>
+
+      <h2>Digital Retail Strategies</h2>
+      <ul>
+        <li>Virtual try-on technology</li>
+        <li>Social media marketing</li>
+        <li>Customer engagement</li>
+        <li>Inventory management</li>
+        <li>Logistics optimization</li>
+      </ul>
+
+      <h2>Market Trends</h2>
+      <p>Understanding current market dynamics and future projections for online ethnic wear retail.</p>
+    `,
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "February 18, 2024",
+    readTime: "7 min read",
+    category: "Business",
+    author: {
+      name: "Priya Sharma",
+      role: "E-commerce Expert",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop",
     },
   },
   "modern-bridal-wear": {
@@ -303,52 +438,76 @@ const blogPosts = {
         <li>Personalized elements</li>
       </ul>
     `,
-    image: "https://cdn.shopify.com/s/files/1/2196/3271/files/Evolution_of_Indian_wedding_fashion_1024x1024.png?v=1680083169",
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
     date: "February 15, 2024",
     readTime: "6 min read",
     category: "Bridal",
     author: {
       name: "Neha Sharma",
       role: "Bridal Fashion Expert",
-      image: "https://avatar.iran.liara.run/public/girl?username=Neha",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1888&auto=format&fit=crop",
+    },
+  },
+  "wedding-season-guide": {
+    title: "Complete Wedding Season Style Guide 2024",
+    content: `
+      <p>Your comprehensive guide to wedding season fashion, from engagement ceremonies to reception parties.</p>
+
+      <h2>Wedding Event Wardrobe</h2>
+      <ul>
+        <li>Engagement ceremony outfits</li>
+        <li>Mehendi ceremony ensembles</li>
+        <li>Wedding day attire</li>
+        <li>Reception party looks</li>
+        <li>Guest wear options</li>
+      </ul>
+
+      <h2>Accessorizing Tips</h2>
+      <p>Learn how to complement your wedding wear with the perfect jewelry and accessories.</p>
+    `,
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "February 12, 2024",
+    readTime: "8 min read",
+    category: "Bridal",
+    author: {
+      name: "Ananya Patel",
+      role: "Wedding Stylist",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop",
     },
   },
 }
 
-// Sample related products (replace with real data or fetch from your catalog)
-const relatedProducts = [
-  {
-    id: 1,
-    name: "Aqua Blue Printed Kurta Set",
-    image: "https://i.pinimg.com/736x/10/f3/9f/10f39fe521ff063430d0afe5259bfd11.jpg",
-    url: "/collections/aqua-blue-printed-kurta-set",
-  },
-  {
-    id: 2,
-    name: "Pastel Pink Anarkali Suit",
-    image: "https://i.pinimg.com/736x/56/5b/64/565b641a12eaa255d72ba6a6de873db7.jpg",
-    url: "/collections/pastel-pink-anarkali-suit",
-  },
-  {
-    id: 3,
-    name: "Hand-Embroidered Dupatta",
-    image: "https://i.pinimg.com/736x/c6/05/9c/c6059cdf4ea1cc744a89c5374bb8dc57.jpg",
-    url: "/collections/hand-embroidered-dupatta",
-  },
-]
+// Function to get related blog posts
+function getRelatedPosts(currentSlug: string) {
+  return Object.entries(blogPosts)
+    .filter(([slug]) => slug !== currentSlug)
+    .slice(0, 3)
+    .map(([slug, post]) => ({
+      slug,
+      ...post
+    }))
+}
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = blogPosts[params.slug as keyof typeof blogPosts]
+  
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+      description: 'The requested blog post could not be found.',
+    }
+  }
+
   return {
-    title: post?.title || "Blog Post",
-    description: "Discover the latest trends and insights in ethnic wear.",
+    title: post.title,
+    description: post.content.slice(0, 160),
   }
 }
 
-export default function BlogPostPage({
-  params,
-}: {
-  params: { slug: string }
+export default function Page({ 
+  params 
+}: { 
+  params: { slug: string } 
 }) {
   const post = blogPosts[params.slug as keyof typeof blogPosts]
 
@@ -366,10 +525,15 @@ export default function BlogPostPage({
     )
   }
 
+  const relatedPosts = getRelatedPosts(params.slug)
+
   return (
     <div className="min-h-[calc(100vh-4rem)] flex flex-col py-16">
       <div className="container max-w-7xl flex-1 flex flex-col">
-        <Link href="/blog" className="mb-12 inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors">
+        <Link 
+          href="/blog" 
+          className="mb-12 inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Blog
         </Link>
@@ -390,13 +554,14 @@ export default function BlogPostPage({
               {post.title}
             </h1>
             <div className="flex items-center gap-4">
-              <Image
-                src={post.author.image}
-                alt={post.author.name}
-                width={48}
-                height={48}
-                className="rounded-full"
-              />
+              <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                <Image
+                  src={post.author.image}
+                  alt={post.author.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <div>
                 <p className="font-medium text-lg">{post.author.name}</p>
                 <p className="text-sm text-muted-foreground">
@@ -424,42 +589,61 @@ export default function BlogPostPage({
           />
         </article>
 
-        <div className="mt-20">
-          <h2 className="text-2xl font-semibold mb-6 text-muted-foreground">You may also like</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {relatedProducts.map(product => (
-              <div key={product.id} className="rounded-lg border bg-card p-4 flex flex-col items-center shadow-sm transition hover:shadow-md">
-                <div className="w-full h-48 relative mb-3 rounded-md overflow-hidden">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="w-full text-center">
-                  <h3 className="font-medium text-lg mb-1 line-clamp-2">{product.name}</h3>
-                  <div className="flex flex-col gap-2 mt-2">
-                    <Link href={product.url + '/catalog.pdf'} target="_blank" rel="noopener noreferrer">
-                      <button className="w-full px-3 py-1.5 rounded bg-[#D9A8A0] text-white text-sm font-medium hover:bg-[#C08478] transition">
-                        View or Download Catalog
-                      </button>
-                    </Link>
-                    <a
-                      href={`https://wa.me/919999999999?text=Hi, I am interested in the product: ${encodeURIComponent(product.name)} (${encodeURIComponent(product.url)})`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <button className="w-full px-3 py-1.5 rounded border border-[#D9A8A0] text-[#D9A8A0] text-sm font-medium hover:bg-[#F5E3DF] transition">
-                        Enquire on WhatsApp
-                      </button>
-                    </a>
+        {relatedPosts.length > 0 && (
+          <div className="mt-20">
+            <h2 className="text-2xl font-semibold mb-6 text-muted-foreground">
+              More Articles You Might Like
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {relatedPosts.map(relatedPost => (
+                <Link 
+                  key={relatedPost.slug}
+                  href={`/blog/${relatedPost.slug}`}
+                  className="group"
+                >
+                  <div className="rounded-lg border bg-card overflow-hidden shadow-sm transition hover:shadow-md">
+                    <div className="relative w-full h-48">
+                      <Image
+                        src={relatedPost.image}
+                        alt={relatedPost.title}
+                        fill
+                        className="object-cover transition group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-4 w-4" />
+                          {relatedPost.date}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="h-4 w-4" />
+                          {relatedPost.readTime}
+                        </span>
+                      </div>
+                      <h3 className="font-medium text-lg mb-2 line-clamp-2 group-hover:text-[#D9A8A0] transition">
+                        {relatedPost.title}
+                      </h3>
+                      <div className="flex items-center gap-2">
+                        <div className="relative w-6 h-6 rounded-full overflow-hidden">
+                          <Image
+                            src={relatedPost.author.image}
+                            alt={relatedPost.author.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <span className="text-sm text-muted-foreground">
+                          {relatedPost.author.name}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   )

@@ -24,6 +24,17 @@ const blogPosts = [
   },
   {
     id: 2,
+    slug: "eco-friendly-dyes",
+    title: "Revolutionizing Ethnic Wear with Natural Dyes",
+    excerpt:
+      "Explore how traditional natural dyeing techniques are making a comeback in contemporary ethnic wear.",
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "March 12, 2024",
+    readTime: "6 min read",
+    category: "Sustainability",
+  },
+  {
+    id: 3,
     slug: "summer-trends-2024",
     title: "Top Ethnic Wear Trends for Summer 2024",
     excerpt:
@@ -34,7 +45,18 @@ const blogPosts = [
     category: "Trends",
   },
   {
-    id: 3,
+    id: 4,
+    slug: "festival-collection",
+    title: "Festival Season Ethnic Wear Guide 2024",
+    excerpt:
+      "Discover the perfect ethnic ensembles for the upcoming festival season, combining traditional elements with contemporary style.",
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "March 8, 2024",
+    readTime: "5 min read",
+    category: "Trends",
+  },
+  {
+    id: 5,
     slug: "modern-traditional-styling",
     title: "How to Style Traditional Wear for Modern Occasions",
     excerpt:
@@ -45,7 +67,18 @@ const blogPosts = [
     category: "Styling",
   },
   {
-    id: 4,
+    id: 6,
+    slug: "office-ethnic-wear",
+    title: "Professional Ethnic Wear for the Modern Workplace",
+    excerpt:
+      "Discover how to incorporate ethnic wear into your professional wardrobe while maintaining a polished and contemporary look.",
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "March 3, 2024",
+    readTime: "5 min read",
+    category: "Styling",
+  },
+  {
+    id: 7,
     slug: "hand-embroidery-art",
     title: "The Art of Hand Embroidery in Ethnic Wear",
     excerpt:
@@ -56,7 +89,18 @@ const blogPosts = [
     category: "Craftsmanship",
   },
   {
-    id: 5,
+    id: 8,
+    slug: "block-printing",
+    title: "The Revival of Traditional Block Printing",
+    excerpt:
+      "Explore the ancient art of block printing and its modern applications in contemporary ethnic wear.",
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "February 25, 2024",
+    readTime: "6 min read",
+    category: "Craftsmanship",
+  },
+  {
+    id: 9,
     slug: "successful-ethnic-boutique",
     title: "Building a Successful Ethnic Wear Boutique",
     excerpt:
@@ -67,7 +111,18 @@ const blogPosts = [
     category: "Business",
   },
   {
-    id: 6,
+    id: 10,
+    slug: "online-ethnic-retail",
+    title: "The Future of Ethnic Wear E-commerce",
+    excerpt:
+      "Explore the evolving landscape of online ethnic wear retail and discover strategies for success in the digital marketplace.",
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "February 18, 2024",
+    readTime: "7 min read",
+    category: "Business",
+  },
+  {
+    id: 11,
     slug: "modern-bridal-wear",
     title: "The Evolution of Bridal Wear in Modern India",
     excerpt:
@@ -75,6 +130,17 @@ const blogPosts = [
     image: "https://cdn.shopify.com/s/files/1/2196/3271/files/Evolution_of_Indian_wedding_fashion_1024x1024.png?v=1680083169",
     date: "February 15, 2024",
     readTime: "6 min read",
+    category: "Bridal",
+  },
+  {
+    id: 12,
+    slug: "wedding-season-guide",
+    title: "Complete Wedding Season Style Guide 2024",
+    excerpt:
+      "Your comprehensive guide to wedding season fashion, from engagement ceremonies to reception parties.",
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "February 12, 2024",
+    readTime: "8 min read",
     category: "Bridal",
   },
 ]
