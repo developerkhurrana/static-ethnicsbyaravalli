@@ -353,7 +353,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center py-12">
         <div className="container max-w-7xl text-center">
           <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-          <p className="mb-8">The blog post you&apos;re looking for doesn&apos;t exist.</p>
+          <p className="mb-8">The blog post you're looking for doesn't exist.</p>
           <Link href="/blog">
             <Button>Back to Blog</Button>
           </Link>
@@ -415,73 +415,11 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           <div
             className="prose prose-slate max-w-none dark:prose-invert 
               prose-headings:font-serif prose-headings:font-bold 
-              prose-h1:text-4xl prose-h1:tracking-tight prose-h1:leading-tight
-              prose-h2:text-3xl prose-h2:tracking-tight prose-h2:leading-tight
-              prose-h3:text-2xl prose-h3:tracking-tight prose-h3:leading-tight
-              prose-p:text-lg prose-p:leading-relaxed prose-p:tracking-wide
-              prose-li:text-lg prose-li:leading-relaxed prose-li:tracking-wide
-              prose-img:rounded-xl prose-img:shadow-lg
-              prose-strong:font-semibold
-              prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-              prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-4 prose-blockquote:italic
-              prose-pre:bg-muted prose-pre:text-muted-foreground
-              prose-code:text-primary prose-code:font-mono prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded
-              prose-hr:border-muted
-              [&>*:first-child]:mt-0 [&>*:last-child]:mb-0
-              space-y-8
-              max-w-7xl mx-auto"
+              prose-h1:text-4xl"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
-
-          <div className="mt-20">
-            <h2 className="text-2xl font-semibold mb-6 text-muted-foreground">You may also like</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {relatedProducts.map(product => (
-                <div key={product.id} className="rounded-lg border bg-card p-4 flex flex-col items-center shadow-sm transition hover:shadow-md">
-                  <div className="w-full h-48 relative mb-3 rounded-md overflow-hidden">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="w-full text-center">
-                    <h3 className="font-medium text-lg mb-1 line-clamp-2">{product.name}</h3>
-                    <div className="flex flex-col gap-2 mt-2">
-                      <Link href={product.url + '/catalog.pdf'} target="_blank" rel="noopener noreferrer">
-                        <button className="w-full px-3 py-1.5 rounded bg-[#D9A8A0] text-white text-sm font-medium hover:bg-[#C08478] transition">
-                          View or Download Catalog
-                        </button>
-                      </Link>
-                      <a
-                        href={`https://wa.me/919999999999?text=Hi, I am interested in the product: ${encodeURIComponent(product.name)} (${encodeURIComponent(product.url)})`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <button className="w-full px-3 py-1.5 rounded border border-[#D9A8A0] text-[#D9A8A0] text-sm font-medium hover:bg-[#F5E3DF] transition">
-                          Enquire on WhatsApp
-                        </button>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-16 flex items-center justify-between border-t pt-8">
-            <Button variant="outline" size="lg" className="gap-2">
-              Share Article
-            </Button>
-            <Link href="/blog">
-              <Button variant="ghost" size="lg" className="gap-2">
-                Back to Blog
-              </Button>
-            </Link>
-          </div>
         </article>
       </div>
     </div>
   )
-} 
+}
