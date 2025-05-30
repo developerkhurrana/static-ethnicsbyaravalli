@@ -337,7 +337,7 @@ const relatedProducts = [
   },
 ]
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const post = blogPosts[params.slug as keyof typeof blogPosts]
   return {
     title: post?.title || "Blog Post",
