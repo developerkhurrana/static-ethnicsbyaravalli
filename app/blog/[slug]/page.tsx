@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Calendar, Clock } from "lucide-react"
 import { Metadata } from 'next'
+import React from 'react'
 
 import { Button } from "@/components/ui/button"
 
@@ -344,7 +345,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({ params }: { params: { slug: string } }): Promise<React.ReactElement> {
   const post = blogPosts[params.slug as keyof typeof blogPosts]
 
   if (!post) {
