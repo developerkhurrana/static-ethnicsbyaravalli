@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Calendar, Clock } from "lucide-react"
+import { Metadata } from 'next'
 
 import { Button } from "@/components/ui/button"
 
@@ -335,7 +336,7 @@ const relatedProducts = [
   },
 ]
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = blogPosts[params.slug as keyof typeof blogPosts]
   return {
     title: post?.title || "Blog Post",
