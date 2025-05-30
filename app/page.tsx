@@ -5,14 +5,14 @@ import Link from "next/link"
 import { Package, Truck, Scissors, Ruler, Factory, IndianRupee } from "lucide-react"
 import useEmblaCarousel from 'embla-carousel-react'
 import { useCallback, useEffect, useState } from "react"
+import { FlipWords } from "@/components/ui/flip-words"
+import { ProductCard } from "@/components/product-card"
+import { Button } from "@/components/ui/button"
 
 import { Card, CardContent } from "@/components/ui/card"
 
 const heroImages = [
-  "https://www.jaipuriadaah.com/cdn/shop/files/cvxfb_13_2000x.png?v=1748002519",
-  "https://www.jaipuriadaah.com/cdn/shop/files/cvxfb_11_2000x.png?v=1748002519",
-  "https://www.jaipuriadaah.com/cdn/shop/files/cvxfb_12_2000x.png?v=1748002519",
-  "https://i.pinimg.com/736x/41/b5/ff/41b5ffb93e0c982515e312de103edc91.jpg"
+  "/products/hero_banner.jpg"
 ]
 
 export default function Home() {
@@ -52,14 +52,14 @@ export default function Home() {
             <div className="embla__container">
               {heroImages.map((image, index) => (
                 <div key={index} className="embla__slide relative min-h-[90vh]">
-        <Image
+                  <Image
                     src={image}
                     alt={`Hero image ${index + 1}`}
                     fill
                     unoptimized
                     className="object-cover"
                     priority={index === 0}
-        />
+                  />
                   <div className="absolute inset-0 bg-black/40" />
                 </div>
               ))}
@@ -71,10 +71,17 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-              Wholesale Ethnicwear Direct from Jaipur
+              Premium{"  "}
+              <span className="inline-block">
+                <FlipWords
+                  words={["Kurti", "Kurti Sets", "Suit Sets", "Co-ord Sets", "Kaftans", "Dresses", "Anarkalis", "Tops", "Tunics"]}
+                  className="text-[#D9A8A0]"
+                />
+              </span>
+              Manufacturer in <br />Jaipur
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
-              Low MOQ · Fast Dispatch · Custom Prints
+              Custom Designs · Bulk Orders · Private Label · Fast Dispatch
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -84,7 +91,7 @@ export default function Home() {
                 Contact Us
               </Link>
               <Link
-                href="https://wa.me/919999999999"
+                href="https://wa.me/919828422208"
                 target="_blank"
                 className="inline-flex items-center justify-center rounded-md border border-white bg-transparent px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-white/10"
               >
@@ -94,163 +101,170 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Carousel Indicators */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-          {heroImages.map((_, index) => (
-            <button
-              key={index}
-              className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                index === selectedIndex ? 'bg-white' : 'bg-white/50'
-              }`}
-              onClick={() => emblaApi?.scrollTo(index)}
-            />
-          ))}
-        </div>
+        {/* Carousel Indicators - Only show if there are multiple images */}
+        {heroImages.length > 1 && (
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+            {heroImages.map((_, index) => (
+              <button
+                key={index}
+                className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                  index === selectedIndex ? 'bg-white' : 'bg-white/50'
+                }`}
+                onClick={() => emblaApi?.scrollTo(index)}
+              />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Why Choose Us
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We make wholesale ethnic wear sourcing simple and profitable for retailers
+      <section className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80')]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="flex flex-col items-center justify-center text-center w-full">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">Who We Are</h2>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-8 drop-shadow">
+              Ethnics by Aravalli is a premium manufacturer of Indian ethnic wear for women, based in Jaipur. We create beautiful, high-quality Kurtas, Dresses, Anarkalis, Kaftans, and more—crafted by skilled designers and artisans, using the finest fabrics and prints.
             </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="rounded-lg border bg-card p-6 shadow-sm">
-                <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center mb-4">
-                  {benefit.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600">
-                  {benefit.description}
-                </p>
-              </div>
-            ))}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-md bg-[#D9A8A0] px-6 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-[#C08478]"
+              >
+                Contact Us
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex items-center justify-center rounded-md border border-white bg-transparent px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-white/10"
+              >
+                Read more
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Product Preview Section */}
+      {/* What we make Section */}
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Featured Products
+              What We Make
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Browse our best-selling ethnic wear pieces
+              Explore our premium collection of ethnic wear, crafted with precision in Jaipur.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => (
-              <Card key={product.sku} className="overflow-hidden">
-                <div className="relative aspect-[4/5]">
-          <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover"
-                  />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
+              <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
+                <Image
+                  src="https://ekohum.com/cdn/shop/files/DB392_3.jpg?v=1740739949"
+                  alt="Kurti Collection"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
+                />
+                <Image
+                  src="https://ekohum.com/cdn/shop/files/DB392_8.jpg?v=1740739949"
+                  alt="Kurti Collection Hover"
+                  fill
+                  className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
+                />
+              </div>
+              <div className="p-4 bg-white flex flex-col flex-1 justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Kurti Collection</h3>
+                  <p className="text-gray-600 mb-4">Premium kurtis with intricate embroidery and modern designs</p>
                 </div>
-                <CardContent className="p-6">
-                  <div className="space-y-2">
-                    <h3 className="text-xl font-semibold">{product.name}</h3>
-                    <p className="text-sm text-gray-500">SKU: {product.sku}</p>
-                    <p className="text-sm text-gray-600">Fabric: {product.fabric}</p>
-                    <Link
-                      href={`https://wa.me/919876543210?text=Hi, I'm interested in SKU ${product.sku}`}
-          target="_blank"
-                      className="inline-flex items-center justify-center w-full rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 transition-colors"
-        >
-                      📲 Enquire on WhatsApp
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                <Button className="w-full mt-auto" asChild>
+                  <Link href="/contact">Inquire Now</Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
+              <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
+                <Image
+                  src="https://ekohum.com/cdn/shop/files/DW3962_1.jpg?v=1725534156"
+                  alt="Suits Collection"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
+                />
+                <Image
+                  src="https://ekohum.com/cdn/shop/files/DW3962_4.jpg?v=1725534157"
+                  alt="Suits Collection Hover"
+                  fill
+                  className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
+                />
+              </div>
+              <div className="p-4 bg-white flex flex-col flex-1 justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Suits Collection</h3>
+                  <p className="text-gray-600 mb-4">Elegant suits with premium fabrics and contemporary designs</p>
+                </div>
+                <Button className="w-full mt-auto" asChild>
+                  <Link href="/contact">Inquire Now</Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
+              <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
+                <Image
+                  src="https://ekohum.com/cdn/shop/files/DSC_1622_33b0f5b1-b840-4283-90cc-259f6794734e.jpg?v=1729164681"
+                  alt="Double Layer Kalidaar"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
+                />
+                <Image
+                  src="https://ekohum.com/cdn/shop/files/Untitled-9_37b1bb61-61c1-4175-b051-24e143efbae2.jpg?v=1729164548"
+                  alt="Double Layer Kalidaar Hover"
+                  fill
+                  className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
+                />
+              </div>
+              <div className="p-4 bg-white flex flex-col flex-1 justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Double Layer Kalidaar</h3>
+                  <p className="text-gray-600 mb-4">Luxurious double layer kalidaar designs with premium fabrics</p>
+                </div>
+                <Button className="w-full mt-auto" asChild>
+                  <Link href="/contact">Inquire Now</Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
+              <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
+                <Image
+                  src="https://ekohum.com/cdn/shop/files/DSC0406.jpg?v=1745399522"
+                  alt="Kalidaar Collection"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
+                />
+                <Image
+                  src="https://ekohum.com/cdn/shop/files/DSC0392.jpg?v=1745399522"
+                  alt="Kalidaar Collection Hover"
+                  fill
+                  className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
+                />
+              </div>
+              <div className="p-4 bg-white flex flex-col flex-1 justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Kalidaar Collection</h3>
+                  <p className="text-gray-600 mb-4">Traditional kalidaar designs with modern aesthetics</p>
+                </div>
+                <Button className="w-full mt-auto" asChild>
+                  <Link href="/contact">Inquire Now</Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Trusted by 500+ Retailers
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Hear from our satisfied boutique partners
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
-              <Card key={testimonial.name} className="p-6">
-                <div className="space-y-4">
-                  <p className="text-gray-600 italic">&quot;{testimonial.quote}&quot;</p>
-                  <div>
-                    <p className="font-semibold">{testimonial.name}</p>
-                    <p className="text-sm text-gray-500">{testimonial.location}</p>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-50 border-t">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <h3 className="text-xl font-bold">Ethnics by Aravalli</h3>
-              <p className="text-gray-600">Made in Jaipur | Shipping Across India</p>
-            </div>
-            <div className="space-y-4">
-              <h4 className="font-semibold">Contact</h4>
-              <ul className="space-y-2 text-gray-600">
-                <li>📞 +91 98284 22208</li>
-                <li>✉️ ethnicsbyaravalli@gmail.com</li>
-                <li>📱 WhatsApp: +91 98284 22208</li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h4 className="font-semibold">Follow Us</h4>
-              <ul className="space-y-2 text-gray-600">
-                <li>
-                  <Link href="https://instagram.com/ethnicsbyaravalli" target="_blank" className="hover:text-primary">
-                    Instagram
-                  </Link>
-                </li>
-                <li>
-                  <Link href="https://facebook.com/ethnicsbyaravalli" target="_blank" className="hover:text-primary">
-                    Facebook
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h4 className="font-semibold">Address</h4>
-              <p className="text-gray-600">
-                H 169, Malviya Nagar Industrial Area,<br />
-                Malviya Nagar, Jaipur, Rajasthan 302017
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
 
       {/* WhatsApp Button */}
       <Link
-        href="https://wa.me/919876543210"
+        href="https://wa.me/919828422208"
         target="_blank"
         className="fixed bottom-6 right-6 bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition-colors z-50"
       >
@@ -262,74 +276,50 @@ export default function Home() {
   )
 }
 
-const benefits = [
+const productTypes = [
   {
-    title: "Low MOQ",
-    description: "Start with as few as 10 pieces per design",
-    icon: <IndianRupee className="w-6 h-6 text-primary" />,
+    name: "Kurti",
+    description: "Premium quality kurtis with contemporary designs and comfortable fits.",
+    image: "/products/kurti.jpg",
   },
   {
-    title: "Jaipur Manufacturing",
-    description: "Direct from our workshop in Jaipur",
-    icon: <Factory className="w-6 h-6 text-primary" />,
+    name: "Kurti Sets",
+    description: "Complete kurti sets with matching bottoms and dupattas.",
+    image: "/products/kurti-set.jpg",
   },
   {
-    title: "Pan-India Shipping",
-    description: "Fast delivery to all major cities",
-    icon: <Truck className="w-6 h-6 text-primary" />,
+    name: "Suit Sets",
+    description: "Elegant suit sets perfect for formal and casual occasions.",
+    image: "/products/suit-set.jpg",
   },
   {
-    title: "Custom Sizes",
-    description: "Available in all standard sizes",
-    icon: <Ruler className="w-6 h-6 text-primary" />,
+    name: "Co-ord Sets",
+    description: "Modern co-ord sets with mix-and-match possibilities.",
+    image: "/products/coord-set.jpg",
   },
   {
-    title: "Ready Stock",
-    description: "Quick dispatch for in-stock items",
-    icon: <Package className="w-6 h-6 text-primary" />,
+    name: "Kaftans",
+    description: "Luxurious kaftans with intricate embroidery and premium fabrics.",
+    image: "/products/kaftan.jpg",
   },
   {
-    title: "Quality Fabrics",
-    description: "Premium materials and craftsmanship",
-    icon: <Scissors className="w-6 h-6 text-primary" />,
-  },
-]
-
-const products = [
-  {
-    name: "Designer Suit Set",
-    sku: "DS001",
-    fabric: "Pure Silk",
-    image: "/products/suit-1.jpg",
+    name: "Dresses",
+    description: "Contemporary ethnic dresses with fusion designs.",
+    image: "/products/dress.jpg",
   },
   {
-    name: "Bridal Lehenga",
-    sku: "BL002",
-    fabric: "Brocade",
-    image: "/products/lehenga-1.jpg",
+    name: "Anarkalis",
+    description: "Traditional anarkalis with modern silhouettes and patterns.",
+    image: "/products/anarkali.jpg",
   },
   {
-    name: "Designer Saree",
-    sku: "DS003",
-    fabric: "Cotton Silk",
-    image: "/products/saree-1.jpg",
-  },
-]
-
-const testimonials = [
-  {
-    name: "Priya Sharma",
-    location: "Delhi",
-    quote: "The quality and designs are exceptional. My customers love the collection!",
+    name: "Tops",
+    description: "Stylish ethnic tops for casual and party wear.",
+    image: "/products/top.jpg",
   },
   {
-    name: "Rajesh Patel",
-    location: "Mumbai",
-    quote: "Best wholesale partner for ethnic wear. Great prices and fast delivery.",
-  },
-  {
-    name: "Anita Desai",
-    location: "Bangalore",
-    quote: "Custom sizing and quick turnaround make them my go-to supplier.",
+    name: "Tunics",
+    description: "Versatile tunics with elegant designs and comfortable fits.",
+    image: "/products/tunic.jpg",
   },
 ]

@@ -150,8 +150,8 @@ export default function BlogPage() {
     <div className="min-h-[calc(100vh-4rem)] flex flex-col py-12">
       <div className="container max-w-7xl flex-1 flex flex-col">
         <SectionHeader
-          title="Our Blog"
-          description="Stay updated with the latest trends, insights, and stories from the world of ethnic wear."
+          title="Insights from Ethnics by Aravalli"
+          description="Explore trends, manufacturing tips, and industry insights from the heart of India's ethnicwear industry."
           className="mb-12"
         />
 

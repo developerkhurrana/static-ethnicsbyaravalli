@@ -51,7 +51,7 @@ export default function ContactPage() {
     if (!name || !mobile || !city) return
     let message = `Hi, I'm ${name} from ${city}`
     if (shop) message += `, I have a shop named ${shop}`
-    message += ". I would like to know more about your products."
+    message += ". I represent a brand/business interested in manufacturing ethnicwear. Please contact me at ${mobile}."
     const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")
   }
@@ -59,8 +59,8 @@ export default function ContactPage() {
   return (
     <div className="container py-12">
       <SectionHeader
-        title="Contact Us"
-        description="Have questions about our products or interested in becoming a retailer? Get in touch with us."
+        title="Contact the Manufacturer"
+        description="Interested in custom manufacturing, bulk orders, or private label ethnicwear? Reach out to us directly."
         className="mb-12"
       />
 
@@ -128,8 +128,8 @@ export default function ContactPage() {
                 <Input id="name" name="name" placeholder="Your Name" required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="shop">Shop Name</Label>
-                <Input id="shop" name="shop" placeholder="Shop Name (optional)" />
+                <Label htmlFor="shop">Brand/Company Name</Label>
+                <Input id="shop" name="shop" placeholder="Brand/Company Name (optional)" />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="mobile">Mobile Number<span className="text-red-500">*</span></Label>

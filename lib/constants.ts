@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Ethnic's by Aravalli",
-  description: "Premium ethnic wear for boutiques and retailers",
+  description: "Premium ethnicwear manufacturer in Jaipur for brands, designers, and B2B clients. Custom, bulk, and private label ethnic clothing direct from manufacturer.",
   whatsappNumber: "+919828422208", // Updated number
   email: "ethnicsbyaravalli@gmail.com", // Updated email
   phone: "+91 98284 22208", // Updated phone

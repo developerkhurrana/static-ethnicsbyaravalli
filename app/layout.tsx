@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { Header } from "@/components/layout/header";
 import { Toaster } from "@/components/ui/toaster";
+import { Footer } from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -50,6 +51,7 @@ export default function RootLayout({
         <main className="flex-1">
         {children}
         </main>
+        <Footer />
         <Toaster />
       </body>
     </html>
