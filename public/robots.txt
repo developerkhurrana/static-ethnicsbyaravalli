@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ethnicsbyaravalli.com
+
+# Sitemaps
+Sitemap: https://ethnicsbyaravalli.com/sitemap.xml

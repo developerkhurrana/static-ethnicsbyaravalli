@@ -8,8 +8,34 @@ import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ethnics by Aravalli",
-  description: "Premium ethnic wear for boutiques and retailers",
+  title: {
+    default: "Ethnics by Aravalli",
+    template: "%s | Ethnics by Aravalli",
+  },
+  description: "Premium ethnic wear direct from Jaipur. Wholesale, custom prints, and fast dispatch for boutiques and retailers.",
+  openGraph: {
+    title: "Ethnics by Aravalli",
+    description: "Premium ethnic wear direct from Jaipur. Wholesale, custom prints, and fast dispatch for boutiques and retailers.",
+    url: "https://ethnicsbyaravalli.com/",
+    siteName: "Ethnics by Aravalli",
+    images: [
+      {
+        url: "https://ethnicsbyaravalli.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ethnics by Aravalli - Premium Ethnic Wear",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ethnics by Aravalli",
+    description: "Premium ethnic wear direct from Jaipur. Wholesale, custom prints, and fast dispatch for boutiques and retailers.",
+    images: ["https://ethnicsbyaravalli.com/og-image.jpg"],
+    creator: "@ethnicsbyaravalli",
+  },
 };
 
 export default function RootLayout({
