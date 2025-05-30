@@ -228,7 +228,7 @@ const blogPosts = {
       </ul>
 
       <h2>Customer Experience</h2>
-      <p>Enhance your boutique's appeal with:</p>
+      <p>Enhance your boutique&apos;s appeal with:</p>
       <ul>
         <li>Personalized styling services</li>
         <li>Comfortable fitting rooms</li>
