@@ -156,18 +156,18 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
-              <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
+              <div className="relative overflow-hidden rounded-lg w-full h-[320px]">
                 <Image
                   src="https://ekohum.com/cdn/shop/files/DB392_3.jpg?v=1740739949"
                   alt="Kurti Collection"
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
                 />
                 <Image
                   src="https://ekohum.com/cdn/shop/files/DB392_8.jpg?v=1740739949"
                   alt="Kurti Collection Hover"
                   fill
-                  className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
+                  className="w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
                 />
               </div>
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
@@ -182,18 +182,18 @@ export default function Home() {
             </div>
 
             <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
-              <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
+              <div className="relative overflow-hidden rounded-lg w-full h-[320px]">
                 <Image
                   src="https://ekohum.com/cdn/shop/files/DW3962_1.jpg?v=1725534156"
                   alt="Suits Collection"
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
                 />
                 <Image
                   src="https://ekohum.com/cdn/shop/files/DW3962_4.jpg?v=1725534157"
                   alt="Suits Collection Hover"
                   fill
-                  className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
+                  className="w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
                 />
               </div>
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
@@ -208,18 +208,18 @@ export default function Home() {
             </div>
 
             <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
-              <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
+              <div className="relative overflow-hidden rounded-lg w-full h-[320px]">
                 <Image
                   src="https://ekohum.com/cdn/shop/files/DSC_1622_33b0f5b1-b840-4283-90cc-259f6794734e.jpg?v=1729164681"
                   alt="Double Layer Kalidaar"
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
                 />
                 <Image
                   src="https://ekohum.com/cdn/shop/files/Untitled-9_37b1bb61-61c1-4175-b051-24e143efbae2.jpg?v=1729164548"
                   alt="Double Layer Kalidaar Hover"
                   fill
-                  className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
+                  className="w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
                 />
               </div>
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
@@ -234,18 +234,18 @@ export default function Home() {
             </div>
 
             <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
-              <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
+              <div className="relative overflow-hidden rounded-lg w-full h-[320px]">
                 <Image
                   src="https://ekohum.com/cdn/shop/files/DSC0406.jpg?v=1745399522"
                   alt="Kalidaar Collection"
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
                 />
                 <Image
                   src="https://ekohum.com/cdn/shop/files/DSC0392.jpg?v=1745399522"
                   alt="Kalidaar Collection Hover"
                   fill
-                  className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
+                  className="w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
                 />
               </div>
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
