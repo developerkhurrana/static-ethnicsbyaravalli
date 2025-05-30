@@ -345,7 +345,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   }
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({ params }: { params: { slug: string } }): Promise<React.ReactElement> {
   const post = blogPosts[params.slug as keyof typeof blogPosts]
 
   if (!post) {
