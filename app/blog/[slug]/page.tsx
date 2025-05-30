@@ -337,12 +337,7 @@ const relatedProducts = [
   },
 ]
 
-type Props = {
-  params: { slug: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export function generateMetadata({ params }: Props): Metadata {
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const post = blogPosts[params.slug as keyof typeof blogPosts]
   return {
     title: post?.title || "Blog Post",
@@ -350,7 +345,11 @@ export function generateMetadata({ params }: Props): Metadata {
   }
 }
 
-export default function BlogPostPage({ params }: Props) {
+export default function BlogPostPage({
+  params,
+}: {
+  params: { slug: string }
+}) {
   const post = blogPosts[params.slug as keyof typeof blogPosts]
 
   if (!post) {
