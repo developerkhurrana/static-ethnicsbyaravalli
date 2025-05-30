@@ -55,14 +55,14 @@ export default function Home() {
             <div className="embla__container">
               {heroImages.map((image, index) => (
                 <div key={index} className="embla__slide relative min-h-[90vh]">
-                  <Image
+        <Image
                     src={image}
                     alt={`Hero image ${index + 1}`}
                     fill
                     unoptimized
                     className="object-cover"
                     priority={index === 0}
-                  />
+        />
                   <div className="absolute inset-0 bg-black/40" />
                 </div>
               ))}
@@ -154,7 +154,7 @@ export default function Home() {
             {products.map((product) => (
               <Card key={product.sku} className="overflow-hidden">
                 <div className="relative aspect-[4/5]">
-                  <Image
+          <Image
                     src={product.image}
                     alt={product.name}
                     fill
@@ -168,9 +168,9 @@ export default function Home() {
                     <p className="text-sm text-gray-600">Fabric: {product.fabric}</p>
                     <Link
                       href={`https://wa.me/919876543210?text=Hi, I'm interested in SKU ${product.sku}`}
-                      target="_blank"
+          target="_blank"
                       className="inline-flex items-center justify-center w-full rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 transition-colors"
-                    >
+        >
                       📲 Enquire on WhatsApp
                     </Link>
                   </div>

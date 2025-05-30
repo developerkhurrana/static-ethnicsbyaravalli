@@ -17,7 +17,7 @@ const blogPosts = [
     title: "The Rise of Sustainable Ethnic Fashion",
     excerpt:
       "Discover how sustainable practices are transforming the ethnic wear industry and why it matters for your boutique.",
-    image: "/blog/sustainable-fashion.jpg",
+    image: "https://byshree.com/cdn/shop/articles/The-Rise-of-Sustainable-and-Ethical-Ethnic-Fashion.png?v=1695105858&width=2048",
     date: "March 15, 2024",
     readTime: "5 min read",
     category: "Sustainability",
@@ -28,7 +28,7 @@ const blogPosts = [
     title: "Top Ethnic Wear Trends for Summer 2024",
     excerpt:
       "Stay ahead of the curve with our curated list of the hottest ethnic wear trends that will dominate this summer.",
-    image: "/blog/summer-trends.jpg",
+    image: "https://www.ethnicplus.in/media/magefan_blog/ezgif-4-164a313f07.webp",
     date: "March 10, 2024",
     readTime: "4 min read",
     category: "Trends",
@@ -39,7 +39,7 @@ const blogPosts = [
     title: "How to Style Traditional Wear for Modern Occasions",
     excerpt:
       "Learn the art of blending traditional ethnic wear with contemporary styling for today's fashion-forward customers.",
-    image: "/blog/modern-styling.jpg",
+    image: "https://c.ndtvimg.com/2024-10/g3sh1kr8_cakes_625x300_18_October_24.jpg",
     date: "March 5, 2024",
     readTime: "6 min read",
     category: "Styling",
@@ -50,7 +50,7 @@ const blogPosts = [
     title: "The Art of Hand Embroidery in Ethnic Wear",
     excerpt:
       "Explore the rich heritage of hand embroidery techniques that make ethnic wear truly special and unique.",
-    image: "/blog/embroidery.jpg",
+    image: "https://media.istockphoto.com/id/1193642393/photo/female-needlework-on-fabric-material-close-up-view-unidentified-tribal-women-sewing-ethnic.jpg?s=612x612&w=0&k=20&c=lwQ5wV5wzrnbqdoi-KciE9ec55LQD3wUvtWAc5lNJ-w=",
     date: "February 28, 2024",
     readTime: "7 min read",
     category: "Craftsmanship",
@@ -61,7 +61,7 @@ const blogPosts = [
     title: "Building a Successful Ethnic Wear Boutique",
     excerpt:
       "Essential tips and strategies for retailers to create a thriving ethnic wear business in today's market.",
-    image: "/blog/boutique-success.jpg",
+    image: "https://i.pinimg.com/736x/4c/19/e7/4c19e7132f4b4bdf2c1106ea8c44b53a.jpg",
     date: "February 20, 2024",
     readTime: "8 min read",
     category: "Business",
@@ -72,7 +72,7 @@ const blogPosts = [
     title: "The Evolution of Bridal Wear in Modern India",
     excerpt:
       "How contemporary bridal wear is adapting to modern preferences while maintaining traditional essence.",
-    image: "/blog/bridal-wear.jpg",
+    image: "https://cdn.shopify.com/s/files/1/2196/3271/files/Evolution_of_Indian_wedding_fashion_1024x1024.png?v=1680083169",
     date: "February 15, 2024",
     readTime: "6 min read",
     category: "Bridal",
@@ -95,13 +95,13 @@ export default function BlogPage() {
               key={post.id}
               className="group flex flex-col overflow-hidden rounded-lg border bg-background"
             >
-              <div className="aspect-[4/3] overflow-hidden">
+              <div className="relative w-full h-[300px] overflow-hidden">
                 <Image
                   src={post.image}
                   alt={post.title}
-                  width={600}
-                  height={450}
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  fill
+                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                  priority={post.id === 1}
                 />
               </div>
               <div className="flex flex-1 flex-col p-6">
