@@ -60,7 +60,7 @@ const blogPosts = {
       </ul>
 
       <h2>Popular Styles</h2>
-      <p>This summer, we're seeing a rise in:</p>
+      <p>This summer, we&apos;re seeing a rise in:</p>
       <ul>
         <li>Anarkali suits with modern cuts</li>
         <li>Palazzo pants with kurta tops</li>
@@ -351,7 +351,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center py-12">
         <div className="container max-w-7xl text-center">
           <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-          <p className="mb-8">The blog post you're looking for doesn't exist.</p>
+          <p className="mb-8">The blog post you&apos;re looking for doesn&apos;t exist.</p>
           <Link href="/blog">
             <Button>Back to Blog</Button>
           </Link>
