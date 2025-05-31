@@ -477,15 +477,16 @@ const blogPosts = {
   },
 }
 
-interface PageProps {
-  params: { slug: string }
+type Props = {
+  params: Promise<{ slug: string }>
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
 export async function generateMetadata(
-  { params }: PageProps
+  { params }: Props
 ): Promise<Metadata> {
-  const post = await getBlogPost(params.slug)
+  const resolvedParams = await params
+  const post = await getBlogPost(resolvedParams.slug)
   
   if (!post) {
     return {
@@ -507,14 +508,15 @@ export async function generateMetadata(
   }
 }
 
-export default async function BlogPostPage({ params }: PageProps) {
-  const post = await getBlogPost(params.slug)
+export default async function BlogPostPage({ params }: Props) {
+  const resolvedParams = await params
+  const post = await getBlogPost(resolvedParams.slug)
   
   if (!post) {
     notFound()
   }
 
-  const relatedPosts = getRelatedPosts(params.slug)
+  const relatedPosts = getRelatedPosts(resolvedParams.slug)
 
   return (
     <div className="min-h-[calc(100vh-4rem)] flex flex-col py-16">
