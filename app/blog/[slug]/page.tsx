@@ -477,12 +477,11 @@ const blogPosts = {
   },
 }
 
-type Props = {
+export async function generateMetadata({
+  params,
+}: {
   params: { slug: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+}): Promise<Metadata> {
   const post = await getBlogPost(params.slug)
   
   if (!post) {
@@ -505,7 +504,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function BlogPostPage({ params }: Props) {
+export default async function BlogPostPage({
+  params,
+}: {
+  params: { slug: string }
+}) {
   const post = await getBlogPost(params.slug)
   
   if (!post) {
