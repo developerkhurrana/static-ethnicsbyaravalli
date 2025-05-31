@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
 import { Redis } from '@upstash/redis'
-import { headers } from 'next/headers'
 
 // Initialize Redis client
 const redis = new Redis({
@@ -19,7 +18,6 @@ const RATE_LIMIT = {
 export async function POST(request: Request) {
   try {
     const { mobile } = await request.json()
-    const headersList = headers()
     
     // Get IP from Vercel headers
     const ip = request.headers.get('x-real-ip') || 
