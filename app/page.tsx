@@ -157,24 +157,40 @@ export default function Home() {
       <section className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[url('https://lh3.googleusercontent.com/p/AF1QipOSQ4UdNWJkeTGUSVvojWo3iB9ZBTX2vRS90zSd=w397-h298-k-no')]">
         <div className="absolute inset-0 bg-black/50" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-          <div className="flex flex-col items-center justify-center text-center w-full">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">Who We Are</h2>
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-8 drop-shadow">
-              Ethnics by Aravalli is a premium manufacturer of Indian ethnic wear for women, based in Jaipur. We create beautiful, high-quality Kurtas, Dresses, Anarkalis, Kaftans, and more—crafted by skilled designers and artisans, using the finest fabrics and prints.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-md bg-[#D9A8A0] px-6 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-[#C08478]"
-              >
-                Contact Us
-              </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center rounded-md border border-white bg-transparent px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-white/10"
-              >
-                Read more
-              </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center min-h-[60vh]">
+            {/* Text Content */}
+            <div className="flex flex-col items-start justify-center text-left">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">Who We Are</h2>
+              <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-8 drop-shadow">
+                Ethnics by Aravalli is a premium manufacturer of Indian ethnic wear for women, based in Jaipur. We create beautiful, high-quality Kurtas, Dresses, Anarkalis, Kaftans, and more—crafted by skilled designers and artisans, using the finest fabrics and prints.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-md bg-[#D9A8A0] px-6 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-[#C08478]"
+                >
+                  Contact Us
+                </Link>
+                <Link
+                  href="/about"
+                  className="inline-flex items-center justify-center rounded-md border border-white bg-transparent px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-white/10"
+                >
+                  Read more
+                </Link>
+              </div>
+            </div>
+            {/* Video Content */}
+            <div className="flex justify-center items-center w-full">
+              <div className="relative w-full aspect-video max-w-xl rounded-lg overflow-hidden shadow-lg border-2 border-white/20">
+                <iframe
+                  src="https://www.youtube.com/embed/yyk-2oVGZvY?autoplay=1&mute=1&loop=1&playlist=yyk-2oVGZvY"
+                  title="Who We Are Video"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  className="w-full h-full min-h-[220px]"
+                  style={{ border: 0 }}
+                />
+              </div>
             </div>
           </div>
         </div>
