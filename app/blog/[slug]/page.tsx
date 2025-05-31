@@ -6,11 +6,12 @@ import { notFound } from "next/navigation"
 import { getBlogPost, getRelatedPosts } from "@/lib/blog-data"
 
 type Props = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = getBlogPost(params.slug)
+  const resolvedParams = await params
+  const post = getBlogPost(resolvedParams.slug)
   
   if (!post) {
     return {
@@ -32,14 +33,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function BlogPostPage({ params }: Props) {
-  const post = getBlogPost(params.slug)
+export default async function BlogPostPage({ params }: Props) {
+  const resolvedParams = await params
+  const post = getBlogPost(resolvedParams.slug)
   
   if (!post) {
     notFound()
   }
 
-  const relatedPosts = getRelatedPosts(params.slug)
+  const relatedPosts = getRelatedPosts(resolvedParams.slug)
 
   return (
     <div className="min-h-[calc(100vh-4rem)] flex flex-col py-16">
