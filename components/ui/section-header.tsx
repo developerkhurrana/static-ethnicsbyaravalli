@@ -2,14 +2,12 @@ interface SectionHeaderProps {
   title: string
   description?: string
   className?: string
-  align?: "left" | "center"
 }
 
 export function SectionHeader({
   title,
   description,
   className = "",
-  align = "center",
 }: SectionHeaderProps) {
   return (
     <div className={`text-center mt-[42px] ${className}`}>
