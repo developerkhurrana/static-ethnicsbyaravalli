@@ -51,7 +51,7 @@ export default function ContactPage() {
     if (!name || !mobile || !city) return
     let message = `Hi, I'm ${name} from ${city}`
     if (shop) message += `, I have a shop named ${shop}`
-    message += ". I represent a brand/business interested in manufacturing ethnicwear. Please contact me at ${mobile}."
+    message += `. I represent a brand/business interested in manufacturing ethnicwear. Please contact me at ${mobile}.`
     const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")
   }

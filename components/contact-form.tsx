@@ -46,33 +46,20 @@ export function ContactForm() {
 
     setIsSubmitting(true)
     try {
-      // First verify the reCAPTCHA token
-      const verifyResponse = await fetch("/api/verify-captcha", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ token: recaptchaToken }),
-      })
-
-      const verifyResult = await verifyResponse.json()
-
-      if (!verifyResult.success) {
-        throw new Error("CAPTCHA verification failed")
-      }
-
-      // If CAPTCHA is verified, proceed with the form submission
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-
-      if (!response.ok) {
-        throw new Error("Failed to send message")
-      }
+      // Format the message for WhatsApp
+      const whatsappMessage = `New Contact Form Submission:\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nMessage: ${data.message}`
+      
+      // Encode the message for WhatsApp URL
+      const encodedMessage = encodeURIComponent(whatsappMessage)
+      
+      // Your WhatsApp number
+      const whatsappNumber = "919876543210" // Replace with your actual WhatsApp number
+      
+      // Create WhatsApp URL
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+      
+      // Open WhatsApp in a new tab
+      window.open(whatsappUrl, '_blank')
 
       toast({
         title: "Success",
