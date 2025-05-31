@@ -3,7 +3,7 @@ import Link from "next/link"
 import { ArrowLeft, Calendar, Clock } from "lucide-react"
 import { Metadata } from 'next'
 import { notFound } from "next/navigation"
-import { getBlogPost, getRelatedPosts, type BlogPost } from "@/lib/blog-data"
+import { getBlogPost, getRelatedPosts } from "@/lib/blog-data"
 
 type Props = {
   params: { slug: string }
