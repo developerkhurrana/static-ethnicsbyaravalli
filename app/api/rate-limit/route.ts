@@ -22,9 +22,9 @@ export async function POST(request: Request) {
     const headersList = headers()
     
     // Get IP from Vercel headers
-    const realIp = headersList.get('x-real-ip')
-    const forwardedFor = headersList.get('x-forwarded-for')
-    const ip = realIp || (forwardedFor ? forwardedFor.split(',')[0] : null) || '127.0.0.1'
+    const ip = request.headers.get('x-real-ip') || 
+              request.headers.get('x-forwarded-for')?.split(',')[0] || 
+              '127.0.0.1'
     
     console.log('Rate limit check:', { ip, mobile })
     

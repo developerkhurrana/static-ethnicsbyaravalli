@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
 import { Redis } from '@upstash/redis'
-import { headers } from 'next/headers'
 
 // Initialize Redis client
 const redis = new Redis({
@@ -20,10 +19,10 @@ export async function GET(request: Request) {
       )
     }
 
-    const headersList = headers()
-    const realIp = headersList.get('x-real-ip')
-    const forwardedFor = headersList.get('x-forwarded-for')
-    const ip = realIp || (forwardedFor ? forwardedFor.split(',')[0] : null) || '127.0.0.1'
+    // Get IP from Vercel headers
+    const ip = request.headers.get('x-real-ip') || 
+              request.headers.get('x-forwarded-for')?.split(',')[0] || 
+              '127.0.0.1'
 
     // Create unique keys for this user
     const cooldownKey = `cooldown:${ip}:${mobile}`
