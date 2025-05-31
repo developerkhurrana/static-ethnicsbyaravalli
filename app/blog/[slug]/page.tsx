@@ -3,6 +3,8 @@ import Link from "next/link"
 import { ArrowLeft, Calendar, Clock } from "lucide-react"
 import { Metadata } from 'next'
 import React from 'react'
+import { notFound } from "next/navigation"
+import { getBlogPost } from "@/lib/blog"
 
 import { Button } from "@/components/ui/button"
 
@@ -488,41 +490,40 @@ function getRelatedPosts(currentSlug: string) {
     }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = blogPosts[params.slug as keyof typeof blogPosts]
+interface BlogPostPageProps {
+  params: {
+    slug: string
+  }
+}
+
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const post = await getBlogPost(params.slug)
   
   if (!post) {
     return {
-      title: 'Post Not Found',
-      description: 'The requested blog post could not be found.',
+      title: 'Blog Post Not Found',
+      description: 'The requested blog post could not be found.'
     }
   }
 
   return {
     title: post.title,
-    description: post.content.slice(0, 160),
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      publishedTime: post.date,
+      authors: ['Ethnics by Aravalli'],
+    },
   }
 }
 
-export default function Page({ 
-  params 
-}: { 
-  params: { slug: string } 
-}) {
-  const post = blogPosts[params.slug as keyof typeof blogPosts]
-
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const post = await getBlogPost(params.slug)
+  
   if (!post) {
-    return (
-      <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center py-12">
-        <div className="container max-w-7xl text-center">
-          <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-          <p className="mb-8">The blog post you&apos;re looking for doesn&apos;t exist.</p>
-          <Link href="/blog">
-            <Button>Back to Blog</Button>
-          </Link>
-        </div>
-      </div>
-    )
+    notFound()
   }
 
   const relatedPosts = getRelatedPosts(params.slug)
