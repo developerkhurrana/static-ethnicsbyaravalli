@@ -87,48 +87,56 @@ export function Header() {
             </Link>
           </div>
         </nav>
-        <div className={`lg:hidden ${mobileMenuOpen ? 'fixed inset-0 z-50' : 'hidden'}`}>
-          <div className="fixed inset-0 bg-black/20" aria-hidden="true" />
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[#FFFFFF] px-3 py-2 sm:max-w-sm sm:ring-1 sm:ring-[#E5E0DC]">
-            <div className="flex items-center justify-between">
-              <Link href="/" className="-m-0.5 p-0.5">
-                <span className="sr-only">Ethnics by Aravalli</span>
-                <Image
-                  src="/ethnics_logo_black.png"
-                  alt="Ethnics by Aravalli"
-                  width={60}
-                  height={18}
-                  className="h-[18px] w-auto"
-                />
-              </Link>
-              <button
-                type="button"
-                className="-m-1 rounded-md p-1 text-[#2E1B1B]"
+      </header>
+
+      {/* Mobile menu */}
+      <div className={`lg:hidden ${mobileMenuOpen ? 'fixed inset-0 z-[100]' : 'hidden'}`}>
+        <div className="fixed inset-0 bg-black/20" aria-hidden="true" onClick={() => setMobileMenuOpen(false)} />
+        <div className="fixed inset-y-0 right-0 z-[101] w-full overflow-y-auto bg-[#FFFFFF] px-4 py-6 sm:max-w-sm sm:ring-1 sm:ring-[#E5E0DC]">
+          <div className="flex items-center justify-between mb-8">
+            <Link href="/" className="-m-0.5 p-0.5">
+              <span className="sr-only">Ethnics by Aravalli</span>
+              <Image
+                src="/ethnics_logo_black.png"
+                alt="Ethnics by Aravalli"
+                width={60}
+                height={18}
+                className="h-[18px] w-auto"
+              />
+            </Link>
+            <button
+              type="button"
+              className="-m-1 rounded-md p-1 text-[#2E1B1B]"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <span className="sr-only">Close menu</span>
+              <X className="h-4 w-4" aria-hidden="true" />
+            </button>
+          </div>
+          <div className="mt-2 flow-root">
+            <div className="space-y-1">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="block w-full text-center rounded-lg px-4 py-3 text-base font-semibold text-[#2E1B1B] hover:bg-[#F9F6F4] transition-colors duration-200"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <Link
+                href="/contact"
+                className="block w-full text-center rounded-lg px-4 py-3 text-base font-semibold bg-[#D9A8A0] text-white hover:bg-[#C08478] transition-colors duration-200 mt-4"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <span className="sr-only">Close menu</span>
-                <X className="h-4 w-4" aria-hidden="true" />
-              </button>
-            </div>
-            <div className="mt-2 flow-root">
-              <div className="-my-2 divide-y divide-[#E5E0DC]">
-                <div className="space-y-0.5 py-2">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-1 text-base font-semibold leading-7 text-[#2E1B1B] hover:bg-[#F9F6F4] transition-colors duration-200"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+                Contact Us
+              </Link>
             </div>
           </div>
         </div>
-      </header>
+      </div>
+
       {!isHomePage && <div className="h-[42px]" />}
     </>
   )

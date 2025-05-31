@@ -1,7 +1,7 @@
 "use client"
 
 import { Mail, MapPin, Phone, MessageCircle } from "lucide-react"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -39,21 +39,58 @@ const contactInfo = [
 
 export default function ContactPage() {
   const formRef = useRef<HTMLFormElement>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitCount, setSubmitCount] = useState(0)
+  const [lastSubmitTime, setLastSubmitTime] = useState(0)
 
   function handleWhatsAppSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    
+    // Prevent rapid submissions
+    const now = Date.now()
+    if (now - lastSubmitTime < 5000) { // 5 seconds cooldown
+      alert("Please wait a few seconds before submitting again.")
+      return
+    }
+    
+    // Prevent too many submissions
+    if (submitCount >= 3) {
+      alert("You've reached the maximum number of submissions. Please contact us directly.")
+      return
+    }
+
+    setIsSubmitting(true)
     const form = e.currentTarget
     const formData = new FormData(form)
+    
+    // Validate mobile number format
+    const mobile = (formData.get("mobile") as string)?.trim()
+    if (!/^[0-9]{10}$/.test(mobile)) {
+      alert("Please enter a valid 10-digit mobile number")
+      setIsSubmitting(false)
+      return
+    }
+
     const name = (formData.get("name") as string)?.trim()
     const shop = (formData.get("shop") as string)?.trim()
-    const mobile = (formData.get("mobile") as string)?.trim()
     const city = (formData.get("city") as string)?.trim()
-    if (!name || !mobile || !city) return
+    
+    if (!name || !mobile || !city) {
+      setIsSubmitting(false)
+      return
+    }
+
     let message = `Hi, I'm ${name} from ${city}`
     if (shop) message += `, I have a shop named ${shop}`
     message += `. I represent a brand/business interested in manufacturing ethnicwear. Please contact me at ${mobile}.`
+    
     const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")
+
+    // Update submission tracking
+    setSubmitCount(prev => prev + 1)
+    setLastSubmitTime(now)
+    setIsSubmitting(false)
   }
 
   return (
@@ -65,7 +102,78 @@ export default function ContactPage() {
       />
 
       <div className="grid gap-8 lg:grid-cols-2">
-        <div className="space-y-6">
+        {/* Contact Form - First on mobile */}
+        <Card className="order-1 lg:order-2">
+          <CardHeader>
+            <CardTitle>Send us a Message</CardTitle>
+            <CardDescription>
+              Fill out the form below and we&apos;ll get back to you as soon as
+              possible.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form ref={formRef} onSubmit={handleWhatsAppSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="name">Your Name<span className="text-red-500">*</span></Label>
+                <Input 
+                  id="name" 
+                  name="name" 
+                  placeholder="Your Name" 
+                  required 
+                  minLength={2}
+                  maxLength={50}
+                  pattern="[A-Za-z\s]+"
+                  title="Please enter a valid name (letters and spaces only)"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="shop">Brand/Company Name</Label>
+                <Input 
+                  id="shop" 
+                  name="shop" 
+                  placeholder="Brand/Company Name (optional)" 
+                  maxLength={100}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="mobile">Mobile Number<span className="text-red-500">*</span></Label>
+                <Input 
+                  id="mobile" 
+                  name="mobile" 
+                  type="tel" 
+                  placeholder="Your Mobile Number" 
+                  required 
+                  pattern="[0-9]{10}"
+                  title="Please enter a valid 10-digit mobile number"
+                  maxLength={10}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="city">City<span className="text-red-500">*</span></Label>
+                <Input 
+                  id="city" 
+                  name="city" 
+                  placeholder="Your City" 
+                  required 
+                  minLength={2}
+                  maxLength={50}
+                  pattern="[A-Za-z\s]+"
+                  title="Please enter a valid city name (letters and spaces only)"
+                />
+              </div>
+              <Button 
+                type="submit" 
+                className="w-full flex items-center justify-center gap-2"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send us"} <MessageCircle className="w-5 h-5" /> message
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+
+        {/* Contact Info - Second on mobile */}
+        <div className="space-y-6 order-2 lg:order-1">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1">
             {contactInfo.map((item) => {
               const Icon = item.icon
@@ -112,39 +220,6 @@ export default function ContactPage() {
             </CardContent>
           </Card>
         </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Send us a Message</CardTitle>
-            <CardDescription>
-              Fill out the form below and we&apos;ll get back to you as soon as
-              possible.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form ref={formRef} onSubmit={handleWhatsAppSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="name">Your Name<span className="text-red-500">*</span></Label>
-                <Input id="name" name="name" placeholder="Your Name" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="shop">Brand/Company Name</Label>
-                <Input id="shop" name="shop" placeholder="Brand/Company Name (optional)" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="mobile">Mobile Number<span className="text-red-500">*</span></Label>
-                <Input id="mobile" name="mobile" type="tel" placeholder="Your Mobile Number" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="city">City<span className="text-red-500">*</span></Label>
-                <Input id="city" name="city" placeholder="Your City" required />
-              </div>
-              <Button type="submit" className="w-full flex items-center justify-center gap-2">
-                Send us <MessageCircle className="w-5 h-5" /> message
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
       </div>
     </div>
   )
