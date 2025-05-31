@@ -4,7 +4,7 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react"
 import { Metadata } from 'next'
 import React from 'react'
 import { notFound } from "next/navigation"
-import { getBlogPost, getRelatedPosts } from "@/lib/blog"
+import { getBlogPost, getRelatedPosts, type BlogPost } from "@/lib/blog"
 
 // This would typically come from a CMS or API
 const blogPosts = {
@@ -481,6 +481,7 @@ interface BlogPostPageProps {
   params: {
     slug: string
   }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
@@ -583,7 +584,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               More Articles You Might Like
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {relatedPosts.map((relatedPost) => (
+              {relatedPosts.map((relatedPost: BlogPost) => (
                 <Link 
                   key={relatedPost.title}
                   href={`/blog/${Object.entries(blogPosts).find(([, post]) => post.title === relatedPost.title)?.[0]}`}

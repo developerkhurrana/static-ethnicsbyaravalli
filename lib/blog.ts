@@ -1,10 +1,10 @@
-interface Author {
+export interface Author {
   name: string
   role: string
   image: string
 }
 
-interface BlogPost {
+export interface BlogPost {
   title: string
   content: string
   image: string
