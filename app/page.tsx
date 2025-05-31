@@ -300,7 +300,7 @@ export default function Home() {
               </div>
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Kalidaar Dress</h3>
+                  <h3 className="text-lg font-semibold mb-2">Dresses</h3>
                   <p className="text-gray-600 mb-4">Traditional kalidaar designs with modern aesthetics</p>
                 </div>
                 <Button className="w-full mt-auto" asChild>
