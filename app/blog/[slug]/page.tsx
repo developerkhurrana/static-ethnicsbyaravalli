@@ -4,7 +4,7 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react"
 import { Metadata } from 'next'
 import React from 'react'
 import { notFound } from "next/navigation"
-import { getBlogPost, getRelatedPosts, type BlogPost } from "@/lib/blog"
+import { getBlogPost, getRelatedPosts, type BlogPost } from "../../../lib/blog"
 
 // This would typically come from a CMS or API
 const blogPosts = {
@@ -477,14 +477,12 @@ const blogPosts = {
   },
 }
 
-interface BlogPostPageProps {
-  params: {
-    slug: string
-  }
+type Props = {
+  params: { slug: string }
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlogPost(params.slug)
   
   if (!post) {
@@ -507,7 +505,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 }
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
+export default async function BlogPostPage({ params }: Props) {
   const post = await getBlogPost(params.slug)
   
   if (!post) {
