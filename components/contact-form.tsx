@@ -7,7 +7,6 @@ import * as z from "zod"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
 import { useToast } from "@/components/ui/use-toast"
 import ReCAPTCHA from "react-google-recaptcha"
 
@@ -67,7 +66,7 @@ export function ContactForm() {
       })
       reset()
       setRecaptchaToken(null)
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
