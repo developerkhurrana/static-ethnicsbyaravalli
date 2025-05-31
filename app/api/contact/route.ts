@@ -156,12 +156,16 @@ export async function POST(request: Request) {
 
       console.log('Google Sheets Response:', response.data)
       console.log('Successfully wrote to Google Sheets')
-    } catch (sheetsError: any) {
+    } catch (sheetsError: unknown) {
+      const error = sheetsError as Error & {
+        code?: string;
+        errors?: Array<{ message: string; domain: string; reason: string }>;
+      }
       console.error('Google Sheets Error Details:', {
-        message: sheetsError.message,
-        code: sheetsError.code,
-        errors: sheetsError.errors,
-        stack: sheetsError.stack
+        message: error.message,
+        code: error.code,
+        errors: error.errors,
+        stack: error.stack
       })
       // Continue with WhatsApp even if Sheets fails
     }
