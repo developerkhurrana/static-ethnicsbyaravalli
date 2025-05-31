@@ -119,15 +119,15 @@ export default function Home() {
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-24 md:mb-0">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-md bg-[#D9A8A0] px-6 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-[#C08478]"
+                className="inline-flex items-center justify-center rounded-md bg-[#D9A8A0] px-6 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-[#C08478] w-full md:w-auto"
               >
                 Contact Us
               </Link>
               <Link
                 href="https://wa.me/919828422208"
-            target="_blank"
-                className="inline-flex items-center justify-center rounded-md border border-white bg-transparent px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-white/10"
-          >
+                target="_blank"
+                className="inline-flex items-center justify-center rounded-md border border-white bg-transparent px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-white/10 w-full md:w-auto"
+              >
                 Whatsapp Us
               </Link>
             </div>
@@ -222,7 +222,7 @@ export default function Home() {
               </div>
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Kurti Collection</h3>
+                  <h3 className="text-lg font-semibold mb-2">Kurti Sets</h3>
                   <p className="text-gray-600 mb-4">Premium kurtis with intricate embroidery and modern designs</p>
                 </div>
                 <Button className="w-full mt-auto" asChild>
@@ -248,7 +248,7 @@ export default function Home() {
               </div>
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Suits Collection</h3>
+                  <h3 className="text-lg font-semibold mb-2">Suits Sets</h3>
                   <p className="text-gray-600 mb-4">Elegant suits with premium fabrics and contemporary designs</p>
                 </div>
                 <Button className="w-full mt-auto" asChild>
@@ -274,7 +274,7 @@ export default function Home() {
               </div>
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Double Layer Kalidaar</h3>
+                  <h3 className="text-lg font-semibold mb-2">Kalidaar Sets</h3>
                   <p className="text-gray-600 mb-4">Luxurious double layer kalidaar designs with premium fabrics</p>
                 </div>
                 <Button className="w-full mt-auto" asChild>
@@ -300,7 +300,7 @@ export default function Home() {
               </div>
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Kalidaar Collection</h3>
+                  <h3 className="text-lg font-semibold mb-2">Kalidaar Dress</h3>
                   <p className="text-gray-600 mb-4">Traditional kalidaar designs with modern aesthetics</p>
                 </div>
                 <Button className="w-full mt-auto" asChild>
