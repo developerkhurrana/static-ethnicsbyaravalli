@@ -349,4 +349,68 @@ hr {
   flex: 0 0 100%;
   min-width: 0;
   position: relative;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.embla__slide img {
+  transition: transform 0.5s ease-in-out;
+}
+
+.embla__slide:hover img {
+  transform: scale(1.05);
+}
+
+/* Carousel Navigation */
+.embla__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.embla__button:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.embla__button--prev {
+  left: 20px;
+}
+
+.embla__button--next {
+  right: 20px;
+}
+
+/* Carousel Indicators */
+.embla__indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.embla__indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.embla__indicator--active {
+  background: white;
+  transform: scale(1.2);
 }
