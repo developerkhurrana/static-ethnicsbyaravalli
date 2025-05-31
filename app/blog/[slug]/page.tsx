@@ -586,7 +586,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {relatedPosts.map((relatedPost) => (
                 <Link 
                   key={relatedPost.title}
-                  href={`/blog/${Object.entries(blogPosts).find(([_, post]) => post.title === relatedPost.title)?.[0]}`}
+                  href={`/blog/${Object.entries(blogPosts).find(([, post]) => post.title === relatedPost.title)?.[0]}`}
                   className="group h-full"
                 >
                   <div className="rounded-lg border bg-card overflow-hidden shadow-sm transition hover:shadow-md h-full flex flex-col">

@@ -495,10 +495,13 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
 
 // Function to get related blog posts
 export function getRelatedPosts(currentSlug: string): BlogPost[] {
+  const currentPost = blogPosts[currentSlug];
+  if (!currentPost) return [];
+
   return Object.entries(blogPosts)
     .filter(([slug]) => slug !== currentSlug)
     .slice(0, 3)
-    .map(([slug, post]) => ({
+    .map(([, post]) => ({
       ...post
     }))
 } 
