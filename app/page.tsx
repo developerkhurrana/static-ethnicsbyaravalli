@@ -2,14 +2,10 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Package, Truck, Scissors, Ruler, Factory, IndianRupee } from "lucide-react"
 import useEmblaCarousel from 'embla-carousel-react'
 import { useCallback, useEffect, useState } from "react"
 import { FlipWords } from "@/components/ui/flip-words"
-import { ProductCard } from "@/components/product-card"
 import { Button } from "@/components/ui/button"
-
-import { Card, CardContent } from "@/components/ui/card"
 
 const heroImages = [
   "/products/hero_banner.jpg"
