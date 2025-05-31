@@ -46,7 +46,7 @@ export default function RootLayout({
       <body className={`${inter.className} h-full`}>
         <div className="flex min-h-full flex-col">
           <Header />
-          <main className="flex-1 pt-[42px]">
+          <main className="flex-1">
             {children}
           </main>
           <Footer />

@@ -12,16 +12,10 @@ export function SectionHeader({
   align = "center",
 }: SectionHeaderProps) {
   return (
-    <div
-      className={`space-y-4 ${
-        align === "center" ? "text-center" : "text-left"
-      } ${className}`}
-    >
-      <h1 className="font-serif text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-        {title}
-      </h1>
+    <div className={`text-center mt-[42px] ${className}`}>
+      <h1 className="text-4xl font-bold mb-4 text-[#2E1B1B]">{title}</h1>
       {description && (
-        <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg">
+        <p className="text-lg text-muted-foreground">
           {description}
         </p>
       )}

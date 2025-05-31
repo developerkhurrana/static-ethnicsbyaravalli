@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import { BlogList } from "@/components/blog/blog-list"
+import { SectionHeader } from "@/components/ui/section-header"
 
 export const metadata: Metadata = {
   title: "Blog - Ethnics by Aravalli",
@@ -8,7 +9,12 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container max-w-7xl mx-auto px-4 py-8">
+      <SectionHeader
+        title="Blog"
+        description="Discover the latest insights, trends, and stories from Ethnics by Aravalli."
+        className="mb-12"
+      />
       <BlogList />
     </div>
   )

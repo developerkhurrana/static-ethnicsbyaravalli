@@ -7,13 +7,24 @@ import { useCallback, useEffect, useState } from "react"
 import { FlipWords } from "@/components/ui/flip-words"
 import { Button } from "@/components/ui/button"
 
-const heroImages = [
-  "/products/hero_banner.jpg"
-]
+const heroImages = {
+  desktop: ["/products/hero_banner.jpg"],
+  mobile: ["/products/hero_mobile_banner.jpg"]
+}
 
 export default function Home() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
   const [selectedIndex, setSelectedIndex] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return
@@ -46,7 +57,7 @@ export default function Home() {
         <div className="absolute inset-0 overflow-hidden">
           <div className="embla" ref={emblaRef}>
             <div className="embla__container">
-              {heroImages.map((image, index) => (
+              {(isMobile ? heroImages.mobile : heroImages.desktop).map((image, index) => (
                 <div key={index} className="embla__slide relative h-screen">
                   <Image
                     src={image}
@@ -65,21 +76,23 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="space-y-8">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-              Premium{"  "}
-              <span className="inline-block">
-                <FlipWords
-                  words={["Kurti", "Kurti Sets", "Suit Sets", "Co-ord Sets", "Kaftans", "Dresses", "Anarkalis", "Tops", "Tunics"]}
-                  className="text-[#D9A8A0]"
-                />
-              </span>
-              Manufacturer in <br />Jaipur
-            </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
-              Custom Designs · Bulk Orders · Private Label · Fast Dispatch
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className={`space-y-8 ${isMobile ? 'flex flex-col justify-between h-[90vh]' : ''}`}>
+            <div className={isMobile ? 'mt-16' : ''}>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+                Premium{"  "}
+                <span className="inline-block">
+                  <FlipWords
+                    words={["Kurti", "Kurti Sets", "Suit Sets", "Co-ord Sets", "Kaftans", "Dresses", "Anarkalis", "Tops", "Tunics"]}
+                    className="text-[#D9A8A0]"
+                  />
+                </span>
+                Manufacturer in <br />Jaipur
+              </h1>
+              <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mt-4">
+                Custom Designs · Bulk Orders · Private Label · Fast Dispatch
+              </p>
+            </div>
+            <div className={`flex flex-col sm:flex-row gap-4 justify-center ${isMobile ? 'mb-24' : ''}`}>
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-md bg-[#D9A8A0] px-6 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-[#C08478]"
@@ -97,10 +110,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Carousel Indicators - Only show if there are multiple images */}
-        {heroImages.length > 1 && (
+        {/* Carousel Indicators */}
+        {(isMobile ? heroImages.mobile : heroImages.desktop).length > 1 && (
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-            {heroImages.map((_, index) => (
+            {(isMobile ? heroImages.mobile : heroImages.desktop).map((_, index) => (
               <button
                 key={index}
                 className={`w-2 h-2 rounded-full transition-colors duration-200 ${
