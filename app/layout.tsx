@@ -9,11 +9,8 @@ import { Footer } from "@/components/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Ethnics by Aravalli",
-    template: "%s | Ethnics by Aravalli",
-  },
-  description: "Premium ethnic wear direct from Jaipur. Wholesale, custom prints, and fast dispatch for boutiques and retailers.",
+  title: "Ethnics by Aravalli - Premium Ethnic Wear Manufacturer in Jaipur",
+  description: "Premium manufacturer of Indian ethnic wear for women, based in Jaipur. We create beautiful, high-quality Kurtas, Dresses, Anarkalis, Kaftans, and more.",
   openGraph: {
     title: "Ethnics by Aravalli",
     description: "Premium ethnic wear direct from Jaipur. Wholesale, custom prints, and fast dispatch for boutiques and retailers.",
@@ -45,13 +42,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} min-h-screen antialiased`}>
-        <Header />
-        <main className="flex-1">
-        {children}
-        </main>
-        <Footer />
+    <html lang="en" className="h-full">
+      <body className={`${inter.className} h-full`}>
+        <div className="flex min-h-full flex-col">
+          <Header />
+          <main className="flex-1 pt-[42px]">
+            {children}
+          </main>
+          <Footer />
+        </div>
         <Toaster />
       </body>
     </html>

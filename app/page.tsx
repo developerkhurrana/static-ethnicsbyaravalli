@@ -41,13 +41,13 @@ export default function Home() {
   return (
     <div className="flex-1 flex flex-col">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center">
+      <section className="relative h-screen flex items-center justify-center">
         {/* Background Carousel */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="embla" ref={emblaRef}>
             <div className="embla__container">
               {heroImages.map((image, index) => (
-                <div key={index} className="embla__slide relative min-h-[90vh]">
+                <div key={index} className="embla__slide relative h-screen">
                   <Image
                     src={image}
                     alt={`Hero image ${index + 1}`}
