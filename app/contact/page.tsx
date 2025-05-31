@@ -2,6 +2,7 @@
 
 import { Mail, MapPin, Phone, MessageCircle } from "lucide-react"
 import { useRef, useState } from "react"
+import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -40,57 +41,107 @@ const contactInfo = [
 export default function ContactPage() {
   const formRef = useRef<HTMLFormElement>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitCount, setSubmitCount] = useState(0)
-  const [lastSubmitTime, setLastSubmitTime] = useState(0)
 
-  function handleWhatsAppSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleWhatsAppSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    
-    // Prevent rapid submissions
-    const now = Date.now()
-    if (now - lastSubmitTime < 5000) { // 5 seconds cooldown
-      alert("Please wait a few seconds before submitting again.")
-      return
-    }
-    
-    // Prevent too many submissions
-    if (submitCount >= 3) {
-      alert("You've reached the maximum number of submissions. Please contact us directly.")
-      return
-    }
-
     setIsSubmitting(true)
-    const form = e.currentTarget
-    const formData = new FormData(form)
-    
-    // Validate mobile number format
-    const mobile = (formData.get("mobile") as string)?.trim()
-    if (!/^[0-9]{10}$/.test(mobile)) {
-      alert("Please enter a valid 10-digit mobile number")
+
+    try {
+      const form = e.currentTarget
+      const formData = new FormData(form)
+      
+      // Enhanced validation
+      const name = (formData.get("name") as string)?.trim()
+      const mobile = (formData.get("mobile") as string)?.trim()
+      const shop = (formData.get("shop") as string)?.trim()
+      const city = (formData.get("city") as string)?.trim()
+      
+      // Validate name (2-50 characters, letters and spaces only)
+      if (!name || !/^[A-Za-z\s]{2,50}$/.test(name)) {
+        toast.error("Invalid Name Format", {
+          description: "Please enter a valid name using only letters and spaces (2-50 characters).",
+        })
+        return
+      }
+
+      // Validate mobile number (10 digits)
+      if (!mobile || !/^[0-9]{10}$/.test(mobile)) {
+        toast.error("Invalid Mobile Number", {
+          description: "Please enter a valid 10-digit mobile number without any spaces or special characters.",
+        })
+        return
+      }
+
+      // Validate city (2-50 characters, letters and spaces only)
+      if (!city || !/^[A-Za-z\s]{2,50}$/.test(city)) {
+        toast.error("Invalid City Name", {
+          description: "Please enter a valid city name using only letters and spaces (2-50 characters).",
+        })
+        return
+      }
+
+      // Validate shop name if provided (1-100 characters)
+      if (shop && !/^[A-Za-z0-9\s\-&]{1,100}$/.test(shop)) {
+        toast.error("Invalid Shop Name", {
+          description: "Please enter a valid shop name using letters, numbers, spaces, hyphens, and & only (1-100 characters).",
+        })
+        return
+      }
+
+      // Check rate limit
+      const response = await fetch('/api/rate-limit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          mobile,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        if (data.type === 'cooldown') {
+          toast.error("Submission Rate Limited", {
+            description: `Please wait ${data.remainingTime} seconds before submitting again. This helps us prevent spam.`,
+          })
+        } else if (data.type === 'daily') {
+          toast.error("Daily Limit Reached", {
+            description: "You've reached the daily submission limit. Please try again tomorrow or contact us directly at +91 98284 22208.",
+          })
+        } else if (data.type === 'total') {
+          toast.error("Maximum Submissions Reached", {
+            description: "You've reached the maximum number of submissions. Please contact us directly at +91 98284 22208.",
+          })
+        }
+        return
+      }
+
+      // Construct message
+      let message = `Hi, I'm ${name} from ${city}`
+      if (shop) message += `, I have a shop named ${shop}`
+      message += `. I represent a brand/business interested in manufacturing ethnicwear. Please contact me at ${mobile}.`
+      
+      // Open WhatsApp
+      const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(message)}`
+      window.open(whatsappUrl, "_blank")
+
+      // Show success toast
+      toast.success("Message Sent Successfully!", {
+        description: "We'll get back to you soon. You can also reach us directly at +91 98284 22208.",
+      })
+
+      // Reset form
+      form.reset()
+    } catch (error) {
+      console.error('Error:', error)
+      toast.error("Something went wrong", {
+        description: "Please try again later or contact us directly at +91 98284 22208.",
+      })
+    } finally {
       setIsSubmitting(false)
-      return
     }
-
-    const name = (formData.get("name") as string)?.trim()
-    const shop = (formData.get("shop") as string)?.trim()
-    const city = (formData.get("city") as string)?.trim()
-    
-    if (!name || !mobile || !city) {
-      setIsSubmitting(false)
-      return
-    }
-
-    let message = `Hi, I'm ${name} from ${city}`
-    if (shop) message += `, I have a shop named ${shop}`
-    message += `. I represent a brand/business interested in manufacturing ethnicwear. Please contact me at ${mobile}.`
-    
-    const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(message)}`
-    window.open(whatsappUrl, "_blank")
-
-    // Update submission tracking
-    setSubmitCount(prev => prev + 1)
-    setLastSubmitTime(now)
-    setIsSubmitting(false)
   }
 
   return (

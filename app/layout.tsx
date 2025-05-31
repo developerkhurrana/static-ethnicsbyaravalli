@@ -3,14 +3,14 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { Header } from "@/components/layout/header";
-import { Toaster } from "@/components/ui/toaster";
-import { Footer } from "@/components/footer";
+import { Footer } from "@/components/layout/footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ethnics by Aravalli - Premium Ethnic Wear Manufacturer in Jaipur",
-  description: "Premium manufacturer of Indian ethnic wear for women, based in Jaipur. We create beautiful, high-quality Kurtas, Dresses, Anarkalis, Kaftans, and more.",
+  title: "Ethnics by Aravalli - Manufacturer of Ethnic Wear",
+  description: "Manufacturer of ethnic wear, custom manufacturing, bulk orders, and private label ethnicwear.",
   openGraph: {
     title: "Ethnics by Aravalli",
     description: "Premium ethnic wear direct from Jaipur. Wholesale, custom prints, and fast dispatch for boutiques and retailers.",
