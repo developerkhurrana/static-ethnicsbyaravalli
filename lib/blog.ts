@@ -1,62 +1,487 @@
+interface Author {
+  name: string
+  role: string
+  image: string
+}
+
 interface BlogPost {
   title: string
-  date: string
-  excerpt: string
   content: string
+  image: string
+  date: string
+  readTime: string
+  category: string
+  author: Author
 }
 
 // This is a placeholder. In a real application, you would fetch this data from a CMS or database
 const blogPosts: Record<string, BlogPost> = {
-  'how-to-order': {
-    title: 'How to Order from Ethnics by Aravalli',
-    date: '2024-03-20',
-    excerpt: 'Learn about our ordering process and how to get started with your bulk orders.',
+  "sustainable-ethnic-fashion": {
+    title: "The Rise of Sustainable Ethnic Fashion",
     content: `
-      <h2>Ordering Process</h2>
-      <p>At Ethnics by Aravalli, we make bulk ordering simple and efficient. Here's how to get started:</p>
-      
-      <h3>1. Contact Us</h3>
-      <p>Reach out to us through our contact form or WhatsApp to discuss your requirements.</p>
-      
-      <h3>2. Sample Review</h3>
-      <p>We'll send you samples of our products for your review and approval.</p>
-      
-      <h3>3. Order Confirmation</h3>
-      <p>Once you're satisfied with the samples, we'll confirm your order details and timeline.</p>
-      
-      <h3>4. Production</h3>
-      <p>Our skilled artisans will craft your order with precision and care.</p>
-      
-      <h3>5. Quality Check</h3>
-      <p>Each piece undergoes rigorous quality control before dispatch.</p>
-      
-      <h3>6. Delivery</h3>
-      <p>Your order will be carefully packaged and shipped to your location.</p>
-    `
+      <p>The ethnic wear industry is undergoing a significant transformation, with sustainability taking center stage. As consumers become more conscious of their environmental impact, the demand for eco-friendly fashion has never been higher.</p>
+
+      <h2>The Impact of Sustainable Practices</h2>
+      <p>Traditional ethnic wear manufacturing has often been associated with water-intensive processes and chemical dyes. However, modern manufacturers are adopting sustainable practices that reduce environmental impact while maintaining the quality and beauty of ethnic wear.</p>
+
+      <h2>Key Sustainable Initiatives</h2>
+      <ul>
+        <li>Use of organic and natural fibers</li>
+        <li>Eco-friendly dyeing processes</li>
+        <li>Water conservation in production</li>
+        <li>Waste reduction and recycling</li>
+        <li>Ethical labor practices</li>
+      </ul>
+
+      <h2>Benefits for Retailers</h2>
+      <p>For boutique owners and retailers, embracing sustainable ethnic wear offers several advantages:</p>
+      <ul>
+        <li>Appeal to environmentally conscious customers</li>
+        <li>Higher perceived value of products</li>
+        <li>Long-term cost savings through efficient processes</li>
+        <li>Positive brand image and customer loyalty</li>
+      </ul>
+
+      <h2>The Future of Sustainable Ethnic Fashion</h2>
+      <p>As the industry continues to evolve, we can expect to see more innovations in sustainable practices. From biodegradable packaging to carbon-neutral manufacturing, the future of ethnic wear is green.</p>
+    `,
+    image: "https://byshree.com/cdn/shop/articles/The-Rise-of-Sustainable-and-Ethical-Ethnic-Fashion.png?v=1695105858&width=2048",
+    date: "March 15, 2024",
+    readTime: "5 min read",
+    category: "Sustainability",
+    author: {
+      name: "Priya Sharma",
+      role: "Fashion Sustainability Expert",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop",
+    },
   },
-  'become-retailer': {
-    title: 'Become a Retailer with Ethnics by Aravalli',
-    date: '2024-03-19',
-    excerpt: 'Join our network of retailers and grow your business with our premium ethnic wear collection.',
+  "eco-friendly-dyes": {
+    title: "Revolutionizing Ethnic Wear with Natural Dyes",
     content: `
-      <h2>Why Partner With Us?</h2>
-      <p>Partnering with Ethnics by Aravalli offers numerous benefits for your retail business:</p>
-      
-      <h3>Premium Quality</h3>
-      <p>Our products are crafted with the finest materials and attention to detail.</p>
-      
-      <h3>Competitive Pricing</h3>
-      <p>We offer wholesale prices that ensure good margins for our retail partners.</p>
-      
-      <h3>Regular New Collections</h3>
-      <p>Stay ahead with our regularly updated collections featuring the latest trends.</p>
-      
-      <h3>Marketing Support</h3>
-      <p>We provide marketing materials and support to help you promote our products.</p>
-      
-      <h3>Flexible Ordering</h3>
-      <p>Order in quantities that suit your business needs.</p>
-    `
+      <p>The art of natural dyeing is making a comeback in ethnic wear, bringing both environmental benefits and unique aesthetics to contemporary fashion.</p>
+
+      <h2>Traditional Dyeing Techniques</h2>
+      <ul>
+        <li>Indigo dyeing from natural sources</li>
+        <li>Turmeric and henna-based colors</li>
+        <li>Flower and plant-based dyes</li>
+        <li>Mineral-based natural pigments</li>
+        <li>Traditional mordant techniques</li>
+      </ul>
+
+      <h2>Environmental Benefits</h2>
+      <p>Natural dyes offer numerous environmental advantages over synthetic alternatives, including biodegradability and reduced water pollution.</p>
+    `,
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "March 12, 2024",
+    readTime: "6 min read",
+    category: "Sustainability",
+    author: {
+      name: "Arjun Mehta",
+      role: "Textile Conservationist",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop",
+    },
+  },
+  "summer-trends-2024": {
+    title: "Top Ethnic Wear Trends for Summer 2024",
+    content: `
+      <p>Summer 2024 brings exciting new trends in ethnic wear that blend traditional aesthetics with modern sensibilities. From lightweight fabrics to contemporary designs, this season is all about comfort and style.</p>
+
+      <h2>Key Summer Trends</h2>
+      <ul>
+        <li>Lightweight cotton and linen fabrics</li>
+        <li>Pastel and vibrant color combinations</li>
+        <li>Contemporary fusion wear</li>
+        <li>Minimalist embroidery and embellishments</li>
+        <li>Versatile layering pieces</li>
+      </ul>
+
+      <h2>Popular Styles</h2>
+      <p>This summer, we&apos;re seeing a rise in:</p>
+      <ul>
+        <li>Anarkali suits with modern cuts</li>
+        <li>Palazzo pants with kurta tops</li>
+        <li>Asymmetric hemlines</li>
+        <li>Mix-and-match separates</li>
+        <li>Contemporary saree drapes</li>
+      </ul>
+
+      <h2>Color Palette</h2>
+      <p>The summer 2024 color palette includes:</p>
+      <ul>
+        <li>Soft pastels: mint green, peach, lavender</li>
+        <li>Vibrant hues: coral, turquoise, fuchsia</li>
+        <li>Neutral tones: beige, ivory, light gray</li>
+        <li>Earthy shades: terracotta, sage green</li>
+      </ul>
+
+      <h2>Styling Tips</h2>
+      <p>Make the most of summer ethnic wear with these styling tips:</p>
+      <ul>
+        <li>Layer lightweight pieces for versatility</li>
+        <li>Accessorize with minimal jewelry</li>
+        <li>Choose breathable fabrics</li>
+        <li>Mix traditional and contemporary elements</li>
+        <li>Focus on comfort without compromising style</li>
+      </ul>
+    `,
+    image: "https://www.ethnicplus.in/media/magefan_blog/ezgif-4-164a313f07.webp",
+    date: "March 10, 2024",
+    readTime: "4 min read",
+    category: "Trends",
+    author: {
+      name: "Rahul Verma",
+      role: "Fashion Trend Analyst",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop",
+    },
+  },
+  "festival-collection": {
+    title: "Festival Season Ethnic Wear Guide 2024",
+    content: `
+      <p>Discover the perfect ethnic ensembles for the upcoming festival season, combining traditional elements with contemporary style.</p>
+
+      <h2>Festival Fashion Essentials</h2>
+      <ul>
+        <li>Statement anarkali suits</li>
+        <li>Embroidered lehengas</li>
+        <li>Designer sarees</li>
+        <li>Fusion kurtas</li>
+        <li>Traditional jewelry pairings</li>
+      </ul>
+
+      <h2>Color Trends</h2>
+      <p>This festival season embraces both traditional and modern color palettes, from rich jewel tones to contemporary pastels.</p>
+    `,
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "March 8, 2024",
+    readTime: "5 min read",
+    category: "Trends",
+    author: {
+      name: "Sneha Patel",
+      role: "Fashion Editor",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop",
+    },
+  },
+  "modern-traditional-styling": {
+    title: "How to Style Traditional Wear for Modern Occasions",
+    content: `
+      <p>Traditional ethnic wear has evolved to meet the demands of modern lifestyles. Learn how to style these timeless pieces for contemporary occasions while maintaining their cultural essence.</p>
+
+      <h2>Fusion Styling Techniques</h2>
+      <ul>
+        <li>Pair traditional kurtas with modern denim</li>
+        <li>Layer ethnic pieces with contemporary jackets</li>
+        <li>Mix traditional and western accessories</li>
+        <li>Experiment with modern draping styles</li>
+        <li>Combine traditional embroidery with modern silhouettes</li>
+      </ul>
+
+      <h2>Occasion-Specific Styling</h2>
+      <p>Different occasions call for different approaches:</p>
+      <ul>
+        <li>Office wear: Subtle prints and minimal embellishments</li>
+        <li>Casual outings: Comfortable fabrics and relaxed fits</li>
+        <li>Evening events: Rich fabrics and statement pieces</li>
+        <li>Festive occasions: Traditional elements with modern cuts</li>
+      </ul>
+
+      <h2>Accessorizing Tips</h2>
+      <p>Modern accessories can transform traditional wear:</p>
+      <ul>
+        <li>Statement jewelry with minimal outfits</li>
+        <li>Contemporary bags with traditional ensembles</li>
+        <li>Modern footwear options</li>
+        <li>Layered neckpieces for added dimension</li>
+      </ul>
+
+      <h2>Color and Pattern Coordination</h2>
+      <p>Master the art of combining colors and patterns:</p>
+      <ul>
+        <li>Mix solid colors with subtle prints</li>
+        <li>Layer complementary patterns</li>
+        <li>Use color blocking techniques</li>
+        <li>Balance traditional and modern color palettes</li>
+      </ul>
+    `,
+    image: "https://c.ndtvimg.com/2024-10/g3sh1kr8_cakes_625x300_18_October_24.jpg",
+    date: "March 5, 2024",
+    readTime: "6 min read",
+    category: "Styling",
+    author: {
+      name: "Ananya Patel",
+      role: "Fashion Stylist",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop",
+    },
+  },
+  "office-ethnic-wear": {
+    title: "Professional Ethnic Wear for the Modern Workplace",
+    content: `
+      <p>Discover how to incorporate ethnic wear into your professional wardrobe while maintaining a polished and contemporary look.</p>
+
+      <h2>Office-Appropriate Ethnic Wear</h2>
+      <ul>
+        <li>Tailored kurtas with formal pants</li>
+        <li>Minimalist saree drapes</li>
+        <li>Structured anarkali suits</li>
+        <li>Professional color palettes</li>
+        <li>Subtle embellishments</li>
+      </ul>
+
+      <h2>Styling Tips</h2>
+      <p>Learn how to balance traditional elements with professional requirements for a perfect office look.</p>
+    `,
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "March 3, 2024",
+    readTime: "5 min read",
+    category: "Styling",
+    author: {
+      name: "Vikram Singh",
+      role: "Corporate Fashion Consultant",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop",
+    },
+  },
+  "hand-embroidery-art": {
+    title: "The Art of Hand Embroidery in Ethnic Wear",
+    content: `
+      <p>Hand embroidery is a centuries-old art form that continues to define the beauty of ethnic wear. Discover the intricate techniques and cultural significance behind these stunning creations.</p>
+
+      <h2>Traditional Embroidery Techniques</h2>
+      <ul>
+        <li>Zardozi: Metallic thread embroidery</li>
+        <li>Chikankari: Delicate white thread work</li>
+        <li>Kantha: Running stitch embroidery</li>
+        <li>Phulkari: Floral pattern embroidery</li>
+        <li>Mirror work: Reflective embellishments</li>
+      </ul>
+
+      <h2>Regional Specialties</h2>
+      <p>Different regions of India are known for unique embroidery styles:</p>
+      <ul>
+        <li>Lucknow: Chikankari</li>
+        <li>Kashmir: Sozni and Aari work</li>
+        <li>Gujarat: Mirror work and bead embroidery</li>
+        <li>West Bengal: Kantha stitch</li>
+        <li>Punjab: Phulkari</li>
+      </ul>
+
+      <h2>Modern Applications</h2>
+      <p>Contemporary designers are innovating with traditional techniques:</p>
+      <ul>
+        <li>Fusion of multiple embroidery styles</li>
+        <li>Use of unconventional materials</li>
+        <li>Abstract and geometric patterns</li>
+        <li>Minimalist embroidery designs</li>
+        <li>Sustainable embroidery practices</li>
+      </ul>
+
+      <h2>Preserving the Craft</h2>
+      <p>Efforts to sustain this traditional art form include:</p>
+      <ul>
+        <li>Training programs for artisans</li>
+        <li>Fair trade practices</li>
+        <li>Documentation of techniques</li>
+        <li>Innovation in design</li>
+        <li>Market access for artisans</li>
+      </ul>
+    `,
+    image: "https://media.istockphoto.com/id/1193642393/photo/female-needlework-on-fabric-material-close-up-view-unidentified-tribal-women-sewing-ethnic.jpg?s=612x612&w=0&k=20&c=lwQ5wV5wzrnbqdoi-KciE9ec55LQD3wUvtWAc5lNJ-w=",
+    date: "February 28, 2024",
+    readTime: "7 min read",
+    category: "Craftsmanship",
+    author: {
+      name: "Meera Kapoor",
+      role: "Textile Conservationist",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1888&auto=format&fit=crop",
+    },
+  },
+  "block-printing": {
+    title: "The Revival of Traditional Block Printing",
+    content: `
+      <p>Explore the ancient art of block printing and its modern applications in contemporary ethnic wear.</p>
+
+      <h2>Block Printing Techniques</h2>
+      <ul>
+        <li>Wooden block carving</li>
+        <li>Natural dye preparation</li>
+        <li>Traditional printing methods</li>
+        <li>Contemporary adaptations</li>
+        <li>Digital block printing</li>
+      </ul>
+
+      <h2>Cultural Significance</h2>
+      <p>Understanding the cultural heritage and regional variations in block printing techniques.</p>
+    `,
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "February 25, 2024",
+    readTime: "6 min read",
+    category: "Craftsmanship",
+    author: {
+      name: "Rajesh Kumar",
+      role: "Textile Artist",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop",
+    },
+  },
+  "successful-ethnic-boutique": {
+    title: "Building a Successful Ethnic Wear Boutique",
+    content: `
+      <p>Creating a thriving ethnic wear boutique requires a perfect blend of business acumen and fashion expertise. Learn the essential strategies for success in this competitive market.</p>
+
+      <h2>Key Success Factors</h2>
+      <ul>
+        <li>Curated product selection</li>
+        <li>Quality assurance</li>
+        <li>Customer service excellence</li>
+        <li>Strategic pricing</li>
+        <li>Effective marketing</li>
+      </ul>
+
+      <h2>Inventory Management</h2>
+      <p>Smart inventory practices include:</p>
+      <ul>
+        <li>Seasonal planning</li>
+        <li>Stock rotation</li>
+        <li>Size range optimization</li>
+        <li>Trend forecasting</li>
+        <li>Supplier relationships</li>
+      </ul>
+
+      <h2>Customer Experience</h2>
+      <p>Enhance your boutique&apos;s appeal with:</p>
+      <ul>
+        <li>Personalized styling services</li>
+        <li>Comfortable fitting rooms</li>
+        <li>Knowledgeable staff</li>
+        <li>Loyalty programs</li>
+        <li>After-sales service</li>
+      </ul>
+
+      <h2>Marketing Strategies</h2>
+      <p>Effective marketing approaches include:</p>
+      <ul>
+        <li>Social media presence</li>
+        <li>Fashion shows and events</li>
+        <li>Collaborations with influencers</li>
+        <li>Email marketing</li>
+        <li>Community engagement</li>
+      </ul>
+    `,
+    image: "https://i.pinimg.com/736x/4c/19/e7/4c19e7132f4b4bdf2c1106ea8c44b53a.jpg",
+    date: "February 20, 2024",
+    readTime: "8 min read",
+    category: "Business",
+    author: {
+      name: "Vikram Singh",
+      role: "Retail Business Consultant",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop",
+    },
+  },
+  "online-ethnic-retail": {
+    title: "The Future of Ethnic Wear E-commerce",
+    content: `
+      <p>Explore the evolving landscape of online ethnic wear retail and discover strategies for success in the digital marketplace.</p>
+
+      <h2>Digital Retail Strategies</h2>
+      <ul>
+        <li>Virtual try-on technology</li>
+        <li>Social media marketing</li>
+        <li>Customer engagement</li>
+        <li>Inventory management</li>
+        <li>Logistics optimization</li>
+      </ul>
+
+      <h2>Market Trends</h2>
+      <p>Understanding current market dynamics and future projections for online ethnic wear retail.</p>
+    `,
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "February 18, 2024",
+    readTime: "7 min read",
+    category: "Business",
+    author: {
+      name: "Priya Sharma",
+      role: "E-commerce Expert",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop",
+    },
+  },
+  "modern-bridal-wear": {
+    title: "The Evolution of Bridal Wear in Modern India",
+    content: `
+      <p>Bridal wear in India has undergone a remarkable transformation, blending traditional elements with contemporary design sensibilities. Explore how modern brides are redefining wedding fashion.</p>
+
+      <h2>Contemporary Bridal Trends</h2>
+      <ul>
+        <li>Fusion of traditional and modern elements</li>
+        <li>Lighter weight fabrics</li>
+        <li>Contemporary color palettes</li>
+        <li>Innovative silhouettes</li>
+        <li>Personalized design elements</li>
+      </ul>
+
+      <h2>Design Innovations</h2>
+      <p>Modern bridal wear features:</p>
+      <ul>
+        <li>Asymmetric hemlines</li>
+        <li>Mix of traditional and modern fabrics</li>
+        <li>Contemporary embroidery patterns</li>
+        <li>Versatile separates</li>
+        <li>Customizable elements</li>
+      </ul>
+
+      <h2>Color Evolution</h2>
+      <p>Beyond traditional red, modern brides are choosing:</p>
+      <ul>
+        <li>Pastel shades</li>
+        <li>Metallic tones</li>
+        <li>Jewel tones</li>
+        <li>Monochromatic looks</li>
+        <li>Color blocking</li>
+      </ul>
+
+      <h2>Styling Tips</h2>
+      <p>Modern bridal styling includes:</p>
+      <ul>
+        <li>Contemporary jewelry</li>
+        <li>Modern makeup looks</li>
+        <li>Innovative draping styles</li>
+        <li>Mix of traditional and modern accessories</li>
+        <li>Personalized elements</li>
+      </ul>
+    `,
+    image: "https://cdn.shopify.com/s/files/1/2196/3271/files/Evolution_of_Indian_wedding_fashion_1024x1024.png?v=1680083169",
+    date: "February 15, 2024",
+    readTime: "6 min read",
+    category: "Bridal",
+    author: {
+      name: "Neha Sharma",
+      role: "Bridal Fashion Expert",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1888&auto=format&fit=crop",
+    },
+  },
+  "wedding-season-guide": {
+    title: "Complete Wedding Season Style Guide 2024",
+    content: `
+      <p>Your comprehensive guide to wedding season fashion, from engagement ceremonies to reception parties.</p>
+
+      <h2>Wedding Event Wardrobe</h2>
+      <ul>
+        <li>Engagement ceremony outfits</li>
+        <li>Mehendi ceremony ensembles</li>
+        <li>Wedding day attire</li>
+        <li>Reception party looks</li>
+        <li>Guest wear options</li>
+      </ul>
+
+      <h2>Accessorizing Tips</h2>
+      <p>Learn how to complement your wedding wear with the perfect jewelry and accessories.</p>
+    `,
+    image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1972&auto=format&fit=crop",
+    date: "February 12, 2024",
+    readTime: "8 min read",
+    category: "Bridal",
+    author: {
+      name: "Ananya Patel",
+      role: "Wedding Stylist",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop",
+    },
   }
 }
 
@@ -66,4 +491,14 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
   return Object.values(blogPosts)
+}
+
+// Function to get related blog posts
+export function getRelatedPosts(currentSlug: string): BlogPost[] {
+  return Object.entries(blogPosts)
+    .filter(([slug]) => slug !== currentSlug)
+    .slice(0, 3)
+    .map(([slug, post]) => ({
+      ...post
+    }))
 } 

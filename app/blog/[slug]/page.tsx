@@ -4,9 +4,7 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react"
 import { Metadata } from 'next'
 import React from 'react'
 import { notFound } from "next/navigation"
-import { getBlogPost } from "@/lib/blog"
-
-import { Button } from "@/components/ui/button"
+import { getBlogPost, getRelatedPosts } from "@/lib/blog"
 
 // This would typically come from a CMS or API
 const blogPosts = {
@@ -479,17 +477,6 @@ const blogPosts = {
   },
 }
 
-// Function to get related blog posts
-function getRelatedPosts(currentSlug: string) {
-  return Object.entries(blogPosts)
-    .filter(([slug]) => slug !== currentSlug)
-    .slice(0, 3)
-    .map(([slug, post]) => ({
-      slug,
-      ...post
-    }))
-}
-
 interface BlogPostPageProps {
   params: {
     slug: string
@@ -508,10 +495,10 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
   return {
     title: post.title,
-    description: post.excerpt,
+    description: post.content.slice(0, 160),
     openGraph: {
       title: post.title,
-      description: post.excerpt,
+      description: post.content.slice(0, 160),
       type: 'article',
       publishedTime: post.date,
       authors: ['Ethnics by Aravalli'],
@@ -596,13 +583,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               More Articles You Might Like
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {relatedPosts.map(relatedPost => (
+              {relatedPosts.map((relatedPost) => (
                 <Link 
-                  key={relatedPost.slug}
-                  href={`/blog/${relatedPost.slug}`}
-                  className="group"
+                  key={relatedPost.title}
+                  href={`/blog/${Object.entries(blogPosts).find(([_, post]) => post.title === relatedPost.title)?.[0]}`}
+                  className="group h-full"
                 >
-                  <div className="rounded-lg border bg-card overflow-hidden shadow-sm transition hover:shadow-md">
+                  <div className="rounded-lg border bg-card overflow-hidden shadow-sm transition hover:shadow-md h-full flex flex-col">
                     <div className="relative w-full h-48">
                       <Image
                         src={relatedPost.image}
@@ -611,7 +598,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         className="object-cover transition group-hover:scale-105"
                       />
                     </div>
-                    <div className="p-4">
+                    <div className="p-4 flex flex-col flex-1">
                       <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
                         <span className="flex items-center gap-1">
                           <Calendar className="h-4 w-4" />
@@ -625,7 +612,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       <h3 className="font-medium text-lg mb-2 line-clamp-2 group-hover:text-[#D9A8A0] transition">
                         {relatedPost.title}
                       </h3>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 mt-auto">
                         <div className="relative w-6 h-6 rounded-full overflow-hidden">
                           <Image
                             src={relatedPost.author.image}
