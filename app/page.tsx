@@ -116,7 +116,7 @@ export default function Home() {
                 Manufacturer in <br />Jaipur
               </h1>
             </div>
-            <div className={`flex flex-col sm:flex-row gap-4 md:justify-start justify-center items-center ${isMobile ? 'mb-24' : ''}`}>
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-24 md:mb-0">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-md bg-[#D9A8A0] px-6 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-[#C08478]"
