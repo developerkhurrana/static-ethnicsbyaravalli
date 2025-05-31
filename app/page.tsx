@@ -115,11 +115,8 @@ export default function Home() {
                 </span>
                 Manufacturer in <br />Jaipur
               </h1>
-              <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mt-4">
-                Custom Designs · Bulk Orders · Private Label · Fast Dispatch
-              </p>
             </div>
-            <div className={`flex flex-col sm:flex-row gap-4 justify-center ${isMobile ? 'mb-24' : ''}`}>
+            <div className={`flex flex-col sm:flex-row gap-4 md:justify-start justify-center items-center ${isMobile ? 'mb-24' : ''}`}>
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-md bg-[#D9A8A0] px-6 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-[#C08478]"
@@ -159,12 +156,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center min-h-[60vh]">
             {/* Text Content */}
-            <div className="flex flex-col items-start justify-center text-left">
+            <div className="flex flex-col justify-center md:items-start md:text-left items-center text-center">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">Who We Are</h2>
               <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-8 drop-shadow">
                 Ethnics by Aravalli is a premium manufacturer of Indian ethnic wear for women, based in Jaipur. We create beautiful, high-quality Kurtas, Dresses, Anarkalis, Kaftans, and more—crafted by skilled designers and artisans, using the finest fabrics and prints.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+              <div className="flex flex-col sm:flex-row gap-4 md:justify-start justify-center items-center">
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center rounded-md bg-[#D9A8A0] px-6 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-[#C08478]"
