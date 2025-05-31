@@ -477,12 +477,13 @@ const blogPosts = {
   },
 }
 
-type PageParams = {
-  slug: string
+interface PageProps {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 export async function generateMetadata(
-  { params }: { params: PageParams }
+  { params }: PageProps
 ): Promise<Metadata> {
   const post = await getBlogPost(params.slug)
   
@@ -506,11 +507,7 @@ export async function generateMetadata(
   }
 }
 
-type Props = {
-  params: PageParams
-}
-
-export default async function BlogPostPage({ params }: Props) {
+export default async function BlogPostPage({ params }: PageProps) {
   const post = await getBlogPost(params.slug)
   
   if (!post) {
