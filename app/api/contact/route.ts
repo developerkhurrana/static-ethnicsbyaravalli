@@ -1,12 +1,17 @@
 import { NextResponse } from 'next/server'
 import { Client } from '@notionhq/client'
+import { Resend } from 'resend'
 
 // Initialize Notion client
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 })
 
+// Initialize Resend client
+const resend = new Resend(process.env.RESEND_API_KEY)
+
 const DATABASE_ID = process.env.NOTION_DATABASE_ID
+const NOTIFICATION_EMAIL = process.env.NOTIFICATION_EMAIL || 'ethnicsbyaravalli@gmail.com'
 
 export async function POST(request: Request) {
   // Immediate logging test
@@ -162,6 +167,30 @@ export async function POST(request: Request) {
         pageId: notionResponse.id,
         url: `https://notion.so/${notionResponse.id.replace(/-/g, '')}`
       })
+
+      // Send email notification
+      console.log('📧 Sending email notification...')
+      const emailData = {
+        from: 'Ethnics by Aravalli <onboarding@resend.dev>',
+        to: NOTIFICATION_EMAIL,
+        subject: `New Contact Form Submission from ${name}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          ${email ? `<p><strong>Email:</strong> ${email}</p>` : ''}
+          <p><strong>Mobile:</strong> ${mobile}</p>
+          ${brand ? `<p><strong>Brand/Company:</strong> ${brand}</p>` : ''}
+          <p><strong>Message:</strong> ${message}</p>
+          <p><strong>IP Address:</strong> ${ip}</p>
+          <p><strong>Timestamp:</strong> ${new Date().toISOString()}</p>
+          <hr>
+          <p><small>This is an automated message from your website contact form.</small></p>
+        `,
+      }
+
+      const emailResponse = await resend.emails.send(emailData)
+      console.log('✅ Email sent successfully:', emailResponse)
+
     } catch (notionError) {
       console.error('❌ Notion Error:', {
         error: notionError instanceof Error ? notionError.message : 'Unknown error',
