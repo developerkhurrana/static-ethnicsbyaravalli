@@ -51,7 +51,7 @@ const facilities = [
 
 export default function ManufacturingPage() {
   return (
-    <div className="container py-12">
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <SectionHeader
         title="Manufacturing Excellence"
         description="Our state-of-the-art manufacturing facilities combine traditional craftsmanship with modern technology."
