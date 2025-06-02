@@ -89,6 +89,7 @@ export default function ContactPage() {
       }
 
       // Check rate limit
+      console.log('🔄 Checking rate limit...')
       const response = await fetch('/api/rate-limit', {
         method: 'POST',
         headers: {
@@ -96,12 +97,15 @@ export default function ContactPage() {
         },
         body: JSON.stringify({
           mobile,
+          action: 'contact',
         }),
       })
 
       const data = await response.json()
+      console.log('📊 Rate limit response:', data)
 
       if (!response.ok) {
+        console.log('❌ Rate limit check failed:', data)
         if (data.type === 'cooldown') {
           toast.error("Submission Rate Limited", {
             description: `Please wait ${data.remainingTime} seconds before submitting again. This helps us prevent spam.`,
@@ -118,21 +122,75 @@ export default function ContactPage() {
         return
       }
 
+      console.log('✅ Rate limit passed, proceeding with submission...')
+
+      // If rate limit passed, proceed with both Notion and WhatsApp
+      let notionSuccess = false
+      
+      // Store in Notion
+      try {
+        console.log('📝 Attempting to store in Notion...', {
+          name,
+          mobile,
+          city,
+          shop,
+          token: data.token
+        })
+        
+        const notionResponse = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email: '', // Not collected in this form
+            mobile,
+            message: `From ${city}${shop ? `, Shop: ${shop}` : ''}`,
+            brand: shop || '',
+            token: data.token, // Pass the rate limit token
+          }),
+        })
+
+        const notionData = await notionResponse.json()
+        console.log('📊 Notion response:', notionData)
+
+        if (!notionResponse.ok) {
+          console.error('❌ Failed to store in Notion:', notionData)
+        } else {
+          console.log('✅ Stored in Notion successfully')
+          notionSuccess = true
+        }
+      } catch (error) {
+        console.error('❌ Error storing in Notion:', error)
+      }
+
       // Construct message
       let message = `Hi, I'm ${name} from ${city}`
       if (shop) message += `, I have a shop named ${shop}`
       message += `. I represent a brand/business interested in manufacturing ethnicwear. Please contact me at ${mobile}.`
       
+      console.log('📱 Opening WhatsApp with message:', message)
+      
       // Open WhatsApp
       const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(message)}`
       window.open(whatsappUrl, "_blank")
 
-      // Show success toast
-      toast.success("Message Sent Successfully!", {
-        description: "We'll get back to you soon. You can also reach us directly at +91 98284 22208.",
-      })
+      // Show success toast with appropriate message
+      if (notionSuccess) {
+        console.log('🎉 Showing success toast (Notion + WhatsApp)')
+        toast.success("Message Sent Successfully!", {
+          description: "Your message has been stored and WhatsApp is open. We'll get back to you soon!",
+        })
+      } else {
+        console.log('🎉 Showing success toast (WhatsApp only)')
+        toast.success("WhatsApp Opened!", {
+          description: "Please send your message on WhatsApp. We'll get back to you soon!",
+        })
+      }
 
       // Reset form
+      console.log('🔄 Resetting form')
       form.reset()
     } catch (error) {
       console.error('Error:', error)

@@ -11,8 +11,7 @@ const heroImages = {
   desktop: [
     "/products/hero_banner_1.jpg",
     "/products/hero_banner_2.jpg",
-    "/products/hero_banner_3.jpg",
-    "/products/hero_banner_4.jpg"
+    "/products/hero_banner_3.webp"
   ],
   mobile: ["/products/hero_mobile_banner.jpg"]
 }
@@ -64,7 +63,7 @@ export default function Home() {
             <div className="embla__container">
               {(isMobile ? heroImages.mobile : heroImages.desktop).map((image, index) => (
                 <div key={index} className="embla__slide relative h-screen">
-                  <Image
+        <Image
                     src={image}
                     alt={`Hero image ${index + 1}`}
                     fill
@@ -125,9 +124,9 @@ export default function Home() {
               </Link>
               <Link
                 href="https://wa.me/919828422208"
-                target="_blank"
+            target="_blank"
                 className="inline-flex items-center justify-center rounded-md border border-white bg-transparent px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-white/10 w-full md:w-auto"
-              >
+          >
                 Whatsapp Us
               </Link>
             </div>
@@ -225,7 +224,10 @@ export default function Home() {
                   <h3 className="text-lg font-semibold mb-2">Kurti Sets</h3>
                   <p className="text-gray-600 mb-4">Premium kurtis with intricate embroidery and modern designs</p>
                 </div>
-                <Button className="w-full mt-auto" asChild>
+                <Button 
+                  className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
+                  asChild
+                >
                   <Link href="/contact">Inquire Now</Link>
                 </Button>
               </div>
@@ -251,7 +253,10 @@ export default function Home() {
                   <h3 className="text-lg font-semibold mb-2">Suits Sets</h3>
                   <p className="text-gray-600 mb-4">Elegant suits with premium fabrics and contemporary designs</p>
                 </div>
-                <Button className="w-full mt-auto" asChild>
+                <Button 
+                  className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
+                  asChild
+                >
                   <Link href="/contact">Inquire Now</Link>
                 </Button>
               </div>
@@ -277,7 +282,10 @@ export default function Home() {
                   <h3 className="text-lg font-semibold mb-2">Kalidaar Sets</h3>
                   <p className="text-gray-600 mb-4">Luxurious double layer kalidaar designs with premium fabrics</p>
                 </div>
-                <Button className="w-full mt-auto" asChild>
+                <Button 
+                  className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
+                  asChild
+                >
                   <Link href="/contact">Inquire Now</Link>
                 </Button>
               </div>
@@ -303,7 +311,10 @@ export default function Home() {
                   <h3 className="text-lg font-semibold mb-2">Dresses</h3>
                   <p className="text-gray-600 mb-4">Traditional kalidaar designs with modern aesthetics</p>
                 </div>
-                <Button className="w-full mt-auto" asChild>
+                <Button 
+                  className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
+                  asChild
+                >
                   <Link href="/contact">Inquire Now</Link>
                 </Button>
               </div>

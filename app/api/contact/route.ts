@@ -1,186 +1,208 @@
 import { NextResponse } from 'next/server'
-import { google } from 'googleapis'
 import { Redis } from '@upstash/redis'
+import { Client } from '@notionhq/client'
 
-// Initialize Redis client
+// Initialize Redis client for rate limiting
 const redis = new Redis({
   url: process.env.UPSTASH_REDIS_REST_URL || '',
   token: process.env.UPSTASH_REDIS_REST_TOKEN || '',
 })
 
-// Initialize Google Sheets
-const auth = new google.auth.GoogleAuth({
-  credentials: {
-    client_email: process.env.GOOGLE_CLIENT_EMAIL,
-    private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n').replace(/"/g, ''),
-  },
-  scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+// Initialize Notion client
+const notion = new Client({
+  auth: process.env.NOTION_TOKEN,
 })
 
-const sheets = google.sheets({ version: 'v4', auth })
-const SPREADSHEET_ID = '1q3p2BZPPuzxiB4nDBtCyaIsk_Gya8N0BXUq76sHhOPk'
-const SHEET_NAME = 'Sheet1'
-
-// Initialize headers if sheet is empty
-async function initializeSheet() {
-  try {
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: SPREADSHEET_ID,
-      range: `${SHEET_NAME}!A1:F1`,
-    })
-
-    if (!response.data.values || response.data.values.length === 0) {
-      await sheets.spreadsheets.values.append({
-        spreadsheetId: SPREADSHEET_ID,
-        range: `${SHEET_NAME}!A:F`,
-        valueInputOption: 'RAW',
-        requestBody: {
-          values: [['Timestamp', 'Name', 'Email', 'Mobile', 'Message', 'IP Address']],
-        },
-      })
-      console.log('Initialized sheet headers')
-    }
-  } catch (error) {
-    console.error('Error initializing sheet:', error)
-  }
-}
-
-// Initialize sheet on startup
-initializeSheet()
+const DATABASE_ID = process.env.NOTION_DATABASE_ID
 
 export async function POST(request: Request) {
+  // Immediate logging test
+  console.log('\n\n🔔 CONTACT FORM HIT - ' + new Date().toISOString() + '\n\n')
+  
   try {
-    const { name, email, mobile, message } = await request.json()
+    console.log('📥 Parsing request body...')
+    const { name, email, mobile, message, brand, token } = await request.json()
+    console.log('📦 Request body parsed:', { name, email, mobile, message, brand, token: token ? 'present' : 'missing' })
     
     // Get IP from Vercel headers
     const ip = request.headers.get('x-real-ip') || 
               request.headers.get('x-forwarded-for')?.split(',')[0] || 
               '127.0.0.1'
-    
-    console.log('Contact form submission:', { name, email, mobile, ip })
-    
-    if (!mobile) {
-      console.log('Missing mobile number')
+    console.log('🌐 IP Address:', ip)
+
+    // Validate token
+    if (!token) {
+      console.error('❌ Missing rate limit token')
       return NextResponse.json(
-        { error: 'Missing mobile number' },
+        { error: 'Rate limit validation required' },
         { status: 400 }
       )
     }
 
-    // Create unique keys for this user
-    const cooldownKey = `cooldown:${ip}:${mobile}`
-    const dailyKey = `daily:${ip}:${mobile}`
-    const totalKey = `total:${ip}:${mobile}`
-
-    // Check cooldown period
-    const cooldown = await redis.get(cooldownKey)
-    if (cooldown) {
-      const remainingTime = Math.ceil((Number(cooldown) - Date.now() / 1000))
-      console.log('Cooldown active:', { remainingTime, cooldownKey })
+    // Verify token format and expiration (tokens are valid for 1 minute)
+    console.log('🔑 Validating token...')
+    const parts = token.split(':')
+    if (parts.length !== 3) {
+      console.error('❌ Invalid token format:', token)
       return NextResponse.json(
-        { 
-          error: 'Rate limit exceeded',
-          remainingTime,
-          type: 'cooldown'
-        },
-        { status: 429 }
+        { error: 'Invalid token format' },
+        { status: 400 }
       )
     }
 
-    // Check daily limit
-    const dailyCount = await redis.get(dailyKey) || 0
-    console.log('Daily count:', { dailyCount, dailyKey })
-    if (Number(dailyCount) >= 5) {
-      console.log('Daily limit reached')
-      return NextResponse.json(
-        { 
-          error: 'Daily limit reached',
-          type: 'daily'
-        },
-        { status: 429 }
-      )
-    }
-
-    // Check total submissions
-    const totalCount = await redis.get(totalKey) || 0
-    console.log('Total count:', { totalCount, totalKey })
-    if (Number(totalCount) >= 3) {
-      console.log('Total limit reached')
-      return NextResponse.json(
-        { 
-          error: 'Maximum submissions reached',
-          type: 'total'
-        },
-        { status: 429 }
-      )
-    }
-
-    // Set cooldown period
-    await redis.set(cooldownKey, Date.now() / 1000 + 5 * 60, {
-      ex: 5 * 60
-    })
-
-    // Increment daily count
-    await redis.incr(dailyKey)
-    await redis.expire(dailyKey, 24 * 60 * 60)
-
-    // Increment total count
-    await redis.incr(totalKey)
-
-    // Store in Google Sheets
-    const timestamp = new Date().toISOString()
-    const row = [timestamp, name, email, mobile, message, ip]
+    const [tokenMobile, action, timestamp] = parts
+    const tokenTime = parseInt(timestamp)
+    const now = Date.now()
     
-    console.log('Google Sheets Configuration:', {
-      spreadsheetId: SPREADSHEET_ID,
-      sheetName: SHEET_NAME,
-      clientEmail: process.env.GOOGLE_CLIENT_EMAIL,
-      hasPrivateKey: !!process.env.GOOGLE_PRIVATE_KEY
+    console.log('🔍 Token validation:', {
+      tokenMobile,
+      action,
+      timestamp,
+      tokenTime,
+      now,
+      timeDiff: now - tokenTime,
+      isValid: tokenMobile === mobile && 
+               action === 'contact' &&
+               !isNaN(tokenTime) &&
+               now - tokenTime <= 60000
     })
+    
+    if (!tokenMobile || !action || !timestamp || 
+        tokenMobile !== mobile || 
+        action !== 'contact' ||
+        isNaN(tokenTime) ||
+        now - tokenTime > 60000) { // 1 minute expiration
+      console.error('❌ Invalid rate limit token:', { 
+        token, 
+        mobile,
+        parsed: { tokenMobile, action, timestamp, tokenTime },
+        expected: { mobile, action: 'contact' }
+      })
+      return NextResponse.json(
+        { error: 'Invalid rate limit token' },
+        { status: 400 }
+      )
+    }
 
+    console.log('✅ Token validation passed')
+
+    // Detailed submission logging
+    console.log('=== Contact Form Submission ===')
+    console.log('Timestamp:', new Date().toISOString())
+    console.log('Form Data:', {
+      name,
+      email,
+      mobile,
+      message,
+      brand,
+      ip,
+      userAgent: request.headers.get('user-agent'),
+      referer: request.headers.get('referer'),
+      origin: request.headers.get('origin'),
+    })
+    console.log('=============================')
+
+    // Store in Notion
     try {
-      console.log('Attempting to write to Google Sheets:', {
-        spreadsheetId: SPREADSHEET_ID,
-        sheetName: SHEET_NAME,
-        row
-      })
-
-      const response = await sheets.spreadsheets.values.append({
-        spreadsheetId: SPREADSHEET_ID,
-        range: `${SHEET_NAME}!A:F`,
-        valueInputOption: 'RAW',
-        requestBody: {
-          values: [row],
+      console.log('📝 Storing in Notion...')
+      console.log('🔑 Using database ID:', DATABASE_ID)
+      
+      const notionResponse = await notion.pages.create({
+        parent: {
+          database_id: DATABASE_ID!,
+        },
+        properties: {
+          Timestamp: {
+            date: {
+              start: new Date().toISOString(),
+              end: null,
+              time_zone: null
+            }
+          },
+          Name: {
+            title: [
+              {
+                text: {
+                  content: name,
+                },
+              },
+            ],
+          },
+          Mobile: {
+            phone_number: mobile,
+          },
+          Message: {
+            rich_text: [
+              {
+                text: {
+                  content: message,
+                },
+              },
+            ],
+          },
+          'Brand/Company Name': {
+            rich_text: [
+              {
+                text: {
+                  content: brand || '',
+                },
+              },
+            ],
+          },
+          'IP Address': {
+            rich_text: [
+              {
+                text: {
+                  content: ip,
+                },
+              },
+            ],
+          },
+          Status: {
+            select: {
+              name: "New"
+            }
+          }
         },
       })
-
-      console.log('Google Sheets Response:', response.data)
-      console.log('Successfully wrote to Google Sheets')
-    } catch (sheetsError: unknown) {
-      const error = sheetsError as Error & {
-        code?: string;
-        errors?: Array<{ message: string; domain: string; reason: string }>;
-      }
-      console.error('Google Sheets Error Details:', {
-        message: error.message,
-        code: error.code,
-        errors: error.errors,
-        stack: error.stack
+      console.log('✅ Successfully stored in Notion:', {
+        pageId: notionResponse.id,
+        url: `https://notion.so/${notionResponse.id.replace(/-/g, '')}`
       })
-      // Continue with WhatsApp even if Sheets fails
+    } catch (notionError) {
+      console.error('❌ Notion Error:', {
+        error: notionError instanceof Error ? notionError.message : 'Unknown error',
+        stack: notionError instanceof Error ? notionError.stack : undefined,
+        submission: { name, mobile, ip },
+        databaseId: DATABASE_ID,
+        properties: {
+          Timestamp: { date: { start: new Date().toISOString() } },
+          Name: { title: [{ text: { content: name } }] },
+          Mobile: { phone_number: mobile },
+          Message: { rich_text: [{ text: { content: message } }] },
+          'Brand/Company Name': { rich_text: [{ text: { content: brand || '' } }] },
+          'IP Address': { rich_text: [{ text: { content: ip } }] },
+          Status: { select: { name: "New" } }
+        }
+      })
+      return NextResponse.json(
+        { error: 'Failed to store in database' },
+        { status: 500 }
+      )
     }
 
-    // Send WhatsApp message
-    const whatsappMessage = `New Lead from Website:\n\nName: ${name}\nEmail: ${email}\nMobile: ${mobile}\nMessage: ${message}`
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${process.env.WHATSAPP_NUMBER}&text=${encodeURIComponent(whatsappMessage)}`
-    
-    console.log('Form submitted successfully:', { name, email, mobile })
-    return NextResponse.json({ 
-      success: true,
-      whatsappUrl 
-    })
+    console.log('✅ Form submission completed successfully')
+    return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Contact form error:', error)
+    console.error('❌ Contact form error:', {
+      error: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      request: {
+        headers: Object.fromEntries(request.headers.entries()),
+        url: request.url,
+        method: request.method
+      }
+    })
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

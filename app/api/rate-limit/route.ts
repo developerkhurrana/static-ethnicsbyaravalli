@@ -3,8 +3,8 @@ import { Redis } from '@upstash/redis'
 
 // Initialize Redis client
 const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL || '',
-  token: process.env.UPSTASH_REDIS_REST_TOKEN || '',
+  url: process.env.UPSTASH_REDIS_REST_URL!,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
 })
 
 // Rate limiting configuration
@@ -17,14 +17,24 @@ const RATE_LIMIT = {
 
 export async function POST(request: Request) {
   try {
-    const { mobile } = await request.json()
+    const { mobile, action = 'contact' } = await request.json()
     
+    // In development, bypass rate limiting
+    if (process.env.NODE_ENV === 'development') {
+      console.log('🛠️ Development mode: Bypassing rate limits')
+      return NextResponse.json({ 
+        success: true,
+        token: `${mobile}:${action}:${Date.now()}`,
+        development: true
+      })
+    }
+
     // Get IP from Vercel headers
     const ip = request.headers.get('x-real-ip') || 
               request.headers.get('x-forwarded-for')?.split(',')[0] || 
               '127.0.0.1'
     
-    console.log('Rate limit check:', { ip, mobile })
+    console.log('Rate limit check:', { ip, mobile, action })
     
     if (!mobile) {
       console.log('Missing mobile number')
@@ -35,15 +45,20 @@ export async function POST(request: Request) {
     }
 
     // Create unique keys for this user
-    const cooldownKey = `cooldown:${ip}:${mobile}`
-    const dailyKey = `daily:${ip}:${mobile}`
-    const totalKey = `total:${ip}:${mobile}`
+    const cooldownKey = `cooldown:${mobile}:${action}`
+    const dailyKey = `daily:${mobile}:${action}`
+    const totalKey = `total:${mobile}:${action}`
 
     // Check cooldown period
     const cooldown = await redis.get(cooldownKey)
     if (cooldown) {
       const remainingTime = Math.ceil((Number(cooldown) - Date.now() / 1000))
-      console.log('Cooldown active:', { remainingTime, cooldownKey })
+      console.log('⏳ Cooldown active:', { 
+        remainingTime, 
+        cooldownKey,
+        mobile,
+        action
+      })
       return NextResponse.json(
         { 
           error: 'Rate limit exceeded',
@@ -58,7 +73,12 @@ export async function POST(request: Request) {
     const dailyCount = await redis.get(dailyKey) || 0
     console.log('Daily count:', { dailyCount, dailyKey })
     if (Number(dailyCount) >= RATE_LIMIT.DAILY_LIMIT) {
-      console.log('Daily limit reached')
+      console.log('🚫 Daily limit reached:', { 
+        dailyCount,
+        dailyKey,
+        mobile,
+        action
+      })
       return NextResponse.json(
         { 
           error: 'Daily limit reached',
@@ -72,7 +92,12 @@ export async function POST(request: Request) {
     const totalCount = await redis.get(totalKey) || 0
     console.log('Total count:', { totalCount, totalKey })
     if (Number(totalCount) >= RATE_LIMIT.MAX_SUBMISSIONS) {
-      console.log('Total limit reached')
+      console.log('🚫 Total limit reached:', { 
+        totalCount,
+        totalKey,
+        mobile,
+        action
+      })
       return NextResponse.json(
         { 
           error: 'Maximum submissions reached',
@@ -95,7 +120,10 @@ export async function POST(request: Request) {
     await redis.incr(totalKey)
 
     console.log('Rate limit passed, counters incremented')
-    return NextResponse.json({ success: true })
+    return NextResponse.json({ 
+      success: true,
+      token: `${mobile}:${action}:${Date.now()}` // Simplified token without IP
+    })
   } catch (error) {
     console.error('Rate limit error:', error)
     return NextResponse.json(

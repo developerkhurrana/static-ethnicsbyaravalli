@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/components/ui/use-toast"
-import ReCAPTCHA from "react-google-recaptcha"
+import { siteConfig } from "@/lib/constants"
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -22,7 +22,6 @@ type FormData = z.infer<typeof formSchema>
 export function ContactForm() {
   const { toast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null)
 
   const {
     register,
@@ -34,42 +33,68 @@ export function ContactForm() {
   })
 
   const onSubmit = async (data: FormData) => {
-    if (!recaptchaToken) {
-      toast({
-        title: "Error",
-        description: "Please complete the CAPTCHA verification",
-        variant: "destructive",
-      })
-      return
-    }
-
     setIsSubmitting(true)
     try {
+      // First, store the submission in Google Sheets
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          mobile: data.phone,
+          message: data.message,
+        }),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        if (result.type === 'cooldown') {
+          toast({
+            title: "Submission Rate Limited",
+            description: `Please wait ${result.remainingTime} seconds before submitting again.`,
+            variant: "destructive",
+          })
+        } else if (result.type === 'daily') {
+          toast({
+            title: "Daily Limit Reached",
+            description: "You've reached the daily submission limit. Please try again tomorrow or contact us directly.",
+            variant: "destructive",
+          })
+        } else if (result.type === 'total') {
+          toast({
+            title: "Maximum Submissions Reached",
+            description: "You've reached the maximum number of submissions. Please contact us directly.",
+            variant: "destructive",
+          })
+        } else {
+          throw new Error(result.error || 'Failed to submit form')
+        }
+        return
+      }
+
       // Format the message for WhatsApp
       const whatsappMessage = `New Contact Form Submission:\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nMessage: ${data.message}`
       
-      // Encode the message for WhatsApp URL
-      const encodedMessage = encodeURIComponent(whatsappMessage)
-      
-      // Your WhatsApp number
-      const whatsappNumber = "919876543210" // Replace with your actual WhatsApp number
-      
-      // Create WhatsApp URL
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+      // Create WhatsApp URL with the actual number from siteConfig
+      const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(whatsappMessage)}`
       
       // Open WhatsApp in a new tab
       window.open(whatsappUrl, '_blank')
 
       toast({
         title: "Success",
-        description: "Your message has been sent successfully!",
+        description: "Your message has been sent successfully! We'll get back to you soon.",
       })
       reset()
-      setRecaptchaToken(null)
-    } catch {
+    } catch (error) {
+      console.error('Form submission error:', error)
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: "Failed to send message. Please try again or contact us directly.",
         variant: "destructive",
       })
     } finally {
@@ -123,13 +148,6 @@ export function ContactForm() {
         {errors.message && (
           <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>
         )}
-      </div>
-
-      <div className="flex justify-center">
-        <ReCAPTCHA
-          sitekey="6LdlCFErAAAAAOz3UPOy1f78tRhh8UzX3I19NzJg"
-          onChange={(token: string | null) => setRecaptchaToken(token)}
-        />
       </div>
 
       <Button
