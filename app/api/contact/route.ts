@@ -1,12 +1,5 @@
 import { NextResponse } from 'next/server'
-import { Redis } from '@upstash/redis'
 import { Client } from '@notionhq/client'
-
-// Initialize Redis client for rate limiting
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL || '',
-  token: process.env.UPSTASH_REDIS_REST_TOKEN || '',
-})
 
 // Initialize Notion client
 const notion = new Client({
