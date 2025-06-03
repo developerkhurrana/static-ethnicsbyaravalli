@@ -83,7 +83,7 @@ export default function AboutPage() {
         <div className="grid gap-12 lg:grid-cols-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
             <Image
-              src="/images/about.jpg"
+              src="https://lh3.googleusercontent.com/p/AF1QipMN1X472LIyKs9ShMxiTxWWwyFKPRlpygxcfe7Q=w744-h558-p-k-no"
               alt="Our manufacturing facility"
               fill
               className="object-cover"
@@ -105,7 +105,7 @@ export default function AboutPage() {
               retailers across the country, providing them with premium quality
               ethnic wear that their customers love.
             </p>
-            <Button size="lg" asChild>
+            <Button size="lg" asChild className="bg-[#D9A8A0] hover:bg-[#C08478] text-white border-0">
               <Link href="/contact">Contact Us</Link>
             </Button>
           </div>

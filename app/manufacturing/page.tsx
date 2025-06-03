@@ -25,13 +25,13 @@ const capabilities = [
 const facilities = [
   {
     title: "Design Studio",
-    image: "/manufacturing/design-studio.jpg",
+    image: "https://lh3.googleusercontent.com/p/AF1QipOHwu3Sxyf-MXB_sJ57cLGIQ1jOhID2nL39kznT=s680-w680-h510-rw",
     description:
       "Our design studio is equipped with the latest technology and staffed by experienced designers who create unique, market-ready designs.",
   },
   {
     title: "Production Unit",
-    image: "/manufacturing/production.jpg",
+    image: "https://lh3.googleusercontent.com/p/AF1QipOSQ4UdNWJkeTGUSVvojWo3iB9ZBTX2vRS90zSd=s680-w680-h510-rw",
     description:
       "State-of-the-art machinery and skilled workers ensure high-quality production with attention to detail.",
   },
@@ -75,22 +75,26 @@ export default function ManufacturingPage() {
             ))}
           </div>
           <div className="mt-8">
-            <Link href="/become-retailer">
-              <Button>
-                Partner with Us
+            <Link href="/contact">
+              <Button className="bg-[#D9A8A0] hover:bg-[#C08478] text-white border-0 rounded-full">
+Contact Us
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>
         </div>
-        <div className="relative aspect-video overflow-hidden rounded-lg">
-          <Image
-            src="/manufacturing/overview.jpg"
-            alt="Manufacturing facility overview"
-            fill
-            className="object-cover"
-          />
-        </div>
+        <div className="flex justify-center items-center w-full">
+              <div className="relative w-full aspect-video max-w-xl rounded-lg overflow-hidden shadow-lg border-2 border-white/20">
+                <iframe
+                  src="https://player.cloudinary.com/embed/?cloud_name=dfye0gag9&public_id=who_we_are_video_njilol&player[autoplay]=true&player[autoplayMode]=on-scroll&player[muted]=true&player[loop]=true&player[controls]=false"
+                  title="Who We Are Video"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  className="w-full h-full min-h-[220px]"
+                  style={{ border: 0 }}
+                />
+              </div>
+            </div>
       </div>
 
       <div>

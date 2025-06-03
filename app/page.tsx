@@ -205,26 +205,27 @@ export default function Home() {
             Explore our premium ethnic wear collection, made with precision in Jaipur.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+            {/* Kurtas */}
             <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
-              <div className="relative overflow-hidden rounded-lg w-full h-[320px]">
+              <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
                 <Image
-                  src="https://ekohum.com/cdn/shop/files/DB392_3.jpg?v=1740739949"
-                  alt="Kurti Collection"
+                  src="https://ekohum.com/cdn/shop/files/DS5853_2.jpg?v=1741256083"
+                  alt="Kurtas Collection"
                   fill
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
+                  className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
                 />
                 <Image
-                  src="https://ekohum.com/cdn/shop/files/DB392_8.jpg?v=1740739949"
-                  alt="Kurti Collection Hover"
+                  src="https://ekohum.com/cdn/shop/files/DS5853_10.jpg?v=1741256083"
+                  alt="Kurtas Collection Hover"
                   fill
-                  className="w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
+                  className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg"
                 />
               </div>
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Kurti Sets</h3>
-                  <p className="text-gray-600 mb-4">Stylish and comfortable, designed with intricate embroidery</p>
+                  <h3 className="text-lg font-semibold mb-2">Kurtas</h3>
+                  <p className="text-gray-600 mb-4">Our premium kurtas blend traditional craftsmanship with modern designs, crafted with fine fabrics like cotton, muslin, and chanderi for effortless elegance and comfort.</p>
                 </div>
                 <Button 
                   className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
@@ -234,26 +235,55 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-
+            {/* Kurta Sets */}
             <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
-              <div className="relative overflow-hidden rounded-lg w-full h-[320px]">
+              <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
                 <Image
-                  src="https://ekohum.com/cdn/shop/files/DW3962_1.jpg?v=1725534156"
-                  alt="Suits Collection"
+                  src="https://ekohum.com/cdn/shop/files/DSC_0596.jpg?v=1717780319"
+                  alt="Kurta Sets Collection"
                   fill
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
+                  className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
+                />
+                <Image
+                  src="https://ekohum.com/cdn/shop/files/DSC_0651.jpg?v=1717780319"
+                  alt="Kurta Sets Collection Hover"
+                  fill
+                  className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg"
+                />
+              </div>
+              <div className="p-4 bg-white flex flex-col flex-1 justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Kurta Sets</h3>
+                  <p className="text-gray-600 mb-4">Elevate your wardrobe with our designer kurta sets, featuring intricate embroidery, tailored fits, and luxurious fabrics, perfect for contemporary ethnic fashion.</p>
+                </div>
+                <Button 
+                  className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
+                  asChild
+                >
+                  <Link href="/contact">Inquire Now</Link>
+                </Button>
+              </div>
+            </div>
+            {/* Suit Sets */}
+            <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
+              <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
+                <Image
+                  src="https://ekohum.com/cdn/shop/files/DW3962__1.jpg?v=1725534156"
+                  alt="Suit Sets Collection"
+                  fill
+                  className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
                 />
                 <Image
                   src="https://ekohum.com/cdn/shop/files/DW3962_4.jpg?v=1725534157"
-                  alt="Suits Collection Hover"
+                  alt="Suit Sets Collection Hover"
                   fill
-                  className="w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
+                  className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg"
                 />
               </div>
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Suits Sets</h3>
-                  <p className="text-gray-600 mb-4">Elegant ethnic suits crafted with high-quality fabrics</p>
+                  <h3 className="text-lg font-semibold mb-2">Suit Sets</h3>
+                  <p className="text-gray-600 mb-4">Explore timeless ethnic suit sets, designed with premium materials and elegant cuts, ideal for festive occasions, office wear, and boutique collections.</p>
                 </div>
                 <Button 
                   className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
@@ -263,55 +293,84 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-
+            {/* Dresses */}
             <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
-              <div className="relative overflow-hidden rounded-lg w-full h-[320px]">
+              <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
                 <Image
-                  src="https://ekohum.com/cdn/shop/files/DSC_1622_33b0f5b1-b840-4283-90cc-259f6794734e.jpg?v=1729164681"
-                  alt="Double Layer Kalidaar"
+                  src="https://ekohum.com/cdn/shop/files/DSC9845.jpg?v=1717778854"
+                  alt="Dresses Collection"
                   fill
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
+                  className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
                 />
                 <Image
-                  src="https://ekohum.com/cdn/shop/files/Untitled-9_37b1bb61-61c1-4175-b051-24e143efbae2.jpg?v=1729164548"
-                  alt="Double Layer Kalidaar Hover"
+                  src="https://ekohum.com/cdn/shop/files/DSC9855.jpg?v=1717778854"
+                  alt="Dresses Collection Hover"
                   fill
-                  className="w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
-                />
-              </div>
-              <div className="p-4 bg-white flex flex-col flex-1 justify-between">
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Kalidaar Sets</h3>
-                  <p className="text-gray-600 mb-4">Flowing, layered designs that bring out timeless beauty</p>
-                </div>
-                <Button 
-                  className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
-                  asChild
-                >
-                  <Link href="/contact">Inquire Now</Link>
-                </Button>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
-              <div className="relative overflow-hidden rounded-lg w-full h-[320px]">
-          <Image
-                  src="https://ekohum.com/cdn/shop/files/DSC0406.jpg?v=1745399522"
-                  alt="Kalidaar Collection"
-                  fill
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 absolute inset-0 rounded-lg"
-                />
-          <Image
-                  src="https://ekohum.com/cdn/shop/files/DSC0392.jpg?v=1745399522"
-                  alt="Kalidaar Collection Hover"
-                  fill
-                  className="w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute inset-0 rounded-lg"
+                  className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg"
                 />
               </div>
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Dresses</h3>
-                  <p className="text-gray-600 mb-4">Breezy and fashionable, perfect for everyday elegance</p>
+                  <p className="text-gray-600 mb-4">Discover stylish ethnic dresses that merge classic silhouettes with modern aesthetics, handcrafted for sophistication and everyday wear.</p>
+                </div>
+                <Button 
+                  className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
+                  asChild
+                >
+                  <Link href="/contact">Inquire Now</Link>
+                </Button>
+              </div>
+            </div>
+            {/* Kaftans */}
+            <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
+              <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
+                <Image
+                  src="https://ekohum.com/cdn/shop/files/1P1A4275f.jpg?v=1717779843"
+                  alt="Kaftans Collection"
+                  fill
+                  className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
+                />
+                <Image
+                  src="https://ekohum.com/cdn/shop/files/1P1A4278f.jpg?v=1717779843"
+                  alt="Kaftans Collection Hover"
+                  fill
+                  className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg"
+                />
+              </div>
+              <div className="p-4 bg-white flex flex-col flex-1 justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Kaftans</h3>
+                  <p className="text-gray-600 mb-4">Breezy and elegant, our kaftans offer lightweight comfort with stunning prints and detailed embroidery, making them perfect for effortless ethnic fashion.</p>
+                </div>
+                <Button 
+                  className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
+                  asChild
+                >
+                  <Link href="/contact">Inquire Now</Link>
+                </Button>
+              </div>
+            </div>
+            {/* Kalidaars */}
+            <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
+              <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
+                <Image
+                  src="https://ekohum.com/cdn/shop/files/DSC_1611_c8d72493-d7b7-4fd8-a066-43dd937a657d.jpg?v=1729164602"
+                  alt="Kalidaars Collection"
+                  fill
+                  className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
+                />
+                <Image
+                  src="https://ekohum.com/cdn/shop/files/DSC_1622_33b0f5b1-b840-4283-90cc-259f6794734e.jpg?v=1729164681"
+                  alt="Kalidaars Collection Hover"
+                  fill
+                  className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg"
+                />
+              </div>
+              <div className="p-4 bg-white flex flex-col flex-1 justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Kalidaars</h3>
+                  <p className="text-gray-600 mb-4">Experience the grandeur of kalidaars, known for their flowing layers, regal appeal, and artisanal detailing, embodying classic Indian heritage with a modern touch.</p>
                 </div>
                 <Button 
                   className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
