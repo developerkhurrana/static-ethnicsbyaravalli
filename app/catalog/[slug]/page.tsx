@@ -57,7 +57,7 @@ export default function CatalogProductPage({ params }: { params: { slug: string 
                   <SheetTrigger asChild>
                     <Button variant="outline" size="sm" className="text-xs px-3 py-1 h-auto">Size Guide</Button>
                   </SheetTrigger>
-                  <SheetContent side="top" className="max-w-7xl w-full sm:inset-0 sm:mx-auto sm:my-auto rounded-2xl p-4 sm:p-8">
+                  <SheetContent side="top" className="max-w-7xl w-full overflow-y-auto max-h-[90vh] sm:overflow-visible sm:max-h-none sm:inset-0 sm:mx-auto sm:my-auto rounded-2xl p-4 sm:p-8">
                     <SheetHeader>
                       <SheetTitle>Size Guide</SheetTitle>
                     </SheetHeader>
