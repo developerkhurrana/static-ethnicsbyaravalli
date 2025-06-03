@@ -13,12 +13,12 @@ export default function CatalogProductPage({ params }: { params: { slug: string 
   }
 
   const sizeChart = [
-    { size: "XS", bust: 32, waist: 26, hips: 36 },
-    { size: "S", bust: 34, waist: 28, hips: 38 },
-    { size: "M", bust: 36, waist: 30, hips: 40 },
-    { size: "L", bust: 38, waist: 32, hips: 42 },
-    { size: "XL", bust: 40, waist: 34, hips: 44 },
-    { size: "XXL", bust: 42, waist: 36, hips: 46 },
+    { size: "XS", bust: 32, waist: 26, hips: 36, shoulder: 14, tLength: 40, bLength: 38, fullLength: 56 },
+    { size: "S",  bust: 34, waist: 28, hips: 38, shoulder: 14.5, tLength: 41, bLength: 39, fullLength: 57 },
+    { size: "M",  bust: 36, waist: 30, hips: 40, shoulder: 15, tLength: 42, bLength: 40, fullLength: 58 },
+    { size: "L",  bust: 38, waist: 32, hips: 42, shoulder: 15.5, tLength: 43, bLength: 41, fullLength: 59 },
+    { size: "XL", bust: 40, waist: 34, hips: 44, shoulder: 16, tLength: 44, bLength: 42, fullLength: 60 },
+    { size: "XXL",bust: 42, waist: 36, hips: 46, shoulder: 16.5, tLength: 45, bLength: 43, fullLength: 61 },
   ];
 
   return (
@@ -73,6 +73,10 @@ export default function CatalogProductPage({ params }: { params: { slug: string 
                               <th className="text-left p-1">Bust (in)</th>
                               <th className="text-left p-1">Waist (in)</th>
                               <th className="text-left p-1">Hips (in)</th>
+                              <th className="text-left p-1">Shoulder (in)</th>
+                              <th className="text-left p-1">T. Length (in)</th>
+                              <th className="text-left p-1">B. Length (in)</th>
+                              <th className="text-left p-1">Full Length (in)</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -82,6 +86,10 @@ export default function CatalogProductPage({ params }: { params: { slug: string 
                                 <td className="p-1">{row.bust}</td>
                                 <td className="p-1">{row.waist}</td>
                                 <td className="p-1">{row.hips}</td>
+                                <td className="p-1">{row.shoulder}</td>
+                                <td className="p-1">{row.tLength}</td>
+                                <td className="p-1">{row.bLength}</td>
+                                <td className="p-1">{row.fullLength}</td>
                               </tr>
                             ))}
                           </tbody>
