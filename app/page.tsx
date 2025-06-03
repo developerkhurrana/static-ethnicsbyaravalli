@@ -143,7 +143,7 @@ export default function Home() {
                   index === selectedIndex ? 'bg-white' : 'bg-white/50'
                 }`}
                 onClick={() => emblaApi?.scrollTo(index)}
-              />
+            />
             ))}
           </div>
         )}
