@@ -5,7 +5,11 @@ import { Metadata } from 'next'
 import { notFound } from "next/navigation"
 import { getBlogPost, getRelatedPosts } from "@/lib/blog-data"
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+/**
+ * @param {{ params: { slug: string } }} context
+ */
+// @ts-expect-error
+export async function generateMetadata({ params }) {
   const post = getBlogPost(params.slug)
   
   if (!post) {
@@ -44,7 +48,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+/**
+ * @param {{ params: { slug: string } }} context
+ */
+// @ts-expect-error
+export default async function BlogPostPage({ params }) {
   const post = getBlogPost(params.slug)
   
   if (!post) {

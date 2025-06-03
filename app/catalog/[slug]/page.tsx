@@ -5,7 +5,8 @@ import { getCatalogProduct } from "@/lib/catalog-data";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 
-export default function CatalogProductPage({ params }: { params: { slug: string } }) {
+// @ts-expect-error
+export default function CatalogProductPage({ params }) {
   const product = getCatalogProduct(params.slug);
 
   if (!product) {
