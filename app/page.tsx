@@ -159,7 +159,7 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">Who We Are</h2>
               <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-8 drop-shadow">
                 At Ethnics by Aravalli, we proudly manufacture premium Indian ethnic wear for women, right from the heart of Jaipur. We create beautiful Kurtas, Dresses, Anarkalis, Kaftans, and more, designed by skilled artisans using the finest fabrics and prints.
-                We believe in quality, tradition, and style, ensuring that every outfit reflects India's rich heritage while meeting today's fashion trends.
+                We believe in quality, tradition, and style, ensuring that every outfit reflects India&apos;s rich heritage while meeting today&apos;s fashion trends.
                 <br />📌 Direct from our manufacturing unit to your boutique—crafted with care, made to impress!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 md:justify-start justify-center items-center">
