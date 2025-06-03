@@ -6,12 +6,11 @@ import { notFound } from "next/navigation"
 import { getBlogPost, getRelatedPosts } from "@/lib/blog-data"
 
 type Props = {
-  params: Promise<{ slug: string }>
+  params: { slug: string }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await params
-  const post = getBlogPost(resolvedParams.slug)
+  const post = getBlogPost(params.slug)
   
   if (!post) {
     return {
@@ -50,14 +49,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const resolvedParams = await params
-  const post = getBlogPost(resolvedParams.slug)
+  const post = getBlogPost(params.slug)
   
   if (!post) {
     notFound()
   }
 
-  const relatedPosts = getRelatedPosts(resolvedParams.slug)
+  const relatedPosts = getRelatedPosts(params.slug)
 
   // Generate structured data for the blog post
   const structuredData = {
