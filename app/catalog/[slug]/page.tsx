@@ -21,6 +21,16 @@ export default function CatalogProductPage({ params }: { params: { slug: string 
     { size: "XXL",bust: 42, waist: 36, hips: 46, shoulder: 16.5, tLength: 45, bLength: 43, fullLength: 61 },
   ];
 
+  const measurementLabels = [
+    { key: 'bust', label: 'Bust (in)' },
+    { key: 'waist', label: 'Waist (in)' },
+    { key: 'hips', label: 'Hips (in)' },
+    { key: 'shoulder', label: 'Shoulder (in)' },
+    { key: 'tLength', label: 'T. Length (in)' },
+    { key: 'bLength', label: 'B. Length (in)' },
+    { key: 'fullLength', label: 'Full Length (in)' },
+  ];
+
   return (
     <div className="min-h-screen py-12">
       <div className="container max-w-7xl mx-auto">
@@ -66,7 +76,8 @@ export default function CatalogProductPage({ params }: { params: { slug: string 
                         <Image src="/products/size_measurement.png" alt="Size Measurement" width={280} height={480} className="object-contain max-w-xs w-full h-auto" />
                       </div>
                       <div className="flex-1">
-                        <table className="w-full text-xs border-collapse mb-6">
+                        {/* Desktop Table */}
+                        <table className="w-full text-xs border-collapse mb-6 hidden sm:table">
                           <thead>
                             <tr className="border-b">
                               <th className="text-left p-1">Size</th>
@@ -90,6 +101,27 @@ export default function CatalogProductPage({ params }: { params: { slug: string 
                                 <td className="p-1">{row.tLength}</td>
                                 <td className="p-1">{row.bLength}</td>
                                 <td className="p-1">{row.fullLength}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                        {/* Mobile Table (transposed) */}
+                        <table className="w-full text-xs border-collapse mb-6 sm:hidden">
+                          <thead>
+                            <tr className="border-b">
+                              <th className="text-left p-1">Measurement</th>
+                              {sizeChart.map((row) => (
+                                <th key={row.size} className="text-left p-1">{row.size}</th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {measurementLabels.map((m) => (
+                              <tr key={m.key} className="border-b last:border-0">
+                                <td className="p-1 font-semibold">{m.label}</td>
+                                {sizeChart.map((row) => (
+                                  <td key={row.size} className="p-1">{row[m.key as keyof typeof row]}</td>
+                                ))}
                               </tr>
                             ))}
                           </tbody>
