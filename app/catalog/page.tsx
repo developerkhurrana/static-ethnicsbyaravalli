@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Grid, List, Search, Filter } from "lucide-react"
+import { Grid, List, Search } from "lucide-react"
 import { getAllCatalogProducts } from "@/lib/catalog-data"
 
 // Product categories
