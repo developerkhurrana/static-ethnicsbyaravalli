@@ -2,16 +2,16 @@
 
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Home, ShoppingBag, Info, Factory, BookOpen, Mail } from "lucide-react"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 
 const navigation = [
-  { name: "Home", href: "/" },
-  // { name: "Collections", href: "/collections" },
-  { name: "About Us", href: "/about" },
-  { name: "Manufacturing", href: "/manufacturing" },
-  { name: "Blog", href: "/blog" },
+  { name: "Home", href: "/", icon: Home },
+  { name: "Catalog", href: "/catalog", icon: ShoppingBag },
+  { name: "About Us", href: "/about", icon: Info },
+  { name: "Manufacturing", href: "/manufacturing", icon: Factory },
+  { name: "Blog", href: "/blog", icon: BookOpen },
 ]
 
 export function Header() {
@@ -52,37 +52,47 @@ export function Header() {
           <div className="flex lg:hidden">
             <button
               type="button"
-              className={`-m-1 inline-flex items-center justify-center rounded-md p-1 ${
-                isTransparent ? 'text-white' : 'text-[#2E1B1B]'
+              className={`-m-1 inline-flex items-center justify-center rounded-md p-2 transition-colors duration-200 ${
+                isTransparent ? 'text-white hover:bg-white/10' : 'text-[#2E1B1B] hover:bg-[#F9F6F4]'
               }`}
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
-              <Menu className="h-4 w-4" aria-hidden="true" />
+              <Menu className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-6">
-            <div className="flex items-center space-x-0.5">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`px-2 py-0.5 text-sm font-semibold leading-6 ${
-                    isTransparent ? 'text-white hover:text-white/80' : 'text-[#2E1B1B] hover:text-[#D9A8A0]'
-                  } transition-colors duration-200 whitespace-nowrap`}
-                >
-                  {item.name}
-                </Link>
-              ))}
+            <div className="flex items-center space-x-3">
+              {navigation.map((item) => {
+                const Icon = item.icon
+                const isActive = pathname === item.href
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold leading-6 transition-all duration-200 whitespace-nowrap group
+                      ${isActive 
+                        ? 'bg-[#D9A8A0] text-white' 
+                        : isTransparent 
+                          ? 'bg-white/10 text-white hover:bg-[#D9A8A0] hover:text-white' 
+                          : 'bg-[#F9F6F4] text-[#2E1B1B] hover:bg-[#D9A8A0] hover:text-white'}
+                      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D9A8A0]`}
+                  >
+                    <Icon className="h-4 w-4 mb-0.5" />
+                    {item.name}
+                  </Link>
+                )
+              })}
             </div>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link
               href="/contact"
-              className={`group inline-flex items-center gap-2 rounded-md ${
-                isTransparent ? 'bg-white text-[#2E1B1B]' : 'bg-[#D9A8A0] text-white'
-              } px-4 py-2 text-sm font-semibold shadow-sm hover:bg-[#C08478] hover:text-white transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D9A8A0] whitespace-nowrap`}
+              className={`group inline-flex items-center gap-2 rounded-full px-6 py-2 text-sm font-semibold shadow-sm transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D9A8A0] whitespace-nowrap
+                ${isTransparent ? 'bg-white text-[#2E1B1B] hover:bg-[#F9F6F4]' : 'bg-[#D9A8A0] text-white hover:bg-[#C08478]'}
+              `}
             >
+              <Mail className="h-4 w-4" />
               Contact Us
             </Link>
           </div>
@@ -106,30 +116,40 @@ export function Header() {
             </Link>
             <button
               type="button"
-              className="-m-1 rounded-md p-1 text-[#2E1B1B]"
+              className="-m-1 rounded-md p-2 text-[#2E1B1B] hover:bg-[#F9F6F4] transition-colors duration-200"
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">Close menu</span>
-              <X className="h-4 w-4" aria-hidden="true" />
+              <X className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
           <div className="mt-2 flow-root">
-            <div className="space-y-1">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="block w-full text-center rounded-lg px-4 py-3 text-base font-semibold text-[#2E1B1B] hover:bg-[#F9F6F4] transition-colors duration-200"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+            <div className="space-y-3">
+              {navigation.map((item) => {
+                const Icon = item.icon
+                const isActive = pathname === item.href
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`flex items-center gap-2 w-full text-center rounded-full px-4 py-3 text-base font-semibold transition-all duration-200
+                      ${isActive 
+                        ? 'bg-[#D9A8A0] text-white' 
+                        : 'bg-[#F9F6F4] text-[#2E1B1B] hover:bg-[#D9A8A0] hover:text-white'}
+                    `}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Icon className="h-5 w-5" />
+                    {item.name}
+                  </Link>
+                )
+              })}
               <Link
                 href="/contact"
-                className="block w-full text-center rounded-lg px-4 py-3 text-base font-semibold bg-[#D9A8A0] text-white hover:bg-[#C08478] transition-colors duration-200 mt-4"
+                className="flex items-center gap-2 w-full text-center rounded-full px-4 py-3 text-base font-semibold bg-[#D9A8A0] text-white hover:bg-[#C08478] transition-colors duration-200 mt-4 justify-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
+                <Mail className="h-5 w-5" />
                 Contact Us
               </Link>
             </div>
