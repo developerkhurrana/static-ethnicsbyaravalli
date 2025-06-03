@@ -158,7 +158,9 @@ export default function Home() {
             <div className="flex flex-col justify-center md:items-start md:text-left items-center text-center">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">Who We Are</h2>
               <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-8 drop-shadow">
-                Ethnics by Aravalli is a premium manufacturer of Indian ethnic wear for women, based in Jaipur. We create beautiful, high-quality Kurtas, Dresses, Anarkalis, Kaftans, and more—crafted by skilled designers and artisans, using the finest fabrics and prints.
+                At Ethnics by Aravalli, we proudly manufacture premium Indian ethnic wear for women, right from the heart of Jaipur. We create beautiful Kurtas, Dresses, Anarkalis, Kaftans, and more, designed by skilled artisans using the finest fabrics and prints.
+                We believe in quality, tradition, and style, ensuring that every outfit reflects India's rich heritage while meeting today's fashion trends.
+                <br />📌 Direct from our manufacturing unit to your boutique—crafted with care, made to impress!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 md:justify-start justify-center items-center">
                 <Link
@@ -200,7 +202,7 @@ export default function Home() {
               What We Make
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Explore our premium collection of ethnic wear, crafted with precision in Jaipur.
+            Explore our premium ethnic wear collection, made with precision in Jaipur.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -222,7 +224,7 @@ export default function Home() {
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Kurti Sets</h3>
-                  <p className="text-gray-600 mb-4">Premium kurtis with intricate embroidery and modern designs</p>
+                  <p className="text-gray-600 mb-4">Stylish and comfortable, designed with intricate embroidery</p>
                 </div>
                 <Button 
                   className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
@@ -251,7 +253,7 @@ export default function Home() {
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Suits Sets</h3>
-                  <p className="text-gray-600 mb-4">Elegant suits with premium fabrics and contemporary designs</p>
+                  <p className="text-gray-600 mb-4">Elegant ethnic suits crafted with high-quality fabrics</p>
                 </div>
                 <Button 
                   className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
@@ -280,7 +282,7 @@ export default function Home() {
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Kalidaar Sets</h3>
-                  <p className="text-gray-600 mb-4">Luxurious double layer kalidaar designs with premium fabrics</p>
+                  <p className="text-gray-600 mb-4">Flowing, layered designs that bring out timeless beauty</p>
                 </div>
                 <Button 
                   className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
@@ -309,7 +311,7 @@ export default function Home() {
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Dresses</h3>
-                  <p className="text-gray-600 mb-4">Traditional kalidaar designs with modern aesthetics</p>
+                  <p className="text-gray-600 mb-4">Breezy and fashionable, perfect for everyday elegance</p>
                 </div>
                 <Button 
                   className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
@@ -322,6 +324,31 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Contact Section */}
+      {/* <section className="py-16 md:py-24 bg-white border-t border-gray-100">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#4A3A3A]">Ethnics by Aravalli – Premium Ethnic Wear Manufacturers</h2>
+          <p className="text-lg text-gray-700 mb-2">We create stunning ethnic wear directly for boutiques and retailers—no middlemen, just authentic craftsmanship and the best quality!</p>
+          <p className="text-base text-gray-600 mb-2">📍 Based in Jaipur &nbsp; Crafted with care, delivered with excellence</p>
+          <p className="text-base text-gray-600 mb-8">🛍️ Your boutique deserves the best. Let's create something beautiful together!</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-md bg-[#D9A8A0] px-6 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-[#C08478] w-full sm:w-auto"
+            >
+              Contact Us
+            </Link>
+            <Link
+              href="https://wa.me/919828422208"
+              target="_blank"
+              className="inline-flex items-center justify-center rounded-md border border-[#D9A8A0] bg-transparent px-6 py-3 text-sm font-medium text-[#D9A8A0] shadow-sm transition-colors hover:bg-[#D9A8A0]/10 w-full sm:w-auto"
+            >
+              WhatsApp Us
+            </Link>
+          </div>
+        </div>
+      </section> */}
 
       {/* WhatsApp Button */}
       <Link
