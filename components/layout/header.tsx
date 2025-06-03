@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { Menu, X, Home, ShoppingBag, Info, Factory, BookOpen, Mail } from "lucide-react"
+import { Menu, X, Info, Factory, BookOpen, Mail } from "lucide-react"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 
