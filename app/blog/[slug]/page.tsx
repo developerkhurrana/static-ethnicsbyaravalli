@@ -1,14 +1,14 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Calendar, Clock } from "lucide-react"
-import { Metadata } from 'next'
+// import { Metadata } from 'next'
 import { notFound } from "next/navigation"
 import { getBlogPost, getRelatedPosts } from "@/lib/blog-data"
 
 /**
  * @param {{ params: { slug: string } }} context
  */
-// @ts-expect-error
+// @ts-expect-error – Next.js dynamic route params are inferred (no explicit type annotation) for SEO optimization.
 export async function generateMetadata({ params }) {
   const post = getBlogPost(params.slug)
   
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }) {
 /**
  * @param {{ params: { slug: string } }} context
  */
-// @ts-expect-error
+// @ts-expect-error – Next.js dynamic route params are inferred (no explicit type annotation) for SEO optimization.
 export default async function BlogPostPage({ params }) {
   const post = getBlogPost(params.slug)
   
