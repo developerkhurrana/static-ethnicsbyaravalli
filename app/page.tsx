@@ -6,6 +6,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import { useCallback, useEffect, useState } from "react"
 import { FlipWords } from "@/components/ui/flip-words"
 import { Button } from "@/components/ui/button"
+import { KeywordTicker } from "@/components/ui/keyword-ticker"
 
 const heroImages = {
   desktop: [
@@ -16,10 +17,66 @@ const heroImages = {
   mobile: ["/products/hero_mobile_banner.jpg"]
 }
 
+function shuffle<T>(array: T[]): T[] {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+const baseKeywords = [
+  // With Jaipur
+  "Cotton Kurta Manufacturer Jaipur",
+  "Printed Cotton Kurta Set Jaipur",
+  "Modal Kurta-Palazzo Manufacturer Jaipur",
+  "Muslin Dress Jaipur",
+  "Chanderi Kaftan Manufacturer Jaipur",
+  "Viscose Palazzo Set Jaipur",
+  "Pure Linen Co-Ord Set Manufacturer Jaipur",
+  "Kurta-Alpona Salwar Jaipur",
+  "Kurta-Pant-Dta Manufacturer Jaipur",
+  "B2B Kurta Supplier Jaipur",
+  "Ethnic Bottomwear Collection Jaipur",
+  // With India
+  "Kurta Manufacturer in India",
+  "Kurta Set in India",
+  "Ethnic Wear Manufacturer in India",
+  "Kurta Exporter in India",
+  "Designer Kurta for Women in India",
+  // Without location
+  "Cotton Kurta Set",
+  "Muslin Kurta Set",
+  "Chanderi Dress",
+  "Viscose Co-Ord Set",
+  "Kurta-Alpona Salwar",
+  "Kaftan Dress",
+  "Kurta-Sharara Dupatta Set",
+  "Pure Linen Kaftan",
+  "Co-Ord Sets for Women",
+  "Ethnic Palazzo Pants",
+  "Sharara Bottomwear Collection",
+  "Kurta with Palazzo",
+  "Kurta-Pant Set",
+  "Kurta-Palazzo-Dupatta Set",
+  "Women's Kurta Set Online",
+  "Designer Kurta for Women",
+  "Festive Wear Kurta Set"
+];
+
+const keywords = shuffle(baseKeywords);
+
+const heroWords = ["Premium", "Trusted", "Quality"];
+function getRandomHeroWord() {
+  return heroWords[Math.floor(Math.random() * heroWords.length)];
+}
+
 export default function Home() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
+  const [heroWord] = useState(getRandomHeroWord());
 
   useEffect(() => {
     const checkMobile = () => {
@@ -105,7 +162,7 @@ export default function Home() {
           <div className={`space-y-8 ${isMobile ? 'flex flex-col justify-between h-[90vh]' : ''}`}>
             <div className={isMobile ? 'mt-16' : ''}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-                Premium{"  "}
+                {heroWord}{"  "}
                 <span className="inline-block">
                   <FlipWords
                     words={["Kurti", "Kurti Sets", "Suit Sets", "Co-ord Sets", "Kaftans", "Dresses", "Anarkalis", "Tops", "Tunics"]}
@@ -331,7 +388,7 @@ export default function Home() {
                   fill
                   className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
                 />
-                <Image
+          <Image
                   src="https://ekohum.com/cdn/shop/files/1P1A4278f.jpg?v=1717779843"
                   alt="Kaftans Collection Hover"
                   fill
@@ -360,7 +417,7 @@ export default function Home() {
                   fill
                   className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
                 />
-                <Image
+          <Image
                   src="https://ekohum.com/cdn/shop/files/DSC_1622_33b0f5b1-b840-4283-90cc-259f6794734e.jpg?v=1729164681"
                   alt="Kalidaars Collection Hover"
                   fill
@@ -383,6 +440,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Keyword Ticker */}
+      <KeywordTicker keywords={keywords} className="border-t border-gray-100" />
 
       {/* Contact Section */}
       {/* <section className="py-16 md:py-24 bg-white border-t border-gray-100">
@@ -422,3 +482,31 @@ export default function Home() {
     </div>
   )
 }
+
+export const metadata = {
+  title: "Premium & Trusted Kurti Manufacturer in Jaipur | Ethnics by Aravalli",
+  description: "Ethnics by Aravalli is a leading, trusted manufacturer of premium designer kurtis, kurta sets, and ethnic wear in Jaipur, India. B2B, bulk, and boutique orders welcome.",
+  openGraph: {
+    title: "Premium & Trusted Kurti Manufacturer in Jaipur | Ethnics by Aravalli",
+    description: "Ethnics by Aravalli is a leading, trusted manufacturer of premium designer kurtis, kurta sets, and ethnic wear in Jaipur, India. B2B, bulk, and boutique orders welcome.",
+    url: "https://ethnicsbyaravalli.com/",
+    siteName: "Ethnics by Aravalli",
+    images: [
+      {
+        url: "https://ethnicsbyaravalli.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ethnics by Aravalli - Premium Ethnic Wear",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Premium & Trusted Kurti Manufacturer in Jaipur | Ethnics by Aravalli",
+    description: "Ethnics by Aravalli is a leading, trusted manufacturer of premium designer kurtis, kurta sets, and ethnic wear in Jaipur, India. B2B, bulk, and boutique orders welcome.",
+    images: ["https://ethnicsbyaravalli.com/og-image.jpg"],
+    creator: "@ethnicsbyaravalli",
+  },
+};
