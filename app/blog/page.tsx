@@ -1,4 +1,3 @@
-import { Metadata } from "next"
 import { getBlogPosts } from "@/lib/notion"
 import { SectionHeader } from "@/components/ui/section-header"
 import { BentoBlogGrid } from "@/components/blog/bento-blog-grid"
