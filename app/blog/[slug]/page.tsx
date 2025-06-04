@@ -1,19 +1,21 @@
+'use client'
+
 import Link from "next/link"
 import { Metadata } from 'next'
 import { notFound } from "next/navigation"
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/notion"
 import { BlogPostImage } from "@/components/blog/blog-post-image"
 import { formatDate } from '@/lib/utils'
+import React from 'react'
 
-// This is a Server Component
-export const dynamic = 'force-static'
-export const revalidate = 3600 // revalidate every hour
+// This is a Client Component
+export const dynamic = 'force-dynamic'
 
-type Props = {
-  params: { slug: string }
+interface PageParams {
+  slug: string
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: PageParams }): Promise<Metadata> {
   const post = await getBlogPostBySlug(params.slug)
   
   if (!post) {
@@ -51,30 +53,43 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<PageParams[]> {
   const posts = await getBlogPosts()
   return posts.map((post) => ({
     slug: post.slug,
   }))
 }
 
-export default async function Page({ params }: Props) {
-  const post = await getBlogPostBySlug(params.slug)
-  
+export default function Page({ params }: { params: PageParams }) {
+  const [post, setPost] = React.useState<Awaited<ReturnType<typeof getBlogPostBySlug>>>(null)
+  const [relatedPosts, setRelatedPosts] = React.useState<Awaited<ReturnType<typeof getBlogPosts>>>([])
+  const [readTime, setReadTime] = React.useState(0)
+
+  React.useEffect(() => {
+    async function loadData() {
+      const fetchedPost = await getBlogPostBySlug(params.slug)
+      if (!fetchedPost) {
+        notFound()
+      }
+      setPost(fetchedPost)
+
+      const allPosts = await getBlogPosts()
+      const related = allPosts
+        .filter(p => p.id !== fetchedPost.id)
+        .slice(0, 3)
+      setRelatedPosts(related)
+
+      // Calculate read time
+      const contentString = typeof fetchedPost.content === 'string' ? fetchedPost.content : String(fetchedPost.content || '')
+      const wordCount = contentString.split(/\s+/).length
+      setReadTime(Math.ceil(wordCount / 200))
+    }
+    loadData()
+  }, [params.slug])
+
   if (!post) {
-    notFound()
+    return <div>Loading...</div>
   }
-
-  // Get all posts for related posts
-  const allPosts = await getBlogPosts()
-  const relatedPosts = allPosts
-    .filter(p => p.id !== post.id)
-    .slice(0, 3) // Get 3 related posts
-
-  // Calculate read time (assuming average reading speed of 200 words per minute)
-  const contentString = typeof post.content === 'string' ? post.content : String(post.content || '')
-  const wordCount = contentString.split(/\s+/).length
-  const readTime = Math.ceil(wordCount / 200)
 
   return (
     <div className="container max-w-7xl mx-auto px-4 py-12">
@@ -98,7 +113,7 @@ export default async function Page({ params }: Props) {
             <span>•</span>
             <span>{readTime} min read</span>
           </div>
-          <div className="prose max-w-none dark:prose-invert" dangerouslySetInnerHTML={{ __html: contentString }} />
+          <div className="prose max-w-none dark:prose-invert" dangerouslySetInnerHTML={{ __html: post.content }} />
         </article>
         {/* Related Posts */}
         <aside className="lg:col-span-1">
