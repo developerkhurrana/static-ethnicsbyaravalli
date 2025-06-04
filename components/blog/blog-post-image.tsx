@@ -8,9 +8,10 @@ interface BlogPostImageProps {
   src: string
   alt: string
   className?: string
+  priority?: boolean
 }
 
-export function BlogPostImage({ src, alt, className }: BlogPostImageProps) {
+export function BlogPostImage({ src, alt, className, priority = false }: BlogPostImageProps) {
   const [imageError, setImageError] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -60,14 +61,14 @@ export function BlogPostImage({ src, alt, className }: BlogPostImageProps) {
           "object-cover transition-transform duration-300 group-hover:scale-110",
           isLoading ? 'opacity-0' : 'opacity-100'
         )}
-        priority
+        priority={priority}
         itemProp="image"
         onLoad={() => {
           console.log('BlogPostImage - Image loaded successfully:', src)
           setIsLoading(false)
         }}
         onError={() => {
-          console.error('BlogPostImage - Image failed to load:', src)
+          console.warn("Image failed to load:", src)
           setImageError(true)
           setIsLoading(false)
         }}

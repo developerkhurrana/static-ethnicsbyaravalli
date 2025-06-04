@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { getBlogPosts } from '@/lib/notion'
 
 // Base URL of your website
 const baseUrl = 'https://ethnicsbyaravalli.com'
@@ -38,29 +39,22 @@ const staticRoutes = [
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Get all blog posts
-  const blogPosts = await fetch(`${baseUrl}/api/blog-posts`)
-    .then((res) => res.json())
-    .catch(() => [])
-
-  // Create blog post routes
-  const blogRoutes = blogPosts.map((post: any) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.updatedAt || post.createdAt),
+  const posts = await getBlogPosts();
+  const postEntries = posts.map((post) => ({
+    url: `https://ethnicsbyaravalli.com/blog/${post.slug}`,
+    lastModified: new Date(post.updatedAt),
     changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }))
+    priority: 0.8,
+  }));
 
-  // Combine all routes
-  const routes = [
-    ...staticRoutes.map(route => ({
-      ...route,
-      url: `${baseUrl}${route.url}`,
-    })),
-    ...blogRoutes,
-  ]
+  const staticPages = [
+    { url: 'https://ethnicsbyaravalli.com', lastModified: new Date(), changeFrequency: 'daily' as const, priority: 1.0 },
+    { url: 'https://ethnicsbyaravalli.com/blog', lastModified: new Date(), changeFrequency: 'daily' as const, priority: 0.9 },
+    { url: 'https://ethnicsbyaravalli.com/about', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.7 },
+    { url: 'https://ethnicsbyaravalli.com/contact', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.7 },
+  ];
 
-  return routes
+  return [...staticPages, ...postEntries];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
