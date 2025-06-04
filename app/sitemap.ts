@@ -61,4 +61,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]
 
   return routes
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function someFunction(param: any) {
+  // ...
 } 
