@@ -8,20 +8,14 @@ import { getBlogPostBySlug, getBlogPosts } from "@/lib/notion"
 import { BlogPostImage } from "@/components/blog/blog-post-image"
 import { formatDate } from '@/lib/utils'
 
-type PageParams = {
-  slug: string
-}
-
-export async function generateMetadata({ params }: { params: PageParams }) {
+export async function generateMetadata({ params }: { params: { slug: string } }) {
   const post = await getBlogPostBySlug(params.slug)
-  
   if (!post) {
     return {
       title: 'Post Not Found',
       description: 'The requested blog post could not be found.',
     }
   }
-
   return {
     title: post.title,
     description: post.description,
@@ -59,7 +53,6 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const post = await getBlogPostBySlug(params.slug)
-  
   if (!post) {
     notFound()
   }
