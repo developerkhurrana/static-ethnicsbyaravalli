@@ -6,48 +6,50 @@ import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
 
 export const metadata = {
-  title: "Manufacturing",
+  title: "Manufacturing Excellence | Premium Ethnic Wear Manufacturer in Jaipur",
   description:
-    "Discover our state-of-the-art manufacturing facilities and capabilities.",
-}
+    "Explore our state-of-the-art manufacturing facilities, where traditional craftsmanship meets modern technology to create premium ethnic wear for boutiques and retailers.",
+};
 
 const capabilities = [
-  "In-house design and pattern making",
-  "Advanced cutting and stitching units",
-  "Hand embroidery and machine embroidery",
-  "Quality control at every stage",
-  "Packaging and labeling services",
-  "Custom design development",
-  "Bulk production capacity",
-  "Fast sampling and prototyping",
-]
+  "In-house design and pattern making for ethnic wear collections",
+  "Advanced cutting and stitching units ensuring premium craftsmanship",
+  "Hand embroidery and machine embroidery blending tradition with innovation",
+  "Strict quality control processes for flawless ethnic fashion",
+  "Custom packaging and labeling services tailored for boutiques",
+  "Exclusive custom design development for retailers",
+  "Bulk production capacity to meet growing boutique demands",
+  "Fast sampling and prototyping for quick product development",
+];
 
 const facilities = [
   {
     title: "Design Studio",
     image: "https://lh3.googleusercontent.com/p/AF1QipOHwu3Sxyf-MXB_sJ57cLGIQ1jOhID2nL39kznT=s680-w680-h510-rw",
     description:
-      "Our design studio is equipped with the latest technology and staffed by experienced designers who create unique, market-ready designs.",
+      "Our design studio combines creativity and technology, allowing expert designers to craft unique ethnic wear collections ready for the market.",
   },
   {
     title: "Production Unit",
     image: "https://lh3.googleusercontent.com/p/AF1QipOSQ4UdNWJkeTGUSVvojWo3iB9ZBTX2vRS90zSd=s680-w680-h510-rw",
     description:
-      "State-of-the-art machinery and skilled workers ensure high-quality production with attention to detail.",
+      "High-tech machinery and skilled artisans work together to manufacture premium ethnic wear with precision and attention to detail.",
   },
   {
     title: "Embroidery Section",
     image: "/manufacturing/embroidery.jpg",
     description:
-      "Dedicated embroidery section with both traditional hand embroidery artisans and modern machine embroidery units.",
+      "Our dedicated embroidery unit features both traditional hand embroidery artisans and modern machine embroidery techniques, ensuring intricate detailing.",
   },
   {
     title: "Quality Control",
     image: "/manufacturing/quality-control.jpg",
     description:
-      "Rigorous quality control processes ensure every piece meets our high standards before shipping.",
+      "Stringent quality control measures are in place at every stage to guarantee superior craftsmanship and consistency before shipping.",
   },
-]
+];
+
+export { capabilities, facilities };
 
 export default function ManufacturingPage() {
   return (
