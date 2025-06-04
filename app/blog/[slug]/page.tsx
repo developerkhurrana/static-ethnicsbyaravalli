@@ -8,6 +8,7 @@ import { getBlogPostBySlug, getBlogPosts } from "@/lib/notion"
 import { BlogPostImage } from "@/components/blog/blog-post-image"
 import { formatDate } from '@/lib/utils'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function generateMetadata({ params }: any) {
   const post = await getBlogPostBySlug(params.slug)
   if (!post) {
@@ -51,6 +52,7 @@ export async function generateStaticParams() {
   }))
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function Page({ params }: any) {
   const post = await getBlogPostBySlug(params.slug)
   if (!post) {
