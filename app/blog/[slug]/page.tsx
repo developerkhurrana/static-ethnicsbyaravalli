@@ -5,14 +5,15 @@ import { getBlogPostBySlug, getBlogPosts } from "@/lib/notion"
 import { BlogPostImage } from "@/components/blog/blog-post-image"
 import { formatDate } from '@/lib/utils'
 
-type PageProps = {
+// This is a Server Component
+export const dynamic = 'force-static'
+export const revalidate = 3600 // revalidate every hour
+
+type Props = {
   params: { slug: string }
-  searchParams: Record<string, string | string[] | undefined>
 }
 
-export async function generateMetadata(
-  { params }: PageProps
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlogPostBySlug(params.slug)
   
   if (!post) {
@@ -50,18 +51,14 @@ export async function generateMetadata(
   }
 }
 
-export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
+export async function generateStaticParams() {
   const posts = await getBlogPosts()
   return posts.map((post) => ({
     slug: post.slug,
   }))
 }
 
-type Props = {
-  params: { slug: string }
-}
-
-export default async function BlogPost({ params }: Props) {
+export default async function Page({ params }: Props) {
   const post = await getBlogPostBySlug(params.slug)
   
   if (!post) {
