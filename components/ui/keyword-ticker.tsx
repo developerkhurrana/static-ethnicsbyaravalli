@@ -43,6 +43,21 @@ export function KeywordTicker({ keywords, className = '' }: KeywordTickerProps) 
     return () => container.removeEventListener('animationend', handleAnimationEnd)
   }, [keywords])
 
+  useEffect(() => {
+    const ticker = document.querySelector(".keyword-ticker ul");
+    if (ticker) {
+      ticker.scrollLeft = 0;
+      const tick = () => {
+        ticker.scrollLeft += 1;
+        if (ticker.scrollLeft >= ticker.scrollWidth - ticker.clientWidth) {
+          ticker.scrollLeft = 0;
+        }
+        requestAnimationFrame(tick);
+      };
+      tick();
+    }
+  }, []);
+
   return (
     <section 
       aria-label="Popular Searches" 
