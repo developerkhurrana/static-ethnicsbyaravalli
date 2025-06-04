@@ -10,9 +10,6 @@ if (!process.env.NOTION_BLOG_DATABASE_ID) {
   throw new Error('Missing NOTION_BLOG_DATABASE_ID environment variable')
 }
 
-// Default hero banner image to use when no cover image is provided
-const DEFAULT_HERO_IMAGE = '/images/blog-hero.jpg'
-
 const notion = new Client({
   auth: process.env.NOTION_API_KEY,
 })
@@ -41,19 +38,17 @@ function getCoverImageUrl(properties: any): string {
   return "/images/blog-hero.jpg";
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function extractTextFromRichText(contentObj: any): string {
+function extractTextFromRichText(contentObj: unknown): string {
   if (typeof contentObj === 'string') return contentObj;
   if (Array.isArray(contentObj)) {
     return contentObj.map(extractTextFromRichText).join(' ');
   }
-  if (contentObj && Array.isArray(contentObj.rich_text)) {
-    return contentObj.rich_text.map((rt: any) => rt.plain_text || '').join('');
+  if (contentObj && typeof contentObj === 'object' && 'rich_text' in contentObj && Array.isArray((contentObj as any).rich_text)) {
+    return (contentObj as any).rich_text.map((rt: any) => rt.plain_text || '').join('');
   }
   return '';
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getBlogPosts(): Promise<BlogPost[]> {
   try {
     const response = await notion.databases.query({
@@ -72,13 +67,12 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
       ],
     })
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const posts = response.results.map((page: any) => {
-      const properties = page.properties
+    const posts = response.results.map((page: unknown) => {
+      const properties = (page as any).properties
       const content = extractTextFromRichText(properties.content) || extractTextFromRichText(properties.Content) || ''
       console.log('Notion DEBUG - BlogPost content:', content)
       return {
-        id: page.id,
+        id: (page as any).id,
         slug: properties.slug?.rich_text?.[0]?.plain_text || properties.Slug?.rich_text?.[0]?.plain_text || '',
         title: properties.title?.title?.[0]?.plain_text || properties.Title?.title?.[0]?.plain_text || '',
         description: properties.description?.rich_text?.[0]?.plain_text || properties.Description?.rich_text?.[0]?.plain_text || '',
@@ -96,7 +90,6 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
     const response = await notion.databases.query({
@@ -123,14 +116,13 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       return null
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const page = response.results[0] as any
-    const properties = page.properties
+    const page = response.results[0] as unknown
+    const properties = (page as any).properties
     const content = extractTextFromRichText(properties.content) || extractTextFromRichText(properties.Content) || ''
     console.log('Notion DEBUG - BlogPostBySlug content:', content)
 
     return {
-      id: page.id,
+      id: (page as any).id,
       slug: properties.slug?.rich_text?.[0]?.plain_text || properties.Slug?.rich_text?.[0]?.plain_text || '',
       title: properties.title?.title?.[0]?.plain_text || properties.Title?.title?.[0]?.plain_text || '',
       description: properties.description?.rich_text?.[0]?.plain_text || properties.Description?.rich_text?.[0]?.plain_text || '',
