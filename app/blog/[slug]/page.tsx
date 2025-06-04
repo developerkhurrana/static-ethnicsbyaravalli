@@ -5,11 +5,14 @@ import { getBlogPostBySlug, getBlogPosts } from "@/lib/notion"
 import { BlogPostImage } from "@/components/blog/blog-post-image"
 import { formatDate } from '@/lib/utils'
 
-interface PageParams {
-  slug: string
+type PageProps = {
+  params: { slug: string }
+  searchParams: Record<string, string | string[] | undefined>
 }
 
-export async function generateMetadata({ params }: { params: PageParams }): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: PageProps
+): Promise<Metadata> {
   const post = await getBlogPostBySlug(params.slug)
   
   if (!post) {
@@ -47,18 +50,18 @@ export async function generateMetadata({ params }: { params: PageParams }): Prom
   }
 }
 
-export async function generateStaticParams(): Promise<PageParams[]> {
+export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
   const posts = await getBlogPosts()
   return posts.map((post) => ({
     slug: post.slug,
   }))
 }
 
-export default async function BlogPost({
-  params,
-}: {
-  params: PageParams
-}) {
+type Props = {
+  params: { slug: string }
+}
+
+export default async function BlogPost({ params }: Props) {
   const post = await getBlogPostBySlug(params.slug)
   
   if (!post) {
