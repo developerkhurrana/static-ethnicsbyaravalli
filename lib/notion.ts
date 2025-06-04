@@ -1,4 +1,5 @@
 import { Client } from '@notionhq/client'
+import { NotionToMarkdown } from 'notion-to-md'
 
 if (!process.env.NOTION_API_KEY) {
   throw new Error('Missing NOTION_API_KEY environment variable')
@@ -15,6 +16,14 @@ const notion = new Client({
   auth: process.env.NOTION_API_KEY,
 })
 
+const n2m = new NotionToMarkdown({ notionClient: notion })
+
+async function getPageContentAsHtml(pageId: string): Promise<string> {
+  const mdBlocks = await n2m.pageToMarkdown(pageId)
+  const mdStringObj = n2m.toMarkdownString(mdBlocks)
+  return typeof mdStringObj === 'string' ? mdStringObj : mdStringObj.parent;
+}
+
 export interface BlogPost {
   id: string
   slug: string
@@ -28,25 +37,13 @@ export interface BlogPost {
 }
 
 function getCoverImageUrl(properties: any): string {
-  try {
-    // Check if there's a cover image in the files property
-    const coverImage = properties.CoverImage?.files?.[0]?.file?.url
-    if (coverImage) {
-      return coverImage
-    }
-
-    // Check if there's a cover image in the files property (alternative format)
-    const coverImageAlt = properties.CoverImage?.files?.[0]?.external?.url
-    if (coverImageAlt) {
-      return coverImageAlt
-    }
-
-    // If no cover image is found, return the default hero image
-    return DEFAULT_HERO_IMAGE
-  } catch (error) {
-    console.error('Error getting cover image:', error)
-    return DEFAULT_HERO_IMAGE
+  // Expect 'coverImage' as a text (URL) property
+  const coverImageUrl = properties.coverImage?.rich_text?.[0]?.plain_text || properties.coverImage?.url || properties.coverImage;
+  if (coverImageUrl && typeof coverImageUrl === 'string') {
+    return coverImageUrl;
   }
+  // Fallback
+  return "/images/blog-hero.jpg";
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
@@ -67,21 +64,23 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
       ],
     })
 
-    return response.results.map((page: any) => {
+    // Fetch content for each post
+    const posts = await Promise.all(response.results.map(async (page: any) => {
       const properties = page.properties
-
+      const content = await getPageContentAsHtml(page.id)
       return {
         id: page.id,
-        slug: properties.Slug?.rich_text?.[0]?.plain_text || '',
-        title: properties.Title?.title?.[0]?.plain_text || '',
-        description: properties.Description?.rich_text?.[0]?.plain_text || '',
+        slug: properties.slug?.rich_text?.[0]?.plain_text || properties.Slug?.rich_text?.[0]?.plain_text || '',
+        title: properties.title?.title?.[0]?.plain_text || properties.Title?.title?.[0]?.plain_text || '',
+        description: properties.description?.rich_text?.[0]?.plain_text || properties.Description?.rich_text?.[0]?.plain_text || '',
         coverImage: getCoverImageUrl(properties),
-        createdAt: properties.Created?.created_time || new Date().toISOString(),
-        updatedAt: properties.Updated?.last_edited_time || new Date().toISOString(),
-        content: page.content || '',
-        published: properties.Published?.checkbox || false,
+        createdAt: properties.created?.created_time || properties.Created?.created_time || new Date().toISOString(),
+        updatedAt: properties.updated?.last_edited_time || properties.Updated?.last_edited_time || new Date().toISOString(),
+        content,
+        published: properties.published?.checkbox || properties.Published?.checkbox || false,
       }
-    })
+    }))
+    return posts
   } catch (error) {
     console.error('Error fetching blog posts:', error)
     return []
@@ -116,17 +115,18 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
 
     const page = response.results[0] as any
     const properties = page.properties
+    const content = await getPageContentAsHtml(page.id)
 
     return {
       id: page.id,
-      slug: properties.Slug?.rich_text?.[0]?.plain_text || '',
-      title: properties.Title?.title?.[0]?.plain_text || '',
-      description: properties.Description?.rich_text?.[0]?.plain_text || '',
+      slug: properties.slug?.rich_text?.[0]?.plain_text || properties.Slug?.rich_text?.[0]?.plain_text || '',
+      title: properties.title?.title?.[0]?.plain_text || properties.Title?.title?.[0]?.plain_text || '',
+      description: properties.description?.rich_text?.[0]?.plain_text || properties.Description?.rich_text?.[0]?.plain_text || '',
       coverImage: getCoverImageUrl(properties),
-      createdAt: properties.Created?.created_time || new Date().toISOString(),
-      updatedAt: properties.Updated?.last_edited_time || new Date().toISOString(),
-      content: page.content || '',
-      published: properties.Published?.checkbox || false,
+      createdAt: properties.created?.created_time || properties.Created?.created_time || new Date().toISOString(),
+      updatedAt: properties.updated?.last_edited_time || properties.Updated?.last_edited_time || new Date().toISOString(),
+      content,
+      published: properties.published?.checkbox || properties.Published?.checkbox || false,
     }
   } catch (error) {
     console.error('Error fetching blog post:', error)

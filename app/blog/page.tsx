@@ -1,7 +1,9 @@
 import { Metadata } from "next"
+import { getBlogPosts } from "@/lib/notion"
 import { BlogList } from "@/components/blog/blog-list"
 import { SectionHeader } from "@/components/ui/section-header"
-import { getBlogPosts } from "@/lib/notion"
+
+export const revalidate = 3600 // Revalidate every hour
 
 export async function generateMetadata(): Promise<Metadata> {
   const posts = await getBlogPosts()
@@ -94,23 +96,11 @@ export default async function BlogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <div className="container max-w-7xl mx-auto px-4 py-8">
-        <nav aria-label="Breadcrumb" className="mb-8">
-          <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <li>
-              <a href="/" className="hover:text-foreground">Home</a>
-            </li>
-            <li>/</li>
-            <li className="text-foreground" aria-current="page">Blog</li>
-          </ol>
-        </nav>
-
-        <SectionHeader
-          title="Blog"
-          description="Discover the latest insights, trends, and stories from Ethnics by Aravalli about ethnic wear manufacturing, traditional craftsmanship, and the fashion industry."
-          className="mb-12"
-        />
-        <BlogList />
+      <div className="min-h-[calc(100vh-4rem)] flex flex-col py-16">
+        <div className="container max-w-7xl mx-auto px-4">
+          <h1 className="text-4xl font-bold mb-8">Blog</h1>
+          <BlogList initialPosts={posts} />
+        </div>
       </div>
     </>
   )

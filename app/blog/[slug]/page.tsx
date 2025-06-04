@@ -4,6 +4,8 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react"
 import { Metadata } from 'next'
 import { notFound } from "next/navigation"
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/notion"
+import { BlogPostImage } from "@/components/blog/blog-post-image"
+
 
 interface Props {
   params: {
@@ -110,186 +112,47 @@ export default async function BlogPostPage({ params }: Props) {
     .filter(p => p.id !== post.id)
     .slice(0, 3) // Get 3 related posts
 
-  // Generate enhanced structured data for the blog post
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": post.title,
-    "description": post.description,
-    "image": post.coverImage,
-    "datePublished": post.createdAt,
-    "dateModified": post.updatedAt,
-    "author": {
-      "@type": "Organization",
-      "name": "Ethnics by Aravalli",
-      "url": "https://ethnicsbyaravalli.com"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Ethnics by Aravalli",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://ethnicsbyaravalli.com/logo.png",
-        "width": "112",
-        "height": "112"
-      },
-      "url": "https://ethnicsbyaravalli.com"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `https://ethnicsbyaravalli.com/blog/${post.slug}`
-    },
-    "keywords": [
-      'ethnic wear',
-      'Indian fashion',
-      'traditional clothing',
-      'Jaipur manufacturer',
-      'wholesale ethnic wear',
-      'boutique supplier',
-      'handcrafted fashion',
-      'artisanal clothing',
-      post.title.toLowerCase(),
-      ...post.title.toLowerCase().split(' ').filter(word => word.length > 3)
-    ].join(', '),
-    "articleSection": "Fashion & Manufacturing",
-    "inLanguage": "en-US",
-    "isAccessibleForFree": true,
-    "wordCount": post.content.split(/\s+/).length,
-    "speakable": {
-      "@type": "SpeakableSpecification",
-      "cssSelector": [".prose"]
-    }
-  }
-
   // Calculate read time (assuming average reading speed of 200 words per minute)
-  const wordCount = post.content.split(/\s+/).length
+  const wordCount = (post.content || '').split(/\s+/).length
   const readTime = Math.ceil(wordCount / 200)
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-      <div className="min-h-[calc(100vh-4rem)] flex flex-col py-16">
-        <div className="container max-w-7xl mx-auto px-4">
-          <nav aria-label="Breadcrumb" className="mb-8">
-            <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
-              <li>
-                <Link href="/" className="hover:text-foreground">Home</Link>
-              </li>
-              <li>/</li>
-              <li>
-                <Link href="/blog" className="hover:text-foreground">Blog</Link>
-              </li>
-              <li>/</li>
-              <li className="text-foreground" aria-current="page">{post.title}</li>
-            </ol>
-          </nav>
-
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Blog
-          </Link>
-
-          <article className="max-w-7xl mx-auto" itemScope itemType="https://schema.org/BlogPosting">
-            {post.coverImage && (
-              <div className="relative w-full h-[400px] mb-8 rounded-lg overflow-hidden">
-                <Image
-                  src={post.coverImage}
-                  alt={post.title}
-                  fill
-                  className="object-cover"
-                  priority
-                  itemProp="image"
-                />
-              </div>
-            )}
-            
-            <div className="prose prose-lg dark:prose-invert max-w-none">
-              <h1 className="font-serif text-4xl font-bold mb-4" itemProp="headline">{post.title}</h1>
-              
-              <div className="flex items-center gap-4 text-sm text-muted-foreground mb-8">
-                <time 
-                  dateTime={post.createdAt}
-                  itemProp="datePublished"
-                  className="flex items-center gap-1"
-                >
-                  <Calendar className="h-4 w-4" />
-                  {new Date(post.createdAt).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </time>
-                <span className="flex items-center gap-1">
-                  <Clock className="h-4 w-4" />
-                  {readTime} min read
-                </span>
-              </div>
-
-              <div 
-                className="mt-8"
-                itemProp="articleBody"
-                dangerouslySetInnerHTML={{ __html: post.content }}
-              />
-            </div>
-          </article>
-
-          {relatedPosts.length > 0 && (
-            <div className="max-w-7xl mx-auto mt-16">
-              <h2 className="text-2xl font-bold mb-8">Related Posts</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {relatedPosts.map((post) => (
-                  <Link 
-                    key={post.id}
-                    href={`/blog/${post.slug}`}
-                    className="group block"
-                  >
-                    <div className="h-full rounded-lg border bg-card overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
-                      {post.coverImage && (
-                        <div className="relative w-full h-48 overflow-hidden">
-                          <Image
-                            src={post.coverImage}
-                            alt={post.title}
-                            fill
-                            className="object-cover transition-transform duration-300 group-hover:scale-110"
-                          />
-                        </div>
-                      )}
-                      <div className="p-4">
-                        <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
-                          <time 
-                            dateTime={post.createdAt}
-                            className="flex items-center gap-1"
-                          >
-                            <Calendar className="h-4 w-4" />
-                            {new Date(post.createdAt).toLocaleDateString('en-US', {
-                              year: 'numeric',
-                              month: 'long',
-                              day: 'numeric'
-                            })}
-                          </time>
-                        </div>
-                        <h3 className="font-medium text-lg mb-2 line-clamp-2 transition-colors duration-300 group-hover:text-[#D9A8A0]">
-                          {post.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground line-clamp-2">
-                          {post.description}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
+    <div className="container max-w-7xl mx-auto px-4 py-12">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        {/* Main Blog Content */}
+        <article className="lg:col-span-2">
+          <div className="rounded-xl overflow-hidden mb-6 aspect-video bg-muted">
+            <BlogPostImage src={post.coverImage} alt={post.title} className="w-full h-full" />
+          </div>
+          <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
+          <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
+            <span>{new Date(post.createdAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span>
+            <span>•</span>
+            <span>{readTime} min read</span>
+          </div>
+          <div className="prose max-w-none dark:prose-invert" dangerouslySetInnerHTML={{ __html: post.content || '' }} />
+        </article>
+        {/* Related Posts */}
+        <aside className="lg:col-span-1">
+          <h2 className="text-xl font-semibold mb-4">Related Posts</h2>
+          <div className="space-y-6">
+            {relatedPosts.map(rp => (
+              <Link key={rp.id} href={`/blog/${rp.slug}`} className="flex gap-4 group">
+                <div className="w-24 h-16 rounded-lg overflow-hidden bg-muted flex-shrink-0">
+                  <BlogPostImage src={rp.coverImage} alt={rp.title} className="w-full h-full" />
+                </div>
+                <div>
+                  <h3 className="font-medium text-base group-hover:text-primary transition-colors line-clamp-2">{rp.title}</h3>
+                  <div className="text-xs text-muted-foreground mt-1">
+                    {new Date(rp.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </aside>
       </div>
-    </>
+    </div>
   )
 } 
 
