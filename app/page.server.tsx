@@ -1,8 +1,8 @@
 import { metadata } from './metadata'
-import HomeClient from './page.client'
+import Home from './page'
 
 export { metadata }
 
 export default function HomePage() {
-  return <HomeClient />
+  return <Home />
 } 
