@@ -3,7 +3,6 @@ export const dynamic = 'force-static'
 export const revalidate = 3600 // revalidate every hour
 
 import Link from "next/link"
-import { Metadata } from 'next'
 import { notFound } from "next/navigation"
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/notion"
 import { BlogPostImage } from "@/components/blog/blog-post-image"
