@@ -55,7 +55,7 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function BlogPost({ params, searchParams }: Props) {
+export default async function BlogPost({ params }: Props) {
   const post = await getBlogPostBySlug(params.slug)
   
   if (!post) {
