@@ -4,7 +4,6 @@ import { useState } from "react"
 import Link from "next/link"
 import { BlogPost } from "@/lib/notion"
 import { BlogPostImage } from "./blog-post-image"
-import { cn } from "@/lib/utils"
 
 interface BlogListProps {
   initialPosts: BlogPost[]

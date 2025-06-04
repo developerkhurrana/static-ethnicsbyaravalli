@@ -62,12 +62,12 @@ export function BlogPostImage({ src, alt, className }: BlogPostImageProps) {
         )}
         priority
         itemProp="image"
-        onLoad={(e) => {
+        onLoad={() => {
           console.log('BlogPostImage - Image loaded successfully:', src)
           setIsLoading(false)
         }}
-        onError={(e) => {
-          console.error('BlogPostImage - Image failed to load:', src, e)
+        onError={() => {
+          console.error('BlogPostImage - Image failed to load:', src)
           setImageError(true)
           setIsLoading(false)
         }}

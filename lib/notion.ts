@@ -1,5 +1,6 @@
 import { Client } from '@notionhq/client'
-import { NotionToMarkdown } from 'notion-to-md'
+// import { NotionToMarkdown } from 'notion-to-md' // Not used
+import { marked } from 'marked'
 
 if (!process.env.NOTION_API_KEY) {
   throw new Error('Missing NOTION_API_KEY environment variable')
@@ -9,11 +10,14 @@ if (!process.env.NOTION_BLOG_DATABASE_ID) {
   throw new Error('Missing NOTION_BLOG_DATABASE_ID environment variable')
 }
 
+// Default hero banner image to use when no cover image is provided
+const DEFAULT_HERO_IMAGE = '/images/blog-hero.jpg'
+
 const notion = new Client({
   auth: process.env.NOTION_API_KEY,
 })
 
-const n2m = new NotionToMarkdown({ notionClient: notion })
+// n2m removed
 
 export interface BlogPost {
   id: string
