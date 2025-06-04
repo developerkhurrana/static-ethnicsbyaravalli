@@ -5,7 +5,7 @@ import { BentoBlogGrid } from "@/components/blog/bento-blog-grid"
 
 export const revalidate = 3600 // Revalidate every hour
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata() {
   return {
     title: "Blog | Ethnics by Aravalli - Premium Ethnic Wear Manufacturer in Jaipur",
     description: "Discover the latest insights, trends, and stories about ethnic wear manufacturing, traditional craftsmanship, and the fashion industry from Ethnics by Aravalli - your trusted manufacturer of premium ethnic wear in Jaipur.",
