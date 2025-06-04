@@ -18,7 +18,7 @@ export function KeywordTicker({ keywords, className = '' }: KeywordTickerProps) 
 
     // Remove any previous clones
     while (container.children.length > 1) {
-      container.removeChild(container.lastChild!);
+      container.removeChild(container.lastChild!)
     }
 
     // Clone the keywords for seamless looping
@@ -27,7 +27,7 @@ export function KeywordTicker({ keywords, className = '' }: KeywordTickerProps) 
 
     // Calculate animation duration based on content width
     const contentWidth = content.offsetWidth
-    const duration = contentWidth * 0.001 // Maximum speed
+    const duration = contentWidth * 0.05 // Slower speed for better readability
 
     // Set animation
     container.style.animation = `scroll ${duration}s linear infinite`
@@ -42,21 +42,6 @@ export function KeywordTicker({ keywords, className = '' }: KeywordTickerProps) 
     container.addEventListener('animationend', handleAnimationEnd)
     return () => container.removeEventListener('animationend', handleAnimationEnd)
   }, [keywords])
-
-  useEffect(() => {
-    const ticker = document.querySelector(".keyword-ticker ul");
-    if (ticker) {
-      ticker.scrollLeft = 0;
-      const tick = () => {
-        ticker.scrollLeft += 1;
-        if (ticker.scrollLeft >= ticker.scrollWidth - ticker.clientWidth) {
-          ticker.scrollLeft = 0;
-        }
-        requestAnimationFrame(tick);
-      };
-      tick();
-    }
-  }, []);
 
   return (
     <section 
