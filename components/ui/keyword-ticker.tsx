@@ -29,14 +29,20 @@ export function KeywordTicker({ keywords, className = '' }: KeywordTickerProps) 
     const contentWidth = content.offsetWidth
     const duration = contentWidth * 0.05 // Slower speed for better readability
 
-    // Set animation
-    container.style.animation = `scroll ${duration}s linear infinite`
+    // Set initial animation
+    const setAnimation = () => {
+      container.style.animation = `scroll ${duration}s linear infinite`
+    }
+    setAnimation()
 
     // Reset animation when it completes
     const handleAnimationEnd = () => {
+      // Remove animation
       container.style.animation = 'none'
-      container.offsetHeight // Trigger reflow
-      container.style.animation = `scroll ${duration}s linear infinite`
+      // Force a reflow by setting and getting a property
+      void container.getBoundingClientRect()
+      // Re-add animation
+      setAnimation()
     }
 
     container.addEventListener('animationend', handleAnimationEnd)
