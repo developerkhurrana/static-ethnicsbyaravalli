@@ -11,38 +11,11 @@ import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ethnics by Aravalli - Premium Ethnic Wear Manufacturer in Jaipur",
-  description: "Leading manufacturer of premium ethnic wear in Jaipur. Specializing in wholesale, custom prints, and private label ethnic wear for boutiques and retailers. Fast dispatch and quality craftsmanship.",
-  keywords: "ethnic wear manufacturer, wholesale ethnic wear, custom prints, private label, Jaipur, boutique supplier, ethnic clothing manufacturer",
-  authors: [{ name: "Ethnics by Aravalli" }],
-  creator: "Ethnics by Aravalli",
-  publisher: "Ethnics by Aravalli",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL('https://ethnicsbyaravalli.com'),
-  alternates: {
-    canonical: '/',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    google: 'your-google-site-verification', // You'll need to add your actual verification code
-  },
+  title: "Ethnics by Aravalli - Manufacturer of Ethnic Wear",
+  description: "Manufacturer of ethnic wear, custom manufacturing, bulk orders, and private label ethnicwear.",
   openGraph: {
-    title: "Ethnics by Aravalli - Premium Ethnic Wear Manufacturer",
-    description: "Premium ethnic wear direct from Jaipur. Wholesale, custom prints, and fast dispatch for boutiques and retailers. Quality craftsmanship and unique designs.",
+    title: "Ethnics by Aravalli",
+    description: "Premium ethnic wear direct from Jaipur. Wholesale, custom prints, and fast dispatch for boutiques and retailers.",
     url: "https://ethnicsbyaravalli.com/",
     siteName: "Ethnics by Aravalli",
     images: [
@@ -50,7 +23,7 @@ export const metadata: Metadata = {
         url: "https://ethnicsbyaravalli.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Ethnics by Aravalli - Premium Ethnic Wear Manufacturer in Jaipur",
+        alt: "Ethnics by Aravalli - Premium Ethnic Wear",
       },
     ],
     locale: "en_IN",
@@ -58,14 +31,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ethnics by Aravalli - Premium Ethnic Wear Manufacturer",
-    description: "Premium ethnic wear direct from Jaipur. Wholesale, custom prints, and fast dispatch for boutiques and retailers. Quality craftsmanship and unique designs.",
+    title: "Ethnics by Aravalli",
+    description: "Premium ethnic wear direct from Jaipur. Wholesale, custom prints, and fast dispatch for boutiques and retailers.",
     images: ["https://ethnicsbyaravalli.com/og-image.jpg"],
     creator: "@ethnicsbyaravalli",
-    site: "@ethnicsbyaravalli",
   },
-  category: "fashion",
-  classification: "business",
 };
 
 export default function RootLayout({
