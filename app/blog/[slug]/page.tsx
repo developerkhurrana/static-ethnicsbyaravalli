@@ -5,13 +5,12 @@ import { getBlogPostBySlug, getBlogPosts } from "@/lib/notion"
 import { BlogPostImage } from "@/components/blog/blog-post-image"
 import { formatDate } from '@/lib/utils'
 
-interface PageProps {
-  params: {
-    slug: string
-  }
+type Props = {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlogPostBySlug(params.slug)
   
   if (!post) {
@@ -56,7 +55,7 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function BlogPost({ params }: PageProps) {
+export default async function BlogPost({ params, searchParams }: Props) {
   const post = await getBlogPostBySlug(params.slug)
   
   if (!post) {
@@ -110,7 +109,7 @@ export default async function BlogPost({ params }: PageProps) {
                 <div>
                   <h3 className="font-medium text-base group-hover:text-primary transition-colors line-clamp-2">{rp.title}</h3>
                   <div className="text-xs text-muted-foreground mt-1">
-                    {new Date(rp.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                    {formatDate(rp.createdAt)}
                   </div>
                 </div>
               </Link>
