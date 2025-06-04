@@ -1,5 +1,5 @@
 import { Client } from '@notionhq/client'
-import { PageObjectResponse, PartialPageObjectResponse, DatabaseObjectResponse, PartialDatabaseObjectResponse, PropertyItemObjectResponse, RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints'
+import { PageObjectResponse, PartialPageObjectResponse, DatabaseObjectResponse, PartialDatabaseObjectResponse, RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints'
 // import { NotionToMarkdown } from 'notion-to-md' // Not used
 // import { marked } from 'marked' // Not used
 

@@ -22,9 +22,9 @@ export function BlogPostImage({ src, alt, className, priority = false }: BlogPos
     // Only validate URLs that start with http:// or https://
     if (src.startsWith('http://') || src.startsWith('https://')) {
       try {
-        const url = new URL(src)
-        console.log('BlogPostImage - Valid URL:', url.toString())
-      } catch (e) {
+        new URL(src)
+        console.log('BlogPostImage - Valid URL:', src)
+      } catch {
         console.error('BlogPostImage - Invalid URL:', src)
         setImageError(true)
         setIsLoading(false)

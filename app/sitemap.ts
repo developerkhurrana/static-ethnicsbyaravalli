@@ -52,6 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: 'https://ethnicsbyaravalli.com/blog', lastModified: new Date(), changeFrequency: 'daily' as const, priority: 0.9 },
     { url: 'https://ethnicsbyaravalli.com/about', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.7 },
     { url: 'https://ethnicsbyaravalli.com/contact', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.7 },
+    { url: 'https://ethnicsbyaravalli.com/manufacturing', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.7 },
   ];
 
   return [...staticPages, ...postEntries];
