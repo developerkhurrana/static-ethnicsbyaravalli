@@ -40,11 +40,6 @@ interface NotionProperties {
   }
 }
 
-interface NotionPage {
-  id: string
-  properties: NotionProperties
-}
-
 function getCoverImageUrl(properties: NotionProperties): string {
   const coverImageUrl = properties.coverImage?.rich_text?.[0]?.plain_text || properties.coverImage?.url || '';
   if (coverImageUrl && typeof coverImageUrl === 'string') {
