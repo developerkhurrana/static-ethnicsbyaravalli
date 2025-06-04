@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import { getBlogPosts } from "@/lib/notion"
-import { BlogList } from "@/components/blog/blog-list"
 import { SectionHeader } from "@/components/ui/section-header"
+import { BentoBlogGrid } from "@/components/blog/bento-blog-grid"
 
 export const revalidate = 3600 // Revalidate every hour
 
@@ -97,9 +97,13 @@ export default async function BlogPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <div className="min-h-[calc(100vh-4rem)] flex flex-col py-16">
-        <div className="container max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-8">Blog</h1>
-          <BlogList initialPosts={posts} />
+        <div className="w-full max-w-7xl mx-auto px-4">
+          <SectionHeader
+            title="Our Blog"
+            description="Explore expert insights, industry trends, and styling tips in premium ethnic wear manufacturing and boutique success."
+            className="mb-12"
+          />
+          <BentoBlogGrid posts={posts} />
         </div>
       </div>
     </>

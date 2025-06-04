@@ -9,20 +9,11 @@ if (!process.env.NOTION_BLOG_DATABASE_ID) {
   throw new Error('Missing NOTION_BLOG_DATABASE_ID environment variable')
 }
 
-// Default hero banner image to use when no cover image is provided
-const DEFAULT_HERO_IMAGE = '/images/blog-hero.jpg'
-
 const notion = new Client({
   auth: process.env.NOTION_API_KEY,
 })
 
 const n2m = new NotionToMarkdown({ notionClient: notion })
-
-async function getPageContentAsHtml(pageId: string): Promise<string> {
-  const mdBlocks = await n2m.pageToMarkdown(pageId)
-  const mdStringObj = n2m.toMarkdownString(mdBlocks)
-  return typeof mdStringObj === 'string' ? mdStringObj : mdStringObj.parent;
-}
 
 export interface BlogPost {
   id: string
@@ -46,6 +37,17 @@ function getCoverImageUrl(properties: any): string {
   return "/images/blog-hero.jpg";
 }
 
+function extractTextFromRichText(contentObj: any): string {
+  if (typeof contentObj === 'string') return contentObj;
+  if (Array.isArray(contentObj)) {
+    return contentObj.map(extractTextFromRichText).join(' ');
+  }
+  if (contentObj && Array.isArray(contentObj.rich_text)) {
+    return contentObj.rich_text.map((rt: any) => rt.plain_text || '').join('');
+  }
+  return '';
+}
+
 export async function getBlogPosts(): Promise<BlogPost[]> {
   try {
     const response = await notion.databases.query({
@@ -64,10 +66,11 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
       ],
     })
 
-    // Fetch content for each post
-    const posts = await Promise.all(response.results.map(async (page: any) => {
+    // Fetch content for each post from the table property
+    const posts = response.results.map((page: any) => {
       const properties = page.properties
-      const content = await getPageContentAsHtml(page.id)
+      const content = extractTextFromRichText(properties.content) || extractTextFromRichText(properties.Content) || ''
+      console.log('Notion DEBUG - BlogPost content:', content)
       return {
         id: page.id,
         slug: properties.slug?.rich_text?.[0]?.plain_text || properties.Slug?.rich_text?.[0]?.plain_text || '',
@@ -79,7 +82,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         content,
         published: properties.published?.checkbox || properties.Published?.checkbox || false,
       }
-    }))
+    })
     return posts
   } catch (error) {
     console.error('Error fetching blog posts:', error)
@@ -115,7 +118,8 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
 
     const page = response.results[0] as any
     const properties = page.properties
-    const content = await getPageContentAsHtml(page.id)
+    const content = extractTextFromRichText(properties.content) || extractTextFromRichText(properties.Content) || ''
+    console.log('Notion DEBUG - BlogPostBySlug content:', content)
 
     return {
       id: page.id,

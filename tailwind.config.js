@@ -16,6 +16,39 @@ module.exports = {
       },
     },
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            color: '#222',
+            fontFamily: 'Inter, sans-serif',
+            h1: { color: '#1a1a1a', fontWeight: '700', marginBottom: '0.5em' },
+            h2: { color: '#222', fontWeight: '600', marginTop: '1.5em', marginBottom: '0.5em' },
+            h3: { color: '#333', fontWeight: '600', marginTop: '1em', marginBottom: '0.5em' },
+            a: { color: '#D9A8A0', textDecoration: 'underline', fontWeight: '500' },
+            strong: { color: '#1a1a1a', fontWeight: '700' },
+            em: { color: '#444', fontStyle: 'italic' },
+            ul: { paddingLeft: '1.5em', marginBottom: '1em' },
+            ol: { paddingLeft: '1.5em', marginBottom: '1em' },
+            blockquote: {
+              borderLeft: '4px solid #D9A8A0',
+              color: '#888',
+              fontStyle: 'italic',
+              paddingLeft: '1em',
+              margin: '1em 0',
+            },
+            table: { width: '100%', marginBottom: '1em' },
+            th: { backgroundColor: '#f9fafb', fontWeight: '600' },
+            td: { backgroundColor: '#fff' },
+            code: {
+              backgroundColor: '#f3f4f6',
+              color: '#d6336c',
+              padding: '0.2em 0.4em',
+              borderRadius: '0.25em',
+              fontSize: '0.95em',
+            },
+          },
+        },
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -76,5 +109,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} 
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
+  ],
+}

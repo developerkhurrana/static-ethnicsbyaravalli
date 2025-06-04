@@ -113,7 +113,8 @@ export default async function BlogPostPage({ params }: Props) {
     .slice(0, 3) // Get 3 related posts
 
   // Calculate read time (assuming average reading speed of 200 words per minute)
-  const wordCount = (post.content || '').split(/\s+/).length
+  const contentString = typeof post.content === 'string' ? post.content : String(post.content || '')
+  const wordCount = contentString.split(/\s+/).length
   const readTime = Math.ceil(wordCount / 200)
 
   return (
@@ -130,7 +131,7 @@ export default async function BlogPostPage({ params }: Props) {
             <span>•</span>
             <span>{readTime} min read</span>
           </div>
-          <div className="prose max-w-none dark:prose-invert" dangerouslySetInnerHTML={{ __html: post.content || '' }} />
+          <div className="prose max-w-none dark:prose-invert" dangerouslySetInnerHTML={{ __html: contentString }} />
         </article>
         {/* Related Posts */}
         <aside className="lg:col-span-1">
