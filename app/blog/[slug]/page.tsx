@@ -13,7 +13,7 @@ type PageParams = {
   slug: string
 }
 
-export async function generateMetadata({ params }: { params: PageParams }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: PageParams }) {
   const post = await getBlogPostBySlug(params.slug)
   
   if (!post) {
@@ -51,14 +51,14 @@ export async function generateMetadata({ params }: { params: PageParams }): Prom
   }
 }
 
-export async function generateStaticParams(): Promise<PageParams[]> {
+export async function generateStaticParams() {
   const posts = await getBlogPosts()
   return posts.map((post) => ({
     slug: post.slug,
   }))
 }
 
-export default async function Page({ params }: { params: PageParams }) {
+export default async function Page({ params }: { params: { slug: string } }) {
   const post = await getBlogPostBySlug(params.slug)
   
   if (!post) {
