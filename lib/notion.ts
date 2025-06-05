@@ -28,10 +28,10 @@ export interface BlogPost {
   contentTitles: string[]
   contentBlocks: string[]
   published: boolean
-  metaTitle?: string;
-  metaDescription?: string;
-  keywords?: string[];
-  ogImage?: string;
+  metaTitle: string;
+  metaDescription: string;
+  keywords: string[];
+  ogImage: string;
 }
 
 interface NotionProperties {
