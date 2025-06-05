@@ -68,6 +68,13 @@ export function Footer() {
                 {siteConfig.phone}
               </a>
               <a
+                href={`tel:${siteConfig.phone}`}
+                className="flex items-center hover:text-foreground"
+              >
+                <Phone className="mr-2 h-4 w-4" />
+                {siteConfig.phone2}
+              </a>
+              <a
                 href={`mailto:${siteConfig.email}`}
                 className="flex items-center hover:text-foreground"
               >
