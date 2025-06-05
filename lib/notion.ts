@@ -28,6 +28,10 @@ export interface BlogPost {
   contentTitles: string[]
   contentBlocks: string[]
   published: boolean
+  metaTitle?: string;
+  metaDescription?: string;
+  keywords?: string[];
+  ogImage?: string;
 }
 
 interface NotionProperties {
@@ -117,6 +121,10 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         contentTitles,
         contentBlocks,
         published: properties.published?.checkbox || properties.Published?.checkbox || false,
+        metaTitle: properties.metaTitle?.rich_text?.[0]?.plain_text || '',
+        metaDescription: properties.metaDescription?.rich_text?.[0]?.plain_text || '',
+        keywords: properties.keywords?.rich_text?.[0]?.plain_text?.split(',').map(k => k.trim()).filter(Boolean) || [],
+        ogImage: properties.ogImage?.url || '',
       }
     }).filter((post): post is BlogPost => post !== null);
     return posts;
@@ -182,6 +190,10 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       contentTitles,
       contentBlocks,
       published: properties.published?.checkbox || properties.Published?.checkbox || false,
+      metaTitle: properties.metaTitle?.rich_text?.[0]?.plain_text || '',
+      metaDescription: properties.metaDescription?.rich_text?.[0]?.plain_text || '',
+      keywords: properties.keywords?.rich_text?.[0]?.plain_text?.split(',').map(k => k.trim()).filter(Boolean) || [],
+      ogImage: properties.ogImage?.url || '',
     }
   } catch (error) {
     console.error('Error fetching blog post:', error)

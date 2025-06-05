@@ -19,29 +19,30 @@ export async function generateMetadata({ params }: any) {
     }
   }
   return {
-    title: post.title,
-    description: post.description,
+    title: post.metaTitle || post.title,
+    description: post.metaDescription || post.description,
+    keywords: post.keywords?.join(', '),
     openGraph: {
-      title: post.title,
-      description: post.description,
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || post.description,
       type: 'article',
       publishedTime: post.createdAt,
       modifiedTime: post.updatedAt,
       authors: ['Ethnics by Aravalli'],
       images: [
         {
-          url: post.coverImage,
+          url: post.ogImage || post.coverImage,
           width: 1200,
           height: 630,
-          alt: post.title,
+          alt: post.metaTitle || post.title,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
-      description: post.description,
-      images: [post.coverImage],
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || post.description,
+      images: [post.ogImage || post.coverImage],
     },
   }
 }
@@ -75,6 +76,26 @@ export default async function Page({ params }: any) {
   const totalContent = [...post.contentTitles, ...post.contentBlocks].join(' ')
   const wordCount = totalContent.split(/\s+/).length
   const readTime = Math.ceil(wordCount / 200)
+
+  // JSON-LD structured data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.metaTitle || post.title,
+    "description": post.metaDescription || post.description,
+    "datePublished": post.createdAt,
+    "dateModified": post.updatedAt,
+    "image": post.ogImage || post.coverImage,
+    "author": {
+      "@type": "Organization",
+      "name": "Ethnics by Aravalli"
+    },
+    "keywords": post.keywords?.join(', '),
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://ethnicsbyaravalli.com/blog/${post.slug}`
+    }
+  };
 
   return (
     <div className="container max-w-7xl mx-auto px-4 py-12">
@@ -136,6 +157,10 @@ export default async function Page({ params }: any) {
           </div>
         </aside>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </div>
   )
 } 
