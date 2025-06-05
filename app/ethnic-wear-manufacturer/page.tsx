@@ -2,9 +2,7 @@ import React from 'react';
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, CheckCircle2, Leaf, ShieldCheck } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
-import { SectionHeader } from "@/components/ui/section-header"
 
 export const metadata = {
   title: "Premium Ethnic Wear Manufacturer – Handcrafted Apparel for Boutiques",
@@ -30,44 +28,6 @@ export const metadata = {
     "boutique supplier",
   ],
 };
-
-const capabilities = [
-  "In-house design and pattern making for ethnic wear collections",
-  "Advanced cutting and stitching units ensuring premium craftsmanship",
-  "Hand embroidery and machine embroidery blending tradition with innovation",
-  "Strict quality control processes for flawless ethnic fashion",
-  "Custom packaging and labeling services tailored for boutiques and private labels",
-  "Exclusive custom ethnic wear design development for retailers and brands",
-  "Bulk production capacity for ethnic wear to meet global demand",
-  "Fast sampling and prototyping for new ethnic wear collections",
-];
-
-const facilities = [
-  {
-    title: "Design Studio",
-    image: "https://lh3.googleusercontent.com/p/AF1QipOHwu3Sxyf-MXB_sJ57cLGIQ1jOhID2nL39kznT=s680-w680-h510-rw",
-    description:
-      "Our design studio fuses creativity and technology, enabling expert designers to craft unique ethnic wear collections for global markets.",
-  },
-  {
-    title: "Production Unit",
-    image: "https://lh3.googleusercontent.com/p/AF1QipOSQ4UdNWJkeTGUSVvojWo3iB9ZBTX2vRS90zSd=s680-w680-h510-rw",
-    description:
-      "High-tech machinery and skilled artisans collaborate to manufacture premium ethnic wear with precision and attention to detail.",
-  },
-  {
-    title: "Embroidery Section",
-    image: "/manufacturing/embroidery.jpg",
-    description:
-      "Our embroidery unit features both traditional hand embroidery artisans and modern machine embroidery, ensuring intricate ethnic detailing.",
-  },
-  {
-    title: "Quality Control",
-    image: "/manufacturing/quality-control.jpg",
-    description:
-      "Stringent quality control at every stage guarantees superior ethnic wear craftsmanship and consistency before shipping.",
-  },
-];
 
 export default function EthnicWearManufacturerPage() {
   return (

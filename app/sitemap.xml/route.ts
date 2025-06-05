@@ -8,6 +8,7 @@ export async function GET() {
   const staticPages = [
     '',
     'about',
+    'ethnic-wear-manufacturer',
     'manufacturing',
     'blog',
   ];
