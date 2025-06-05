@@ -10,7 +10,8 @@ import { formatDate } from '@/lib/utils'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function generateMetadata({ params }: any) {
-  const post = await getBlogPostBySlug(params.slug)
+  const resolvedParams = await params;
+  const post = await getBlogPostBySlug(resolvedParams.slug)
   if (!post) {
     return {
       title: 'Post Not Found',
@@ -54,10 +55,15 @@ export async function generateStaticParams() {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function Page({ params }: any) {
-  const post = await getBlogPostBySlug(params.slug)
+  const resolvedParams = await params;
+  const post = await getBlogPostBySlug(resolvedParams.slug)
   if (!post) {
     notFound()
   }
+
+  // Debug: log the extracted arrays
+  console.log('Page DEBUG - contentTitles:', post.contentTitles);
+  console.log('Page DEBUG - contentBlocks:', post.contentBlocks);
 
   // Get all posts for related posts
   const allPosts = await getBlogPosts()
@@ -66,8 +72,8 @@ export default async function Page({ params }: any) {
     .slice(0, 3) // Get 3 related posts
 
   // Calculate read time (assuming average reading speed of 200 words per minute)
-  const contentString = typeof post.content === 'string' ? post.content : String(post.content || '')
-  const wordCount = contentString.split(/\s+/).length
+  const totalContent = [...post.contentTitles, ...post.contentBlocks].join(' ')
+  const wordCount = totalContent.split(/\s+/).length
   const readTime = Math.ceil(wordCount / 200)
 
   return (
@@ -92,7 +98,23 @@ export default async function Page({ params }: any) {
             <span>•</span>
             <span>{readTime} min read</span>
           </div>
-          <div className="prose max-w-none dark:prose-invert" dangerouslySetInnerHTML={{ __html: contentString }} />
+          <div className="prose max-w-none dark:prose-invert">
+            {post.contentTitles.map((title, index) => {
+              const block = post.contentBlocks[index];
+              if (!title || !block) return null;
+              return (
+                <div key={index} className="mb-8">
+                  <h2 className="text-2xl font-semibold mb-4">{title}</h2>
+                  <div
+                    className="prose prose-lg dark:prose-invert"
+                    dangerouslySetInnerHTML={{
+                      __html: block.replace(/\n/g, '<br/>')
+                    }}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </article>
         {/* Related Posts */}
         <aside className="lg:col-span-1">

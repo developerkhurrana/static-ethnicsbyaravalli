@@ -25,7 +25,8 @@ export interface BlogPost {
   coverImage: string
   createdAt: string
   updatedAt: string
-  content: string
+  contentTitles: string[]
+  contentBlocks: string[]
   published: boolean
 }
 
@@ -62,6 +63,14 @@ function extractTextFromRichText(contentObj: unknown): string {
   return '';
 }
 
+// Helper to extract bracketed strings as array
+function extractBracketedStrings(str: string): string[] {
+  if (!str) return [];
+  // Use [\s\S] to match across newlines (instead of 's' flag)
+  const matches = str.match(/\[([\s\S]*?)\]/g) || [];
+  return matches.map(s => s.slice(1, -1).trim()).filter(Boolean);
+}
+
 type NotionResponse = PageObjectResponse | PartialPageObjectResponse | DatabaseObjectResponse | PartialDatabaseObjectResponse;
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
@@ -88,8 +97,15 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         return null;
       }
       const properties = page.properties as NotionProperties;
-      const content = extractTextFromRichText(properties.content) || extractTextFromRichText(properties.Content) || ''
-      console.log('Notion DEBUG - BlogPost content:', content)
+      
+      // Extract contentTitles and contentBlocks
+      const contentTitlesStr = extractTextFromRichText(properties.contentTitles) || '';
+      const contentBlocksStr = extractTextFromRichText(properties.contentBlocks) || '';
+      
+      // Use bracket extraction
+      const contentTitles = extractBracketedStrings(contentTitlesStr);
+      const contentBlocks = extractBracketedStrings(contentBlocksStr);
+
       return {
         id: page.id,
         slug: properties.slug?.rich_text?.[0]?.plain_text || properties.Slug?.rich_text?.[0]?.plain_text || '',
@@ -98,7 +114,8 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         coverImage: getCoverImageUrl(properties),
         createdAt: properties.created?.created_time || properties.Created?.created_time || new Date().toISOString(),
         updatedAt: properties.updated?.last_edited_time || properties.Updated?.last_edited_time || new Date().toISOString(),
-        content,
+        contentTitles,
+        contentBlocks,
         published: properties.published?.checkbox || properties.Published?.checkbox || false,
       }
     }).filter((post): post is BlogPost => post !== null);
@@ -141,8 +158,18 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       return null;
     }
     const properties = page.properties as NotionProperties;
-    const content = extractTextFromRichText(properties.content) || extractTextFromRichText(properties.Content) || ''
-    console.log('Notion DEBUG - BlogPostBySlug content:', content)
+    
+    // Extract contentTitles and contentBlocks
+    const contentTitlesStr = extractTextFromRichText(properties.contentTitles) || '';
+    const contentBlocksStr = extractTextFromRichText(properties.contentBlocks) || '';
+
+    // Debug: log the raw strings
+    console.log('Notion DEBUG - contentTitlesStr:', contentTitlesStr);
+    console.log('Notion DEBUG - contentBlocksStr:', contentBlocksStr);
+
+    // Use bracket extraction
+    const contentTitles = extractBracketedStrings(contentTitlesStr);
+    const contentBlocks = extractBracketedStrings(contentBlocksStr);
 
     return {
       id: page.id,
@@ -152,7 +179,8 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       coverImage: getCoverImageUrl(properties),
       createdAt: properties.created?.created_time || properties.Created?.created_time || new Date().toISOString(),
       updatedAt: properties.updated?.last_edited_time || properties.Updated?.last_edited_time || new Date().toISOString(),
-      content,
+      contentTitles,
+      contentBlocks,
       published: properties.published?.checkbox || properties.Published?.checkbox || false,
     }
   } catch (error) {
