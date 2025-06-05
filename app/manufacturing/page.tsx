@@ -37,7 +37,7 @@ const facilities = [
   },
   {
     title: "Embroidery Section",
-    image: "/manufacturing/embroidery.jpg",
+    image: "https://ekohum.com/cdn/shop/files/DC3851_4.png?v=1742470185",
     description:
       "Our dedicated embroidery unit features both traditional hand embroidery artisans and modern machine embroidery techniques, ensuring intricate detailing.",
   },
