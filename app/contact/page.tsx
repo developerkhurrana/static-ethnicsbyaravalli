@@ -21,8 +21,14 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone / WhatsApp",
-    value: "+91 98284 22208",
-    href: `tel:+919828422208`,
+    value: "+91 93144 44425",
+    href: `tel:+919314444425`,
+  },
+  {
+    icon: Phone,
+    title: "Phone / WhatsApp",
+    value: "+91 93588 83783",
+    href: `tel:+919358883783`,
   },
   {
     icon: Mail,
