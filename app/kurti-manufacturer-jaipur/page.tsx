@@ -246,6 +246,109 @@ export default function KurtiManufacturerJaipurPage() {
           </div>
         </section>
 
+        {/* What We Make Section */}
+        <section className="py-16 md:py-24 bg-gray-50 mb-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                What We Make
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Explore our premium kurti collection, crafted with precision in Jaipur.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+              {/* Kurtis */}
+              <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
+                <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
+                  <Image
+                    src="https://ekohum.com/cdn/shop/files/DS5853_2.jpg?v=1741256083"
+                    alt="Kurtis Collection"
+                    fill
+                    className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
+                  />
+                  <Image
+                    src="https://ekohum.com/cdn/shop/files/DS5853_10.jpg?v=1741256083"
+                    alt="Kurtis Collection Hover"
+                    fill
+                    className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg"
+                  />
+                </div>
+                <div className="p-4 bg-white flex flex-col flex-1 justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2">Kurtis</h3>
+                    <p className="text-gray-600 mb-4">Our premium kurtis blend traditional craftsmanship with modern designs, crafted with fine fabrics like cotton, muslin, and chanderi for effortless elegance and comfort.</p>
+                  </div>
+                  <Button 
+                    className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
+                    asChild
+                  >
+                    <Link href="/contact">Contact Us</Link>
+                  </Button>
+                </div>
+              </div>
+              {/* Kurti Sets */}
+              <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
+                <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
+                  <Image
+                    src="https://ekohum.com/cdn/shop/files/DSC_0596.jpg?v=1717780319"
+                    alt="Kurti Sets Collection"
+                    fill
+                    className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
+                  />
+                  <Image
+                    src="https://ekohum.com/cdn/shop/files/DSC_0651.jpg?v=1717780319"
+                    alt="Kurti Sets Collection Hover"
+                    fill
+                    className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg"
+                  />
+                </div>
+                <div className="p-4 bg-white flex flex-col flex-1 justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2">Kurti Sets</h3>
+                    <p className="text-gray-600 mb-4">Elevate your wardrobe with our designer kurti sets, featuring intricate embroidery, tailored fits, and luxurious fabrics, perfect for contemporary ethnic fashion.</p>
+                  </div>
+                  <Button 
+                    className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
+                    asChild
+                  >
+                    <Link href="/contact">Contact Us</Link>
+                  </Button>
+                </div>
+              </div>
+              {/* Palazzo Sets */}
+              <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
+                <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
+                  <Image
+                    src="https://ekohum.com/cdn/shop/files/DW3962__1.jpg?v=1725534156"
+                    alt="Palazzo Sets Collection"
+                    fill
+                    className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
+                  />
+                  <Image
+                    src="https://ekohum.com/cdn/shop/files/DW3962_4.jpg?v=1725534157"
+                    alt="Palazzo Sets Collection Hover"
+                    fill
+                    className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg"
+                  />
+                </div>
+                <div className="p-4 bg-white flex flex-col flex-1 justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2">Palazzo Sets</h3>
+                    <p className="text-gray-600 mb-4">Explore timeless kurti-palazzo sets, designed with premium materials and elegant cuts, ideal for festive occasions, office wear, and boutique collections.</p>
+                  </div>
+                  <Button 
+                    className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
+                    asChild
+                  >
+                    <Link href="/contact">Contact Us</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Contact Section */}
         <section className="mb-24">
           <div className="bg-[#D9A8A0]/10 rounded-3xl p-12">
