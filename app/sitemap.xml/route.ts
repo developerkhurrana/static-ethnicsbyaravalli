@@ -9,6 +9,7 @@ export async function GET() {
     '',
     'about',
     'ethnic-wear-manufacturer',
+    'kurti-manufacturer-jaipur',
     'manufacturing',
     'blog',
   ];

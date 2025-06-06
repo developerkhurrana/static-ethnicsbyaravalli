@@ -146,7 +146,7 @@ export function Header() {
               })}
               <Link
                 href="/contact"
-                className="flex items-center gap-2 w-full text-center rounded-full px-4 py-3 text-base font-semibold bg-[#D9A8A0] text-white hover:bg-[#C08478] transition-colors duration-200 mt-4 justify-center"
+                className="flex items-center gap-2 w-full text-center rounded-md px-4 py-3 text-base font-semibold bg-[#D9A8A0] text-white hover:bg-[#C08478] transition-colors duration-200 mt-4 justify-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <Mail className="h-5 w-5" />

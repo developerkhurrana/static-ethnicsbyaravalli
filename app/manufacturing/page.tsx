@@ -24,25 +24,25 @@ const capabilities = [
 
 const facilities = [
   {
-    title: "Pattern Making",
+    title: "Design Studio",
     image: "https://lh3.googleusercontent.com/p/AF1QipOHwu3Sxyf-MXB_sJ57cLGIQ1jOhID2nL39kznT=s680-w680-h510-rw",
     description:
       "Our design studio combines creativity and technology, allowing expert designers to craft unique ethnic wear collections ready for the market.",
   },
   {
-    title: "Fabric Cutting",
+    title: "Production Unit",
     image: "https://lh3.googleusercontent.com/p/AF1QipOSQ4UdNWJkeTGUSVvojWo3iB9ZBTX2vRS90zSd=s680-w680-h510-rw",
     description:
       "High-tech machinery and skilled artisans work together to manufacture premium ethnic wear with precision and attention to detail.",
   },
   {
-    title: "Stitching & Finishing",
+    title: "Embroidery Section",
     image: "https://ekohum.com/cdn/shop/files/DC3851_4.png?v=1742470185",
     description:
       "Our dedicated embroidery unit features both traditional hand embroidery artisans and modern machine embroidery techniques, ensuring intricate detailing.",
   },
   {
-    title: "Packaging & Dispatch",
+    title: "Quality Control",
     image: "/manufacturing/quality-control.jpg",
     description:
       "Stringent quality control measures are in place at every stage to guarantee superior craftsmanship and consistency before shipping.",
