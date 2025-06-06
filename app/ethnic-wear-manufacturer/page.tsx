@@ -4,14 +4,15 @@ import Link from "next/link"
 import { ArrowRight, CheckCircle2, Leaf, ShieldCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Script from "next/script"
+import { siteConfig } from "@/lib/constants"
 
 export const metadata = {
   title: "Premium Ethnic Wear Manufacturer in India | Custom Ethnic Fashion Production",
   description:
-    "India's leading ethnic wear manufacturer offering premium quality, sustainable fabrics, and expert craftsmanship. Specializing in custom ethnic fashion production for boutiques and designers worldwide. Get competitive pricing and fast turnaround.",
+    "India&apos;s leading ethnic wear manufacturer offering premium quality, sustainable fabrics, and expert craftsmanship. Specializing in custom ethnic fashion production for boutiques and designers worldwide. Get competitive pricing and fast turnaround.",
   openGraph: {
     title: "Premium Ethnic Wear Manufacturer in India | Custom Ethnic Fashion Production",
-    description: "India's leading ethnic wear manufacturer offering premium quality, sustainable fabrics, and expert craftsmanship. Specializing in custom ethnic fashion production for boutiques and designers worldwide.",
+    description: "India&apos;s leading ethnic wear manufacturer offering premium quality, sustainable fabrics, and expert craftsmanship. Specializing in custom ethnic fashion production for boutiques and designers worldwide.",
     images: [
       {
         url: "/og-ethnic-wear-manufacturer.jpg",
@@ -45,7 +46,7 @@ export default function EthnicWearManufacturerPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "Ethnics by Aravalli",
+            "name": siteConfig.name,
             "description": "Premium ethnic wear manufacturer specializing in custom ethnic fashion production",
             "url": "https://ethnicsbyaravalli.com/ethnic-wear-manufacturer",
             "logo": "https://ethnicsbyaravalli.com/logo.png",
@@ -65,7 +66,7 @@ export default function EthnicWearManufacturerPage() {
         <section className="relative mb-20 mt-20">
           <div className="relative w-full h-[340px] md:h-[420px] lg:h-[480px] rounded-3xl overflow-hidden shadow-lg">
             <Image
-              src="https://ekohum.com/cdn/shop/files/DC3851_4.png?v=1742470185"
+              src="https://ekohum.com/cdn/shop/files/DT9462_6.jpg?v=1732085776"
               alt="Premium Ethnic Wear Manufacturer in India - Custom Ethnic Fashion Production"
               fill
               className="object-cover w-full h-full"
@@ -73,14 +74,14 @@ export default function EthnicWearManufacturerPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/10 flex flex-col justify-center items-center text-center rounded-3xl z-10">
               <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 drop-shadow-lg">
-                India's Leading Ethnic Wear Manufacturer
+                India&apos;s Leading Ethnic Wear Manufacturer
               </h1>
               <p className="text-xl md:text-2xl text-white/90 mb-6 max-w-2xl mx-auto">
                 Premium Quality, Sustainable Fabrics, Expert Craftsmanship
               </p>
               <Link href="/contact">
                 <Button className="bg-[#D9A8A0] hover:bg-[#C08478] text-white border-0 rounded-full text-lg px-8 py-3 shadow-lg">
-                  Get Custom Quote for Your Collection
+                  Contact Us
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
@@ -168,11 +169,11 @@ export default function EthnicWearManufacturerPage() {
               Ready to Start Your Ethnic Wear Collection?
             </h2>
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Partner with India's trusted ethnic wear manufacturer for premium quality and exceptional service.
+              Partner with India&apos;s trusted ethnic wear manufacturer for premium quality and exceptional service.
             </p>
             <Link href="/contact">
               <Button className="bg-[#D9A8A0] hover:bg-[#C08478] text-white border-0 rounded-full text-lg px-8 py-3 shadow-lg">
-                Get in Touch Today
+                Contact Us
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
