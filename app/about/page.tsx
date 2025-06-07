@@ -50,7 +50,7 @@ const values = [
     ),
   },
   {
-    title: "Sustainability",
+    title: "Commitment",
     description:
       "We are committed to sustainable practices in our manufacturing process and business operations.",
     icon: (props: SVGProps<SVGSVGElement>) => (

@@ -2,12 +2,12 @@
 
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { Menu, X, Info, Factory, BookOpen, Mail } from "lucide-react"
+import { Menu, X, Info, Factory, BookOpen, Mail, Home } from "lucide-react"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 
 const navigation = [
-  // { name: "Home", href: "/", icon: Home },
+  { name: "Home", href: "/", icon: Home },
   // { name: "Catalog", href: "/catalog", icon: ShoppingBag },
   { name: "About Us", href: "/about", icon: Info },
   { name: "Manufacturing", href: "/manufacturing", icon: Factory },
