@@ -122,16 +122,24 @@ export default async function Page({ params }: any) {
           <div className="prose max-w-none dark:prose-invert">
             {post.contentTitles.map((title, index) => {
               const block = post.contentBlocks[index];
+              const image = post.contentImages[index];
               if (!title || !block) return null;
               return (
-                <div key={index} className="mb-8">
+                <div key={index} className="mb-12">
                   <h2 className="text-2xl font-semibold mb-4">{title}</h2>
-                  <div
-                    className="prose prose-lg dark:prose-invert"
-                    dangerouslySetInnerHTML={{
-                      __html: block.replace(/\n/g, '<br/>')
-                    }}
-                  />
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                    <div
+                      className="prose prose-lg dark:prose-invert"
+                      dangerouslySetInnerHTML={{
+                        __html: block.replace(/\n/g, '<br/>')
+                      }}
+                    />
+                    {image && (
+                      <div className="rounded-lg overflow-hidden aspect-[4/3] bg-muted">
+                        <BlogPostImage src={image} alt={title} className="w-full h-full" />
+                      </div>
+                    )}
+                  </div>
                 </div>
               );
             })}

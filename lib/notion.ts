@@ -27,6 +27,7 @@ export interface BlogPost {
   updatedAt: string
   contentTitles: string[]
   contentBlocks: string[]
+  contentImages: string[]
   published: boolean
   metaTitle: string;
   metaDescription: string;
@@ -77,6 +78,11 @@ function extractBracketedStrings(str: string): string[] {
 
 type NotionResponse = PageObjectResponse | PartialPageObjectResponse | DatabaseObjectResponse | PartialDatabaseObjectResponse;
 
+function getContentImages(properties: NotionProperties): string[] {
+  const contentImagesStr = extractTextFromRichText(properties.contentImages) || '';
+  return extractBracketedStrings(contentImagesStr);
+}
+
 export async function getBlogPosts(): Promise<BlogPost[]> {
   try {
     const response = await notion.databases.query({
@@ -102,13 +108,14 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
       }
       const properties = page.properties as NotionProperties;
       
-      // Extract contentTitles and contentBlocks
+      // Extract contentTitles, contentBlocks, and contentImages
       const contentTitlesStr = extractTextFromRichText(properties.contentTitles) || '';
       const contentBlocksStr = extractTextFromRichText(properties.contentBlocks) || '';
       
       // Use bracket extraction
       const contentTitles = extractBracketedStrings(contentTitlesStr);
       const contentBlocks = extractBracketedStrings(contentBlocksStr);
+      const contentImages = getContentImages(properties);
 
       return {
         id: page.id,
@@ -120,6 +127,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         updatedAt: properties.updated?.last_edited_time || properties.Updated?.last_edited_time || new Date().toISOString(),
         contentTitles,
         contentBlocks,
+        contentImages,
         published: properties.published?.checkbox || properties.Published?.checkbox || false,
         metaTitle: properties.metaTitle?.rich_text?.[0]?.plain_text || '',
         metaDescription: properties.metaDescription?.rich_text?.[0]?.plain_text || '',
@@ -167,7 +175,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     }
     const properties = page.properties as NotionProperties;
     
-    // Extract contentTitles and contentBlocks
+    // Extract contentTitles, contentBlocks, and contentImages
     const contentTitlesStr = extractTextFromRichText(properties.contentTitles) || '';
     const contentBlocksStr = extractTextFromRichText(properties.contentBlocks) || '';
 
@@ -178,6 +186,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     // Use bracket extraction
     const contentTitles = extractBracketedStrings(contentTitlesStr);
     const contentBlocks = extractBracketedStrings(contentBlocksStr);
+    const contentImages = getContentImages(properties);
 
     return {
       id: page.id,
@@ -189,6 +198,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       updatedAt: properties.updated?.last_edited_time || properties.Updated?.last_edited_time || new Date().toISOString(),
       contentTitles,
       contentBlocks,
+      contentImages,
       published: properties.published?.checkbox || properties.Published?.checkbox || false,
       metaTitle: properties.metaTitle?.rich_text?.[0]?.plain_text || '',
       metaDescription: properties.metaDescription?.rich_text?.[0]?.plain_text || '',
