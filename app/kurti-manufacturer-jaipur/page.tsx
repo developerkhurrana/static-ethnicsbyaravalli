@@ -4,7 +4,6 @@ import { CheckCircle2, Leaf, ShieldCheck, Phone, Mail, MapPin } from "lucide-rea
 import { Button } from "@/components/ui/button"
 import Script from "next/script"
 import { siteConfig } from "@/lib/constants"
-import { SectionHeader } from "@/components/ui/section-header"
 
 export const metadata = {
   title: "Best Kurti Manufacturer in Jaipur | Ethnics by Aravalli",
