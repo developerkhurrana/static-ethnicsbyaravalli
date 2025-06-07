@@ -18,6 +18,7 @@ const heroImages = {
   desktop: [
     "/products/hero_banner_1.jpg",
     "/products/hero_banner_2.jpg",
+    "/products/hero_banner_4.jpg",
     "/products/hero_banner_3.webp"
   ],
   mobile: ["/products/hero_mobile_banner.jpg"]
