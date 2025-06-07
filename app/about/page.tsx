@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Link from "next/link"
-import { SVGProps } from "react"
 
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
@@ -15,58 +14,19 @@ const values = [
     title: "Quality First",
     description:
       "We never compromise on the quality of our products, ensuring the finest materials and craftsmanship.",
-    icon: (props: SVGProps<SVGSVGElement>) => (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        {...props}
-      >
-        <path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z" />
-      </svg>
-    ),
+    image: "https://ekohum.com/cdn/shop/files/DSC_0596.jpg?v=1717780319",
   },
   {
     title: "Innovation",
     description:
       "We constantly innovate in design and manufacturing to bring you the latest trends in ethnic wear.",
-    icon: (props: SVGProps<SVGSVGElement>) => (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        {...props}
-      >
-        <path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z" />
-      </svg>
-    ),
+    image: "https://ekohum.com/cdn/shop/files/DSC_0651.jpg?v=1717780319",
   },
   {
     title: "Commitment",
     description:
       "We are committed to sustainable practices in our manufacturing process and business operations.",
-    icon: (props: SVGProps<SVGSVGElement>) => (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        {...props}
-      >
-        <path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z" />
-      </svg>
-    ),
+    image: "https://ekohum.com/cdn/shop/files/DS5853_2.jpg?v=1741256083",
   },
 ]
 
@@ -119,15 +79,22 @@ export default function AboutPage() {
             {values.map((value) => (
               <div
                 key={value.title}
-                className="flex flex-col items-center text-center"
+                className="bg-white rounded-lg overflow-hidden shadow-lg"
               >
-                <div className="mb-4 rounded-full bg-primary/10 p-4">
-                  <value.icon className="h-6 w-6 text-primary" />
+                <div className="relative h-48 w-full">
+                  <Image
+                    src={value.image}
+                    alt={value.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-                <h3 className="mb-2 font-serif text-xl font-medium">
-                  {value.title}
-                </h3>
-                <p className="text-muted-foreground">{value.description}</p>
+                <div className="p-6">
+                  <h3 className="mb-2 font-serif text-xl font-medium">
+                    {value.title}
+                  </h3>
+                  <p className="text-muted-foreground">{value.description}</p>
+                </div>
               </div>
             ))}
           </div>
