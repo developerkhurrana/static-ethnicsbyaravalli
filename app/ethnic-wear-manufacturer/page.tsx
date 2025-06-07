@@ -1,10 +1,11 @@
 import React from 'react';
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, CheckCircle2, Leaf, ShieldCheck } from "lucide-react"
+import { CheckCircle2, Leaf, ShieldCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Script from "next/script"
 import { siteConfig } from "@/lib/constants"
+import { SectionHeader } from "@/components/ui/section-header"
 
 export const metadata = {
   title: "Premium Ethnic Wear Manufacturer in India | Custom Ethnic Fashion Production",
