@@ -73,7 +73,9 @@ const baseKeywords = [
 
 const keywords = shuffle(baseKeywords);
 
-const heroWords = ["Premium", "Trusted", "Designer"];
+const heroWords = ["Premium", "Luxury", "Elite", "High-End", "Exclusive", "Superior", "Exceptional", "Finest", "Top-Tier", 
+  "Trusted", "Reliable", "Authentic", "Certified", "Respected", "Reputable", "Proven", "Endorsed", "Verified", 
+  "Designer", "Artisan", "Curated", "Signature", "Tailored", "Handcrafted", "Custom", "Exclusive", "Stylized"];
 function getRandomHeroWord() {
   return heroWords[Math.floor(Math.random() * heroWords.length)];
 }

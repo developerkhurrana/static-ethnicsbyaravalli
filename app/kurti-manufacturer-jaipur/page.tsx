@@ -74,9 +74,8 @@ export default function KurtiManufacturerJaipurPage() {
                 Premium Quality, Sustainable Fabrics, Expert Craftsmanship
               </p>
               <Link href="/contact">
-                <Button className="bg-[#D9A8A0] hover:bg-[#C08478] text-white border-0 rounded-full text-lg px-8 py-3 shadow-lg">
+                <Button className="px-8 py-3 rounded-full bg-gradient-to-b from-[#D9A8A0] to-[#C08478] text-white text-lg hover:shadow-xl transition duration-200 focus:ring-2 focus:ring-[#D9A8A0]/50">
                   Contact Us
-                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
             </div>
@@ -91,9 +90,8 @@ export default function KurtiManufacturerJaipurPage() {
             </p>
             <div className="flex justify-center">
               <Link href="/contact">
-                <Button className="bg-[#D9A8A0] hover:bg-[#C08478] text-white border-0 rounded-full text-lg px-8 py-3 shadow-lg">
+                <Button className="px-8 py-3 rounded-full bg-gradient-to-b from-[#D9A8A0] to-[#C08478] text-white text-lg hover:shadow-xl transition duration-200 focus:ring-2 focus:ring-[#D9A8A0]/50">
                   Contact Us
-                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
             </div>
@@ -280,7 +278,7 @@ export default function KurtiManufacturerJaipurPage() {
                     <p className="text-gray-600 mb-4">Our premium kurtis blend traditional craftsmanship with modern designs, crafted with fine fabrics like cotton, muslin, and chanderi for effortless elegance and comfort.</p>
                   </div>
                   <Button 
-                    className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
+                    className="w-full mt-auto px-8 py-2 rounded-full bg-gradient-to-b from-gray-100 to-gray-200 text-gray-800 hover:shadow-xl transition duration-200 focus:ring-2 focus:ring-gray-300/50" 
                     asChild
                   >
                     <Link href="/contact">Contact Us</Link>
@@ -309,7 +307,7 @@ export default function KurtiManufacturerJaipurPage() {
                     <p className="text-gray-600 mb-4">Elevate your wardrobe with our designer kurti sets, featuring intricate embroidery, tailored fits, and luxurious fabrics, perfect for contemporary ethnic fashion.</p>
                   </div>
                   <Button 
-                    className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
+                    className="w-full mt-auto px-8 py-2 rounded-full bg-gradient-to-b from-gray-100 to-gray-200 text-gray-800 hover:shadow-xl transition duration-200 focus:ring-2 focus:ring-gray-300/50" 
                     asChild
                   >
                     <Link href="/contact">Contact Us</Link>
@@ -338,7 +336,7 @@ export default function KurtiManufacturerJaipurPage() {
                     <p className="text-gray-600 mb-4">Explore timeless kurti-palazzo sets, designed with premium materials and elegant cuts, ideal for festive occasions, office wear, and boutique collections.</p>
                   </div>
                   <Button 
-                    className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
+                    className="w-full mt-auto px-8 py-2 rounded-full bg-gradient-to-b from-gray-100 to-gray-200 text-gray-800 hover:shadow-xl transition duration-200 focus:ring-2 focus:ring-gray-300/50" 
                     asChild
                   >
                     <Link href="/contact">Contact Us</Link>
@@ -387,12 +385,9 @@ export default function KurtiManufacturerJaipurPage() {
                   <p className="text-gray-600">{siteConfig.address}</p>
                 </a>
               </div>
-              <Link href="/contact">
-                <Button className="bg-[#D9A8A0] hover:bg-[#C08478] text-white border-0 rounded-full text-lg px-8 py-3 shadow-lg">
-                  Contact Us
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
+              <Button className="px-8 py-3 rounded-full bg-gradient-to-b from-[#D9A8A0] to-[#C08478] text-white text-lg hover:shadow-xl transition duration-200 focus:ring-2 focus:ring-[#D9A8A0]/50">
+                Contact Us
+              </Button>
             </div>
           </div>
         </section>

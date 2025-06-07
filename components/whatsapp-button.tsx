@@ -12,9 +12,11 @@ export function WhatsAppButton() {
       rel="noopener noreferrer"
       className="fixed bottom-4 right-4 z-50"
     >
-      <Button size="lg" className="rounded-full bg-green-500 hover:bg-green-600">
-        <MessageCircle className="mr-2 h-5 w-5" />
-        Chat on WhatsApp
+      <Button 
+        size="lg" 
+        className="rounded-full bg-gradient-to-b from-green-500 to-green-600 text-white hover:shadow-xl transition duration-200 focus:ring-2 focus:ring-green-400/50"
+      >
+        <MessageCircle className="h-6 w-6" />
       </Button>
     </a>
   )
