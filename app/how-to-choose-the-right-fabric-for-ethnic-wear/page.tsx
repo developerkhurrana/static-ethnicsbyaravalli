@@ -160,7 +160,7 @@ export default function FabricGuidePage() {
         <section className="my-8">
           <h2 className="text-2xl font-semibold mb-4">Conclusion</h2>
           <p>
-            The right fabric doesn't just create a garment — it crafts an experience. 
+            The right fabric doesn&apos;t just create a garment — it crafts an experience. 
             By understanding fabric properties, seasonal suitability, and care requirements, 
             retailers can build a collection that satisfies diverse customer needs while 
             maintaining quality and sustainability.
