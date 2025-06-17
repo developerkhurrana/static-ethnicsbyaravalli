@@ -1,10 +1,9 @@
 import { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, Star, Users, Truck, Award, Phone, Mail, MapPin } from "lucide-react"
+import { CheckCircle, Star, Users, Truck, Award, Phone, Mail } from "lucide-react"
 import { siteConfig } from "@/lib/constants"
 
 export const metadata: Metadata = {
@@ -26,7 +25,7 @@ const features = [
   {
     icon: Award,
     title: "Crafted with Purpose",
-    description: "Each Aravalli Kurta is born out of a deep respect for Indian craftsmanship. From the fine cotton we source from Rajasthan to the delicate embroidery curated in-house – we don't just manufacture, we preserve tradition.",
+    description: "Each Aravalli Kurta is born out of a deep respect for Indian craftsmanship. From the fine cotton we source from Rajasthan to the delicate embroidery curated in-house – we don&apos;t just manufacture, we preserve tradition.",
     points: [
       "100% locally sourced fabrics",
       "In-house design and pattern-making",
@@ -67,12 +66,12 @@ const features = [
 
 const testimonials = [
   {
-    quote: "We've worked with many suppliers in Jaipur, but Aravalli Kurtas stand out – both in build quality and support.",
+    quote: "We&apos;ve worked with many suppliers in Jaipur, but Aravalli Kurtas stand out – both in build quality and support.",
     author: "Khushi Boutique",
     location: "Mumbai"
   },
   {
-    quote: "My customers ask specifically for 'those Aravalli pieces' now!",
+    quote: "My customers ask specifically for &ldquo;those Aravalli pieces&rdquo; now!",
     author: "Alaya Fashion",
     location: "Bengaluru"
   }
@@ -88,22 +87,22 @@ export default function AravalliKurtasPage() {
           <div className="text-center max-w-4xl mx-auto">
             <Badge variant="secondary" className="bg-amber-100 text-amber-800 hover:bg-amber-200 mb-6">
               <Star className="w-4 h-4 mr-2" />
-              Jaipur's Premium Ethnic Wear
+              Jaipur&apos;s Premium Ethnic Wear
             </Badge>
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-6">
               Why Aravalli Kurtas Are{" "}
-              <span className="text-amber-600">Jaipur's Best Kept Secret</span>
+              <span className="text-amber-600">Jaipur&apos;s Best Kept Secret</span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
               What Every Boutique Owner Must Know
             </p>
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
               Jaipur has long been the heart of ethnic wear in India. Among its vibrant streets, 
-              age-old textile traditions and innovative fashion intersect. But there's one name 
+              age-old textile traditions and innovative fashion intersect. But there&apos;s one name 
               that quietly leads the charge – Aravalli Kurtas by Ethnics by Aravalli.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I'm interested in Aravalli Kurtas. Please share your latest kurta catalogue.`}>
+              <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in Aravalli Kurtas. Please share your latest kurta catalogue.`}>
                 <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white">
                   <Phone className="w-5 h-5 mr-2" />
                   Get Kurta Catalogue
@@ -129,7 +128,7 @@ export default function AravalliKurtasPage() {
               <span className="text-amber-600">Aravalli Difference</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Whether you're a boutique owner, a fashion buyer, or simply someone who appreciates 
+              Whether you&apos;re a boutique owner, a fashion buyer, or simply someone who appreciates 
               timeless elegance, discover why Aravalli Kurtas are not just products – but a statement.
             </p>
           </div>
@@ -175,7 +174,7 @@ export default function AravalliKurtasPage() {
               <span className="text-amber-600">Retailers</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Don't just take our word for it. Here's what boutique owners across India have to say.
+              Don&apos;t just take our word for it. Here&apos;s what boutique owners across India have to say.
             </p>
           </div>
           
@@ -191,7 +190,7 @@ export default function AravalliKurtasPage() {
                     <Star className="w-5 h-5 text-amber-500 mr-1" />
                   </div>
                   <blockquote className="text-lg text-gray-700 italic mb-4">
-                    "{testimonial.quote}"
+                    &ldquo;{testimonial.quote}&rdquo;
                   </blockquote>
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center mr-3">
@@ -217,11 +216,11 @@ export default function AravalliKurtasPage() {
             <span className="text-yellow-300">Aravalli Difference</span>?
           </h2>
           <p className="text-xl text-amber-100 mb-8 leading-relaxed">
-            If you're still searching "best kurti manufacturer in Jaipur", you're probably not alone. 
+            If you&apos;re still searching &ldquo;best kurti manufacturer in Jaipur&rdquo;, you&apos;re probably not alone. 
             But the smart ones? They already discovered the Aravalli difference.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I'm interested in Aravalli Kurtas. Please share your latest kurta catalogue and pricing.`}>
+            <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in Aravalli Kurtas. Please share your latest kurta catalogue and pricing.`}>
               <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white">
                 <Phone className="w-5 h-5 mr-2" />
                 Get Kurta Catalogue Now
