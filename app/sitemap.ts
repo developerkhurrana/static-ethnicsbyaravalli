@@ -51,12 +51,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Business related routes
   const businessRoutes = [
     {
-      url: `${baseUrl}/kurti-manufacturer-in-jaipur`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/become-retailer`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
