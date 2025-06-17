@@ -269,7 +269,7 @@ export default function KurtiManufacturerJaipur() {
                   in Malviya Nagar, Jaipur
                 </h2>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Strategically located in the heart of Jaipur's textile hub, we offer 
+                  Strategically located in the heart of Jaipur&apos;s textile hub, we offer 
                   easy access for local buyers and reliable shipping for pan-India clients. 
                   Visit our manufacturing unit to see our quality firsthand.
                 </p>
