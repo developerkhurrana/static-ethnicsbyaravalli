@@ -100,7 +100,7 @@ export default function KurtiManufacturerJaipur() {
               
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I'm interested in wholesale kurtis. Please share your catalog.`}>
+                  <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in wholesale kurtis. Please share your catalog.`}>
                     <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto">
                       <Phone className="w-5 h-5 mr-2" />
                       Get WhatsApp Catalog
@@ -307,7 +307,7 @@ export default function KurtiManufacturerJaipur() {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I'm interested in visiting your manufacturing unit in Malviya Nagar, Jaipur.`}>
+                <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in visiting your manufacturing unit in Malviya Nagar, Jaipur.`}>
                   <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto">
                     <Phone className="w-5 h-5 mr-2" />
                     Schedule Factory Visit
@@ -351,7 +351,7 @@ export default function KurtiManufacturerJaipur() {
             for their kurti wholesale needs. Get competitive pricing and premium quality.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I'm interested in wholesale kurtis from Ethnics by Aravalli. Please share your catalog and pricing.`}>
+            <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in wholesale kurtis from Ethnics by Aravalli. Please share your catalog and pricing.`}>
               <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white">
                 <Phone className="w-5 h-5 mr-2" />
                 Get WhatsApp Catalog Now
