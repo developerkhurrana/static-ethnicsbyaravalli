@@ -64,18 +64,18 @@ const features = [
   }
 ]
 
-const testimonials = [
-  {
-    quote: "We&apos;ve worked with many suppliers in Jaipur, but Aravalli Kurtas stand out – both in build quality and support.",
-    author: "Khushi Boutique",
-    location: "Mumbai"
-  },
-  {
-    quote: "My customers ask specifically for &ldquo;those Aravalli pieces&rdquo; now!",
-    author: "Alaya Fashion",
-    location: "Bengaluru"
-  }
-]
+// const testimonials = [
+//   {
+//     quote: "We&apos;ve worked with many suppliers in Jaipur, but Aravalli Kurtas stand out – both in build quality and support.",
+//     author: "Khushi Boutique",
+//     location: "Mumbai"
+//   },
+//   {
+//     quote: "My customers ask specifically for &ldquo;those Aravalli pieces&rdquo; now!",
+//     author: "Alaya Fashion",
+//     location: "Bengaluru"
+//   }
+// ]
 
 export default function AravalliKurtasPage() {
   return (
