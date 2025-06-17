@@ -9,7 +9,7 @@ export async function GET() {
     '',
     'about',
     'ethnic-wear-manufacturer',
-    'kurti-manufacturer-jaipur',
+    'kurti-manufacturer-in-jaipur',
     'manufacturing',
     'blog',
   ];
