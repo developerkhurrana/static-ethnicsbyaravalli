@@ -8,12 +8,12 @@ import { CheckCircle, MapPin, Phone, Mail, Clock, Users, Award, Truck, Shield } 
 import { siteConfig } from "@/lib/constants"
 
 export const metadata: Metadata = {
-  title: "Kurti Manufacturer in Jaipur — Premium Wholesale Supplier | Ethnics by Aravalli",
-  description: "Leading kurti manufacturer in Jaipur offering premium wholesale kurtis for boutiques & retailers. Cotton, silk & designer kurtis with bulk pricing. Located in Malviya Nagar, Jaipur. WhatsApp catalog available.",
+  title: "Wholesale Kurti Manufacturer in Jaipur | Cotton & Designer Kurtis",
+  description: "Premium kurti manufacturer in Jaipur. Cotton, silk, and designer kurtis at wholesale prices for boutiques. Fast delivery. Get your catalog now!",
   keywords: "kurti manufacturer in Jaipur, wholesale kurti Jaipur, Jaipuri kurtis supplier, kurti manufacturer in India, cotton kurti manufacturer, kurti catalog WhatsApp, boutique kurti supplier, retail kurti wholesaler",
   openGraph: {
-    title: "Kurti Manufacturer in Jaipur — Premium Wholesale Supplier | Ethnics by Aravalli",
-    description: "Leading kurti manufacturer in Jaipur offering premium wholesale kurtis for boutiques & retailers. Cotton, silk & designer kurtis with bulk pricing.",
+    title: "Wholesale Kurti Manufacturer in Jaipur | Cotton & Designer Kurtis",
+    description: "Premium kurti manufacturer in Jaipur. Cotton, silk, and designer kurtis at wholesale prices for boutiques. Fast delivery. Get your catalog now!",
     type: "website",
     locale: "en_IN",
   },
@@ -87,9 +87,7 @@ export default function KurtiManufacturerJaipur() {
                   {siteConfig.address}
                 </Badge>
                 <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-                  Leading{" "}
-                  <span className="text-rose-600">Kurti Manufacturer</span>{" "}
-                  in Jaipur
+                  Wholesale Kurti Manufacturer in Jaipur
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
                   Premium wholesale kurti supplier for boutiques, retailers, and online sellers. 
@@ -172,8 +170,7 @@ export default function KurtiManufacturerJaipur() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Ethnics by Aravalli as Your{" "}
-              <span className="text-rose-600">Kurti Manufacturer in Jaipur</span>
+              Why Choose Us as Your Kurti Supplier?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Trusted by 500+ boutiques and retailers across India for premium quality kurtis 
@@ -208,9 +205,7 @@ export default function KurtiManufacturerJaipur() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Best-Selling{" "}
-              <span className="text-rose-600">Kurti Categories</span>{" "}
-              for Wholesale
+              Our Best-Selling Kurti Categories
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Explore our most popular kurti collections that are in high demand among 
@@ -367,6 +362,22 @@ export default function KurtiManufacturerJaipur() {
           <p className="text-rose-100 mt-6 text-sm">
             📞 {siteConfig.phone} | 📍 {siteConfig.address} | ⏰ Mon-Sat: 9 AM - 7 PM
           </p>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions about Wholesale Kurtis
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Find answers to common questions about our kurti manufacturing process and services.
+            </p>
+          </div>
+          
+          {/* Add FAQ content here */}
         </div>
       </section>
     </div>

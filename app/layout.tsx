@@ -12,7 +12,7 @@ import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ethnics by Aravalli - Manufacturer of Ethnic Wear",
+  title: "Ethnics By Aravalli - Women’s Ethnic Wear Manufacturer in Jaipur Premium Kurtis & Kurta Sets",
   description: "Manufacturer of ethnic wear, custom manufacturing, bulk orders, and private label ethnicwear.",
   openGraph: {
     title: "Ethnics by Aravalli",

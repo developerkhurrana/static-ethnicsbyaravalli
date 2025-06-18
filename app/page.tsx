@@ -491,3 +491,9 @@ export default function Home() {
     </div>
   )
 }
+
+export const metadata = {
+  title: "Ethnics By Aravalli - Women's Ethnic Wear Manufacturer in Jaipur Premium Kurtis & Kurta Sets",
+  description: "Leading kurti manufacturer in Jaipur offering premium women's kurtas and kurta sets—crafted with traditional artistry, modern designs, and luxurious fabrics stitched to perfection.",
+  // ...other metadata fields (keywords, openGraph, etc.)
+}

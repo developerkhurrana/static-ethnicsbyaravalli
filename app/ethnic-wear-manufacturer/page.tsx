@@ -7,12 +7,11 @@ import Script from "next/script"
 import { siteConfig } from "@/lib/constants"
 
 export const metadata = {
-  title: "Premium Ethnic Wear Manufacturer in India | Custom Ethnic Fashion Production",
-  description:
-    "India&apos;s leading ethnic wear manufacturer offering premium quality, sustainable fabrics, and expert craftsmanship. Specializing in custom ethnic fashion production for boutiques and designers worldwide. Get competitive pricing and fast turnaround.",
+  title: "Ethnic Wear Manufacturer India | Custom & Wholesale Supplier",
+  description: "India's leading ethnic wear manufacturer. Custom designs, sustainable fabrics, and fast turnaround for boutiques and designers. Contact us today!",
   openGraph: {
-    title: "Premium Ethnic Wear Manufacturer in India | Custom Ethnic Fashion Production",
-    description: "India&apos;s leading ethnic wear manufacturer offering premium quality, sustainable fabrics, and expert craftsmanship. Specializing in custom ethnic fashion production for boutiques and designers worldwide.",
+    title: "Ethnic Wear Manufacturer India | Custom & Wholesale Supplier",
+    description: "India's leading ethnic wear manufacturer. Custom designs, sustainable fabrics, and fast turnaround for boutiques and designers. Contact us today!",
     images: [
       {
         url: "/og-ethnic-wear-manufacturer.jpg",
@@ -74,7 +73,7 @@ export default function EthnicWearManufacturerPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/10 flex flex-col justify-center items-center text-center rounded-3xl z-10">
               <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 drop-shadow-lg">
-                India&apos;s Leading Ethnic Wear Manufacturer
+                Ethnic Wear Manufacturer in India
               </h1>
               <p className="text-xl md:text-2xl text-white/90 mb-6 max-w-2xl mx-auto">
                 Premium Quality, Sustainable Fabrics, Expert Craftsmanship
@@ -90,7 +89,7 @@ export default function EthnicWearManufacturerPage() {
         <section className="mb-24">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-              Why Choose Our Ethnic Wear Manufacturing?
+              Why Choose Us for Custom Ethnic Fashion?
             </h2>
             <p className="text-lg text-gray-600">
               As a leading ethnic wear manufacturer in India, we combine traditional craftsmanship with modern production techniques to deliver exceptional quality.
@@ -164,7 +163,7 @@ export default function EthnicWearManufacturerPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                What We Make
+                Types of Ethnic Wear We Offer
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Explore our premium ethnic wear collection, crafted with precision in Jaipur.
