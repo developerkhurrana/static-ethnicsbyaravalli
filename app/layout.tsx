@@ -12,8 +12,8 @@ import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ethnics By Aravalli - Women’s Ethnic Wear Manufacturer in Jaipur Premium Kurtis & Kurta Sets",
-  description: "Manufacturer of ethnic wear, custom manufacturing, bulk orders, and private label ethnicwear.",
+  title: "Ethnics By Aravalli - Women's Ethnic Wear Manufacturer in Jaipur Premium Kurtis & Kurta Sets",
+  description: "Leading kurti manufacturer in Jaipur offering premium women's kurtas and kurta sets—crafted with traditional artistry, modern designs, and luxurious fabrics stitched to perfection.",
   openGraph: {
     title: "Ethnics by Aravalli",
     description: "Premium ethnic wear direct from Jaipur. Wholesale, custom prints, and fast dispatch for boutiques and retailers.",
