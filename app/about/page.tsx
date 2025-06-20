@@ -26,7 +26,7 @@ const values = [
     title: "Commitment",
     description:
       "We are committed to sustainable practices in our manufacturing process and business operations.",
-    image: "https://res.cloudinary.com/dfye0gag9/image/upload/IMG_3287_tfviye.heic",
+    image: "https://res.cloudinary.com/dfye0gag9/image/upload/IMG_3287_pfjlim.jpg",
   },
 ]
 
