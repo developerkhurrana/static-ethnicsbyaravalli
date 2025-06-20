@@ -14,19 +14,19 @@ const values = [
     title: "Quality First",
     description:
       "We never compromise on the quality of our products, ensuring the finest materials and craftsmanship.",
-    image: "https://ekohum.com/cdn/shop/files/DSC_0596.jpg?v=1717780319",
+    image: "https://lh3.googleusercontent.com/p/AF1QipOSQ4UdNWJkeTGUSVvojWo3iB9ZBTX2vRS90zSd=s680-w680-h510-rw",
   },
   {
     title: "Innovation",
     description:
       "We constantly innovate in design and manufacturing to bring you the latest trends in ethnic wear.",
-    image: "https://ekohum.com/cdn/shop/files/DSC_0651.jpg?v=1717780319",
+    image: "https://res.cloudinary.com/dfye0gag9/image/upload/about_banner_1_q6jmud.jpg",
   },
   {
     title: "Commitment",
     description:
       "We are committed to sustainable practices in our manufacturing process and business operations.",
-    image: "https://ekohum.com/cdn/shop/files/DS5853_2.jpg?v=1741256083",
+    image: "https://res.cloudinary.com/dfye0gag9/image/upload/IMG_3287_tfviye.heic",
   },
 ]
 
