@@ -103,20 +103,13 @@ const FAQPage = () => {
           }}
         />
       </Head>
-      {/* Breadcrumb and Heading */}
+      {/* Heading only, no breadcrumb */}
       <div className="mb-10 text-center">
-        <nav className="text-sm text-gray-400 mb-2" aria-label="Breadcrumb">
-          <ol className="inline-flex space-x-1">
-            <li><a href="/" className="hover:text-brand-primary">Home</a></li>
-            <li>/</li>
-            <li className="text-brand-primary">FAQ</li>
-          </ol>
-        </nav>
         <h1 className="text-5xl font-bold mb-2 text-brand-primary">FAQ</h1>
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">Find answers to the most frequently asked questions about Ethnics by Aravalli, a leading kurti and ethnic wear manufacturer in Jaipur. Learn about our products, wholesale orders, customization, quality, shipping, and more.</p>
       </div>
       {/* FAQ Sections */}
-      {faqs.map((section, sIdx) => (
+      {faqs.map((section) => (
         <section key={section.category} className="mb-14">
           <div className="flex flex-col items-center mb-8">
             <span className="uppercase text-xs font-bold tracking-widest px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary mb-2">{section.label}</span>
