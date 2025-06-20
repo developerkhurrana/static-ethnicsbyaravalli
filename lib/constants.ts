@@ -13,6 +13,7 @@ export const navigationLinks = [
   { name: "About Us", href: "/about" },
   { name: "Manufacturing", href: "/manufacturing" },
   { name: "Blog", href: "/blog" },
+  { name: "FAQ", href: "/faq" },
 ]
 
 export type NavigationItem = (typeof navigationLinks)[number] 
