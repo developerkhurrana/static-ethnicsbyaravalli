@@ -31,7 +31,7 @@ const facilities = [
   },
   {
     title: "Cutting & Stitching",
-    image: "https://res.cloudinary.com/dfye0gag9/image/upload/IMG_3287_tfviye.heic",
+    image: "https://res.cloudinary.com/dfye0gag9/image/upload/IMG_3287_pfjlim.jpg",
     description:
       "High-tech machinery and skilled artisans work together to manufacture premium ethnic wear with precision and attention to detail.",
   },
