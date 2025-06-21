@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Package, Truck, Shield, Clock, CheckCircle, Users } from 'lucide-react'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Packaging & Dispatch - Ethnics by Aravalli | Premium Ethnic Wear Manufacturer',
@@ -102,10 +103,21 @@ export default function PackagingAndDispatchPage() {
                 safely and beautifully presented.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] rounded-full">
-                  Partner with Us
-                </Button>
-                <Button size="lg" variant="outline" className="border-[#D9A8A0] text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-[#2E1B1B] rounded-full">
+                <Link href="/contact">
+                  <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] rounded-full">
+                    Partner with Us
+                  </Button>
+                </Link>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-[#D9A8A0] text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-[#2E1B1B] rounded-full"
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      document.getElementById('process-section')?.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
                   View Our Process
                 </Button>
               </div>
@@ -159,7 +171,7 @@ export default function PackagingAndDispatchPage() {
       </section>
 
       {/* Process Steps */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="process-section" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[#2E1B1B] mb-4">
@@ -195,12 +207,16 @@ export default function PackagingAndDispatchPage() {
             enhancing your brand's reputation and customer satisfaction.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] rounded-full">
-              Start Partnership
-            </Button>
-            <Button size="lg" variant="outline" className="border-[#D9A8A0] text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-[#2E1B1B] rounded-full">
-              Contact Us
-            </Button>
+            <Link href="/contact">
+              <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] rounded-full">
+                Start Partnership
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button size="lg" variant="outline" className="border-[#D9A8A0] text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-[#2E1B1B] rounded-full">
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
