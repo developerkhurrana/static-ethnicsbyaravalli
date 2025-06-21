@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { ScrollToProcessButton } from "@/components/ScrollToProcessButton"
 
 export const metadata: Metadata = {
   title: 'Pattern Making - Ethnics by Aravalli | Premium Ethnic Wear Manufacturer',
@@ -124,18 +125,7 @@ export default function PatternMakingPage() {
                     Partner with Us
                   </Button>
                 </Link>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-[#D9A8A0] text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-[#2E1B1B] rounded-full"
-                  onClick={() => {
-                    if (typeof window !== 'undefined') {
-                      document.getElementById('process-section')?.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                >
-                  View Our Process
-                </Button>
+                <ScrollToProcessButton />
               </div>
             </div>
             <div className="relative">
