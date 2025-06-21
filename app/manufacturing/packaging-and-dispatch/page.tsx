@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Package, Truck, Shield, Clock, CheckCircle, Users } from 'lucide-react'
 import Link from 'next/link'
+import { ScrollToProcessButton } from "@/components/ScrollToProcessButton"
 
 export const metadata: Metadata = {
   title: 'Packaging & Dispatch - Ethnics by Aravalli | Premium Ethnic Wear Manufacturer',
@@ -108,18 +109,7 @@ export default function PackagingAndDispatchPage() {
                     Partner with Us
                   </Button>
                 </Link>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-[#D9A8A0] text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-[#2E1B1B] rounded-full"
-                  onClick={() => {
-                    if (typeof window !== 'undefined') {
-                      document.getElementById('process-section')?.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                >
-                  View Our Process
-                </Button>
+                <ScrollToProcessButton />
               </div>
             </div>
             <div className="relative">
