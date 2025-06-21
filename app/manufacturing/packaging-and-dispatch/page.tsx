@@ -204,7 +204,7 @@ export default function PackagingAndDispatchPage() {
           </h2>
           <p className="text-lg text-[#4A3A3A] mb-8">
             Partner with us and ensure your ethnic wear reaches customers in perfect condition, 
-            enhancing your brand's reputation and customer satisfaction.
+            enhancing your brand&apos;s reputation and customer satisfaction.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">

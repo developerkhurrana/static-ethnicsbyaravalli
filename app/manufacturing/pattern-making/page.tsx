@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from "next/link"
-import { ArrowLeft, CheckCircle2, Ruler, Palette, Users, Target, Layers, Zap } from "lucide-react"
+import { ArrowLeft, Ruler, Palette, Users, Target, Layers, Zap } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"

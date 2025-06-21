@@ -1,6 +1,5 @@
 import { Metadata } from "next"
 import { ProductCard } from "@/components/product-card"
-import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Aravalli Clothing – Premium Ethnic Wear Collection | Ethnics by Aravalli",
@@ -89,7 +88,7 @@ export default function AravalliClothingPage() {
             Aravalli Clothing
           </h1>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-8">
-            Discover the essence of Jaipur's ethnic wear with the Aravalli Clothing collection. Each piece is a blend of tradition, craftsmanship, and contemporary design.
+            Discover the essence of Jaipur&apos;s ethnic wear with the Aravalli Clothing collection. Each piece is a blend of tradition, craftsmanship, and contemporary design.
           </p>
         </div>
       </section>
