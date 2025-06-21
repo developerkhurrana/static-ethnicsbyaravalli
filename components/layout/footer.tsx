@@ -30,7 +30,7 @@ export function Footer() {
           <div>
             <h3 className="mb-4 text-sm font-semibold">Quick Links</h3>
             <nav className="flex flex-col space-y-2">
-              {navigationLinks.slice(0, 4).map((item) => (
+              {navigationLinks.slice(0, 5).map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
