@@ -86,17 +86,20 @@ Contact Us
           </div>
         </div>
         <div className="flex justify-center items-center w-full">
-              <div className="relative w-full aspect-video max-w-xl rounded-lg overflow-hidden shadow-lg border-2 border-white/20">
-                <iframe
-                  src="https://www.youtube.com/watch?v=_yLxnjdZf84"
-                  title="Who We Are Video"
-                  allow="autoplay; encrypted-media"
-                  allowFullScreen
-                  className="w-full h-full min-h-[220px]"
-                  style={{ border: 0 }}
-                />
-              </div>
-            </div>
+          <div className="relative w-full aspect-video max-w-xl rounded-lg overflow-hidden shadow-lg border-2 border-white/20">
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/_yLxnjdZf84"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="w-full h-full min-h-[220px]"
+              style={{ border: 0 }}
+            />
+          </div>
+        </div>
       </div>
 
       <div>
@@ -107,7 +110,7 @@ Contact Us
           {facilities.map((facility) => (
             <div
               key={facility.title}
-              className="group overflow-hidden rounded-lg border bg-card transition-transform duration-300"
+              className="group overflow-hidden rounded-lg border bg-card"
             >
               <div className="aspect-video overflow-hidden">
                 <Image
@@ -115,7 +118,7 @@ Contact Us
                   alt={facility.title}
                   width={600}
                   height={400}
-                  className="object-cover transition-transform duration-300"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
               <div className="p-6">

@@ -246,9 +246,12 @@ export default function Home() {
             <div className="flex justify-center items-center w-full">
               <div className="relative w-full aspect-video max-w-xl rounded-lg overflow-hidden shadow-lg border-2 border-white/20">
                 <iframe
-                  src="https://www.youtube.com/watch?v=_yLxnjdZf84"
-                  title="Who We Are Video"
-                  allow="autoplay; encrypted-media"
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/_yLxnjdZf84?autoplay=1&loop=1&playlist=_yLxnjdZf84"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                   className="w-full h-full min-h-[220px]"
                   style={{ border: 0 }}
