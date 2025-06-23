@@ -36,7 +36,7 @@ export default function AboutPage() {
       <div className="container max-w-7xl flex-1 flex flex-col">
         <SectionHeader
           title="About Us"
-          description="Learn about our journey in creating premium ethnic wear for boutiques and retailers."
+          description="Our journey began with a passion for preserving India’s rich textile traditions while reimagining ethnic wear for the contemporary woman. With a focus on craftsmanship, premium fabrics, and sophisticated design, we’ve spent years perfecting each silhouette to suit the evolving tastes of boutique shoppers and modern retailers. Every piece we create reflects a balance of cultural heritage and timeless elegance—crafted not just to be worn, but to be remembered."
           className="mb-12"
         />
 
@@ -54,16 +54,11 @@ export default function AboutPage() {
               Our Story
             </h2>
             <p className="mb-6 text-muted-foreground">
-              Founded with a passion for traditional craftsmanship and modern design,
-              we have been at the forefront of ethnic wear manufacturing for over a
-              decade. Our journey began with a simple mission: to create
-              high-quality ethnic wear that celebrates Indian heritage while
-              meeting contemporary fashion needs.
+            Founded with a passion for traditional craftsmanship and contemporary design, we have emerged as a leading force in women’s ethnic wear manufacturing in Jaipur. Our journey began with a clear mission: to create premium ethnic wear that celebrates India’s cultural richness while meeting the evolving style needs of customers across boutiques, fashion retailers, multi-location branded stores, and independent outlets.
             </p>
             <p className="mb-8 text-muted-foreground">
-              Today, we are proud to be trusted partners for boutiques and
-              retailers across the country, providing them with premium quality
-              ethnic wear that their customers love.
+            At the heart of our process lies a deep dedication to quality and detail—from initial design conceptualization and precise pattern making to expert stitching and stringent quality checks. Every piece is thoughtfully crafted to reflect elegance and comfort. What truly sets us apart is our unwavering commitment to timelines and the promises we make to our retail partners, ensuring dependable service and consistent excellence.
+
             </p>
             <Button size="lg" asChild className="bg-[#D9A8A0] hover:bg-[#C08478] text-white border-0">
               <Link href="/contact">Contact Us</Link>
