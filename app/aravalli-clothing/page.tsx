@@ -1,7 +1,9 @@
-import { Metadata } from "next"
+import Image from "next/image"
+import Link from "next/link"
+import { Shield, Users, Truck, Leaf, ArrowRight, Sparkles, BadgeCheck, Clock, Package } from "lucide-react"
 import { ProductCard } from "@/components/product-card"
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Aravalli Clothing – Premium Ethnic Wear Collection | Ethnics by Aravalli",
   description: "Explore the Aravalli Clothing collection: premium kurtas, dupattas, kalidaars, and more. Discover timeless ethnic wear crafted in Jaipur. Shop now!",
   keywords: "Aravalli Clothing, ethnic wear, kurtas, dupattas, kalidaars, Jaipur, premium ethnic wear, Ethnics by Aravalli",
@@ -15,6 +17,8 @@ export const metadata: Metadata = {
     canonical: "https://ethnicsbyaravalli.com/aravalli-clothing"
   }
 }
+
+const heroBg = "/products/hero_banner_1.jpg";
 
 const products = [
   {
@@ -49,8 +53,37 @@ const products = [
   }
 ]
 
+const features = [
+  {
+    icon: Sparkles,
+    title: "Modern Ethnic Styles",
+    description: "A curated collection blending Jaipur tradition with contemporary fashion."
+  },
+  {
+    icon: Shield,
+    title: "Quality Craftsmanship",
+    description: "Every piece is made with premium fabrics and expert finishing."
+  },
+  {
+    icon: Leaf,
+    title: "Sustainable Fabrics",
+    description: "Eco-friendly materials and responsible sourcing."
+  },
+  {
+    icon: Package,
+    title: "Boutique Packaging",
+    description: "Beautifully packed for a premium unboxing experience."
+  }
+]
+
+const stats = [
+  { icon: Users, label: "500+ Happy Clients" },
+  { icon: BadgeCheck, label: "100% In-House Production" },
+  { icon: Truck, label: "Pan-India Delivery" },
+  { icon: Clock, label: "Fast Turnaround" }
+]
+
 const faqs = [
- 
   {
     q: "What is Aravalli Clothing?",
     a: "Aravalli Clothing is a curated collection of premium ethnic wear, including kurtas, dupattas, and kalidaars, crafted in Jaipur by Ethnics by Aravalli."
@@ -79,17 +112,54 @@ const faqs = [
 
 export default function AravalliClothingPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-amber-50 to-orange-100 py-20 lg:py-28">
-        <div className="absolute inset-0 bg-black/5"></div>
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Aravalli Clothing
-          </h1>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-8">
-            Discover the essence of Jaipur&apos;s ethnic wear with the Aravalli Clothing collection. Each piece is a blend of tradition, craftsmanship, and contemporary design.
-          </p>
+      <section className="relative min-h-[60vh] flex items-center justify-center">
+        <Image
+          src={heroBg}
+          alt="Aravalli Clothing Hero"
+          fill
+          priority
+          className="object-cover w-full h-full absolute inset-0 z-0"
+        />
+        <div className="absolute inset-0 bg-[#000]/70 z-10" />
+        <div className="relative z-20 flex flex-col items-center text-center px-4 py-24">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg mb-4">Aravalli Clothing</h1>
+          <p className="text-lg md:text-2xl text-white/90 mb-8 max-w-2xl">Discover the essence of Jaipur&apos;s ethnic wear with the Aravalli Clothing collection. Each piece is a blend of tradition, craftsmanship, and contemporary design.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact" className="inline-block">
+              <button className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] font-semibold px-8 py-3 rounded-full text-lg shadow-lg transition">Get Catalog</button>
+            </Link>
+            <Link href="/kurti-manufacturer-in-jaipur" className="inline-block">
+              <button className="bg-white/80 hover:bg-white text-[#2E1B1B] font-semibold px-8 py-3 rounded-full text-lg border border-[#D9A8A0] shadow-lg transition flex items-center gap-2">See More Styles <ArrowRight className="w-5 h-5" /></button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Row */}
+      <section className="max-w-5xl mx-auto -mt-12 mb-12 z-30 relative">
+        <div className="bg-white rounded-xl shadow-lg flex flex-col md:flex-row items-center justify-between px-6 py-6 gap-6 md:gap-0">
+          {stats.map((stat, idx) => (
+            <div key={idx} className="flex items-center gap-2 text-[#2E1B1B]">
+              <stat.icon className="w-6 h-6 text-[#D9A8A0]" />
+              <span className="font-bold text-lg">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Why Choose Us Feature Grid */}
+      <section className="max-w-7xl mx-auto px-4 py-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2E1B1B] mb-12">Why Choose Aravalli Clothing?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, idx) => (
+            <div key={idx} className="bg-[#F9F6F4] rounded-xl p-8 flex flex-col items-center text-center shadow-md">
+              <feature.icon className="w-10 h-10 text-[#D9A8A0] mb-4" />
+              <h3 className="font-bold text-xl mb-2">{feature.title}</h3>
+              <p className="text-[#4A3A3A]">{feature.description}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -120,7 +190,7 @@ export default function AravalliClothingPage() {
                 className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col gap-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-[#D9A8A0] border-2"
               >
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="inline-block w-8 h-8 flex items-center justify-center rounded-full bg-brand-primary text-white font-bold text-lg mr-2">{idx + 1}</span>
+                  <span className="inline-flex items-center justify-center h-8 w-8 aspect-square rounded-full bg-[#D9A8A0] text-white font-bold text-base mr-2 leading-none">{idx + 1}</span>
                   <span className="font-semibold text-lg text-gray-900">{item.q}</span>
                 </div>
                 <div className="text-gray-700 text-base pl-10">{item.a}</div>
@@ -128,6 +198,15 @@ export default function AravalliClothingPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="max-w-2xl mx-auto px-4 py-16 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-[#2E1B1B] mb-6">Ready to Stock Aravalli Clothing?</h2>
+        <p className="text-lg text-[#4A3A3A] mb-8">Partner with us for boutique-ready, premium ethnic wear and experience the difference in quality and service.</p>
+        <Link href="/contact">
+          <button className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] font-semibold px-10 py-4 rounded-full text-lg shadow-lg transition">Get in Touch</button>
+        </Link>
       </section>
     </main>
   )

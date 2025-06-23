@@ -3,8 +3,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, Star, Users, Truck, Award, Phone, Mail } from "lucide-react"
+import { CheckCircle, Star, Users, Truck, Award, Phone, Mail, BadgeCheck, Clock } from "lucide-react"
 import { siteConfig } from "@/lib/constants"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Aravalli Kurtas – Jaipur's Premium Ethnic Wear for Boutiques",
@@ -20,6 +21,8 @@ export const metadata: Metadata = {
     canonical: "https://ethnicsbyaravalli.com/aravalli-kurtas-jaipur-secret"
   }
 }
+
+const heroBg = "/products/hero_banner_1.jpg";
 
 const features = [
   {
@@ -64,6 +67,13 @@ const features = [
   }
 ]
 
+const stats = [
+  { icon: Users, label: "500+ Happy Clients" },
+  { icon: BadgeCheck, label: "100% In-House Production" },
+  { icon: Truck, label: "Pan-India Delivery" },
+  { icon: Clock, label: "Fast Turnaround" }
+]
+
 // const testimonials = [
 //   {
 //     quote: "We&apos;ve worked with many suppliers in Jaipur, but Aravalli Kurtas stand out – both in build quality and support.",
@@ -81,41 +91,53 @@ export default function AravalliKurtasPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-amber-50 to-orange-100 py-20 lg:py-32">
-        <div className="absolute inset-0 bg-black/5"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="secondary" className="bg-amber-100 text-amber-800 hover:bg-amber-200 mb-6">
-              <Star className="w-4 h-4 mr-2" />
-              Jaipur&apos;s Premium Ethnic Wear
-            </Badge>
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Why Aravalli Kurtas Are{" "}
-              <span className="text-amber-600">Jaipur&apos;s Best Kept Secret</span>
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              What Every Boutique Owner Must Know
-            </p>
-            <p className="text-lg text-gray-700 leading-relaxed mb-8">
-              Jaipur has long been the heart of ethnic wear in India. Among its vibrant streets, 
-              age-old textile traditions and innovative fashion intersect. But there&apos;s one name 
-              that quietly leads the charge – Aravalli Kurtas by Ethnics by Aravalli.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in Aravalli Kurtas. Please share your latest kurta catalogue.`}>
-                <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Get Kurta Catalogue
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button variant="outline" size="lg">
-                  <Mail className="w-5 h-5 mr-2" />
-                  Contact for Quote
-                </Button>
-              </Link>
-            </div>
+      <section className="relative min-h-[60vh] flex items-center justify-center">
+        <Image
+          src={heroBg}
+          alt="Aravalli Kurtas Hero"
+          fill
+          priority
+          className="object-cover w-full h-full absolute inset-0 z-0"
+        />
+        <div className="absolute inset-0 bg-[#000]/70 z-10" />
+        <div className="relative z-20 flex flex-col items-center text-center px-4 py-24">
+          <Badge variant="secondary" className="bg-[#D9A8A0] text-[#2E1B1B] hover:bg-[#C08478] mb-6">
+            <Star className="w-4 h-4 mr-2" />
+            Jaipur&apos;s Premium Ethnic Wear
+          </Badge>
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg mb-4">
+            Why Aravalli Kurtas Are <span className="text-[#D9A8A0]">Jaipur&apos;s Best Kept Secret</span>
+          </h1>
+          <p className="text-lg md:text-2xl text-white/90 mb-8 max-w-2xl">What Every Boutique Owner Must Know</p>
+          <p className="text-lg text-white/80 mb-8 max-w-2xl">
+            Jaipur has long been the heart of ethnic wear in India. Among its vibrant streets, age-old textile traditions and innovative fashion intersect. But there&apos;s one name that quietly leads the charge – Aravalli Kurtas by Ethnics by Aravalli.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in Aravalli Kurtas. Please share your latest kurta catalogue.`}>
+              <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white">
+                <Phone className="w-5 h-5 mr-2" />
+                Get Kurta Catalogue
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button variant="outline" size="lg">
+                <Mail className="w-5 h-5 mr-2" />
+                Contact for Quote
+              </Button>
+            </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Stats Row */}
+      <section className="max-w-5xl mx-auto -mt-12 mb-12 z-30 relative">
+        <div className="bg-white rounded-xl shadow-lg flex flex-col md:flex-row items-center justify-between px-6 py-6 gap-6 md:gap-0">
+          {stats.map((stat, idx) => (
+            <div key={idx} className="flex items-center gap-2 text-[#2E1B1B]">
+              <stat.icon className="w-6 h-6 text-[#D9A8A0]" />
+              <span className="font-bold text-lg">{stat.label}</span>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -123,25 +145,22 @@ export default function AravalliKurtasPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              The{" "}
-              <span className="text-amber-600">Aravalli Difference</span>
+            <h2 className="text-3xl lg:text-4xl font-bold text-[#2E1B1B] mb-4">
+              The <span className="text-[#D9A8A0]">Aravalli Difference</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Whether you&apos;re a boutique owner, a fashion buyer, or simply someone who appreciates 
-              timeless elegance, discover why Aravalli Kurtas are not just products – but a statement.
+              Whether you&apos;re a boutique owner, a fashion buyer, or simply someone who appreciates timeless elegance, discover why Aravalli Kurtas are not just products – but a statement.
             </p>
           </div>
-          
           <div className="grid md:grid-cols-2 gap-12">
             {features.map((feature, index) => (
               <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                 <CardHeader>
                   <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4">
-                      <feature.icon className="w-6 h-6 text-amber-600" />
+                    <div className="w-12 h-12 bg-[#F9F6F4] rounded-full flex items-center justify-center mr-4">
+                      <feature.icon className="w-6 h-6 text-[#D9A8A0]" />
                     </div>
-                    <CardTitle className="text-2xl font-semibold text-gray-900">
+                    <CardTitle className="text-2xl font-semibold text-[#2E1B1B]">
                       {feature.title}
                     </CardTitle>
                   </div>
@@ -153,7 +172,7 @@ export default function AravalliKurtasPage() {
                   <ul className="space-y-3">
                     {feature.points.map((point, pointIndex) => (
                       <li key={pointIndex} className="flex items-center text-gray-700">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-[#D9A8A0] mr-3 flex-shrink-0" />
                         {point}
                       </li>
                     ))}

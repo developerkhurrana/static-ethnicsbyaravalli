@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from "next/image"
 import Link from "next/link"
-import { CheckCircle2, Leaf, ShieldCheck } from "lucide-react"
+import { CheckCircle2, Leaf, ShieldCheck, Users, BadgeCheck, Truck, Clock, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Script from "next/script"
 import { siteConfig } from "@/lib/constants"
@@ -35,6 +35,38 @@ export const metadata = {
   ],
 };
 
+const heroBg = "/products/hero_banner_1.jpg";
+
+const stats = [
+  { icon: Users, label: "500+ Happy Clients" },
+  { icon: BadgeCheck, label: "100% In-House Production" },
+  { icon: Truck, label: "Pan-India Delivery" },
+  { icon: Clock, label: "Fast Turnaround" }
+]
+
+const features = [
+  {
+    icon: Leaf,
+    title: "Sustainable Materials",
+    description: "We source premium, eco-friendly fabrics and implement sustainable manufacturing practices."
+  },
+  {
+    icon: ShieldCheck,
+    title: "Quality Assurance",
+    description: "Rigorous quality control at every stage ensures perfect finishing and durability."
+  },
+  {
+    icon: CheckCircle2,
+    title: "Custom Solutions",
+    description: "Tailored manufacturing solutions to meet your specific design and quality requirements."
+  },
+  {
+    icon: Truck,
+    title: "Fast Delivery",
+    description: "Efficient logistics and pan-India shipping for all orders."
+  }
+]
+
 export default function EthnicWearManufacturerPage() {
   return (
     <>
@@ -60,69 +92,54 @@ export default function EthnicWearManufacturerPage() {
           })
         }}
       />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <main className="bg-white">
         {/* Hero Section */}
-        <section className="relative mb-20 mt-20">
-          <div className="relative w-full h-[340px] md:h-[420px] lg:h-[480px] rounded-3xl overflow-hidden shadow-lg">
-            <Image
-              src="https://ekohum.com/cdn/shop/files/DT9462_6.jpg?v=1732085776"
-              alt="Premium Ethnic Wear Manufacturer in India - Custom Ethnic Fashion Production"
-              fill
-              className="object-cover w-full h-full"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/10 flex flex-col justify-center items-center text-center rounded-3xl z-10">
-              <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 drop-shadow-lg">
-                Ethnic Wear Manufacturer in India
-              </h1>
-              <p className="text-xl md:text-2xl text-white/90 mb-6 max-w-2xl mx-auto">
-                Premium Quality, Sustainable Fabrics, Expert Craftsmanship
-              </p>
-              <Button className="px-8 py-3 rounded-full bg-gradient-to-b from-[#D9A8A0] to-[#C08478] text-white text-lg hover:shadow-xl transition duration-200 focus:ring-2 focus:ring-[#D9A8A0]/50">
-                Contact Us
-              </Button>
+        <section className="relative min-h-[60vh] flex items-center justify-center">
+          <Image
+            src={heroBg}
+            alt="Ethnic Wear Manufacturer Hero"
+            fill
+            priority
+            className="object-cover w-full h-full absolute inset-0 z-0"
+          />
+          <div className="absolute inset-0 bg-[#D9A8A0]/70 z-10" />
+          <div className="relative z-20 flex flex-col items-center text-center px-4 py-24">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg mb-4">Ethnic Wear Manufacturer in India</h1>
+            <p className="text-lg md:text-2xl text-white/90 mb-8 max-w-2xl">Premium Quality, Sustainable Fabrics, Expert Craftsmanship</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/contact" className="inline-block">
+                <button className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] font-semibold px-8 py-3 rounded-full text-lg shadow-lg transition">Contact Us</button>
+              </Link>
+              <Link href="/kurti-manufacturer-in-jaipur" className="inline-block">
+                <button className="bg-white/80 hover:bg-white text-[#2E1B1B] font-semibold px-8 py-3 rounded-full text-lg border border-[#D9A8A0] shadow-lg transition flex items-center gap-2">See More Styles <ArrowRight className="w-5 h-5" /></button>
+              </Link>
             </div>
           </div>
         </section>
 
-        {/* Why Choose Us Section */}
-        <section className="mb-24">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-              Why Choose Us for Custom Ethnic Fashion?
-            </h2>
-            <p className="text-lg text-gray-600">
-              As a leading ethnic wear manufacturer in India, we combine traditional craftsmanship with modern production techniques to deliver exceptional quality.
-            </p>
+        {/* Stats Row */}
+        <section className="max-w-5xl mx-auto -mt-12 mb-12 z-30 relative">
+          <div className="bg-white rounded-xl shadow-lg flex flex-col md:flex-row items-center justify-between px-6 py-6 gap-6 md:gap-0">
+            {stats.map((stat, idx) => (
+              <div key={idx} className="flex items-center gap-2 text-[#2E1B1B]">
+                <stat.icon className="w-6 h-6 text-[#D9A8A0]" />
+                <span className="font-bold text-lg">{stat.label}</span>
+              </div>
+            ))}
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <div className="w-12 h-12 bg-[#D9A8A0]/10 rounded-full flex items-center justify-center mb-6">
-                <Leaf className="h-6 w-6 text-[#D9A8A0]" />
+        </section>
+
+        {/* Why Choose Us Feature Grid */}
+        <section className="max-w-7xl mx-auto px-4 py-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2E1B1B] mb-12">Why Choose Us for Custom Ethnic Fashion?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, idx) => (
+              <div key={idx} className="bg-[#F9F6F4] rounded-xl p-8 flex flex-col items-center text-center shadow-md">
+                <feature.icon className="w-10 h-10 text-[#D9A8A0] mb-4" />
+                <h3 className="font-bold text-xl mb-2">{feature.title}</h3>
+                <p className="text-[#4A3A3A]">{feature.description}</p>
               </div>
-              <h3 className="text-xl font-bold mb-4">Sustainable Materials</h3>
-              <p className="text-gray-600">
-                We source premium, eco-friendly fabrics and implement sustainable manufacturing practices.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <div className="w-12 h-12 bg-[#D9A8A0]/10 rounded-full flex items-center justify-center mb-6">
-                <ShieldCheck className="h-6 w-6 text-[#D9A8A0]" />
-              </div>
-              <h3 className="text-xl font-bold mb-4">Quality Assurance</h3>
-              <p className="text-gray-600">
-                Rigorous quality control at every stage ensures perfect finishing and durability.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <div className="w-12 h-12 bg-[#D9A8A0]/10 rounded-full flex items-center justify-center mb-6">
-                <CheckCircle2 className="h-6 w-6 text-[#D9A8A0]" />
-              </div>
-              <h3 className="text-xl font-bold mb-4">Custom Solutions</h3>
-              <p className="text-gray-600">
-                Tailored manufacturing solutions to meet your specific design and quality requirements.
-              </p>
-            </div>
+            ))}
           </div>
         </section>
 
@@ -261,21 +278,15 @@ export default function EthnicWearManufacturerPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="mb-24">
-          <div className="bg-[#D9A8A0]/10 rounded-3xl p-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-              Ready to Start Your Ethnic Wear Collection?
-            </h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Partner with India&apos;s trusted ethnic wear manufacturer for premium quality and exceptional service.
-            </p>
-            <Button className="px-8 py-3 rounded-full bg-gradient-to-b from-[#D9A8A0] to-[#C08478] text-white text-lg hover:shadow-xl transition duration-200 focus:ring-2 focus:ring-[#D9A8A0]/50">
-              Contact Us
-            </Button>
-          </div>
+        {/* Final CTA */}
+        <section className="max-w-2xl mx-auto px-4 py-16 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#2E1B1B] mb-6">Ready to Stock Premium Ethnic Wear?</h2>
+          <p className="text-lg text-[#4A3A3A] mb-8">Partner with us for boutique-ready, premium ethnic wear and experience the difference in quality and service.</p>
+          <Link href="/contact">
+            <button className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] font-semibold px-10 py-4 rounded-full text-lg shadow-lg transition">Get in Touch</button>
+          </Link>
         </section>
-      </div>
+      </main>
     </>
   )
 } 

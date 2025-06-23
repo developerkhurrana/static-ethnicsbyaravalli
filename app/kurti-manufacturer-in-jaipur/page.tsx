@@ -76,13 +76,13 @@ export default function KurtiManufacturerJaipur() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-rose-50 to-pink-100 py-20 lg:py-32">
+      <section className="relative bg-gradient-to-br from-[#F9F6F4] to-[#F9F6F4] py-20 lg:py-32">
         <div className="absolute inset-0 bg-black/5"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <Badge variant="secondary" className="bg-rose-100 text-rose-800 hover:bg-rose-200">
+                <Badge variant="secondary" className="bg-[#D9A8A0] text-[#2E1B1B] hover:bg-[#C08478]">
                   <MapPin className="w-4 h-4 mr-2" />
                   {siteConfig.address}
                 </Badge>
@@ -92,14 +92,14 @@ export default function KurtiManufacturerJaipur() {
                 <p className="text-xl text-gray-600 leading-relaxed">
                   Premium wholesale kurti supplier for boutiques, retailers, and online sellers. 
                   Quality cotton and silk kurtis with competitive bulk pricing. 
-                  <span className="font-semibold text-rose-600"> 10+ years of trusted manufacturing.</span>
+                  <span className="font-semibold text-[#D9A8A0]"> 10+ years of trusted manufacturing.</span>
                 </p>
               </div>
               
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in wholesale kurtis. Please share your catalog.`}>
-                    <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto">
+                    <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] w-full sm:w-auto">
                       <Phone className="w-5 h-5 mr-2" />
                       Get WhatsApp Catalog
                     </Button>
@@ -182,8 +182,8 @@ export default function KurtiManufacturerJaipur() {
             {whyChooseUs.map((feature, index) => (
               <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
                 <CardHeader>
-                  <div className="mx-auto w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mb-4">
-                    <feature.icon className="w-8 h-8 text-rose-600" />
+                  <div className="mx-auto w-16 h-16 bg-[#D9A8A0] rounded-full flex items-center justify-center mb-4">
+                    <feature.icon className="w-8 h-8 text-[#2E1B1B]" />
                   </div>
                   <CardTitle className="text-xl font-semibold text-gray-900">
                     {feature.title}
@@ -236,7 +236,7 @@ export default function KurtiManufacturerJaipur() {
                   <ul className="space-y-2">
                     {category.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-[#D9A8A0] mr-2 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
@@ -254,13 +254,13 @@ export default function KurtiManufacturerJaipur() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <Badge variant="secondary" className="bg-blue-100 text-blue-800 hover:bg-blue-200">
+                <Badge variant="secondary" className="bg-[#D9A8A0] text-[#2E1B1B] hover:bg-[#C08478]">
                   <MapPin className="w-4 h-4 mr-2" />
                   Located in Jaipur
                 </Badge>
                 <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
                   Your Trusted{" "}
-                  <span className="text-rose-600">Kurti Manufacturer</span>{" "}
+                  <span className="text-[#D9A8A0]">Kurti Manufacturer</span>{" "}
                   in Malviya Nagar, Jaipur
                 </h2>
                 <p className="text-xl text-gray-600 leading-relaxed">
@@ -273,28 +273,28 @@ export default function KurtiManufacturerJaipur() {
               <div className="grid sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <h3 className="font-semibold text-gray-900 flex items-center">
-                    <MapPin className="w-5 h-5 mr-2 text-rose-600" />
+                    <MapPin className="w-5 h-5 mr-2 text-[#D9A8A0]" />
                     Location
                   </h3>
                   <p className="text-gray-600">{siteConfig.address}</p>
                 </div>
                 <div className="space-y-2">
                   <h3 className="font-semibold text-gray-900 flex items-center">
-                    <Clock className="w-5 h-5 mr-2 text-rose-600" />
+                    <Clock className="w-5 h-5 mr-2 text-[#D9A8A0]" />
                     Business Hours
                   </h3>
                   <p className="text-gray-600">Mon-Sat: 9:00 AM - 7:00 PM</p>
                 </div>
                 <div className="space-y-2">
                   <h3 className="font-semibold text-gray-900 flex items-center">
-                    <Phone className="w-5 h-5 mr-2 text-rose-600" />
+                    <Phone className="w-5 h-5 mr-2 text-[#D9A8A0]" />
                     Contact
                   </h3>
                   <p className="text-gray-600">{siteConfig.phone}</p>
                 </div>
                 <div className="space-y-2">
                   <h3 className="font-semibold text-gray-900 flex items-center">
-                    <Users className="w-5 h-5 mr-2 text-rose-600" />
+                    <Users className="w-5 h-5 mr-2 text-[#D9A8A0]" />
                     Service
                   </h3>
                   <p className="text-gray-600">B2B & Wholesale Only</p>
@@ -303,7 +303,7 @@ export default function KurtiManufacturerJaipur() {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in visiting your manufacturing unit in Malviya Nagar, Jaipur.`}>
-                  <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto">
+                  <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] w-full sm:w-auto">
                     <Phone className="w-5 h-5 mr-2" />
                     Schedule Factory Visit
                   </Button>
@@ -318,7 +318,7 @@ export default function KurtiManufacturerJaipur() {
             
             <div className="relative">
               <div className="bg-gray-200 rounded-lg p-8 text-center">
-                <MapPin className="w-16 h-16 text-rose-600 mx-auto mb-4" />
+                <MapPin className="w-16 h-16 text-[#D9A8A0] mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   Manufacturing Unit
                 </h3>
@@ -335,7 +335,7 @@ export default function KurtiManufacturerJaipur() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-rose-600 to-pink-600">
+      <section className="py-20 bg-gradient-to-r from-[#D9A8A0] to-[#C08478]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
             Ready to Partner with the Best{" "}
@@ -347,13 +347,13 @@ export default function KurtiManufacturerJaipur() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in wholesale kurtis from Ethnics by Aravalli. Please share your catalog and pricing.`}>
-              <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white">
+              <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-white">
                 <Phone className="w-5 h-5 mr-2" />
                 Get WhatsApp Catalog Now
               </Button>
             </Link>
             <Link href="/contact">
-              <Button variant="outline" size="lg" className="bg-white text-rose-600 hover:bg-gray-100">
+              <Button variant="outline" size="lg" className="bg-white text-[#D9A8A0] hover:bg-gray-100">
                 <Mail className="w-5 h-5 mr-2" />
                 Request Quote
               </Button>

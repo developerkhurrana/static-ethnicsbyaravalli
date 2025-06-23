@@ -12,6 +12,9 @@ export async function GET() {
     'kurti-manufacturer-in-jaipur',
     'manufacturing',
     'blog',
+    'aravalli-clothing',
+    'aravalli-kurtas-jaipur-secret',
+    'best-kurti-manufacturer-in-jaipur',
   ];
 
   // Blog posts
@@ -19,10 +22,10 @@ export async function GET() {
 
   const urls = [
     ...staticPages.map(
-      (path) => `<url><loc>${baseUrl}/${path}</loc></url>`
+      (path) => `<url><loc>${baseUrl}/${path}</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>`
     ),
     ...posts.map(
-      (post) => `<url><loc>${baseUrl}/blog/${post.slug}</loc><lastmod>${post.updatedAt}</lastmod></url>`
+      (post) => `<url><loc>${baseUrl}/blog/${post.slug}</loc><lastmod>${post.updatedAt}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`
     ),
   ];
 
