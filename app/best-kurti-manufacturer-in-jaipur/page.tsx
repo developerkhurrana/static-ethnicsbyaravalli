@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from "next/link"
-import { CheckCircle, Eye, Target, Shield, Zap, Users, Truck, Leaf, ArrowRight, Sparkles, BadgeCheck, Clock, Package, Scissors } from "lucide-react"
+import { Shield, Users, Truck, Leaf, ArrowRight, Sparkles, BadgeCheck, Clock, Package, Scissors } from "lucide-react"
 
 const heroBg = '/products/hero_banner_1.jpg';
 const galleryImages: string[] = [
