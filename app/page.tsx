@@ -267,7 +267,9 @@ export default function Home() {
               What We Make
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore our premium ethnic wear collection, made with precision in Jaipur.
+              Ethnic By Aravalli is a distinguished women's ethnic wear manufacturer rooted in the culturally vibrant city of Jaipur dedicated to supplying retailers, garment chains, and fashion outlets with its clothing that resonates with elegance, culture, and comfort. More than just a production house, it's a creative partner to retailers seeking garments that blend traditional artistry with modern sensibilities.<br/>
+              With a meticulous eye for quality, Ethnic By Aravalli selects premium fabrics that undergo superior dyeing and printing processes. Every detail—from the choice of colors and motifs to the feel and fit of the fabric—is thoughtfully curated to match evolving style trends, comfort needs, and the spirit of every occasion satisfying every need of customers of women ethnic wear retailers.<br/>
+              The in-house manufacturing capabilities of Ethnics By Aravalli enables it to create a wide array of garments kurtas, kurta sets, suit sets, dresses, anarkalis, kaftans, and tops. Each piece is a testament to expert pattern making, precise stitching, and the delicate use of intricate embroideries. With rigorous quality checks and careful packaging, the manufacturer ensures excellence from thread to finish.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
@@ -290,7 +292,7 @@ export default function Home() {
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Kurtas</h3>
-                  <p className="text-gray-600 mb-4">Our premium kurtas blend traditional craftsmanship with modern designs, crafted with fine fabrics like cotton, muslin, and chanderi for effortless elegance and comfort.</p>
+                  <p className="text-gray-600 mb-4">Our premium kurtas blend traditional craftsmanship with contemporary aesthetics, thoughtfully crafted using fine fabrics like cotton, linen, modal, muslin, chanderi and more. The result is apparel that offers effortless elegance, breathable comfort, and lasting appeal for the discerning customers of fashion retailers.</p>
                 </div>
                 <Button 
                   className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
@@ -319,7 +321,7 @@ export default function Home() {
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Kurta Sets</h3>
-                  <p className="text-gray-600 mb-4">Elevate your wardrobe with our designer kurta sets, featuring intricate embroidery, tailored fits, and luxurious fabrics, perfect for contemporary ethnic fashion.</p>
+                  <p className="text-gray-600 mb-4">Our Kurta sets are elegant two-piece ethnic ensembles for women, thoughtfully paired with vibrant colours and stylish prints. Each set features a kurta top matched with coordinated bottoms, offering a variety of styles including pants, palazzos, shararas, and more.</p>
                 </div>
                 <Button 
                   className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
@@ -348,7 +350,7 @@ export default function Home() {
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Suit Sets</h3>
-                  <p className="text-gray-600 mb-4">Explore timeless ethnic suit sets, designed with premium materials and elegant cuts, ideal for festive occasions, office wear, and boutique collections.</p>
+                  <p className="text-gray-600 mb-4">Our timeless ethnic suit sets are crafted from premium materials and tailored with elegant cuts, offering a blend of comfort and sophistication. Each kurta set comes paired with a matching bottom and dupatta, making it an ideal choice for festive celebrations, professional settings, and boutique showcases alike.</p>
                 </div>
                 <Button 
                   className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
@@ -377,7 +379,7 @@ export default function Home() {
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Dresses</h3>
-                  <p className="text-gray-600 mb-4">Discover stylish ethnic dresses that merge classic silhouettes with modern aesthetics, handcrafted for sophistication and everyday wear.</p>
+                  <p className="text-gray-600 mb-4">Shop owners, elevate your collections with our stylish ethnic dresses that blend timeless silhouettes and contemporary design. Handcrafted with precision, each piece radiates sophistication while being tailored for the ease of everyday wear—perfect for discerning customers who value both tradition and trend.</p>
                 </div>
                 <Button 
                   className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
@@ -396,7 +398,7 @@ export default function Home() {
                   fill
                   className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
                 />
-          <Image
+                <Image
                   src="https://ekohum.com/cdn/shop/files/1P1A4278f.jpg?v=1717779843"
                   alt="Kaftans Collection Hover"
                   fill
@@ -406,7 +408,7 @@ export default function Home() {
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Kaftans</h3>
-                  <p className="text-gray-600 mb-4">Breezy and elegant, our kaftans offer lightweight comfort with stunning prints and detailed embroidery, making them perfect for effortless ethnic fashion.</p>
+                  <p className="text-gray-600 mb-4">Breezy and elegant, our kaftans are designed for those who cherish comfort without compromising on style. Featuring airy fabrics, intricate embroidery, and captivating prints, they're the perfect expression of effortless ethnic fusion—ideal for the customers of retailers who like everything from laid-back lounging to graceful gatherings.</p>
                 </div>
                 <Button 
                   className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
@@ -416,26 +418,26 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            {/* Kalidaars */}
+            {/* Anarkali Kurtas */}
             <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
               <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
                 <Image
                   src="https://ekohum.com/cdn/shop/files/DSC_1611_c8d72493-d7b7-4fd8-a066-43dd937a657d.jpg?v=1729164602"
-                  alt="Kalidaars Collection"
+                  alt="Anarkali Kurtas Collection"
                   fill
                   className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
                 />
-          <Image
+                <Image
                   src="https://ekohum.com/cdn/shop/files/DSC_1622_33b0f5b1-b840-4283-90cc-259f6794734e.jpg?v=1729164681"
-                  alt="Kalidaars Collection Hover"
+                  alt="Anarkali Kurtas Collection Hover"
                   fill
                   className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg"
                 />
               </div>
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Kalidaars</h3>
-                  <p className="text-gray-600 mb-4">Experience the grandeur of kalidaars, known for their flowing layers, regal appeal, and artisanal detailing, embodying classic Indian heritage with a modern touch.</p>
+                  <h3 className="text-lg font-semibold mb-2">Anarkali Kurtas</h3>
+                  <p className="text-gray-600 mb-4">Step into timeless elegance with our Anarkali Kurtas—celebrated for their graceful layers, royal silhouette, and exquisite artisanal detailing. Each piece captures the essence of Indian heritage while embracing a refined, contemporary flair, making it a perfect choice for occasions that call for grandeur with ease.</p>
                 </div>
                 <Button 
                   className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
