@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { ScrollToProcessButton } from "@/components/ScrollToProcessButton"
 
 export const metadata: Metadata = {
   title: 'Cutting & Stitching - Ethnics by Aravalli | Premium Ethnic Wear Manufacturer',
@@ -124,7 +123,6 @@ export default function CuttingAndStitchingPage() {
                     Partner with Us
                   </Button>
                 </Link>
-                <ScrollToProcessButton />
               </div>
             </div>
             <div className="relative">

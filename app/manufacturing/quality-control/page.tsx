@@ -1,5 +1,3 @@
-"use client";
-
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from "next/link"
@@ -9,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { ScrollToProcessButton } from '@/components/quality-control/ScrollToProcessButton'
 
 export const metadata: Metadata = {
   title: 'Quality Control - Ethnics by Aravalli | Premium Ethnic Wear Manufacturer',
@@ -120,23 +119,10 @@ export default function QualityControlPage() {
                 craftsmanship and consistency before shipping. Every garment is thoroughly inspected.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact">
-                  <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] rounded-full">
-                    Partner with Us
-                  </Button>
-                </Link>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-[#D9A8A0] text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-[#2E1B1B] rounded-full"
-                  onClick={() => {
-                    if (typeof window !== 'undefined') {
-                      document.getElementById('process-section')?.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                >
-                  View Our Process
+                <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] rounded-full">
+                  Partner with Us
                 </Button>
+                <ScrollToProcessButton />
               </div>
             </div>
             <div className="relative">
@@ -224,16 +210,12 @@ export default function QualityControlPage() {
             ensuring your customers receive only the best products.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] rounded-full">
-                Start Partnership
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button size="lg" variant="outline" className="border-[#D9A8A0] text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-[#2E1B1B] rounded-full">
-                Contact Us
-              </Button>
-            </Link>
+            <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] rounded-full">
+              Start Partnership
+            </Button>
+            <Button size="lg" variant="outline" className="border-[#D9A8A0] text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-[#2E1B1B] rounded-full">
+              Contact Us
+            </Button>
           </div>
         </div>
       </section>

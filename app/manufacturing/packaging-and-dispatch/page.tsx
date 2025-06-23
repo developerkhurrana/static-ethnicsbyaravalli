@@ -5,7 +5,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Package, Truck, Shield, Clock, CheckCircle, Users } from 'lucide-react'
 import Link from 'next/link'
-import { ScrollToProcessButton } from "@/components/ScrollToProcessButton"
 
 export const metadata: Metadata = {
   title: 'Packaging & Dispatch - Ethnics by Aravalli | Premium Ethnic Wear Manufacturer',
@@ -109,7 +108,6 @@ export default function PackagingAndDispatchPage() {
                     Partner with Us
                   </Button>
                 </Link>
-                <ScrollToProcessButton />
               </div>
             </div>
             <div className="relative">
