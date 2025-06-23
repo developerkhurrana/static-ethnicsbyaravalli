@@ -96,11 +96,11 @@ export default function PatternMakingPage() {
         </Link>
       </div>
 
-      <SectionHeader
+      {/* <SectionHeader
         title="Pattern Making Excellence"
         description="Where creativity meets precision - our expert pattern making process ensures every design translates perfectly from concept to creation."
         className="mb-12"
-      />
+      /> */}
 
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">

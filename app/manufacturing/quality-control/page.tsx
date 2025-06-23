@@ -97,11 +97,11 @@ export default function QualityControlPage() {
         </Link>
       </div>
 
-      <SectionHeader
+      {/* <SectionHeader
         title="Quality Control Excellence"
         description="Where perfection meets precision - our quality control processes ensure every garment meets the highest standards."
         className="mb-12"
-      />
+      /> */}
 
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">

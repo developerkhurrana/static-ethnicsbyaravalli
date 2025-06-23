@@ -95,12 +95,12 @@ export default function CuttingAndStitchingPage() {
           Back to Manufacturing
         </Link>
       </div>
-
+{/* 
       <SectionHeader
         title="Cutting & Stitching Excellence"
         description="Where precision meets craftsmanship - our cutting and stitching processes ensure every garment is perfectly crafted."
         className="mb-12"
-      />
+      /> */}
 
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
