@@ -4,7 +4,7 @@ import Link from "next/link"
 import { ArrowLeft, CheckCircle, Eye, Target, Shield, Zap, Users } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { SectionHeader } from "@/components/ui/section-header"
+// import { SectionHeader } from "@/components/ui/section-header"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ScrollToProcessButton } from '@/components/quality-control/ScrollToProcessButton'
