@@ -246,7 +246,7 @@ export default function Home() {
             <div className="flex justify-center items-center w-full">
               <div className="relative w-full aspect-video max-w-xl rounded-lg overflow-hidden shadow-lg border-2 border-white/20">
                 <iframe
-                  src="https://player.cloudinary.com/embed/?cloud_name=dfye0gag9&public_id=who_we_are_video_njilol&player[autoplay]=true&player[autoplayMode]=on-scroll&player[muted]=true&player[loop]=true&player[controls]=false"
+                  src="https://www.youtube.com/watch?v=_yLxnjdZf84"
                   title="Who We Are Video"
                   allow="autoplay; encrypted-media"
                   allowFullScreen
