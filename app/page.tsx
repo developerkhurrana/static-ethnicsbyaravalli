@@ -267,7 +267,7 @@ export default function Home() {
               What We Make
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Ethnic By Aravalli is a distinguished women's ethnic wear manufacturer rooted in the culturally vibrant city of Jaipur dedicated to supplying retailers, garment chains, and fashion outlets with its clothing that resonates with elegance, culture, and comfort. More than just a production house, it's a creative partner to retailers seeking garments that blend traditional artistry with modern sensibilities.<br/>
+              Ethnic By Aravalli is a distinguished women&apos;s ethnic wear manufacturer rooted in the culturally vibrant city of Jaipur dedicated to supplying retailers, garment chains, and fashion outlets with its clothing that resonates with elegance, culture, and comfort. More than just a production house, it&apos;s a creative partner to retailers seeking garments that blend traditional artistry with modern sensibilities.<br/>
               With a meticulous eye for quality, Ethnic By Aravalli selects premium fabrics that undergo superior dyeing and printing processes. Every detail—from the choice of colors and motifs to the feel and fit of the fabric—is thoughtfully curated to match evolving style trends, comfort needs, and the spirit of every occasion satisfying every need of customers of women ethnic wear retailers.<br/>
               The in-house manufacturing capabilities of Ethnics By Aravalli enables it to create a wide array of garments kurtas, kurta sets, suit sets, dresses, anarkalis, kaftans, and tops. Each piece is a testament to expert pattern making, precise stitching, and the delicate use of intricate embroideries. With rigorous quality checks and careful packaging, the manufacturer ensures excellence from thread to finish.
             </p>
@@ -408,7 +408,7 @@ export default function Home() {
               <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Kaftans</h3>
-                  <p className="text-gray-600 mb-4">Breezy and elegant, our kaftans are designed for those who cherish comfort without compromising on style. Featuring airy fabrics, intricate embroidery, and captivating prints, they're the perfect expression of effortless ethnic fusion—ideal for the customers of retailers who like everything from laid-back lounging to graceful gatherings.</p>
+                  <p className="text-gray-600 mb-4">Breezy and elegant, our kaftans are designed for those who cherish comfort without compromising on style. Featuring airy fabrics, intricate embroidery, and captivating prints, they&apos;re the perfect expression of effortless ethnic fusion—ideal for the customers of retailers who like everything from laid-back lounging to graceful gatherings.</p>
                 </div>
                 <Button 
                   className="w-full mt-auto border-2 border-[#D9A8A0] bg-transparent text-[#D9A8A0] hover:bg-[#D9A8A0] hover:text-white transition-colors" 
@@ -460,7 +460,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#4A3A3A]">Ethnics by Aravalli – Premium Ethnic Wear Manufacturers</h2>
           <p className="text-lg text-gray-700 mb-2">We create stunning ethnic wear directly for boutiques and retailers—no middlemen, just authentic craftsmanship and the best quality!</p>
           <p className="text-base text-gray-600 mb-2">📍 Based in Jaipur &nbsp; Crafted with care, delivered with excellence</p>
-          <p className="text-base text-gray-600 mb-8">🛍️ Your boutique deserves the best. Let's create something beautiful together!</p>
+          <p className="text-base text-gray-600 mb-8">🛍️ Your boutique deserves the best. Let&apos;s create something beautiful together!</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/contact"

@@ -1,14 +1,9 @@
 import Image from 'next/image'
 import Link from "next/link"
-import { ArrowLeft, CheckCircle, Eye, Target, Shield, Zap, Users, Truck, Leaf, Star, ArrowRight, Sparkles, BadgeCheck, Clock, Package, Scissors } from "lucide-react"
+import { CheckCircle, Eye, Target, Shield, Zap, Users, Truck, Leaf, ArrowRight, Sparkles, BadgeCheck, Clock, Package, Scissors } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { ScrollToProcessButton } from '@/components/quality-control/ScrollToProcessButton'
-
-const heroBg = '/products/hero_banner_1.jpg'
-const galleryImages = [
+const heroBg = '/products/hero_banner_1.jpg';
+const galleryImages: string[] = [
   '/products/kurta_1.png',
   '/products/kurta_2.png',
   '/products/kurta_3.png',
@@ -18,14 +13,14 @@ const galleryImages = [
   '/products/kalidaar_2.png',
   '/products/dupatta_1.png',
   '/products/dupatta_2.png',
-]
+];
 
 export const metadata = {
   title: 'Best Kurti Manufacturer in Jaipur - Ethnics by Aravalli',
-  description: 'Boutique-ready, trend-setting, and ethically crafted kurtis. Discover why Ethnics by Aravalli is Jaipur\'s top choice for premium kurtis.',
+  description: 'Boutique-ready, trend-setting, and ethically crafted kurtis. Discover why Ethnics by Aravalli is Jaipur&apos;s top choice for premium kurtis.',
   openGraph: {
     title: 'Best Kurti Manufacturer in Jaipur - Ethnics by Aravalli',
-    description: 'Boutique-ready, trend-setting, and ethically crafted kurtis. Discover why Ethnics by Aravalli is Jaipur\'s top choice for premium kurtis.',
+    description: 'Boutique-ready, trend-setting, and ethically crafted kurtis. Discover why Ethnics by Aravalli is Jaipur&apos;s top choice for premium kurtis.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://ethnicsbyaravalli.com/best-kurti-manufacturer-in-jaipur',
@@ -40,72 +35,6 @@ export const metadata = {
     ],
   },
 };
-
-const qualityFeatures = [
-  {
-    icon: CheckCircle,
-    title: 'Multi-Stage Inspection',
-    description: 'Every garment undergoes multiple quality checks at different stages of production.',
-  },
-  {
-    icon: Eye,
-    title: 'Visual Inspection',
-    description: 'Trained inspectors examine every detail for stitching, fabric, and finishing quality.',
-  },
-  {
-    icon: Target,
-    title: 'Measurement Accuracy',
-    description: 'Precise measurements are verified to ensure perfect fit and sizing consistency.',
-  },
-  {
-    icon: Shield,
-    title: 'Durability Testing',
-    description: 'Garments are tested for strength, colorfastness, and overall durability.',
-  },
-  {
-    icon: Zap,
-    title: 'Fast Turnaround',
-    description: 'Efficient quality control processes ensure quick approval without compromising standards.',
-  },
-  {
-    icon: Users,
-    title: 'Expert Team',
-    description: 'Experienced quality control specialists with deep knowledge of ethnic wear standards.',
-  },
-]
-
-const qualityProcess = [
-  {
-    step: '01',
-    title: 'Raw Material Check',
-    description: 'All fabrics and materials are inspected for quality, color, and consistency.',
-  },
-  {
-    step: '02',
-    title: 'In-Process Inspection',
-    description: 'Quality checks are conducted during cutting, stitching, and assembly stages.',
-  },
-  {
-    step: '03',
-    title: 'Final Product Check',
-    description: 'Complete garment inspection for fit, finish, and overall quality standards.',
-  },
-  {
-    step: '04',
-    title: 'Measurement Verification',
-    description: 'All measurements are verified against specifications for perfect sizing.',
-  },
-  {
-    step: '05',
-    title: 'Packaging Inspection',
-    description: 'Final check before packaging to ensure presentation and labeling quality.',
-  },
-  {
-    step: '06',
-    title: 'Quality Approval',
-    description: 'Only garments meeting our high standards are approved for dispatch.',
-  },
-]
 
 export default function BestKurtiManufacturerPage() {
   return (
@@ -163,7 +92,7 @@ export default function BestKurtiManufacturerPage() {
           <div className="bg-[#F9F6F4] rounded-xl p-8 flex flex-col items-center text-center shadow-md">
             <Sparkles className="w-10 h-10 text-[#D9A8A0] mb-4" />
             <h3 className="font-bold text-xl mb-2">Trend-Driven Designs</h3>
-            <p className="text-[#4A3A3A]">Fresh, fast-moving styles inspired by Jaipur's heritage and global trends.</p>
+            <p className="text-[#4A3A3A]">Fresh, fast-moving styles inspired by Jaipur&apos;s heritage and global trends.</p>
           </div>
           <div className="bg-[#F9F6F4] rounded-xl p-8 flex flex-col items-center text-center shadow-md">
             <Shield className="w-10 h-10 text-[#D9A8A0] mb-4" />
@@ -223,7 +152,7 @@ export default function BestKurtiManufacturerPage() {
       <section className="max-w-7xl mx-auto px-4 py-16">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2E1B1B] mb-12">Gallery: Our Kurtis in Action</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {galleryImages.map((src, i) => (
+          {galleryImages.map((src: string, i: number) => (
             <div key={i} className="aspect-[3/4] rounded-lg overflow-hidden shadow-md">
               <Image src={src} alt={`Kurti ${i + 1}`} width={400} height={600} className="object-cover w-full h-full" />
             </div>
@@ -242,7 +171,7 @@ export default function BestKurtiManufacturerPage() {
 
       {/* Final CTA */}
       <section className="max-w-2xl mx-auto px-4 py-16 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#2E1B1B] mb-6">Ready to Stock Jaipur's Best Kurtis?</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-[#2E1B1B] mb-6">Ready to Stock Jaipur&apos;s Best Kurtis?</h2>
         <p className="text-lg text-[#4A3A3A] mb-8">Partner with Ethnics by Aravalli for boutique-ready, premium kurtis and experience the difference in quality and service.</p>
         <Link href="/contact">
           <button className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] font-semibold px-10 py-4 rounded-full text-lg shadow-lg transition">Get in Touch</button>
