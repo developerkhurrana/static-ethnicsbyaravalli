@@ -5,7 +5,6 @@ import Link from "next/link"
 import useEmblaCarousel from 'embla-carousel-react'
 import { useCallback, useEffect, useState } from "react"
 import { FlipWords } from "@/components/ui/flip-words"
-import { Button } from "@/components/ui/button"
 import { KeywordTicker } from "@/components/ui/keyword-ticker"
 import { ProductCard } from "@/components/product-card"
 // import { Metadata } from "next"

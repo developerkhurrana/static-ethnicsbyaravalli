@@ -92,7 +92,7 @@ export default function TopKurtiManufacturerPage() {
           <div className="bg-[#F9F6F4] rounded-xl p-8 flex flex-col items-center text-center shadow-md">
             <Sparkles className="w-10 h-10 text-[#D9A8A0] mb-4" />
             <h3 className="font-bold text-xl mb-2">Trend-Driven Designs</h3>
-            <p className="text-[#4A3A3A]">Fresh, fast-moving styles inspired by Jaipur's heritage and global trends.</p>
+            <p className="text-[#4A3A3A]">Fresh, fast-moving styles inspired by Jaipur&apos;s heritage and global trends.</p>
           </div>
           <div className="bg-[#F9F6F4] rounded-xl p-8 flex flex-col items-center text-center shadow-md">
             <Shield className="w-10 h-10 text-[#D9A8A0] mb-4" />
@@ -162,7 +162,7 @@ export default function TopKurtiManufacturerPage() {
 
       {/* Final CTA */}
       <section className="max-w-2xl mx-auto px-4 py-16 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#2E1B1B] mb-6">Ready to Stock Jaipur's Top Kurtis?</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-[#2E1B1B] mb-6">Ready to Stock Jaipur&apos;s Top Kurtis?</h2>
         <p className="text-lg text-[#4A3A3A] mb-8">Partner with Ethnics by Aravalli for boutique-ready, premium kurtis and experience the difference in quality and service.</p>
         <Link href="/contact">
           <button className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] font-semibold px-10 py-4 rounded-full text-lg shadow-lg transition">Get in Touch</button>
