@@ -182,7 +182,7 @@ export default function EthnicWearManufacturerPage() {
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Types of Ethnic Wear We Offer
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-600 max-w-7xl mx-auto text-justify">
                 Explore our premium ethnic wear collection, crafted with precision in Jaipur.
               </p>
             </div>
@@ -206,7 +206,7 @@ export default function EthnicWearManufacturerPage() {
                 <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                   <div>
                     <h3 className="text-lg font-semibold mb-2">Kurtas</h3>
-                    <p className="text-gray-600 mb-4">Our premium kurtas blend traditional craftsmanship with modern designs, crafted with fine fabrics like cotton, muslin, and chanderi for effortless elegance and comfort.</p>
+                    <p className="text-gray-600 mb-4 text-left w-full">Our premium kurtas blend traditional craftsmanship with modern designs, crafted with fine fabrics like cotton, muslin, and chanderi for effortless elegance and comfort.</p>
                   </div>
                   <Button 
                     className="w-full mt-auto px-8 py-2 rounded-full bg-gradient-to-b from-gray-100 to-gray-200 text-gray-800 hover:shadow-xl transition duration-200 focus:ring-2 focus:ring-gray-300/50" 
@@ -235,7 +235,7 @@ export default function EthnicWearManufacturerPage() {
                 <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                   <div>
                     <h3 className="text-lg font-semibold mb-2">Kurta Sets</h3>
-                    <p className="text-gray-600 mb-4">Elevate your wardrobe with our designer kurta sets, featuring intricate embroidery, tailored fits, and luxurious fabrics, perfect for contemporary ethnic fashion.</p>
+                    <p className="text-gray-600 mb-4 text-left w-full">Elevate your wardrobe with our designer kurta sets, featuring intricate embroidery, tailored fits, and luxurious fabrics, perfect for contemporary ethnic fashion.</p>
                   </div>
                   <Button 
                     className="w-full mt-auto px-8 py-2 rounded-full bg-gradient-to-b from-gray-100 to-gray-200 text-gray-800 hover:shadow-xl transition duration-200 focus:ring-2 focus:ring-gray-300/50" 
@@ -264,7 +264,7 @@ export default function EthnicWearManufacturerPage() {
                 <div className="p-4 bg-white flex flex-col flex-1 justify-between">
                   <div>
                     <h3 className="text-lg font-semibold mb-2">Suit Sets</h3>
-                    <p className="text-gray-600 mb-4">Explore timeless ethnic suit sets, designed with premium materials and elegant cuts, ideal for festive occasions, office wear, and boutique collections.</p>
+                    <p className="text-gray-600 mb-4 text-left w-full">Explore timeless ethnic suit sets, designed with premium materials and elegant cuts, ideal for festive occasions, office wear, and boutique collections.</p>
                   </div>
                   <Button 
                     className="w-full mt-auto px-8 py-2 rounded-full bg-gradient-to-b from-gray-100 to-gray-200 text-gray-800 hover:shadow-xl transition duration-200 focus:ring-2 focus:ring-gray-300/50" 
