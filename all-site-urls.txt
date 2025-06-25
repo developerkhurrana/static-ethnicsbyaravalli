@@ -1,0 +1,25 @@
+/
+/about
+/aravalli-clothing
+/aravalli-kurtas-jaipur-secret
+/best-kurti-manufacturer-in-jaipur
+/blog
+/contact
+/ethnic-wear-manufacturer
+/faq
+/how-to-choose-the-right-fabric-for-ethnic-wear
+/kurti-manufacturer-in-jaipur
+/manufacturing
+/top-kurti-manufacturer-in-jaipur
+/top-kurti-wholesaler-in-jaipur
+
+# Subpages under manufacturing
+/manufacturing/packaging-and-dispatch
+/manufacturing/quality-control
+/manufacturing/cutting-and-stitching
+/manufacturing/pattern-making
+
+# Subpages under blog (dynamic, e.g. /blog/[slug])
+# Add your actual blog slugs here, e.g. /blog/your-first-post
+
+# Add more subpages as needed if you have dynamic or nested routes 

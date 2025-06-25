@@ -145,32 +145,52 @@ export default function EthnicWearManufacturerPage() {
 
         {/* Manufacturing Process */}
         <section className="mb-24">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-              Our Manufacturing Process
-            </h2>
-            <p className="text-lg text-gray-600">
-              From design to delivery, we maintain the highest standards in ethnic wear manufacturing.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <h3 className="text-xl font-bold mb-4">1. Design & Development</h3>
-              <ul className="space-y-3 text-gray-600">
-                <li>• Custom design consultation</li>
-                <li>• Pattern making and sampling</li>
-                <li>• Material selection and testing</li>
-                <li>• Prototype development</li>
-              </ul>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
+                Our Manufacturing Process
+              </h2>
+              <p className="text-lg text-gray-600">
+                From design to delivery, we maintain the highest standards in ethnic wear manufacturing.
+              </p>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <h3 className="text-xl font-bold mb-4">2. Production & Quality Control</h3>
-              <ul className="space-y-3 text-gray-600">
-                <li>• State-of-the-art manufacturing</li>
-                <li>• Multiple quality checkpoints</li>
-                <li>• Sustainable production practices</li>
-                <li>• Efficient turnaround times</li>
-              </ul>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="bg-white p-8 rounded-2xl shadow-lg">
+                <h3 className="text-xl font-bold mb-4">1. Design & Development</h3>
+                <ul className="space-y-3 text-gray-600">
+                  <li>• Custom design consultation</li>
+                  <li>• Pattern making and sampling</li>
+                  <li>• Material selection and testing</li>
+                  <li>• Prototype development</li>
+                </ul>
+              </div>
+              <div className="bg-white p-8 rounded-2xl shadow-lg">
+                <h3 className="text-xl font-bold mb-4">2. Production & Quality Control</h3>
+                <ul className="space-y-3 text-gray-600">
+                  <li>• State-of-the-art manufacturing</li>
+                  <li>• Multiple quality checkpoints</li>
+                  <li>• Sustainable production practices</li>
+                  <li>• Efficient turnaround times</li>
+                </ul>
+              </div>
+              <div className="bg-white p-8 rounded-2xl shadow-lg">
+                <h3 className="text-xl font-bold mb-4">3. Finishing & Packaging</h3>
+                <ul className="space-y-3 text-gray-600">
+                  <li>• Final inspection</li>
+                  <li>• Ironing and folding</li>
+                  <li>• Premium packaging</li>
+                  <li>• Branding and labeling</li>
+                </ul>
+              </div>
+              <div className="bg-white p-8 rounded-2xl shadow-lg">
+                <h3 className="text-xl font-bold mb-4">4. Dispatch & Delivery</h3>
+                <ul className="space-y-3 text-gray-600">
+                  <li>• Secure shipping</li>
+                  <li>• Pan-India & international delivery</li>
+                  <li>• Real-time tracking</li>
+                  <li>• On-time order fulfillment</li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
