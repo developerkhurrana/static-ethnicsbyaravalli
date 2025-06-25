@@ -17,6 +17,9 @@ export async function GET() {
     'best-kurti-manufacturer-in-jaipur',
     'faq',
     'contact',
+    'how-to-choose-the-right-fabric-for-ethnic-wear',
+    'top-kurti-manufacturer-in-jaipur',
+    'top-kurti-wholesaler-in-jaipur',
   ];
 
   // Blog posts
