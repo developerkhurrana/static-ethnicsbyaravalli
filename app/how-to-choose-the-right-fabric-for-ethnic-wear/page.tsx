@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { Metadata } from "next"
 import { defaultMetadata } from "@/app/metadata"
-import { Leaf, Sun, Sparkles, ShieldCheck, Phone } from "lucide-react"
+import { Leaf, Sun, Snowflake, Sparkles, ShieldCheck, Phone } from "lucide-react"
 import Link from "next/link"
 
 export const metadata: Metadata = {
