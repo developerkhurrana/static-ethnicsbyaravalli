@@ -47,6 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <head>
+        <meta name="google-site-verification" content="pEZGKnigOCdWKqcGTVPfnS8nJPIUCJepodGBd2TlJY0" />
         <Script id="hotjar-tracking" strategy="afterInteractive">
           {`
             (function(h,o,t,j,a,r){

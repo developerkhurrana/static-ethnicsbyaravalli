@@ -15,6 +15,8 @@ export async function GET() {
     'aravalli-clothing',
     'aravalli-kurtas-jaipur-secret',
     'best-kurti-manufacturer-in-jaipur',
+    'faq',
+    'contact',
   ];
 
   // Blog posts
