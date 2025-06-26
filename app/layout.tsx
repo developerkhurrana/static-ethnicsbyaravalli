@@ -48,18 +48,6 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <head>
         <meta name="google-site-verification" content="pEZGKnigOCdWKqcGTVPfnS8nJPIUCJepodGBd2TlJY0" />
-        <Script id="hotjar-tracking" strategy="afterInteractive">
-          {`
-            (function(h,o,t,j,a,r){
-                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-                h._hjSettings={hjid:6436153,hjsv:6};
-                a=o.getElementsByTagName('head')[0];
-                r=o.createElement('script');r.async=1;
-                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-                a.appendChild(r);
-            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-          `}
-        </Script>
       </head>
       <body className={`${inter.className} h-full`}>
         <div className="flex min-h-full flex-col">
