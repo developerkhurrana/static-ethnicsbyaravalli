@@ -71,7 +71,7 @@ export default function InfographicPage() {
           return str;
         }
         const words = str.split(' ');
-        let lines: string[] = [];
+        const lines: string[] = [];
         let currentLine = '';
         words.forEach(word => {
           if ((currentLine + word).length > maxWidth) {
@@ -83,9 +83,10 @@ export default function InfographicPage() {
         lines.push(currentLine.trim());
         return lines;
       }
-      const tooltipTitleCallback = (tooltipItems: any) => {
-        const item = tooltipItems[0];
-        let label = item.chart.data.labels[item.dataIndex];
+      const tooltipTitleCallback = (tooltipItems: unknown[]) => {
+        const item = (tooltipItems as any[])[0];
+        if (!item) return '';
+        const label = item.chart.data.labels[item.dataIndex];
         if (Array.isArray(label)) {
           return label.join(' ');
         }
@@ -283,7 +284,7 @@ export default function InfographicPage() {
             <div className="text-center p-6 bg-gray-50 rounded-lg flow-step">
               <div className="text-4xl mb-3">📈</div>
               <h3 className="text-xl font-semibold text-[#FFD166] mb-2">Trend-Focused</h3>
-              <p className="text-sm text-gray-600">Highlight what's new and next in ethnic fashion to position Ekohum as a style leader.</p>
+              <p className="text-sm text-gray-600">Highlight what&apos;s new and next in ethnic fashion to position Ekohum as a style leader.</p>
             </div>
             <div className="text-center p-6 bg-gray-50 rounded-lg flow-step">
               <div className="text-4xl mb-3">🛒</div>
@@ -299,7 +300,7 @@ export default function InfographicPage() {
         </section>
         <section id="competitors" className="bg-white rounded-lg shadow-md p-6 mb-8">
           <h2 className="text-3xl font-bold mb-2 text-center text-[#118AB2]">The Competitive Arena</h2>
-          <p className="max-w-3xl mx-auto text-gray-700 mb-8 text-center">While competitors are strong, Ekohum has a unique opportunity to lead by emphasizing its "modern yet rooted" philosophy, focus on comfort, and deep cultural storytelling.</p>
+          <p className="max-w-3xl mx-auto text-gray-700 mb-8 text-center">While competitors are strong, Ekohum has a unique opportunity to lead by emphasizing its &quot;modern yet rooted&quot; philosophy, focus on comfort, and deep cultural storytelling.</p>
           <div className="chart-container">
             <canvas id="competitorChart"></canvas>
           </div>
