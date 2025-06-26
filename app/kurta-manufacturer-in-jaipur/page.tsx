@@ -4,7 +4,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, MapPin, Phone, Mail, Clock, Users, Award, Truck, Shield } from "lucide-react"
+import { CheckCircle, MapPin, Phone, Mail, Users, Award, Truck, Shield } from "lucide-react"
 import { siteConfig } from "@/lib/constants"
 
 export const metadata: Metadata = {
