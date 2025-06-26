@@ -256,9 +256,9 @@ export default function Home() {
             {/* Text Content */}
             <div className="flex flex-col justify-center md:items-start md:text-left items-center text-center">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">Who We Are</h2>
-              <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-8 drop-shadow">
+              <p className="text-base md:text-base text-white/90 max-w-2xl mb-8 drop-shadow">
                 At Ethnics by Aravalli, a leading kurti manufacturer in Jaipur, we specialize in crafting premium Indian women&apos;s ethnic wear that celebrates tradition with a modern twist. From stylish Kurtis and elegant Kurta Sets to flowy Dresses, Anarkalis, and breezy Kaftans, every piece is thoughtfully designed and hand-manufactured by skilled artisans using the finest fabrics and vibrant Jaipuri prints. Our women&apos;s ethnic wear blends heritage craftsmanship with contemporary design, reflecting the rich culture of Jaipur while aligning with today&apos;s fashion trends.
-                <br />📌 Direct from our manufacturing unit to your women wear retail hop—crafted with care, made to impress!
+                <br /> <br />📌 Direct from our manufacturing unit to your women wear retail hop—crafted with care, made to impress!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 md:justify-start justify-center items-center">
                 <Link
@@ -302,7 +302,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               What We Make
             </h2>
-            <p className="text-lg text-gray-600 max-w-7xl mx-auto text-justify">
+            <p className="text-base text-gray-600 max-w-7xl mx-auto text-justify">
               Ethnic By Aravalli is a distinguished women&apos;s ethnic wear manufacturer rooted in the culturally vibrant city of Jaipur dedicated to supplying retailers, garment chains, and fashion outlets with its clothing that resonates with elegance, culture, and comfort. More than just a production house, it&apos;s a creative partner to retailers seeking garments that blend traditional artistry with modern sensibilities.<br/>
               With a meticulous eye for quality, Ethnic By Aravalli selects premium fabrics that undergo superior dyeing and printing processes. Every detail—from the choice of colors and motifs to the feel and fit of the fabric—is thoughtfully curated to match evolving style trends, comfort needs, and the spirit of every occasion satisfying every need of customers of women ethnic wear retailers.<br/>
               The in-house manufacturing capabilities of Ethnics By Aravalli enables it to create a wide array of garments kurtas, kurta sets, suit sets, dresses, anarkalis, kaftans, and tops. Each piece is a testament to expert pattern making, precise stitching, and the delicate use of intricate embroideries. With rigorous quality checks and careful packaging, the manufacturer ensures excellence from thread to finish.
@@ -335,7 +335,7 @@ export default function Home() {
             </Link>
             <Link
               href="https://wa.me/919828422208"
-              target="_blank"
+          target="_blank"
               className="inline-flex items-center justify-center rounded-md border border-[#D9A8A0] bg-transparent px-6 py-3 text-sm font-medium text-[#D9A8A0] shadow-sm transition-colors hover:bg-[#D9A8A0]/10 w-full sm:w-auto"
             >
               WhatsApp Us

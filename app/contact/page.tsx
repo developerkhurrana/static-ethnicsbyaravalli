@@ -212,8 +212,7 @@ export default function ContactPage() {
     <div className="container py-12">
       <SectionHeader
         title="Contact the Manufacturer"
-        description="Boutiques, fashion outlets, multi-location retail chains, and purchase managers—partner with us for premium women’s ethnic wear crafted in Jaipur.
-From timeless classics to trend-forward collections, we specialize in high-quality garments tailored for your clientele. Let’s elevate your offerings with elegance, comfort, and craftsmanship."
+        description="Interested in custom manufacturing, bulk orders, or private label ethnicwear? Reach out to us directly."
         className="mb-12"
       />
 
