@@ -23,7 +23,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs">
-              Premium ethnic wear for modern retailers. Direct from manufacturers to your boutique.
+            Premium women ethnic wear for retailers. Direct from manufacturer to your shop.  
             </p>
           </div>
           {/* Quick Links */}
