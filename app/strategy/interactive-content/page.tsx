@@ -224,7 +224,7 @@ export default function InteractiveContentPage() {
           <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 text-center border border-gray-200">
             <h2 className="text-3xl font-bold mb-3 text-[#118AB2]">Translating Strategy into Growth</h2>
             <p className="max-w-4xl mx-auto text-gray-600">
-              This interactive application translates the comprehensive content strategy for Ekohum into a digestible, visual format. It outlines the key market trends, strategic content pillars, and actionable blog topics designed to boost organic growth and conversions. Explore the sections below to understand how we'll connect with the modern, rooted Indian woman.
+              This interactive application translates the comprehensive content strategy for Ekohum into a digestible, visual format. It outlines the key market trends, strategic content pillars, and actionable blog topics designed to boost organic growth and conversions. Explore the sections below to understand how we&apos;ll connect with the modern, rooted Indian woman.
             </p>
           </div>
         </section>
