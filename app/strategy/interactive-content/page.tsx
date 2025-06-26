@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import type { TooltipItem } from "chart.js";
 
 const ADMIN_PASSWORD = "ethnics@123";
 
@@ -86,14 +87,17 @@ export default function InteractiveContentPage() {
         lines.push(currentLine.trim());
         return lines.map(l => l.trim());
       }
-      const tooltipTitleCallback = (tooltipItems: unknown[]) => {
-        const item = (tooltipItems as any[])[0];
-        if (!item) return '';
+      const tooltipTitleCallback = (tooltipItems: TooltipItem<'bar'>[]): string | void | string[] => {
+        const item = tooltipItems[0];
+        if (!item || !item.chart.data.labels) return '';
         const label = item.chart.data.labels[item.dataIndex];
         if (Array.isArray(label)) {
           return label.join(' ');
         }
-        return label;
+        if (typeof label === 'string') {
+          return label;
+        }
+        return '';
       };
       const universalChartOptions = {
         responsive: true,
