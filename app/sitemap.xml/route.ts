@@ -10,6 +10,7 @@ export async function GET() {
     'about',
     'ethnic-wear-manufacturer',
     'kurti-manufacturer-in-jaipur',
+    'kurta-manufacturer-in-jaipur',
     'manufacturing',
     'blog',
     'aravalli-clothing',
