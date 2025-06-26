@@ -5,7 +5,6 @@ import { Analytics } from '@vercel/analytics/next';
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Toaster } from "@/components/ui/sonner";
-import Script from "next/script";
 
 import Link from "next/link";
 
