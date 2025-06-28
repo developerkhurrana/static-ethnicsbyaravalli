@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import Link from "next/link"
+// import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 
 interface ProductCardProps {
@@ -43,7 +43,7 @@ export function ProductCard({ name, description, images }: ProductCardProps) {
         <div className="space-y-4">
           <h3 className="text-xl font-semibold">{name}</h3>
           <p className="text-sm text-gray-600">{description}</p>
-          <div className="flex gap-3">
+          {/* <div className="flex gap-3">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center flex-1 rounded-md bg-[#D9A8A0] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#C08478] transition-colors"
@@ -57,7 +57,7 @@ export function ProductCard({ name, description, images }: ProductCardProps) {
             >
               WhatsApp
             </Link>
-          </div>
+          </div> */}
         </div>
       </CardContent>
     </Card>
