@@ -9,10 +9,33 @@ export const metadata = {
   title: "Manufacturing Excellence | Premium Ethnic Wear Manufacturer in Jaipur",
   description:
     "Explore our state-of-the-art manufacturing facilities, where traditional craftsmanship meets modern technology to create premium ethnic wear for boutiques and retailers.",
+  keywords: "manufacturing, ethnic wear, garment factory, Jaipur, premium ethnic wear, boutique supplier, quality control, stitching, embroidery, packaging",
+  openGraph: {
+    title: "Manufacturing Excellence | Premium Ethnic Wear Manufacturer in Jaipur",
+    description: "Explore our state-of-the-art manufacturing facilities, where traditional craftsmanship meets modern technology to create premium ethnic wear for boutiques and retailers.",
+    type: "website",
+    url: "https://ethnicsbyaravalli.com/manufacturing",
+    siteName: "Ethnics by Aravalli",
+    locale: "en_IN",
+  },
+  alternates: {
+    canonical: "https://ethnicsbyaravalli.com/manufacturing"
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 const capabilities = [
-  "In-house conceptualisation and designing of women’s ethnic wear, inspired by the latest trends and tailored for both everyday wearability and occasion-specific creations",
+  "In-house conceptualisation and designing of women's ethnic wear, inspired by the latest trends and tailored for both everyday wearability and occasion-specific creations",
   "Garment embellishment featuring intricate traditional embroideries that showcase timeless artistry and cultural richness",
   "Graded patterns tailored to ensure a perfect fit and offer ready-made size options based on precise body measurements",
   "Advanced cutting and stitching units delivering premium craftsmanship with unwavering adherence to precise dimensions for consistently flawless garments",
@@ -54,7 +77,7 @@ export default function ManufacturingPage() {
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <SectionHeader
         title="Manufacturing Excellence"
-        description="Ethnics By Aravalli exemplifies manufacturing excellence in women’s ethnic wear by seamlessly blending age-old craftsmanship with cutting-edge technology. Its state-of-the-art manufacturing facilities are designed to celebrate the essence of tradition while ensuring precision and consistency through modern methods. Every garment is a testament to meticulous attention—from innovative styling and refined cuts to expert stitching, exquisite embroideries, and delicate handwork. The brand doesn’t just stop at creation; it holds steadfast commitment to quality checks, elegant packaging, and timely dispatch. Ethnics By Aravalli stands as a trusted partner for retailers, fashion outlets, and boutiques, consistently honoring its promises and timelines with unwavering dedication."
+        description="Ethnics By Aravalli exemplifies manufacturing excellence in women's ethnic wear by seamlessly blending age-old craftsmanship with cutting-edge technology. Its state-of-the-art manufacturing facilities are designed to celebrate the essence of tradition while ensuring precision and consistency through modern methods. Every garment is a testament to meticulous attention—from innovative styling and refined cuts to expert stitching, exquisite embroideries, and delicate handwork. The brand doesn't just stop at creation; it holds steadfast commitment to quality checks, elegant packaging, and timely dispatch. Ethnics By Aravalli stands as a trusted partner for retailers, fashion outlets, and boutiques, consistently honoring its promises and timelines with unwavering dedication."
         className="mb-12"
       />
 
