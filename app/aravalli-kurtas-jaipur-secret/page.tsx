@@ -19,7 +19,18 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://ethnicsbyaravalli.com/aravalli-kurtas-jaipur-secret"
-  }
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 const heroBg = "/products/hero_banner_1.jpg";

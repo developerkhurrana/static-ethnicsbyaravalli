@@ -18,6 +18,7 @@ const galleryImages: string[] = [
 export const metadata = {
   title: 'Best Kurti Manufacturer in Jaipur - Ethnics by Aravalli',
   description: 'Boutique-ready, trend-setting, and ethically crafted kurtis. Discover why Ethnics by Aravalli is Jaipur&apos;s top choice for premium kurtis.',
+  keywords: 'best kurti manufacturer in Jaipur, premium kurti supplier, boutique kurti manufacturer, wholesale kurtis Jaipur, ethnic wear manufacturer',
   openGraph: {
     title: 'Best Kurti Manufacturer in Jaipur - Ethnics by Aravalli',
     description: 'Boutique-ready, trend-setting, and ethically crafted kurtis. Discover why Ethnics by Aravalli is Jaipur&apos;s top choice for premium kurtis.',
@@ -33,6 +34,20 @@ export const metadata = {
         alt: 'Best Kurti Manufacturer in Jaipur - Ethnics by Aravalli',
       },
     ],
+  },
+  alternates: {
+    canonical: 'https://ethnicsbyaravalli.com/best-kurti-manufacturer-in-jaipur'
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

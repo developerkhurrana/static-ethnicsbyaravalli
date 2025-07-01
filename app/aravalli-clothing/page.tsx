@@ -15,7 +15,18 @@ export const metadata = {
   },
   alternates: {
     canonical: "https://ethnicsbyaravalli.com/aravalli-clothing"
-  }
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 const heroBg = "/products/hero_banner_1.jpg";

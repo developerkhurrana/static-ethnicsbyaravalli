@@ -13,6 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Ethnics By Aravalli - Women's Ethnic Wear Manufacturer in Jaipur Premium Kurtis & Kurta Sets",
   description: "Leading kurti manufacturer in Jaipur offering premium women's kurtas and kurta sets—crafted with traditional artistry, modern designs, and luxurious fabrics stitched to perfection.",
+  keywords: "ethnic wear manufacturer, kurti manufacturer Jaipur, wholesale ethnic wear, boutique supplier, premium kurtas",
   openGraph: {
     title: "Ethnics by Aravalli",
     description: "Premium ethnic wear direct from Jaipur. Wholesale, custom prints, and fast dispatch for boutiques and retailers.",
@@ -35,6 +36,20 @@ export const metadata: Metadata = {
     description: "Premium ethnic wear direct from Jaipur. Wholesale, custom prints, and fast dispatch for boutiques and retailers.",
     images: ["https://ethnicsbyaravalli.com/og-image.jpg"],
     creator: "@ethnicsbyaravalli",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: "https://ethnicsbyaravalli.com/"
   },
 };
 
