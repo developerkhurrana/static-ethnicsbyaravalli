@@ -18,7 +18,11 @@ export async function generateMetadata() {
       'handcrafted fashion blog',
       'artisanal clothing manufacturing',
       'ethnic wear manufacturer blog',
-      'fashion industry insights'
+      'fashion industry insights',
+      'ethnic wear trends',
+      'fashion manufacturing blog',
+      'boutique fashion tips',
+      'Jaipur textile industry'
     ].join(', '),
     openGraph: {
       title: "Blog | Ethnics by Aravalli - Premium Ethnic Wear Manufacturer",

@@ -44,6 +44,20 @@ export async function generateMetadata({ params }: any) {
       description: post.metaDescription || post.description,
       images: [post.ogImage || post.coverImage],
     },
+    alternates: {
+      canonical: `https://ethnicsbyaravalli.com/blog/${resolvedParams.slug}`
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
   }
 }
 
@@ -62,9 +76,7 @@ export default async function Page({ params }: any) {
     notFound()
   }
 
-  // Debug: log the extracted arrays
-  console.log('Page DEBUG - contentTitles:', post.contentTitles);
-  console.log('Page DEBUG - contentBlocks:', post.contentBlocks);
+  // Content arrays extracted from Notion
 
   // Get all posts for related posts
   const allPosts = await getBlogPosts()

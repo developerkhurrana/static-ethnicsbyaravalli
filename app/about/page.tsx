@@ -5,8 +5,31 @@ import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
 
 export const metadata = {
-  title: "About Us",
-  description: "Learn about our journey in creating premium ethnic wear for boutiques and retailers.",
+  title: "About Us - Ethnics by Aravalli | Premium Ethnic Wear Manufacturer in Jaipur",
+  description: "Learn about our journey in creating premium ethnic wear for boutiques and retailers. Discover our story, values, and commitment to quality craftsmanship in Jaipur.",
+  keywords: "about us, ethnic wear manufacturer, Jaipur manufacturer, boutique supplier, premium kurtas, traditional craftsmanship, quality ethnic wear",
+  openGraph: {
+    title: "About Us - Ethnics by Aravalli | Premium Ethnic Wear Manufacturer",
+    description: "Learn about our journey in creating premium ethnic wear for boutiques and retailers. Discover our story, values, and commitment to quality craftsmanship.",
+    type: "website",
+    url: "https://ethnicsbyaravalli.com/about",
+    siteName: "Ethnics by Aravalli",
+    locale: "en_IN",
+  },
+  alternates: {
+    canonical: "https://ethnicsbyaravalli.com/about"
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 const values = [

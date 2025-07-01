@@ -103,7 +103,6 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 
     const posts = response.results.map((page: NotionResponse) => {
       if (!('properties' in page)) {
-        console.warn("Skipping page without properties:", page);
         return null;
       }
       const properties = page.properties as NotionProperties;
@@ -170,7 +169,6 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
 
     const page = response.results[0] as NotionResponse;
     if (!('properties' in page)) {
-      console.warn("Page without properties:", page);
       return null;
     }
     const properties = page.properties as NotionProperties;
@@ -179,9 +177,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     const contentTitlesStr = extractTextFromRichText(properties.contentTitles) || '';
     const contentBlocksStr = extractTextFromRichText(properties.contentBlocks) || '';
 
-    // Debug: log the raw strings
-    console.log('Notion DEBUG - contentTitlesStr:', contentTitlesStr);
-    console.log('Notion DEBUG - contentBlocksStr:', contentBlocksStr);
+    // Extract content from Notion properties
 
     // Use bracket extraction
     const contentTitles = extractBracketedStrings(contentTitlesStr);

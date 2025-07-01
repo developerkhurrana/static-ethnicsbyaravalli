@@ -16,27 +16,19 @@ export function BlogPostImage({ src, alt, className, priority = false }: BlogPos
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Log the image source when component mounts
-    console.log('BlogPostImage - Image source:', src)
-    
     // Only validate URLs that start with http:// or https://
     if (src.startsWith('http://') || src.startsWith('https://')) {
       try {
         new URL(src)
-        console.log('BlogPostImage - Valid URL:', src)
       } catch {
         console.error('BlogPostImage - Invalid URL:', src)
         setImageError(true)
         setIsLoading(false)
       }
-    } else {
-      // For relative paths, just log that we're using a relative path
-      console.log('BlogPostImage - Using relative path:', src)
     }
   }, [src])
 
   if (imageError) {
-    console.log('BlogPostImage - Error state, showing fallback')
     return (
       <div className={cn("relative w-full overflow-hidden bg-muted", className)}>
         <div className="absolute inset-0 flex items-center justify-center bg-muted">
@@ -64,7 +56,6 @@ export function BlogPostImage({ src, alt, className, priority = false }: BlogPos
         priority={priority}
         itemProp="image"
         onLoad={() => {
-          console.log('BlogPostImage - Image loaded successfully:', src)
           setIsLoading(false)
         }}
         onError={() => {
