@@ -6,12 +6,12 @@ import Retailer from "@/models/Retailer";
 
 export const PATCH = requireAdminAuth(async (
   request: NextRequest,
-  { params }: { params: { priorityId: string } }
+  { params }: { params: Promise<{ priorityId: string }> }
 ) => {
   try {
     await dbConnect();
 
-    const { priorityId } = params;
+    const { priorityId } = await params;
     const body = await request.json();
 
     const priority = await Priority.findById(priorityId);
@@ -63,12 +63,12 @@ export const PATCH = requireAdminAuth(async (
 
 export const DELETE = requireAdminAuth(async (
   request: NextRequest,
-  { params }: { params: { priorityId: string } }
+  { params }: { params: Promise<{ priorityId: string }> }
 ) => {
   try {
     await dbConnect();
 
-    const { priorityId } = params;
+    const { priorityId } = await params;
 
     const priority = await Priority.findById(priorityId);
     if (!priority) {

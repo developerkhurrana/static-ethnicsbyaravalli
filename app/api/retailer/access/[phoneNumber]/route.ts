@@ -5,12 +5,13 @@ import Catalog from "@/models/Catalog";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { phoneNumber: string } }
+  { params }: { params: Promise<{ phoneNumber: string }> }
 ) {
+  const { phoneNumber } = await params;
   try {
     await dbConnect();
 
-    const { phoneNumber } = params;
+
 
     // Find retailer by phone number with populated priorities
     const retailer = await Retailer.findOne({

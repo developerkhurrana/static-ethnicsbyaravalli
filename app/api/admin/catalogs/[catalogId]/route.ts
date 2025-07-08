@@ -101,10 +101,10 @@ async function updateCatalogAccessForAllRetailers(): Promise<void> {
   }
 }
 
-export const DELETE = requireAdminAuth(async (request: NextRequest, { params }: { params: { catalogId: string } }) => {
+export const DELETE = requireAdminAuth(async (request: NextRequest, { params }: { params: Promise<{ catalogId: string }> }) => {
   try {
     await dbConnect();
-    const { catalogId } = params;
+    const { catalogId } = await params;
     const catalog = await Catalog.findById(catalogId);
     if (!catalog) {
       return NextResponse.json({ error: "Catalog not found" }, { status: 404 });

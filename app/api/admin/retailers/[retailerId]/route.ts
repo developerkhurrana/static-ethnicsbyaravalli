@@ -5,13 +5,13 @@ import { ensureModelsLoaded } from "@/lib/models";
 import Retailer from "@/models/Retailer";
 import Priority from "@/models/Priority";
 
-export const PUT = requireAdminAuth(async (request: NextRequest, { params }: { params: { retailerId: string } }) => {
+export const PUT = requireAdminAuth(async (request: NextRequest, { params }: { params: Promise<{ retailerId: string }> }) => {
+  const { retailerId } = await params;
   try {
     // Ensure all models are loaded
     ensureModelsLoaded();
     
     await dbConnect();
-    const { retailerId } = params;
     const body = await request.json();
     const retailer = await Retailer.findById(retailerId);
     if (!retailer) {
@@ -41,10 +41,10 @@ export const PUT = requireAdminAuth(async (request: NextRequest, { params }: { p
   }
 });
 
-export const DELETE = requireAdminAuth(async (request: NextRequest, { params }: { params: { retailerId: string } }) => {
+export const DELETE = requireAdminAuth(async (request: NextRequest, { params }: { params: Promise<{ retailerId: string }> }) => {
+  const { retailerId } = await params;
   try {
     await dbConnect();
-    const { retailerId } = params;
     const retailer = await Retailer.findById(retailerId);
     if (!retailer) {
       return NextResponse.json({ error: "Retailer not found" }, { status: 404 });

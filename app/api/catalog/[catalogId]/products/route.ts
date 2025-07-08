@@ -5,12 +5,13 @@ import Product from "@/models/Product";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { catalogId: string } }
+  { params }: { params: Promise<{ catalogId: string }> }
 ) {
+  const { catalogId } = await params;
   try {
     await dbConnect();
 
-    const { catalogId } = params;
+
 
     // Find the catalog
     const catalog = await Catalog.findById(catalogId);
