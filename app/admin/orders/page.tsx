@@ -181,8 +181,8 @@ function ApproveModal({ isOpen, order, onClose, onGeneratePO, onDeleteOrder }: {
             let sizes: Record<string, number> = {};
             if (order.sizeQuantities && order.sizeQuantities[itemKey]) {
               sizes = order.sizeQuantities[itemKey];
-            } else if ((item as Record<string, unknown>).sizeQuantities) {
-              sizes = (item as Record<string, unknown>).sizeQuantities as Record<string, number>;
+            } else if ((item as unknown as Record<string, unknown>).sizeQuantities) {
+              sizes = (item as unknown as Record<string, unknown>).sizeQuantities as Record<string, number>;
             } else {
               sizes = {
                 S: item.quantitySets,
@@ -198,7 +198,7 @@ function ApproveModal({ isOpen, order, onClose, onGeneratePO, onDeleteOrder }: {
               primaryImage = images.find((img) => img.isPrimary) || images[0];
             }
             return (
-              <div key={String((item as Record<string, unknown>)._id)} className="flex gap-4 bg-white border rounded-lg shadow-sm p-4">
+              <div key={String((item as unknown as Record<string, unknown>)._id)} className="flex gap-4 bg-white border rounded-lg shadow-sm p-4">
                 {primaryImage?.url && (
                   <img src={primaryImage.url} alt={item.itemName} className="w-20 h-20 object-cover rounded-lg border" />
                 )}
@@ -385,7 +385,7 @@ export default function AdminOrdersPage() {
     setReviewNotes("");
 
     // Use order-level sizeQuantities if present (this is the original/received data)
-    const orderLevelSizeQuantities = (order as Record<string, unknown>).sizeQuantities as Record<string, Record<string, number>> || {};
+    const orderLevelSizeQuantities = (order as unknown as Record<string, unknown>).sizeQuantities as Record<string, Record<string, number>> || {};
     console.log("Order sizeQuantities:", orderLevelSizeQuantities);
     const initialQuantities: {[key: string]: {[size: string]: number}} = {};
     
