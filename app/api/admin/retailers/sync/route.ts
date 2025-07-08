@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireAdminAuth } from "@/lib/admin-auth";
 import { syncRetailersFromSheets } from "@/lib/google-sheets";
 
-export const POST = requireAdminAuth(async (request: NextRequest) => {
+export const POST = requireAdminAuth(async () => {
   try {
     const result = await syncRetailersFromSheets();
 

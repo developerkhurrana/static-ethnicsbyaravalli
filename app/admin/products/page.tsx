@@ -7,7 +7,7 @@ import ProductModal from "@/components/admin/product-modal";
 import EditProductModal from "@/components/admin/edit-product-modal";
 import ProductImageGallery from "@/components/admin/product-image-gallery";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 
@@ -51,7 +51,7 @@ export default function AdminProductsPage() {
       } else {
         toast.error("Failed to fetch products");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred while fetching products");
     } finally {
       setIsLoading(false);

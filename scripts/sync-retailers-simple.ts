@@ -2,8 +2,6 @@ import { syncRetailersFromSheetsSimple } from "../lib/google-sheets-simple";
 
 async function syncRetailersSimple() {
   try {
-    console.log("Starting simple Google Sheets sync...");
-    
     const result = await syncRetailersFromSheetsSimple();
     
     if (result.success) {

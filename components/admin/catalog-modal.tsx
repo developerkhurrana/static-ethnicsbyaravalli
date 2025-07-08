@@ -13,8 +13,6 @@ interface CatalogModalProps {
   trigger?: React.ReactNode;
 }
 
-const ACCESS_LEVELS = ["R1", "R2", "R3", "GENERAL"];
-
 export default function CatalogModal({ onCatalogCreated, trigger }: CatalogModalProps) {
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -43,7 +41,7 @@ export default function CatalogModal({ onCatalogCreated, trigger }: CatalogModal
       });
       if (response.ok) {
         const data = await response.json();
-        setProducts(data.products.map((p: any) => ({ _id: p._id, itemName: p.itemName, itemCode: p.itemCode, images: p.images })));
+        setProducts(data.products.map((p: Record<string, unknown>) => ({ _id: p._id, itemName: p.itemName, itemCode: p.itemCode, images: p.images })));
       }
     } catch {}
   };
@@ -56,7 +54,7 @@ export default function CatalogModal({ onCatalogCreated, trigger }: CatalogModal
       });
       if (response.ok) {
         const data = await response.json();
-        setPriorities(data.priorities.filter((p: any) => p.isActive));
+        setPriorities(data.priorities.filter((p: Record<string, unknown>) => p.isActive));
       }
     } catch {}
   };
@@ -96,7 +94,7 @@ export default function CatalogModal({ onCatalogCreated, trigger }: CatalogModal
       } else {
         toast.error("Failed to create catalog");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred");
     } finally {
       setIsLoading(false);

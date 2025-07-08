@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Image from "next/image"
-// import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 
 interface ProductCardProps {
@@ -36,6 +35,9 @@ export function ProductCard({ name, description, images }: ProductCardProps) {
           alt={name}
           fill
           className="object-cover transition-opacity duration-300"
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          quality={80}
         />
         <div className="absolute inset-0 bg-black/20 hover:bg-black/30 transition-colors" />
       </div>

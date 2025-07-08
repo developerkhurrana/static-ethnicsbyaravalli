@@ -7,7 +7,6 @@ import mongoose from "mongoose";
 async function debugCatalogAccess() {
   try {
     await dbConnect();
-    console.log("Connected to database");
 
     // Print all raw retailer documents from the DB (bypass Mongoose schema)
     const raw = await mongoose.connection.db.collection('retailers').find({}).toArray();

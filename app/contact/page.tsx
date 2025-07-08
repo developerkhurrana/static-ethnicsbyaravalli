@@ -159,12 +159,10 @@ export default function ContactPage() {
         })
 
         const notionData = await notionResponse.json()
-        console.log('📊 Notion response:', notionData)
 
         if (!notionResponse.ok) {
           console.error('❌ Failed to store in Notion:', notionData)
         } else {
-          console.log('✅ Stored in Notion successfully')
           notionSuccess = true
         }
       } catch (error) {
@@ -176,27 +174,22 @@ export default function ContactPage() {
       if (shop) message += `, I have a shop named ${shop}`
       message += `. I represent a brand/business interested in manufacturing ethnicwear. Please contact me at ${mobile}.`
       
-      console.log('📱 Opening WhatsApp with message:', message)
-      
       // Open WhatsApp
       const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(message)}`
       window.open(whatsappUrl, "_blank")
 
       // Show success toast with appropriate message
       if (notionSuccess) {
-        console.log('🎉 Showing success toast (Notion + WhatsApp)')
         toast.success("Message Sent Successfully!", {
           description: "Your message has been stored and WhatsApp is open. We'll get back to you soon!",
         })
       } else {
-        console.log('🎉 Showing success toast (WhatsApp only)')
         toast.success("WhatsApp Opened!", {
           description: "Please send your message on WhatsApp. We'll get back to you soon!",
         })
       }
 
       // Reset form
-      console.log('🔄 Resetting form')
       form.reset()
     } catch (error) {
       console.error('Error:', error)

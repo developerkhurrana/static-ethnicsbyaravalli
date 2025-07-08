@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "seed-priorities": "tsx scripts/seed-priorities.ts",
-    "migrate-priorities": "tsx scripts/migrate-retailer-priorities.ts"
+    "migrate-priorities": "tsx scripts/migrate-retailer-priorities.ts",
+    "audit": "tsx scripts/performance-audit.ts",
+    "audit:report": "tsx scripts/performance-audit.ts --report"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

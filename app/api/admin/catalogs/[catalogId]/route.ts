@@ -49,8 +49,6 @@ export const PUT = requireAdminAuth(async (request: NextRequest, context: any) =
 // Function to update catalog access for all retailers
 async function updateCatalogAccessForAllRetailers(): Promise<void> {
   try {
-    console.log('--- Updating catalog access after catalog change ---');
-    
     // Get all active retailers with their priorities populated
     const retailers = await Retailer.find({ isActive: true }).populate("priorities");
     
@@ -84,7 +82,6 @@ async function updateCatalogAccessForAllRetailers(): Promise<void> {
         // Get catalogs that match this priority level
         const priorityCatalogs = priorityToCatalogsMap.get(priorityCode) || [];
         accessibleCatalogs.push(...priorityCatalogs);
-        
         // Also add GENERAL catalogs (accessible to everyone)
         const generalCatalogs = priorityToCatalogsMap.get("GENERAL") || [];
         accessibleCatalogs.push(...generalCatalogs);
@@ -99,8 +96,6 @@ async function updateCatalogAccessForAllRetailers(): Promise<void> {
         lastSyncedAt: new Date(),
       });
     }
-    
-    console.log(`--- Updated catalog access for ${retailers.length} retailers ---`);
   } catch (error) {
     console.error("Error updating catalog access:", error);
   }

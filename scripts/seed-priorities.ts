@@ -32,9 +32,6 @@ async function seedPriorities() {
       if (!existingPriority) {
         const priority = new Priority(priorityData);
         await priority.save();
-        console.log(`Created priority: ${priorityData.priorityCode}`);
-      } else {
-        console.log(`Priority ${priorityData.priorityCode} already exists`);
       }
     }
 

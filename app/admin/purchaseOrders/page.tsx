@@ -80,7 +80,7 @@ export default function AdminPurchaseOrdersPage() {
       } else {
         toast.error("Failed to fetch purchase orders");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred while fetching purchase orders");
     } finally {
       setIsLoading(false);
@@ -137,7 +137,7 @@ export default function AdminPurchaseOrdersPage() {
       a.click();
       a.remove();
       window.URL.revokeObjectURL(url);
-    } catch (error) {
+    } catch {
       toast.error("An error occurred while downloading PDF");
     }
   };
@@ -158,7 +158,7 @@ export default function AdminPurchaseOrdersPage() {
       } else {
         toast.error("Failed to mark purchase order as sent");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred while marking purchase order as sent");
     }
   };
@@ -179,7 +179,7 @@ export default function AdminPurchaseOrdersPage() {
       } else {
         toast.error("Failed to mark purchase order as acknowledged");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred while marking as acknowledged");
     }
   };
@@ -223,7 +223,7 @@ export default function AdminPurchaseOrdersPage() {
       } else {
         setSelectedPO(po); // fallback
       }
-    } catch (error) {
+    } catch {
       setSelectedPO(po); // fallback
     }
     setIsDetailsModalOpen(true);

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireAdminAuth } from "@/lib/admin-auth";
 import { syncRetailersFromSheetsSimple } from "@/lib/google-sheets-simple";
 
-export const POST = requireAdminAuth(async (request: NextRequest) => {
+export const POST = requireAdminAuth(async () => {
   try {
     const result = await syncRetailersFromSheetsSimple();
 
@@ -16,14 +16,14 @@ export const POST = requireAdminAuth(async (request: NextRequest) => {
     } else {
       return NextResponse.json(
         { 
-          error: "Failed to sync with Google Sheets",
+          error: "Failed to sync with Google Sheets (Simple method)",
           details: result.errors 
         },
         { status: 500 }
       );
     }
   } catch (error) {
-    console.error("Admin retailers sync simple API error:", error);
+    console.error("Admin retailers sync-simple API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

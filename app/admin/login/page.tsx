@@ -34,7 +34,7 @@ export default function AdminLoginPage() {
         const error = await response.json();
         toast.error(error.error || "Login failed");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred during login");
     } finally {
       setIsLoading(false);

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const hasJwtSecret = !!process.env.JWT_SECRET;
     const hasAdminPass = !!process.env.ADMIN_PASS;

@@ -44,7 +44,7 @@ export default function AdminPage() {
 
         // Token is valid, redirect to products page
         router.push("/admin/products");
-      } catch (error) {
+      } catch {
         localStorage.removeItem("adminToken");
         toast.error("Authentication error. Please log in again");
         router.push("/admin/login");

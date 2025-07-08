@@ -4,7 +4,7 @@ import dbConnect from "@/lib/mongodb";
 import Priority from "@/models/Priority";
 import Retailer from "@/models/Retailer";
 
-export const GET = requireAdminAuth(async (request: NextRequest) => {
+export const GET = requireAdminAuth(async () => {
   try {
     await dbConnect();
 

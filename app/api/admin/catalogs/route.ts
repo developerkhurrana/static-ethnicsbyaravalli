@@ -4,15 +4,11 @@ import dbConnect from "@/lib/mongodb";
 import Catalog from "@/models/Catalog";
 import Retailer from "@/models/Retailer";
 
-export const GET = requireAdminAuth(async (request: NextRequest) => {
+export const GET = requireAdminAuth(async () => {
   try {
-    console.log("Connecting to database...");
-    await dbConnect();
-    console.log("Database connected successfully");
+      await dbConnect();
 
-    console.log("Fetching catalogs...");
-    const catalogs = await Catalog.find({}).sort({ createdAt: -1 });
-    console.log(`Found ${catalogs.length} catalogs`);
+  const catalogs = await Catalog.find({}).sort({ createdAt: -1 });
 
     return NextResponse.json({
       success: true,
@@ -39,8 +35,6 @@ export const GET = requireAdminAuth(async (request: NextRequest) => {
 // Function to update catalog access for all retailers
 async function updateCatalogAccessForAllRetailers(): Promise<void> {
   try {
-    console.log('--- Updating catalog access after catalog change ---');
-    
     // Get all active retailers with their priorities populated
     const retailers = await Retailer.find({ isActive: true }).populate("priorities");
     
@@ -67,7 +61,7 @@ async function updateCatalogAccessForAllRetailers(): Promise<void> {
         continue;
       }
       
-      const priorityCodes = retailerPriorities.map((p: any) => p.priorityCode);
+      const priorityCodes = retailerPriorities.map((p: Record<string, unknown>) => p.priorityCode);
 
       // Add catalogs for each priority level
       for (const priorityCode of priorityCodes) {
@@ -89,8 +83,6 @@ async function updateCatalogAccessForAllRetailers(): Promise<void> {
         lastSyncedAt: new Date(),
       });
     }
-    
-    console.log(`--- Updated catalog access for ${retailers.length} retailers ---`);
   } catch (error) {
     console.error("Error updating catalog access:", error);
   }

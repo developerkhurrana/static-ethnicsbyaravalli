@@ -5,7 +5,6 @@ import Priority from "../models/Priority";
 async function migrateRetailerPriorities() {
   try {
     await dbConnect();
-    console.log("Starting retailer priority migration...");
 
     // Get all priorities
     const priorities = await Priority.find({});
@@ -15,14 +14,10 @@ async function migrateRetailerPriorities() {
       priorityMap.set(priority.priorityCode, priority._id);
     });
 
-    console.log("Priority map created:", Object.fromEntries(priorityMap));
-
     // Find retailers with string-based priorities
     const retailersWithStringPriorities = await Retailer.find({
       priority: { $type: "string" }
     });
-
-    console.log(`Found ${retailersWithStringPriorities.length} retailers with string-based priorities`);
 
     let updatedCount = 0;
     let skippedCount = 0;
@@ -34,10 +29,8 @@ async function migrateRetailerPriorities() {
       if (newPriorityId) {
         retailer.priority = newPriorityId;
         await retailer.save();
-        console.log(`Updated retailer ${retailer.businessName} (${retailer.phoneNumber}) from ${oldPriority} to ${newPriorityId}`);
         updatedCount++;
       } else {
-        console.log(`Skipped retailer ${retailer.businessName} (${retailer.phoneNumber}) - priority ${oldPriority} not found`);
         skippedCount++;
       }
     }

@@ -24,106 +24,70 @@ const heroImages = {
   mobile: ["/products/hero_mobile_banner.jpg"]
 }
 
-function shuffle<T>(array: T[]): T[] {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
-
-const baseKeywords = [
-  // With Jaipur
-  "Cotton Kurta Manufacturer Jaipur",
-  "Printed Cotton Kurta Set Jaipur",
-  "Modal Kurta-Palazzo Manufacturer Jaipur",
-  "Muslin Dress Jaipur",
-  "Chanderi Kaftan Manufacturer Jaipur",
-  "Viscose Palazzo Set Jaipur",
-  "Pure Linen Co-Ord Set Manufacturer Jaipur",
-  "Kurta-Alpona Salwar Jaipur",
-  "Kurta-Pant-Dta Manufacturer Jaipur",
-  "B2B Kurta Supplier Jaipur",
-  "Ethnic Bottomwear Collection Jaipur",
-  // With India
-  "Kurta Manufacturer in India",
-  "Kurta Set in India",
-  "Ethnic Wear Manufacturer in India",
-  "Kurta Exporter in India",
-  "Designer Kurta for Women in India",
-  // Without location
-  "Cotton Kurta Set",
-  "Muslin Kurta Set",
-  "Chanderi Dress",
-  "Viscose Co-Ord Set",
-  "Kurta-Alpona Salwar",
-  "Kaftan Dress",
-  "Kurta-Sharara Dupatta Set",
-  "Pure Linen Kaftan",
-  "Co-Ord Sets for Women",
-  "Ethnic Palazzo Pants",
-  "Sharara Bottomwear Collection",
-  "Kurta with Palazzo",
-  "Kurta-Pant Set",
-  "Kurta-Palazzo-Dupatta Set",
-  "Women's Kurta Set Online",
-  "Designer Kurta for Women",
-  "Festive Wear Kurta Set"
-];
-
-const keywords = shuffle(baseKeywords);
-
-const heroWords = ["Premium", "Luxury", "Elite", "High-End", "Exclusive", "Superior", "Exceptional", "Finest", "Top-Tier", 
-  "Trusted", "Reliable", "Authentic", "Certified", "Respected", "Reputable", "Proven", "Endorsed", "Verified", 
-  "Designer", "Artisan", "Curated", "Signature", "Tailored", "Handcrafted", "Custom", "Exclusive", "Stylized"];
-function getRandomHeroWord() {
-  return heroWords[Math.floor(Math.random() * heroWords.length)];
-}
+// Removed unused shuffle function
 
 const products = [
   {
-    name: "Kurtas",
-    description: "Our premium kurtas blend traditional craftsmanship with contemporary aesthetics, thoughtfully crafted using fine fabrics like cotton, linen, modal, muslin, chanderi and more. The result is apparel that offers effortless elegance, breathable comfort, and lasting appeal for the discerning customers of fashion retailers.",
-    images: ["https://ekohum.com/cdn/shop/files/DS5853_2.jpg?v=1741256083", "https://ekohum.com/cdn/shop/files/DS5853_10.jpg?v=1741256083"]
+    name: "Kurtis",
+    description: "Elegant and comfortable kurtis perfect for every occasion",
+    images: [
+      "/products/kurta_1.png",
+      "/products/kurta_2.png",
+      "/products/kurta_3.png",
+      "/products/kurta_4.png",
+      "/products/kurta_5.png",
+      "/products/kurta_6.png"
+    ]
   },
   {
     name: "Kurta Sets",
-    description: "Our Kurta sets are elegant two-piece ethnic ensembles for women, thoughtfully paired with vibrant colours and stylish prints. Each set features a kurta top matched with coordinated bottoms, offering a variety of styles including pants, palazzos, shararas, and more.",
-    images: ["https://ekohum.com/cdn/shop/files/DSC_0596.jpg?v=1717780319", "https://ekohum.com/cdn/shop/files/DSC_0651.jpg?v=1717780319"]
+    description: "Complete kurta sets with matching bottoms and dupattas",
+    images: [
+      "/products/kalidaar_1.png",
+      "/products/kalidaar_2.png"
+    ]
   },
   {
-    name: "Suit Sets",
-    description: "Our timeless ethnic suit sets are crafted from premium materials and tailored with elegant cuts, offering a blend of comfort and sophistication. Each kurta set comes paired with a matching bottom and dupatta, making it an ideal choice for festive celebrations, professional settings, and boutique showcases alike.",
-    images: ["https://ekohum.com/cdn/shop/files/DW3962__1.jpg?v=1725534156", "https://ekohum.com/cdn/shop/files/DW3962_4.jpg?v=1725534157"]
-  },
-  {
-    name: "Dresses",
-    description: "Shop owners, elevate your collections with our stylish ethnic dresses that blend timeless silhouettes and contemporary design. Handcrafted with precision, each piece radiates sophistication while being tailored for the ease of everyday wear—perfect for discerning customers who value both tradition and trend.",
-    images: ["https://ekohum.com/cdn/shop/files/DSC9845.jpg?v=1717778854", "https://ekohum.com/cdn/shop/files/DSC9855.jpg?v=1717778854"]
-  },
-  {
-    name: "Kaftans",
-    description: "Breezy and elegant, our kaftans are designed for those who cherish comfort without compromising on style. Featuring airy fabrics, intricate embroidery, and captivating prints, they're the perfect expression of effortless ethnic fusion—ideal for the customers of retailers who like everything from laid-back lounging to graceful gatherings.",
-    images: ["https://ekohum.com/cdn/shop/files/1P1A4275f.jpg?v=1717779843", "https://ekohum.com/cdn/shop/files/1P1A4278f.jpg?v=1717779843"]
-  },
-  {
-    name: "Anarkali Kurtas",
-    description: "Step into timeless elegance with our Anarkali Kurtas—celebrated for their graceful layers, royal silhouette, and exquisite artisanal detailing. Each piece captures the essence of Indian heritage while embracing a refined, contemporary flair, making it a perfect choice for occasions that call for grandeur with ease.",
-    images: ["https://ekohum.com/cdn/shop/files/DSC_1611_c8d72493-d7b7-4fd8-a066-43dd937a657d.jpg?v=1729164602", "https://ekohum.com/cdn/shop/files/DSC_1622_33b0f5b1-b840-4283-90cc-259f6794734e.jpg?v=1729164681"]
+    name: "Dupattas",
+    description: "Beautiful dupattas to complement your ethnic wear",
+    images: [
+      "/products/dupatta_1.png",
+      "/products/dupatta_2.png",
+      "/products/dupatta_3.png",
+      "/products/dupatta_4.png"
+    ]
   }
 ]
+
+const keywords = [
+  "Kurti Manufacturer Jaipur",
+  "Wholesale Ethnic Wear",
+  "Boutique Supplier",
+  "Premium Kurtas",
+  "Ethnic Wear Manufacturer",
+  "Jaipur Kurti Supplier",
+  "Bulk Kurti Orders",
+  "Designer Kurtis",
+  "Traditional Wear",
+  "Modern Ethnic Fashion"
+]
+
+function getRandomHeroWord() {
+  const words = ["Premium", "Trusted", "Designer", "Leading", "Best", "Top", "Quality", "Professional"];
+  return words[Math.floor(Math.random() * words.length)];
+}
 
 export default function Home() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
-  const [heroWord] = useState(getRandomHeroWord());
+  const [heroWord] = useState(getRandomHeroWord())
+
+  const checkMobile = () => {
+    setIsMobile(window.innerWidth <= 768)
+  }
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
@@ -136,16 +100,20 @@ export default function Home() {
 
   useEffect(() => {
     if (!emblaApi) return
+
     onSelect()
     emblaApi.on('select', onSelect)
+    emblaApi.on('reInit', onSelect)
+
     return () => {
       emblaApi.off('select', onSelect)
+      emblaApi.off('reInit', onSelect)
     }
   }, [emblaApi, onSelect])
 
-  // Auto-play functionality
   useEffect(() => {
     if (!emblaApi) return
+
     const interval = setInterval(() => {
       emblaApi.scrollNext()
     }, 5000)
@@ -166,9 +134,10 @@ export default function Home() {
                     src={image}
                     alt={`Hero image ${index + 1}`}
                     fill
-                    unoptimized
                     className="object-cover"
                     priority={index === 0}
+                    sizes="100vw"
+                    quality={85}
         />
                   <div className="absolute inset-0 bg-black/40" />
                 </div>
@@ -249,7 +218,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[url('https://res.cloudinary.com/dfye0gag9/image/upload/about_banner_1_q6jmud.jpg')]">
+      <section className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[url('https://res.cloudinary.com/dfye0gag9/image/upload/f_auto,q_auto,w_1200/about_banner_1_q6jmud.jpg')]">
         <div className="absolute inset-0 bg-black/50" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center min-h-[60vh]">
@@ -288,6 +257,7 @@ export default function Home() {
                   allowFullScreen
                   className="w-full h-full min-h-[220px]"
                   style={{ border: 0 }}
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -347,9 +317,9 @@ export default function Home() {
       {/* WhatsApp Button */}
       <Link
         href="https://wa.me/919828422208"
-          target="_blank"
+        target="_blank"
         className="fixed bottom-6 right-6 bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition-colors z-50"
-        >
+      >
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>

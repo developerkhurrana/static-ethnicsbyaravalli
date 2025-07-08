@@ -50,7 +50,7 @@ export default function AdminPrioritiesPage() {
       } else {
         toast.error("Failed to fetch priorities");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred while fetching priorities");
     } finally {
       setIsLoading(false);
@@ -85,7 +85,7 @@ export default function AdminPrioritiesPage() {
         const error = await response.json();
         toast.error(error.error || "Failed to create priority");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred while creating priority");
     } finally {
       setIsCreating(false);
@@ -110,7 +110,7 @@ export default function AdminPrioritiesPage() {
       } else {
         toast.error("Failed to update priority status");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred while updating priority");
     }
   };
@@ -139,7 +139,7 @@ export default function AdminPrioritiesPage() {
         const error = await response.json();
         toast.error(error.error || "Failed to delete priority");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred while deleting priority");
     }
   };

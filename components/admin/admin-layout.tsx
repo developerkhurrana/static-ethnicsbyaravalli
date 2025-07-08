@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
 
 interface AdminLayoutProps {
@@ -57,7 +56,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         }
         
         setIsAuthenticated(true);
-      } catch (error) {
+      } catch {
         localStorage.removeItem("adminToken");
         router.push("/admin/login");
       } finally {

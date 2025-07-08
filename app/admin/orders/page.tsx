@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
-import { Package, User, Phone, Building, Calendar, ShoppingCart, FileText } from "lucide-react";
+import { Package, User, Phone, Building, ShoppingCart, FileText } from "lucide-react";
 
 interface OrderItem {
   productId: string;
@@ -72,7 +72,7 @@ interface Order {
 }
 
 // Helper function to convert productId to string consistently
-const getProductIdString = (productId: any): string => {
+const getProductIdString = (productId: unknown): string => {
   if (typeof productId === 'string') {
     return productId;
   } else if (productId && typeof productId === 'object' && productId !== null) {
@@ -93,12 +93,11 @@ const getProductIdString = (productId: any): string => {
 };
 
 // New ApproveModal component for production use
-function ApproveModal({ isOpen, order, onClose, onGeneratePO, onCancelOrder, onDeleteOrder }: {
+function ApproveModal({ isOpen, order, onClose, onGeneratePO, onDeleteOrder }: {
   isOpen: boolean,
   order: Order | null,
   onClose: () => void,
   onGeneratePO: (order: Order, isGSTApplicable: boolean) => void,
-  onCancelOrder: (order: Order) => void,
   onDeleteOrder: (order: Order) => void,
 }) {
   const [gstApplicable, setGstApplicable] = useState(order?.isGSTApplicable !== false);
@@ -182,8 +181,8 @@ function ApproveModal({ isOpen, order, onClose, onGeneratePO, onCancelOrder, onD
             let sizes: Record<string, number> = {};
             if (order.sizeQuantities && order.sizeQuantities[itemKey]) {
               sizes = order.sizeQuantities[itemKey];
-            } else if ((item as any).sizeQuantities) {
-              sizes = (item as any).sizeQuantities;
+            } else if ((item as Record<string, unknown>).sizeQuantities) {
+              sizes = (item as Record<string, unknown>).sizeQuantities as Record<string, number>;
             } else {
               sizes = {
                 S: item.quantitySets,
@@ -193,12 +192,13 @@ function ApproveModal({ isOpen, order, onClose, onGeneratePO, onCancelOrder, onD
                 XXL: item.quantitySets
               };
             }
-            let primaryImage = undefined;
-            if (product && typeof product === 'object' && !Array.isArray(product) && !(typeof product === 'string') && 'images' in product && Array.isArray((product as any).images)) {
-              primaryImage = (product as any).images.find((img: any) => img.isPrimary) || (product as any).images[0];
+            let primaryImage: { url: string; alt: string; isPrimary?: boolean } | undefined;
+            if (product && typeof product === 'object' && !Array.isArray(product) && !(typeof product === 'string') && 'images' in product && Array.isArray((product as Record<string, unknown>).images)) {
+              const images = (product as Record<string, unknown>).images as Array<{ url: string; alt: string; isPrimary?: boolean }>;
+              primaryImage = images.find((img) => img.isPrimary) || images[0];
             }
             return (
-              <div key={String((item as any)._id)} className="flex gap-4 bg-white border rounded-lg shadow-sm p-4">
+              <div key={String((item as Record<string, unknown>)._id)} className="flex gap-4 bg-white border rounded-lg shadow-sm p-4">
                 {primaryImage?.url && (
                   <img src={primaryImage.url} alt={item.itemName} className="w-20 h-20 object-cover rounded-lg border" />
                 )}
@@ -271,9 +271,7 @@ export default function AdminOrdersPage() {
   const [sizeQuantities, setSizeQuantities] = useState<{[key: string]: {[size: string]: number}}>({});
   const [isApproveModalOpen, setIsApproveModalOpen] = useState(false);
   const [approveOrder, setApproveOrder] = useState<Order | null>(null);
-  const [isGSTApplicable, setIsGSTApplicable] = useState(true);
-  // In AdminOrdersPage, add a state for GST toggle in the details modal
-  const [detailsGSTApplicable, setDetailsGSTApplicable] = useState(true);
+  const [isGSTApplicable] = useState(true);
   const [isGSTToggleLoading, setIsGSTToggleLoading] = useState(false);
 
   useEffect(() => {
@@ -295,7 +293,7 @@ export default function AdminOrdersPage() {
       } else {
         toast.error("Failed to fetch orders");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred while fetching orders");
     } finally {
       setIsLoading(false);
@@ -366,11 +364,10 @@ export default function AdminOrdersPage() {
       if (response.ok) {
         const data = await response.json();
         setSelectedOrder(data.order);
-        setDetailsGSTApplicable(data.order.isGSTApplicable || true); // Set initial GST state
       } else {
         setSelectedOrder(order); // fallback
       }
-    } catch (error) {
+    } catch {
       setSelectedOrder(order); // fallback
     }
     setIsModalOpen(true);
@@ -388,7 +385,7 @@ export default function AdminOrdersPage() {
     setReviewNotes("");
 
     // Use order-level sizeQuantities if present (this is the original/received data)
-    const orderLevelSizeQuantities = (order as any).sizeQuantities || {};
+    const orderLevelSizeQuantities = (order as Record<string, unknown>).sizeQuantities as Record<string, Record<string, number>> || {};
     console.log("Order sizeQuantities:", orderLevelSizeQuantities);
     const initialQuantities: {[key: string]: {[size: string]: number}} = {};
     
@@ -468,258 +465,158 @@ export default function AdminOrdersPage() {
   const allItemsValid = reviewOrder?.items?.every((item, index) => {
     const productIdStr = getProductIdString(item.productId);
     const itemKey = `${productIdStr}-${index}`;
-    return getTotalPcsForItem(itemKey) === item.quantitySets * 5;
+    const totalPcs = getTotalPcsForItem(itemKey);
+    const expected = item.quantitySets * 5;
+    return totalPcs >= expected;
   });
 
   const handleReviewSubmit = async (action: 'approve' | 'request_changes' | 'reject') => {
-    if (!reviewOrder || !validateSizeQuantities()) return;
+    if (!reviewOrder) return;
+
+    if (action === 'approve' && !validateSizeQuantities()) {
+      return;
+    }
 
     try {
       const token = localStorage.getItem("adminToken");
-      console.log("Submitting sizeQuantities:", sizeQuantities);
-      console.log("Order items:", reviewOrder?.items);
-      console.log("Request body:", {
-        action,
-        notes: reviewNotes,
-        sizeQuantities,
-        newStatus: action === 'approve' ? 'APPROVED' : action === 'request_changes' ? 'UNDER_REVIEW' : 'REJECTED'
-      });
       const response = await fetch(`/api/admin/orders/${reviewOrder._id}/review`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           action,
           notes: reviewNotes,
-          sizeQuantities,
-          newStatus: action === 'approve' ? 'APPROVED' : action === 'request_changes' ? 'UNDER_REVIEW' : 'REJECTED'
-        })
+          sizeQuantities: action === 'approve' ? sizeQuantities : undefined,
+        }),
       });
-
-      const responseData = await response.json();
-      console.log("API response:", responseData);
 
       if (response.ok) {
         toast.success(`Order ${action === 'approve' ? 'approved' : action === 'request_changes' ? 'sent for changes' : 'rejected'} successfully`);
         closeReviewModal();
-        fetchOrders(); // Refresh orders list
+        fetchOrders();
       } else {
-        const error = await response.json();
-        toast.error(error.error || 'Failed to update order');
+        toast.error("Failed to update order status");
       }
-    } catch (error) {
-      toast.error('An error occurred while updating the order');
+    } catch {
+      toast.error("An error occurred while updating order status");
     }
   };
 
-  // Replace the old openApproveModal with an async version that fetches the latest order
   const openApproveModal = async (order: Order) => {
-    try {
-      const token = localStorage.getItem("adminToken");
-      const response = await fetch(`/api/admin/orders/${order._id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (response.ok) {
-        const data = await response.json();
-        setApproveOrder(data.order);
-      } else {
-        setApproveOrder(order); // fallback
-      }
-    } catch (error) {
-      setApproveOrder(order); // fallback
-    }
+    setApproveOrder(order);
     setIsApproveModalOpen(true);
   };
 
+  const closeApproveModal = () => {
+    setApproveOrder(null);
+    setIsApproveModalOpen(false);
+  };
+
   const handleGeneratePO = async (order: Order, isGSTApplicable: boolean) => {
-    if (!order) return;
     try {
       const token = localStorage.getItem("adminToken");
-      // You may want to get the admin name from context or state; using a placeholder here
-      const generatedBy = localStorage.getItem("adminName") || "Admin";
       const response = await fetch("/api/admin/purchase-orders/generate", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ orderId: order._id, generatedBy, isGSTApplicable })
+        body: JSON.stringify({
+          orderId: order._id,
+          isGSTApplicable,
+        }),
       });
-      const data = await response.json();
-      if (response.ok && data.success) {
-        toast.success("Purchase Order generated successfully!");
-        setIsApproveModalOpen(false);
-        await fetchOrders();
+
+      if (response.ok) {
+        toast.success("Purchase Order generated successfully");
+        closeApproveModal();
+        fetchOrders();
       } else {
-        toast.error(data.error || "Failed to generate Purchase Order");
+        toast.error("Failed to generate Purchase Order");
       }
-    } catch (error) {
-      toast.error("An error occurred while generating the Purchase Order");
+    } catch {
+      toast.error("An error occurred while generating Purchase Order");
     }
   };
 
-  const handleCancelOrder = async (order: Order) => {
-    // TODO: Call your cancel order API
-    setIsApproveModalOpen(false);
-    await fetchOrders();
-  };
-
   const handleDeleteOrder = async (order: Order) => {
-    if (!order) return;
+    if (!confirm("Are you sure you want to delete this order? This action cannot be undone.")) {
+      return;
+    }
+
     try {
       const token = localStorage.getItem("adminToken");
       const response = await fetch(`/api/admin/orders/${order._id}`, {
         method: "DELETE",
         headers: {
-          "Authorization": `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
-      const data = await response.json();
-      if (response.ok && data.success) {
-        toast.success("Order deleted successfully!");
-        setIsApproveModalOpen(false);
-        await fetchOrders();
+
+      if (response.ok) {
+        toast.success("Order deleted successfully");
+        closeApproveModal();
+        fetchOrders();
       } else {
-        toast.error(data.error || "Failed to delete order");
+        toast.error("Failed to delete order");
       }
-    } catch (error) {
-      toast.error("An error occurred while deleting the order");
+    } catch {
+      toast.error("An error occurred while deleting order");
     }
   };
 
-  // Download PO PDF handler for View Details
   const handleDownloadPOPDF = async (order: Order) => {
     try {
       const token = localStorage.getItem("adminToken");
-      // Try to fetch the PO for this order
-      const responsePO = await fetch(`/api/admin/purchase-orders?orderId=${order._id}`, {
-        headers: { Authorization: `Bearer ${token}` },
+      const response = await fetch(`/api/admin/purchase-orders/pdf?orderId=${order._id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
-      if (!responsePO.ok) {
-        toast.error("Could not find Purchase Order for this order");
-        return;
+
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `PO-${order.orderNumber}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      } else {
+        toast.error("Failed to download PDF");
       }
-      const data = await responsePO.json();
-      const po = Array.isArray(data.purchaseOrders) ? data.purchaseOrders[0] : data.purchaseOrder;
-      if (!po || !po._id) {
-        toast.error("No Purchase Order found for this order");
-        return;
-      }
-      // Download the PDF
-      const response = await fetch(`/api/admin/purchase-orders/pdf?poId=${po._id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!response.ok) {
-        toast.error("Failed to download PO PDF");
-        return;
-      }
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `PO_${po.poNumber}.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      toast.error("An error occurred while downloading PO PDF");
+    } catch {
+      toast.error("An error occurred while downloading PDF");
     }
   };
 
   const handleGSTToggle = async (order: Order, isChecked: boolean) => {
-    if (!order) return;
     setIsGSTToggleLoading(true);
     try {
       const token = localStorage.getItem("adminToken");
-      
-      // First, update the order's GST status
       const response = await fetch(`/api/admin/orders/${order._id}`, {
         method: "PATCH",
         headers: {
-          "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ isGSTApplicable: isChecked })
+        body: JSON.stringify({
+          isGSTApplicable: isChecked,
+        }),
       });
-      const data = await response.json();
-      
-      if (response.ok && data.success) {
-        toast.success("GST applicable status updated successfully!");
-        
-        // Fetch the latest order from backend and update selectedOrder
-        const refreshed = await fetch(`/api/admin/orders/${order._id}`, {
-          headers: { "Authorization": `Bearer ${token}` }
-        });
-        if (refreshed.ok) {
-          const newData = await refreshed.json();
-          setSelectedOrder(newData.order);
-        }
-        
-        // If order has PO_GENERATED status, regenerate the PO with new GST settings
-        if (order.status === "PO_GENERATED") {
-          toast.info("Regenerating purchase order with updated GST settings...");
-          
-          // First, find the existing PO for this order
-          const poResponse = await fetch(`/api/admin/purchase-orders?orderId=${order._id}`, {
-            headers: {
-              "Authorization": `Bearer ${token}`,
-            },
-          });
-          
-          if (poResponse.ok) {
-            const poData = await poResponse.json();
-            if (poData.purchaseOrders && poData.purchaseOrders.length > 0) {
-              const existingPO = poData.purchaseOrders[0];
-              
-              // Delete existing PO first
-              const deleteResponse = await fetch(`/api/admin/purchase-orders?poId=${existingPO._id}&action=delete`, {
-                method: "DELETE",
-                headers: {
-                  "Authorization": `Bearer ${token}`,
-                },
-              });
-              
-              if (deleteResponse.ok) {
-                // Generate new PO with updated GST settings
-                const generatedBy = localStorage.getItem("adminUser") || "Admin";
-                const newPoResponse = await fetch("/api/admin/purchase-orders/generate", {
-                  method: "POST",
-                  headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({ 
-                    orderId: order._id, 
-                    generatedBy, 
-                    isGSTApplicable: isChecked 
-                  }),
-                });
-                
-                if (newPoResponse.ok) {
-                  toast.success("Purchase order regenerated with updated GST settings!");
-                } else {
-                  toast.error("Failed to regenerate purchase order");
-                }
-              } else {
-                toast.error("Failed to delete existing purchase order");
-              }
-            } else {
-              toast.error("No existing purchase order found to regenerate");
-            }
-          } else {
-            toast.error("Failed to find existing purchase order");
-          }
-        }
+
+      if (response.ok) {
+        toast.success(`GST ${isChecked ? 'enabled' : 'disabled'} for order`);
+        fetchOrders();
       } else {
-        toast.error(data.error || "Failed to update GST applicable status");
+        toast.error("Failed to update GST setting");
       }
-    } catch (error) {
-      toast.error("An error occurred while updating GST applicable status");
+    } catch {
+      toast.error("An error occurred while updating GST setting");
     } finally {
       setIsGSTToggleLoading(false);
     }
@@ -924,15 +821,16 @@ export default function AdminOrdersPage() {
                           const productIdStr = getProductIdString(item.productId);
                           const itemKey = `${productIdStr}-${index}`;
                           let primaryImage = undefined;
-                          if (product && typeof product === 'object' && !Array.isArray(product) && !(typeof product === 'string') && 'images' in product && Array.isArray((product as any).images)) {
-                            primaryImage = (product as any).images.find((img: any) => img.isPrimary) || (product as any).images[0];
+                          if (product && typeof product === 'object' && !Array.isArray(product) && !(typeof product === 'string') && 'images' in product && Array.isArray((product as Record<string, unknown>).images)) {
+                            const images = (product as Record<string, unknown>).images as Array<{ url: string; alt: string; isPrimary?: boolean }>;
+                            primaryImage = images.find((img) => img.isPrimary) || images[0];
                           }
                           // Always prefer backend's order.sizeQuantities
                           let sizes: Record<string, number> = {};
                           if (selectedOrder.sizeQuantities && selectedOrder.sizeQuantities[itemKey]) {
                             sizes = selectedOrder.sizeQuantities[itemKey];
-                          } else if ((item as any).sizeQuantities) {
-                            sizes = (item as any).sizeQuantities;
+                          } else if ((item as Record<string, unknown>).sizeQuantities) {
+                            sizes = (item as Record<string, unknown>).sizeQuantities as Record<string, number>;
                           } else {
                             sizes = {
                               S: item.quantitySets,
@@ -1229,7 +1127,7 @@ export default function AdminOrdersPage() {
                                 <div className="grid grid-cols-5 gap-3">
                                   {['S', 'M', 'L', 'XL', 'XXL'].map((size) => {
                                     // Get original value for comparison
-                                    const originalValue = (reviewOrder as any).sizeQuantities?.[itemKey]?.[size] || item.quantitySets;
+                                    const originalValue = (reviewOrder as Record<string, unknown>).sizeQuantities?.[itemKey]?.[size] || item.quantitySets;
                                     const currentValue = currentSizes[size] || 0;
                                     const isModified = currentValue !== originalValue;
                                     
@@ -1356,9 +1254,8 @@ export default function AdminOrdersPage() {
         <ApproveModal
           isOpen={isApproveModalOpen}
           order={approveOrder}
-          onClose={() => setIsApproveModalOpen(false)}
+          onClose={closeApproveModal}
           onGeneratePO={handleGeneratePO}
-          onCancelOrder={handleCancelOrder}
           onDeleteOrder={handleDeleteOrder}
         />
       </div>

@@ -7,7 +7,6 @@ async function testGoogleSheetsAccess() {
     
     // Get priorities from database
     const priorities = await Priority.find({ isActive: true });
-    console.log("Found priorities:", priorities.map((p: any) => p.priorityCode));
     
     const sheetId = process.env.GOOGLE_SHEET_ID;
     if (!sheetId) {
@@ -16,7 +15,6 @@ async function testGoogleSheetsAccess() {
     }
     
     console.log("📋 Testing Google Sheets access...");
-    console.log("Sheet ID/URL:", sheetId);
     
     // Check if it's a published URL
     const isPublishedUrl = sheetId.includes('/pub');
@@ -43,15 +41,11 @@ async function testGoogleSheetsAccess() {
           const url = urls[i];
           
           try {
-            console.log(`  Testing URL ${i + 1}: ${url}`);
-            
             const response = await fetch(url);
-            console.log(`    Status: ${response.status} ${response.statusText}`);
             
             if (response.ok) {
               const text = await response.text();
               console.log(`    ✅ Success! Content length: ${text.length} characters`);
-              console.log(`    First 200 chars: ${text.substring(0, 200)}...`);
               
               // Check if it's CSV or HTML
               if (text.startsWith('<!DOCTYPE html>')) {
@@ -63,9 +57,6 @@ async function testGoogleSheetsAccess() {
               // Try to parse as CSV
               const lines = text.split('\n');
               console.log(`    CSV lines: ${lines.length}`);
-              if (lines.length > 0) {
-                console.log(`    First line: ${lines[0]}`);
-              }
               break; // Found working URL, stop testing others
             } else {
               console.log(`    ❌ Failed: ${response.status} ${response.statusText}`);
@@ -97,22 +88,15 @@ async function testGoogleSheetsAccess() {
           const url = urls[i];
           
           try {
-            console.log(`  Testing URL ${i + 1}: ${url}`);
-            
             const response = await fetch(url);
-            console.log(`    Status: ${response.status} ${response.statusText}`);
             
             if (response.ok) {
               const text = await response.text();
               console.log(`    ✅ Success! Content length: ${text.length} characters`);
-              console.log(`    First 200 chars: ${text.substring(0, 200)}...`);
               
               // Try to parse as CSV
               const lines = text.split('\n');
               console.log(`    CSV lines: ${lines.length}`);
-              if (lines.length > 0) {
-                console.log(`    First line: ${lines[0]}`);
-              }
               break; // Found working URL, stop testing others
             } else {
               console.log(`    ❌ Failed: ${response.status} ${response.statusText}`);

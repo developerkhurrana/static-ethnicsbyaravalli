@@ -3,10 +3,8 @@ import { requireAdminAuth } from "@/lib/admin-auth";
 import dbConnect from "@/lib/mongodb";
 import { ensureModelsLoaded } from "@/lib/models";
 import Retailer from "@/models/Retailer";
-import Catalog from "@/models/Catalog";
-import Priority from "@/models/Priority";
 
-export const GET = requireAdminAuth(async (request: NextRequest) => {
+export const GET = requireAdminAuth(async () => {
   try {
     // Ensure all models are loaded
     ensureModelsLoaded();
@@ -29,7 +27,7 @@ export const GET = requireAdminAuth(async (request: NextRequest) => {
         address: retailer.address,
         priorities: retailer.priorities,
         gstNumber: retailer.gstNumber,
-        accessibleCatalogs: retailer.accessibleCatalogs.map((cat: any) => ({
+        accessibleCatalogs: retailer.accessibleCatalogs.map((cat: Record<string, unknown>) => ({
           _id: cat._id,
           catalogName: cat.catalogName,
           catalogCode: cat.catalogCode
@@ -53,7 +51,7 @@ export const GET = requireAdminAuth(async (request: NextRequest) => {
 export const POST = requireAdminAuth(async (request: NextRequest) => {
   try {
     const body = await request.json();
-    console.log('Creating retailer with data:', body);
+
     
     await dbConnect();
 

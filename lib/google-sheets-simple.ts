@@ -76,8 +76,6 @@ async function fetchRetailersFromSheetCSV(priorityCode: string): Promise<SheetRe
     const isPublishedUrl = sheetId.includes('/pub');
 
     if (isPublishedUrl) {
-      console.log(`Fetching ${priorityCode} from published URL`);
-      
       // Try published URL formats
       const publishedUrls = [
         `${sheetId}?output=csv&gid=0`,
@@ -86,7 +84,6 @@ async function fetchRetailersFromSheetCSV(priorityCode: string): Promise<SheetRe
 
       for (const url of publishedUrls) {
         try {
-          console.log(`Trying published URL: ${url}`);
           const response = await fetch(url);
           
           if (response.ok) {
@@ -94,13 +91,11 @@ async function fetchRetailersFromSheetCSV(priorityCode: string): Promise<SheetRe
             
             // Check if we got HTML instead of CSV
             if (csvText.startsWith('<!DOCTYPE html>')) {
-              console.log(`Warning: Got HTML instead of CSV for ${priorityCode}`);
               csvText = null;
               lastError = "Got HTML instead of CSV";
               continue;
             }
             
-            console.log(`Successfully fetched ${priorityCode} via published URL`);
             break;
           } else {
             lastError = `Published URL failed: ${response.status} ${response.statusText}`;
@@ -110,8 +105,6 @@ async function fetchRetailersFromSheetCSV(priorityCode: string): Promise<SheetRe
         }
       }
     } else {
-      console.log(`Fetching ${priorityCode} from regular sheet ID`);
-      
       // Try regular sheet ID formats
       const regularUrls = [
         `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&sheet=${encodeURIComponent(priorityCode)}`,
@@ -120,12 +113,10 @@ async function fetchRetailersFromSheetCSV(priorityCode: string): Promise<SheetRe
 
       for (const url of regularUrls) {
         try {
-          console.log(`Trying regular URL: ${url}`);
           const response = await fetch(url);
           
           if (response.ok) {
             csvText = await response.text();
-            console.log(`Successfully fetched ${priorityCode} via regular URL`);
             break;
           } else {
             lastError = `Regular URL failed: ${response.status} ${response.statusText}`;
@@ -140,10 +131,7 @@ async function fetchRetailersFromSheetCSV(priorityCode: string): Promise<SheetRe
       throw new Error(`Failed to fetch CSV for ${priorityCode}. Last error: ${lastError}`);
     }
 
-    console.log(`Successfully fetched ${priorityCode}, CSV length: ${csvText.length}`);
-    
     const rows = parseCSV(csvText);
-    console.log(`Parsed ${rows.length} rows for ${priorityCode}`);
     
     const retailers: SheetRetailer[] = [];
 
@@ -168,7 +156,6 @@ async function fetchRetailersFromSheetCSV(priorityCode: string): Promise<SheetRe
     }
 
     const validRetailers = retailers.filter((r) => r.phoneNumber && r.businessName);
-    console.log(`Found ${validRetailers.length} valid retailers for ${priorityCode}`);
     return validRetailers;
   } catch (error) {
     console.error(`Error fetching ${priorityCode} retailers:`, error);
@@ -225,15 +212,11 @@ async function upsertRetailer(sheetRetailer: SheetRetailer, priorityMap: Map<str
 }
 
 async function updateCatalogAccess(): Promise<void> {
-  console.log('--- Running updateCatalogAccess ---');
-  
   // Get all active retailers with their priorities populated
   const retailers = await Retailer.find({ isActive: true }).populate("priorities");
-  console.log(`Found ${retailers.length} active retailers`);
   
   // Get all active catalogs
   const catalogs = await Catalog.find({ isActive: true });
-  console.log(`Found ${catalogs.length} active catalogs`);
   
   // Create a map of priority codes to catalog IDs for faster lookup
   const priorityToCatalogsMap = new Map<string, string[]>();
@@ -246,8 +229,6 @@ async function updateCatalogAccess(): Promise<void> {
     }
     priorityToCatalogsMap.get(accessLevel)!.push(catalog._id.toString());
   }
-  
-  console.log('Catalog access levels found:', Array.from(priorityToCatalogsMap.keys()));
 
   let updatedCount = 0;
   
@@ -256,12 +237,10 @@ async function updateCatalogAccess(): Promise<void> {
     const retailerPriorities = retailer.priorities || [];
     
     if (retailerPriorities.length === 0) {
-      console.log(`Retailer ${retailer.phoneNumber} has no priorities assigned`);
       continue;
     }
     
     const priorityCodes = retailerPriorities.map((p: any) => p.priorityCode);
-    console.log(`Retailer ${retailer.phoneNumber} has priorities:`, priorityCodes);
 
     // Add catalogs for each priority level
     for (const priorityCode of priorityCodes) {
@@ -272,13 +251,10 @@ async function updateCatalogAccess(): Promise<void> {
       // Also add GENERAL catalogs (accessible to everyone)
       const generalCatalogs = priorityToCatalogsMap.get("GENERAL") || [];
       accessibleCatalogs.push(...generalCatalogs);
-      
-      console.log(`  Priority ${priorityCode}: Found ${priorityCatalogs.length} catalogs + ${generalCatalogs.length} general catalogs`);
     }
 
     // Remove duplicates
     const uniqueCatalogs = [...new Set(accessibleCatalogs)];
-    console.log(`  Total unique catalogs for ${retailer.phoneNumber}: ${uniqueCatalogs.length}`);
 
     // Update retailer's accessible catalogs
     await Retailer.findByIdAndUpdate(retailer._id, {
@@ -288,6 +264,4 @@ async function updateCatalogAccess(): Promise<void> {
     
     updatedCount++;
   }
-  
-  console.log(`--- Completed updateCatalogAccess: Updated ${updatedCount} retailers ---`);
 } 

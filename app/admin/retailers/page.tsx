@@ -44,7 +44,6 @@ export default function AdminRetailersPage() {
   const [priorities, setPriorities] = useState<{ _id: string; priorityCode: string; priorityName: string }[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSyncing, setIsSyncing] = useState(false);
-  const [isSyncingSimple, setIsSyncingSimple] = useState(false);
   const [isUpdatingCatalogAccess, setIsUpdatingCatalogAccess] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [priorityFilter, setPriorityFilter] = useState<string>("all");
@@ -65,10 +64,10 @@ export default function AdminRetailersPage() {
 
       if (response.ok) {
         const data = await response.json();
-        setPriorities(data.priorities.filter((p: any) => p.isActive));
+        setPriorities(data.priorities.filter((p: Record<string, unknown>) => p.isActive));
       }
-    } catch (error) {
-      console.error("Failed to fetch priorities:", error);
+    } catch {
+      console.error("Failed to fetch priorities");
     }
   };
 
@@ -87,7 +86,7 @@ export default function AdminRetailersPage() {
       } else {
         toast.error("Failed to fetch retailers");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred while fetching retailers");
     } finally {
       setIsLoading(false);
@@ -113,36 +112,10 @@ export default function AdminRetailersPage() {
         const error = await response.json();
         toast.error(error.error || "Failed to sync with Google Sheets");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred during sync");
     } finally {
       setIsSyncing(false);
-    }
-  };
-
-  const syncWithGoogleSheetsSimple = async () => {
-    setIsSyncingSimple(true);
-    try {
-      const token = localStorage.getItem("adminToken");
-      const response = await fetch("/api/admin/retailers/sync-simple", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        toast.success(`Successfully synced ${data.syncedCount} retailers (Simple CSV method)`);
-        fetchRetailers(); // Refresh the list
-      } else {
-        const error = await response.json();
-        toast.error(error.error || "Failed to sync with Google Sheets (Simple method)");
-      }
-    } catch (error) {
-      toast.error("An error occurred during simple sync");
-    } finally {
-      setIsSyncingSimple(false);
     }
   };
 
@@ -165,7 +138,7 @@ export default function AdminRetailersPage() {
         const error = await response.json();
         toast.error(error.error || "Failed to update catalog access");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred while updating catalog access");
     } finally {
       setIsUpdatingCatalogAccess(false);
@@ -198,7 +171,7 @@ export default function AdminRetailersPage() {
     }
   };
 
-  const renderPriorities = (priorities: any[]) => {
+  const renderPriorities = (priorities: Array<{ _id: string; priorityCode: string; priorityName: string }>) => {
     if (!priorities || priorities.length === 0) {
       return <span className="text-gray-500 text-xs">No priorities assigned</span>;
     }

@@ -6,17 +6,12 @@ import "../lib/models";
 async function updateCatalogAccessNow() {
   try {
     await dbConnect();
-    console.log("Connected to database");
-    
-    console.log('--- Starting catalog access update ---');
     
     // Get all retailers with their priorities populated (including inactive ones for now)
     const retailers = await Retailer.find({}).populate("priorities");
-    console.log(`Found ${retailers.length} active retailers`);
     
     // Get all active catalogs
     const catalogs = await Catalog.find({ isActive: true });
-    console.log(`Found ${catalogs.length} active catalogs`);
     
     // Create a map of priority codes to catalog IDs for faster lookup
     const priorityToCatalogsMap = new Map<string, string[]>();
@@ -29,8 +24,6 @@ async function updateCatalogAccessNow() {
       }
       priorityToCatalogsMap.get(accessLevel)!.push(catalog._id.toString());
     }
-    
-    console.log('Catalog access levels found:', Array.from(priorityToCatalogsMap.keys()));
 
     let updatedCount = 0;
     let skippedCount = 0;
@@ -40,13 +33,11 @@ async function updateCatalogAccessNow() {
       const retailerPriorities = retailer.priorities || [];
       
       if (retailerPriorities.length === 0) {
-        console.log(`Retailer ${retailer.phoneNumber} has no priorities assigned - skipping`);
         skippedCount++;
         continue;
       }
       
       const priorityCodes = retailerPriorities.map((p: any) => p.priorityCode);
-      console.log(`Retailer ${retailer.phoneNumber} has priorities:`, priorityCodes);
 
       // Add catalogs for each priority level
       for (const priorityCode of priorityCodes) {
@@ -57,13 +48,10 @@ async function updateCatalogAccessNow() {
         // Also add GENERAL catalogs (accessible to everyone)
         const generalCatalogs = priorityToCatalogsMap.get("GENERAL") || [];
         accessibleCatalogs.push(...generalCatalogs);
-        
-        console.log(`  Priority ${priorityCode}: Found ${priorityCatalogs.length} catalogs + ${generalCatalogs.length} general catalogs`);
       }
 
       // Remove duplicates
       const uniqueCatalogs = [...new Set(accessibleCatalogs)];
-      console.log(`  Total unique catalogs for ${retailer.phoneNumber}: ${uniqueCatalogs.length}`);
 
       // Update retailer's accessible catalogs
       await Retailer.findByIdAndUpdate(retailer._id, {
@@ -73,8 +61,6 @@ async function updateCatalogAccessNow() {
       
       updatedCount++;
     }
-    
-    console.log(`--- Completed catalog access update: Updated ${updatedCount} retailers, Skipped ${skippedCount} retailers ---`);
     
     // Show summary
     console.log("\n=== SUMMARY ===");

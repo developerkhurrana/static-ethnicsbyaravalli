@@ -3,7 +3,7 @@ import { requireAdminAuth } from "@/lib/admin-auth";
 import dbConnect from "@/lib/mongodb";
 import Product from "@/models/Product";
 
-export const GET = requireAdminAuth(async (request: NextRequest) => {
+export const GET = requireAdminAuth(async () => {
   try {
     console.log("Connecting to database...");
     await dbConnect();

@@ -8,7 +8,12 @@ import { Toaster } from "@/components/ui/sonner";
 
 import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
+});
 
 export const metadata: Metadata = {
   title: "Ethnics By Aravalli - Women's Ethnic Wear Manufacturer in Jaipur Premium Kurtis & Kurta Sets",
@@ -62,6 +67,15 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <head>
         <meta name="google-site-verification" content="pEZGKnigOCdWKqcGTVPfnS8nJPIUCJepodGBd2TlJY0" />
+        {/* Preload critical resources */}
+        <link rel="preload" href="/products/hero_banner_1.jpg" as="image" />
+        <link rel="preload" href="/products/hero_mobile_banner.jpg" as="image" media="(max-width: 768px)" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="//res.cloudinary.com" />
+        <link rel="dns-prefetch" href="//lh3.googleusercontent.com" />
+        <link rel="dns-prefetch" href="//www.youtube.com" />
+        <link rel="dns-prefetch" href="//wa.me" />
       </head>
       <body className={`${inter.className} h-full`}>
         <div className="flex min-h-full flex-col">

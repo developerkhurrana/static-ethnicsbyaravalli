@@ -6,7 +6,6 @@ import Priority from "../models/Priority";
 async function testPriorityCatalogAccess() {
   try {
     await dbConnect();
-    console.log("Connected to database");
 
     // Get all priorities
     const priorities = await Priority.find({ isActive: true });

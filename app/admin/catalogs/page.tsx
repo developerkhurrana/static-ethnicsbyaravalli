@@ -45,7 +45,7 @@ export default function AdminCatalogsPage() {
       } else {
         toast.error("Failed to fetch catalogs");
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred while fetching catalogs");
     } finally {
       setIsLoading(false);
@@ -173,7 +173,7 @@ export default function AdminCatalogsPage() {
                             const error = await response.json();
                             toast.error(error.error || "Failed to delete catalog");
                           }
-                        } catch (error) {
+                        } catch {
                           toast.error("An error occurred while deleting catalog");
                         }
                       }
