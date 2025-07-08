@@ -60,7 +60,8 @@ const SIZE_MEASUREMENTS: Record<string, string> = {
   "5XL": '50"',
 };
 
-export default function RetailerCatalogPage({ params }: { params: { catalogCode: string } }) {
+export default async function RetailerCatalogPage({ params }: { params: Promise<{ catalogCode: string }> }) {
+  const { catalogCode } = await params;
   const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState("");
   const [catalog, setCatalog] = useState<Catalog | null>(null);
@@ -84,7 +85,7 @@ export default function RetailerCatalogPage({ params }: { params: { catalogCode:
       const response = await fetch(`/api/retailer/catalog-access`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNumber, catalogCode: params.catalogCode })
+        body: JSON.stringify({ phoneNumber, catalogCode: catalogCode })
       });
       if (response.ok) {
         const data = await response.json();
