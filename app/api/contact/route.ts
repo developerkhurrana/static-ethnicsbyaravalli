@@ -98,7 +98,7 @@ export async function POST(request: Request) {
       referer: request.headers.get('referer'),
       origin: request.headers.get('origin'),
     })
-    console.log('=============================')
+    
 
     // Store in Notion
     try {
