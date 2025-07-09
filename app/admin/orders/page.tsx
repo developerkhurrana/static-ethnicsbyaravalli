@@ -1034,12 +1034,12 @@ export default function AdminOrdersPage() {
                             <div key={index} className="border rounded-lg p-4">
                               <div className="flex gap-4 mb-4">
                                 {/* Product Image */}
-                                <div className="w-20 h-20 bg-gray-100 rounded-lg flex-shrink-0">
+                                <div className="w-20 h-20 bg-gray-100 rounded-lg flex-shrink-0 overflow-hidden border">
                                   {primaryImage ? (
                                     <img
                                       src={primaryImage.url}
                                       alt={primaryImage.alt || item.itemName}
-                                      className="w-full h-full object-cover rounded-lg"
+                                      className="w-full h-full object-cover"
                                     />
                                   ) : (
                                     <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
