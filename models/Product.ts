@@ -109,10 +109,11 @@ ProductSchema.pre("save", function (next) {
   }
   
   // Ensure at least one image is marked as primary
-  if (this.images && this.images.length > 0) {
-    const hasPrimary = this.images.some(img => img.isPrimary);
+  const images = this.images as Array<{ url: string; alt: string; isPrimary?: boolean }>;
+  if (images && images.length > 0) {
+    const hasPrimary = images.some(img => img.isPrimary);
     if (!hasPrimary) {
-      this.images[0].isPrimary = true;
+      images[0].isPrimary = true;
     }
   }
   
@@ -121,8 +122,9 @@ ProductSchema.pre("save", function (next) {
 
 // Virtual for getting primary image
 ProductSchema.virtual('primaryImage').get(function() {
-  if (this.images && this.images.length > 0) {
-    return this.images.find(img => img.isPrimary) || this.images[0];
+  const images = this.images as Array<{ url: string; alt: string; isPrimary?: boolean }>;
+  if (images && images.length > 0) {
+    return images.find(img => img.isPrimary) || images[0];
   }
   return null;
 });
