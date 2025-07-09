@@ -60,8 +60,8 @@ const SIZE_MEASUREMENTS: Record<string, string> = {
   "5XL": '50"',
 };
 
-export default function RetailerCatalogPage({ params }: { params: { catalogCode: string } }) {
-  const { catalogCode } = params;
+export default function RetailerCatalogPage({ params }: { params: Promise<{ catalogCode: string }> }) {
+  const [catalogCode, setCatalogCode] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState("");
   const [catalog, setCatalog] = useState<Catalog | null>(null);
@@ -72,6 +72,13 @@ export default function RetailerCatalogPage({ params }: { params: { catalogCode:
   const [isSubmittingOrder, setIsSubmittingOrder] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState<any>(null);
   const [isGSTApplicable, setIsGSTApplicable] = useState(true);
+
+  // Handle async params
+  useEffect(() => {
+    params.then(({ catalogCode }) => {
+      setCatalogCode(catalogCode);
+    });
+  }, [params]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -365,7 +372,6 @@ export default function RetailerCatalogPage({ params }: { params: { catalogCode:
                 <div>
                   <h1 className="text-xl font-bold text-gray-900">{catalog.catalogName}</h1>
                   <p className="text-gray-600">Catalog Code: {catalog.catalogCode}</p>
-                  <p className="text-sm text-gray-500">Access Level: {catalog.accessLevel}</p>
                 </div>
                 {retailer && (
                   <div className="text-right text-sm text-gray-600">
