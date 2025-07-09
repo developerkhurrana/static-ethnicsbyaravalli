@@ -60,8 +60,8 @@ const SIZE_MEASUREMENTS: Record<string, string> = {
   "5XL": '50"',
 };
 
-export default async function RetailerCatalogPage({ params }: { params: Promise<{ catalogCode: string }> }) {
-  const { catalogCode } = await params;
+export default function RetailerCatalogPage({ params }: { params: { catalogCode: string } }) {
+  const { catalogCode } = params;
   const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState("");
   const [catalog, setCatalog] = useState<Catalog | null>(null);
