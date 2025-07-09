@@ -9,6 +9,9 @@ async function debugCatalogAccess() {
     await dbConnect();
 
     // Print all raw retailer documents from the DB (bypass Mongoose schema)
+    if (!mongoose.connection.db) {
+      throw new Error("Database connection not established");
+    }
     const raw = await mongoose.connection.db.collection('retailers').find({}).toArray();
     console.log("\n=== RAW RETAILERS FROM DB ===");
     console.dir(raw, { depth: null });
