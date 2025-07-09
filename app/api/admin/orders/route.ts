@@ -32,7 +32,7 @@ export const GET = requireAdminAuth(async (request: NextRequest) => {
           phoneNumber: order.retailerInfo.phoneNumber,
           address: order.retailerInfo.address,
         },
-        items: order.items.map(item => ({
+        items: order.items.map((item: any) => ({
           productId: item.productId,
           itemCode: item.itemCode,
           itemName: item.itemName,
