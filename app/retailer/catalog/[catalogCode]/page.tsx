@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Minus, Plus, Package, Palette, Scissors, ShoppingCart, Calculator, Loader2, AlertCircle } from "lucide-react";
+import Image from "next/image";
 
 interface Product {
   _id: string;
@@ -71,7 +72,7 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
   const [isSubmittingOrder, setIsSubmittingOrder] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState<any>(null);
-  const [isGSTApplicable, setIsGSTApplicable] = useState(true);
+
 
   // Handle async params
   useEffect(() => {
@@ -178,7 +179,7 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
         totalPrice: item.totalPrice
       })),
       summary,
-      isGSTApplicable
+      
     };
 
     try {
@@ -401,16 +402,32 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
                   <Card key={product._id} className="overflow-hidden shadow-lg rounded-2xl border-0">
                     <div className="flex flex-col">
                       {/* Product Image with Overlayed Info */}
-                      <div className="w-full h-80 bg-gray-100 flex-shrink-0 flex items-center justify-center relative rounded-xl overflow-hidden">
+                      <div className="relative aspect-[3/4] w-full bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
                         {primaryImage ? (
                           <>
-                            <img
+                            {/* Blurred background image */}
+                            <Image
+                              src={primaryImage.url}
+                              alt=""
+                              fill
+                              className="object-cover blur-sm scale-110 z-0"
+                              aria-hidden="true"
+                              priority
+                              sizes="(max-width: 768px) 100vw, 400px"
+                            />
+                            {/* Main product image */}
+                            <Image
                               src={primaryImage.url}
                               alt={primaryImage.alt || product.itemName}
-                              className="w-full h-full object-cover"
+                              width={350
+                              }
+                              height={533}
+                              className="relative z-10 object-contain"
+                              priority
+                              
                             />
-                            {/* Overlay */}
-                            <div className="absolute bottom-0 left-0 w-full px-4 pb-3 pt-6 bg-gradient-to-t from-black/80 to-black/0 flex flex-col gap-1">
+                            {/* Overlay details */}
+                            <div className="absolute bottom-0 left-0 w-full px-4 pb-3 pt-6 bg-gradient-to-t from-black/80 to-black/0 flex flex-col gap-1 z-20">
                               <span className="text-lg font-bold text-white drop-shadow-sm">{product.itemName}</span>
                               <span className="text-xs text-gray-200">Code: {product.itemCode}</span>
                               <div className="flex gap-2 mt-1">

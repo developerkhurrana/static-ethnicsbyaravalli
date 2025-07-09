@@ -46,7 +46,7 @@ export interface IPurchaseOrder extends Document {
   sentAt: Date;
   createdAt: Date;
   updatedAt: Date;
-  isGSTApplicable: boolean;
+
 }
 
 const PurchaseOrderSchema: Schema = new Schema(
@@ -196,10 +196,7 @@ const PurchaseOrderSchema: Schema = new Schema(
     sentAt: {
       type: Date,
     },
-    isGSTApplicable: {
-      type: Boolean,
-      default: true,
-    },
+
   },
   {
     timestamps: true,

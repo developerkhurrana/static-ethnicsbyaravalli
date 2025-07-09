@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     await dbConnect();
 
     const body = await request.json();
-    const { catalogId, retailerPhone, items, summary, isGSTApplicable } = body;
+    const { catalogId, retailerPhone, items, summary } = body;
 
     // Log the phone number received
     console.log('Order API received phone:', retailerPhone);
@@ -107,10 +107,9 @@ export async function POST(request: NextRequest) {
         totalPcs: calculatedTotalPcs,
         totalSets: calculatedTotalSets,
         totalAmountBeforeGST: totalAmount,
-        gstAmount: isGSTApplicable === false ? 0 : 0, // You can add GST logic if needed
-        totalAmountAfterGST: totalAmount, // If GST is needed, add it here
+        gstAmount: 0,
+        totalAmountAfterGST: totalAmount,
       },
-      isGSTApplicable: isGSTApplicable !== false,
       status: "SUBMITTED",
       submittedAt: new Date(),
       sizeQuantities: orderLevelSizeQuantities // Add order-level size quantities

@@ -104,15 +104,9 @@ export const GET = requireAdminAuth(async (
         <div class="section">
           <strong>Order Summary:</strong><br/>
           Total Styles: ${[...new Set(po.items.map((item: any) => item.itemCode))].length}<br/>
-          Total Products: ${po.items.length}<br/>
           Total Sets: ${po.poSummary.totalSets}<br/>
           Total Pieces: ${po.poSummary.totalPcs}<br/>
-          ${po.isGSTApplicable ? 
-            `Subtotal: ₹${po.poSummary.totalAmountBeforeGST.toLocaleString()}<br/>
-             GST (${po.poSummary.gstRate}%): ₹${po.poSummary.gstAmount.toLocaleString()}<br/>
-             <strong>Total Amount (Including GST): ₹${po.poSummary.totalAmountAfterGST.toLocaleString()}</strong>` :
-            `<strong>Total Amount (Excluding GST): ₹${po.poSummary.totalAmountAfterGST.toLocaleString()}</strong>`
-          }
+          <strong>Total Amount: ₹${po.poSummary.totalAmountAfterGST.toLocaleString()}</strong>
         </div>
         <div class="disclaimer">
           This PO is only for reference purpose only. <i>Not an official document</i>. Tax invoice will be generated post payment.

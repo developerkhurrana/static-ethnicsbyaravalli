@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 interface PurchaseOrder {
   _id: string;
@@ -347,9 +347,14 @@ export default function AdminPurchaseOrdersPage() {
 
       <Dialog open={isDetailsModalOpen} onOpenChange={setIsDetailsModalOpen}>
         <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          <DialogTitle>
+            PO Details{selectedPO ? ` - #${selectedPO.poNumber}` : ""}
+          </DialogTitle>
+          <DialogDescription>
+            View all details for this purchase order, including retailer info, items, and summary.
+          </DialogDescription>
           {selectedPO && (
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold mb-4">PO Details - #{selectedPO.poNumber}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <div className="font-semibold">Retailer:</div>
@@ -388,8 +393,6 @@ export default function AdminPurchaseOrdersPage() {
                 <div className="font-semibold mb-2">Order Summary</div>
                 <div>Total Sets: {selectedPO.poSummary.totalSets}</div>
                 <div>Total Pieces: {selectedPO.poSummary.totalPcs}</div>
-                <div>Subtotal: ₹{selectedPO.poSummary.totalAmountBeforeGST.toLocaleString()}</div>
-                <div>GST ({selectedPO.poSummary.gstRate}%): ₹{selectedPO.poSummary.gstAmount.toLocaleString()}</div>
                 <div className="font-bold">Total Amount: ₹{selectedPO.poSummary.totalAmountAfterGST.toLocaleString()}</div>
               </div>
               <div>

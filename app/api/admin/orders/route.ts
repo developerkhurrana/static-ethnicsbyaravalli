@@ -54,7 +54,7 @@ export const GET = requireAdminAuth(async (request: NextRequest) => {
         createdAt: order.createdAt,
         updatedAt: order.updatedAt,
         sizeQuantities: order.sizeQuantities,
-        isGSTApplicable: order.isGSTApplicable,
+
       })),
     });
   } catch (error) {

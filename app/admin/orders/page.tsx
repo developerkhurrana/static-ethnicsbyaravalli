@@ -6,10 +6,11 @@ import { AdminProtection } from "@/lib/admin-protection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Package, User, Phone, Building, ShoppingCart, FileText } from "lucide-react";
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 interface OrderItem {
   productId: string;
@@ -69,7 +70,6 @@ interface Order {
   reviewHistory?: { sizeQuantities: { [key: string]: { [size: string]: number } } }[];
   notes?: string;
   sizeQuantities?: { [key: string]: { [size: string]: number } };
-  isGSTApplicable?: boolean; // Added for details modal
 }
 
 // Helper function to convert productId to string consistently
@@ -98,18 +98,11 @@ function ApproveModal({ isOpen, order, onClose, onGeneratePO, onDeleteOrder }: {
   isOpen: boolean,
   order: Order | null,
   onClose: () => void,
-  onGeneratePO: (order: Order, isGSTApplicable: boolean) => void,
+  onGeneratePO: (order: Order) => void,
   onDeleteOrder: (order: Order) => void,
 }) {
-  const [gstApplicable, setGstApplicable] = useState(order?.isGSTApplicable !== false);
-  useEffect(() => {
-    setGstApplicable(order?.isGSTApplicable !== false);
-  }, [order]);
-
-  // Calculate GST and total dynamically
-  const totalBeforeGST = order?.orderSummary.totalAmountBeforeGST || 0;
-  const gstAmount = gstApplicable ? Math.round(totalBeforeGST * 0.18) : 0;
-  const totalAfterGST = totalBeforeGST + gstAmount;
+  // Calculate total amount (no GST)
+  const totalAmount = order?.orderSummary.totalAmountBeforeGST || 0;
 
   if (!isOpen) return null;
   return (
@@ -152,10 +145,7 @@ function ApproveModal({ isOpen, order, onClose, onGeneratePO, onDeleteOrder }: {
               <span className="font-semibold">Total Pieces:</span> {order?.orderSummary.totalPcs}
             </div>
             <div>
-              <span className="font-semibold">Total Amount:</span> ₹{totalAfterGST.toLocaleString()} <span className="text-xs text-gray-500">({gstApplicable ? 'incl. GST' : 'excl. GST'})</span>
-            </div>
-            <div>
-              <span className="font-semibold">GST Amount:</span> ₹{gstAmount.toLocaleString()}
+              <span className="font-semibold">Total Amount:</span> ₹{totalAmount.toLocaleString()}
             </div>
           </div>
           {order?.notes && (
@@ -163,14 +153,6 @@ function ApproveModal({ isOpen, order, onClose, onGeneratePO, onDeleteOrder }: {
               <span className="font-semibold">Notes:</span> {order.notes}
             </div>
           )}
-          <label className="flex items-center gap-2 mt-2">
-            <input
-              type="checkbox"
-              checked={gstApplicable}
-              onChange={e => setGstApplicable(e.target.checked)}
-            />
-            Apply GST (18%)
-          </label>
         </div>
 
         {/* Items */}
@@ -237,7 +219,7 @@ function ApproveModal({ isOpen, order, onClose, onGeneratePO, onDeleteOrder }: {
           <Button
             className="flex-1 md:flex-none md:w-auto"
             variant="default"
-            onClick={() => order && onGeneratePO(order, gstApplicable)}
+            onClick={() => order && onGeneratePO(order)}
           >
             Approve and Generate PO
           </Button>
@@ -274,8 +256,6 @@ export default function AdminOrdersPage() {
   const [sizeQuantities, setSizeQuantities] = useState<{[key: string]: {[size: string]: number}}>({});
   const [isApproveModalOpen, setIsApproveModalOpen] = useState(false);
   const [approveOrder, setApproveOrder] = useState<Order | null>(null);
-  const [isGSTApplicable] = useState(true);
-  const [isGSTToggleLoading, setIsGSTToggleLoading] = useState(false);
 
   useEffect(() => {
     fetchOrders();
@@ -349,7 +329,7 @@ export default function AdminOrdersPage() {
         );
       case "APPROVED":
         return (
-          <Button variant="default" size="sm" onClick={() => handleGeneratePO(order, isGSTApplicable)}>Generate PO</Button>
+          <Button variant="default" size="sm" onClick={() => handleGeneratePO(order)}>Generate PO</Button>
         );
       default:
         return null;
@@ -517,7 +497,7 @@ export default function AdminOrdersPage() {
     setIsApproveModalOpen(false);
   };
 
-  const handleGeneratePO = async (order: Order, isGSTApplicable: boolean) => {
+  const handleGeneratePO = async (order: Order) => {
     try {
       const token = localStorage.getItem("adminToken");
       const response = await fetch("/api/admin/purchase-orders/generate", {
@@ -528,7 +508,7 @@ export default function AdminOrdersPage() {
         },
         body: JSON.stringify({
           orderId: order._id,
-          isGSTApplicable,
+          generatedBy: "Admin", // You can make this dynamic if needed
         }),
       });
 
@@ -573,7 +553,23 @@ export default function AdminOrdersPage() {
   const handleDownloadPOPDF = async (order: Order) => {
     try {
       const token = localStorage.getItem("adminToken");
-      const response = await fetch(`/api/admin/purchase-orders/pdf?orderId=${order._id}`, {
+      // First get the PO for this order
+      const poResponse = await fetch(`/api/admin/purchase-orders?orderId=${order._id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      
+      if (!poResponse.ok) {
+        toast.error("Purchase order not found");
+        return;
+      }
+      
+      const poData = await poResponse.json();
+      const po = poData.purchaseOrder;
+      
+      // Now download the PDF using the PO ID
+      const response = await fetch(`/api/admin/purchase-orders/pdf?poId=${po._id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -597,33 +593,7 @@ export default function AdminOrdersPage() {
     }
   };
 
-  const handleGSTToggle = async (order: Order, isChecked: boolean) => {
-    setIsGSTToggleLoading(true);
-    try {
-      const token = localStorage.getItem("adminToken");
-      const response = await fetch(`/api/admin/orders/${order._id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          isGSTApplicable: isChecked,
-        }),
-      });
 
-      if (response.ok) {
-        toast.success(`GST ${isChecked ? 'enabled' : 'disabled'} for order`);
-        fetchOrders();
-      } else {
-        toast.error("Failed to update GST setting");
-      }
-    } catch {
-      toast.error("An error occurred while updating GST setting");
-    } finally {
-      setIsGSTToggleLoading(false);
-    }
-  };
 
   if (isLoading) {
     return (
@@ -705,13 +675,7 @@ export default function AdminOrdersPage() {
                   </div>
                   <div className="text-sm">
                     <span className="text-gray-600">Total Amount:</span>
-                    <span className="font-medium ml-2">₹{order.isGSTApplicable === false
-                      ? order.orderSummary.totalAmountBeforeGST.toLocaleString()
-                      : order.orderSummary.totalAmountAfterGST.toLocaleString()
-                    }</span>
-                    <span className={`ml-2 px-2 py-0.5 rounded-full text-xs font-semibold ${order.isGSTApplicable === false ? 'bg-gray-200 text-gray-700' : 'bg-green-100 text-green-700'}`}>
-                      {order.isGSTApplicable === false ? 'Excl. GST' : 'Incl. GST'}
-                    </span>
+                    <span className="font-medium ml-2">₹{order.orderSummary.totalAmountBeforeGST.toLocaleString()}</span>
                   </div>
                 </div>
                 
@@ -753,7 +717,9 @@ export default function AdminOrdersPage() {
                 Order Details - #{selectedOrder?.orderNumber}
               </DialogTitle>
             </DialogHeader>
-            
+            <DialogDescription>
+              View all details for this order, including retailer info, items, and summary.
+            </DialogDescription>
             {selectedOrder && (
               <div className="space-y-6">
                 {/* Order Header */}
@@ -949,40 +915,13 @@ export default function AdminOrdersPage() {
                           <span>Amount before GST:</span>
                           <span className="font-medium">₹{selectedOrder.orderSummary.totalAmountBeforeGST.toLocaleString()}</span>
                         </div>
-                        <div className="flex justify-between">
-                          <span>GST Amount:</span>
-                          <span className="font-medium">₹{selectedOrder.isGSTApplicable === false ? '0' : selectedOrder.orderSummary.gstAmount.toLocaleString()}</span>
-                        </div>
-                        <label className="flex items-center gap-2 mt-2">
-                          <input
-                            type="checkbox"
-                            checked={selectedOrder.isGSTApplicable !== false}
-                            onChange={e => handleGSTToggle(selectedOrder, e.target.checked)}
-                            disabled={isGSTToggleLoading}
-                          />
-                          Apply GST (18%)
-                          {isGSTToggleLoading && (
-                            <span className="text-sm text-blue-600 ml-2">Updating...</span>
-                          )}
-                        </label>
-                        {selectedOrder.status === "PO_GENERATED" && (
-                          <p className="text-xs text-orange-600 mt-1">
-                            ⚠️ Changing GST settings will regenerate the purchase order
-                          </p>
-                        )}
+
                       </div>
                       <div className="border-l pl-6">
                         <div className="text-right">
                           <h4 className="text-lg font-bold text-green-600">
-                            Total Amount: ₹{selectedOrder.isGSTApplicable === false ? selectedOrder.orderSummary.totalAmountBeforeGST.toLocaleString() : selectedOrder.orderSummary.totalAmountAfterGST.toLocaleString()}
+                            Total Amount: ₹{selectedOrder.orderSummary.totalAmountBeforeGST.toLocaleString()}
                           </h4>
-                          <p className="text-sm text-gray-500 mt-1">
-                            {selectedOrder.isGSTApplicable === false ? (
-                              <span className="inline-block px-2 py-0.5 bg-gray-200 text-gray-700 rounded-full text-xs font-semibold">Excluding GST</span>
-                            ) : (
-                              'Including GST'
-                            )}
-                          </p>
                         </div>
                       </div>
                     </div>
@@ -1015,7 +954,9 @@ export default function AdminOrdersPage() {
                 Review Order - #{reviewOrder?.orderNumber}
               </DialogTitle>
             </DialogHeader>
-            
+            <DialogDescription>
+              Adjust size quantities, add review notes, and approve or request changes for this order.
+            </DialogDescription>
             {reviewOrder && (
               <div className="space-y-6">
                 {/* Order Header */}

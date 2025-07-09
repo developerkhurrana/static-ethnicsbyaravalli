@@ -7,7 +7,7 @@ import Order from "@/models/Order";
 import PurchaseOrder from "@/models/PurchaseOrder";
 import Retailer from "@/models/Retailer";
 import Product from "@/models/Product";
-import { generatePurchaseOrderPDF } from "@/lib/pdf-generator";
+
 
 export const POST = requireAdminAuth(async (request: NextRequest) => {
   try {
@@ -16,7 +16,7 @@ export const POST = requireAdminAuth(async (request: NextRequest) => {
     
     await dbConnect();
 
-    const { orderId, generatedBy, isGSTApplicable } = await request.json();
+    const { orderId, generatedBy } = await request.json();
 
     // Find the order
     const order = await Order.findById(orderId).populate("retailerInfo.retailerId");
@@ -58,14 +58,11 @@ export const POST = requireAdminAuth(async (request: NextRequest) => {
       );
     }
 
-    // Calculate GST using correct field
+    // Calculate totals (no GST)
     const totalAmountBeforeGST = order.orderSummary.totalAmountBeforeGST ?? 0;
-    const calculatedGSTAmount = (totalAmountBeforeGST * 18) / 100;
-
-    // When building poSummary:
-    const gstRate = isGSTApplicable === false ? 0 : 18;
-    const gstAmount = isGSTApplicable === false ? 0 : calculatedGSTAmount;
-    const totalAmountAfterGST = isGSTApplicable === false ? totalAmountBeforeGST : totalAmountBeforeGST + gstAmount;
+    const gstRate = 0;
+    const gstAmount = 0;
+    const totalAmountAfterGST = totalAmountBeforeGST;
 
     // Create purchase order
     const purchaseOrder = new PurchaseOrder({
@@ -91,7 +88,7 @@ export const POST = requireAdminAuth(async (request: NextRequest) => {
         deliveryTerms: "15-20 days from order confirmation",
         warranty: "No warranty on ethnic wear",
       },
-      isGSTApplicable,
+
       status: "GENERATED",
       generatedBy,
     });
@@ -102,7 +99,7 @@ export const POST = requireAdminAuth(async (request: NextRequest) => {
     order.status = "PO_GENERATED";
     await order.save();
 
-    // Generate PDF (temporarily disabled for testing)
+    // Generate PDF (temporarily disabled due to fontkit dependency issues)
     // const pdfData = {
     //   poNumber: purchaseOrder.poNumber,
     //   orderNumber: order.orderNumber,
@@ -112,7 +109,6 @@ export const POST = requireAdminAuth(async (request: NextRequest) => {
     //   terms: purchaseOrder.terms,
     //   generatedBy: purchaseOrder.generatedBy,
     //   generatedAt: purchaseOrder.createdAt,
-    //   isGSTApplicable: purchaseOrder.isGSTApplicable,
     // };
     // const pdfBuffer = generatePurchaseOrderPDF(pdfData);
 

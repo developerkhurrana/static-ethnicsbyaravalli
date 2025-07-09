@@ -42,7 +42,7 @@ interface PurchaseOrderData {
   };
   generatedBy: string;
   generatedAt: Date;
-  isGSTApplicable: boolean;
+
 }
 
 export function generatePurchaseOrderPDF(data: PurchaseOrderData): Buffer {
@@ -133,13 +133,7 @@ export function generatePurchaseOrderPDF(data: PurchaseOrderData): Buffer {
   doc.text(`Total Sets: ${data.poSummary.totalSets}`);
   doc.text(`Total Pieces: ${data.poSummary.totalPcs}`);
   
-  if (data.isGSTApplicable) {
-  doc.text(`Subtotal: ₹${data.poSummary.totalAmountBeforeGST.toLocaleString()}`);
-  doc.text(`GST (${data.poSummary.gstRate}%): ₹${data.poSummary.gstAmount.toLocaleString()}`);
-    doc.fontSize(12).font('Helvetica-Bold').text(`Total Amount (Including GST): ₹${data.poSummary.totalAmountAfterGST.toLocaleString()}`);
-  } else {
-    doc.fontSize(12).font('Helvetica-Bold').text(`Total Amount (Excluding GST): ₹${data.poSummary.totalAmountAfterGST.toLocaleString()}`);
-  }
+  doc.fontSize(12).font('Helvetica-Bold').text(`Total Amount: ₹${data.poSummary.totalAmountAfterGST.toLocaleString()}`);
   doc.moveDown();
 
   // Terms and Conditions

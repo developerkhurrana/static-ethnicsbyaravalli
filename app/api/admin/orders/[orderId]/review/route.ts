@@ -36,7 +36,7 @@ export const POST = requireAdminAuth(async (
     ensureModelsLoaded();
     
     const { orderId } = await params;
-    const { action, notes, sizeQuantities, newStatus } = await request.json();
+    const { action, notes, sizeQuantities } = await request.json();
 
     // Debug: Log what we received
     console.log("Review API received sizeQuantities:", sizeQuantities);
@@ -68,9 +68,15 @@ export const POST = requireAdminAuth(async (
       }
     }
 
+    // Determine new status based on action
+    let status = order.status;
+    if (action === "approve") status = "APPROVED";
+    else if (action === "request_changes") status = "UNDER_REVIEW";
+    else if (action === "reject") status = "REJECTED";
+
     // Update order with review information
     const updateData: any = {
-      status: newStatus,
+      status,
       reviewedAt: new Date(),
       notes: notes || order.notes,
       sizeQuantities: sizeQuantities // Always update root-level sizeQuantities
@@ -112,7 +118,7 @@ export const POST = requireAdminAuth(async (
       notes,
       reviewedAt: new Date(),
       previousStatus: order.status,
-      newStatus,
+      newStatus: status,
       sizeQuantities: sizeQuantities || null
     };
 
@@ -130,7 +136,7 @@ export const POST = requireAdminAuth(async (
 
     console.log(`Order ${orderId} reviewed:`, {
       action,
-      newStatus,
+      newStatus: status,
       hasSizeChanges: !!sizeQuantities,
       notes: notes ? notes.substring(0, 100) + "..." : "No notes"
     });

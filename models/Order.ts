@@ -62,7 +62,7 @@ export interface IOrder extends Document {
     type: Schema.Types.Mixed;
     default: {};
   };
-  isGSTApplicable: boolean;
+
 }
 
 const OrderSchema: Schema = new Schema(
@@ -245,10 +245,7 @@ const OrderSchema: Schema = new Schema(
       type: Schema.Types.Mixed,
       default: {},
     },
-    isGSTApplicable: {
-      type: Boolean,
-      default: true,
-    },
+
   },
   {
     timestamps: true,
@@ -277,8 +274,8 @@ OrderSchema.pre("save", function (next) {
       totalPcs,
       totalSets,
       totalAmountBeforeGST,
-      gstAmount: totalAmountBeforeGST * 0.18, // 18% GST
-      totalAmountAfterGST: totalAmountBeforeGST * 1.18,
+      gstAmount: 0,
+      totalAmountAfterGST: totalAmountBeforeGST,
     };
   }
   next();
