@@ -33,6 +33,7 @@ interface OrderItem {
     pricePerSet: number;
     images: Array<{ url: string; alt: string; isPrimary?: boolean }>;
   };
+  sizeQuantities?: Record<string, number>;
 }
 
 interface Order {
@@ -181,8 +182,8 @@ function ApproveModal({ isOpen, order, onClose, onGeneratePO, onDeleteOrder }: {
             let sizes: Record<string, number> = {};
             if (order.sizeQuantities && order.sizeQuantities[itemKey]) {
               sizes = order.sizeQuantities[itemKey];
-            } else if ((item as unknown as Record<string, unknown>).sizeQuantities) {
-              sizes = (item as unknown as Record<string, unknown>).sizeQuantities as Record<string, number>;
+            } else if (item.sizeQuantities) {
+              sizes = item.sizeQuantities;
             } else {
               sizes = {
                 S: item.quantitySets,
@@ -193,12 +194,14 @@ function ApproveModal({ isOpen, order, onClose, onGeneratePO, onDeleteOrder }: {
               };
             }
             let primaryImage: { url: string; alt: string; isPrimary?: boolean } | undefined;
-            if (product && typeof product === 'object' && !Array.isArray(product) && !(typeof product === 'string') && 'images' in product && Array.isArray((product as Record<string, unknown>).images)) {
-              const images = (product as Record<string, unknown>).images as Array<{ url: string; alt: string; isPrimary?: boolean }>;
-              primaryImage = images.find((img) => img.isPrimary) || images[0];
+            if (product && typeof product === 'object' && !Array.isArray(product) && !(typeof product === 'string') && 'images' in product) {
+              const productObj = product as { images?: Array<{ url: string; alt: string; isPrimary?: boolean }> };
+              if (productObj.images && Array.isArray(productObj.images)) {
+                primaryImage = productObj.images.find((img) => img.isPrimary) || productObj.images[0];
+              }
             }
             return (
-              <div key={String((item as unknown as Record<string, unknown>)._id)} className="flex gap-4 bg-white border rounded-lg shadow-sm p-4">
+              <div key={`${item.productId}-${idx}`} className="flex gap-4 bg-white border rounded-lg shadow-sm p-4">
                 {primaryImage?.url && (
                   <img src={primaryImage.url} alt={item.itemName} className="w-20 h-20 object-cover rounded-lg border" />
                 )}
@@ -385,7 +388,7 @@ export default function AdminOrdersPage() {
     setReviewNotes("");
 
     // Use order-level sizeQuantities if present (this is the original/received data)
-    const orderLevelSizeQuantities = (order as unknown as Record<string, unknown>).sizeQuantities as Record<string, Record<string, number>> || {};
+    const orderLevelSizeQuantities = order.sizeQuantities || {};
     console.log("Order sizeQuantities:", orderLevelSizeQuantities);
     const initialQuantities: {[key: string]: {[size: string]: number}} = {};
     
@@ -821,16 +824,18 @@ export default function AdminOrdersPage() {
                           const productIdStr = getProductIdString(item.productId);
                           const itemKey = `${productIdStr}-${index}`;
                           let primaryImage = undefined;
-                          if (product && typeof product === 'object' && !Array.isArray(product) && !(typeof product === 'string') && 'images' in product && Array.isArray((product as Record<string, unknown>).images)) {
-                            const images = (product as Record<string, unknown>).images as Array<{ url: string; alt: string; isPrimary?: boolean }>;
-                            primaryImage = images.find((img) => img.isPrimary) || images[0];
+                          if (product && typeof product === 'object' && !Array.isArray(product) && !(typeof product === 'string') && 'images' in product) {
+                            const productObj = product as { images?: Array<{ url: string; alt: string; isPrimary?: boolean }> };
+                            if (productObj.images && Array.isArray(productObj.images)) {
+                              primaryImage = productObj.images.find((img) => img.isPrimary) || productObj.images[0];
+                            }
                           }
                           // Always prefer backend's order.sizeQuantities
                           let sizes: Record<string, number> = {};
                           if (selectedOrder.sizeQuantities && selectedOrder.sizeQuantities[itemKey]) {
                             sizes = selectedOrder.sizeQuantities[itemKey];
-                          } else if ((item as Record<string, unknown>).sizeQuantities) {
-                            sizes = (item as Record<string, unknown>).sizeQuantities as Record<string, number>;
+                          } else if (item.sizeQuantities) {
+                            sizes = item.sizeQuantities;
                           } else {
                             sizes = {
                               S: item.quantitySets,
@@ -1127,7 +1132,7 @@ export default function AdminOrdersPage() {
                                 <div className="grid grid-cols-5 gap-3">
                                   {['S', 'M', 'L', 'XL', 'XXL'].map((size) => {
                                     // Get original value for comparison
-                                    const originalValue = (reviewOrder as Record<string, unknown>).sizeQuantities?.[itemKey]?.[size] || item.quantitySets;
+                                    const originalValue = reviewOrder.sizeQuantities?.[itemKey]?.[size] || item.quantitySets;
                                     const currentValue = currentSizes[size] || 0;
                                     const isModified = currentValue !== originalValue;
                                     
