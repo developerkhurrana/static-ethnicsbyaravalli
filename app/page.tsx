@@ -28,34 +28,34 @@ const heroImages = {
 
 const products = [
   {
-    name: "Kurtis",
-    description: "Elegant and comfortable kurtis perfect for every occasion",
-    images: [
-      "/products/kurta_1.png",
-      "/products/kurta_2.png",
-      "/products/kurta_3.png",
-      "/products/kurta_4.png",
-      "/products/kurta_5.png",
-      "/products/kurta_6.png"
-    ]
+    name: "Kurtas",
+    description: "Our premium kurtas blend traditional craftsmanship with contemporary aesthetics, thoughtfully crafted using fine fabrics like cotton, linen, modal, muslin, chanderi and more. The result is apparel that offers effortless elegance, breathable comfort, and lasting appeal for the discerning customers of fashion retailers.",
+    images: ["https://ekohum.com/cdn/shop/files/DS5853_2.jpg?v=1741256083", "https://ekohum.com/cdn/shop/files/DS5853_10.jpg?v=1741256083"]
   },
   {
     name: "Kurta Sets",
-    description: "Complete kurta sets with matching bottoms and dupattas",
-    images: [
-      "/products/kalidaar_1.png",
-      "/products/kalidaar_2.png"
-    ]
+    description: "Our Kurta sets are elegant two-piece ethnic ensembles for women, thoughtfully paired with vibrant colours and stylish prints. Each set features a kurta top matched with coordinated bottoms, offering a variety of styles including pants, palazzos, shararas, and more.",
+    images: ["https://ekohum.com/cdn/shop/files/DSC_0596.jpg?v=1717780319", "https://ekohum.com/cdn/shop/files/DSC_0651.jpg?v=1717780319"]
   },
   {
-    name: "Dupattas",
-    description: "Beautiful dupattas to complement your ethnic wear",
-    images: [
-      "/products/dupatta_1.png",
-      "/products/dupatta_2.png",
-      "/products/dupatta_3.png",
-      "/products/dupatta_4.png"
-    ]
+    name: "Suit Sets",
+    description: "Our timeless ethnic suit sets are crafted from premium materials and tailored with elegant cuts, offering a blend of comfort and sophistication. Each kurta set comes paired with a matching bottom and dupatta, making it an ideal choice for festive celebrations, professional settings, and boutique showcases alike.",
+    images: ["https://ekohum.com/cdn/shop/files/DW3962__1.jpg?v=1725534156", "https://ekohum.com/cdn/shop/files/DW3962_4.jpg?v=1725534157"]
+  },
+  {
+    name: "Dresses",
+    description: "Shop owners, elevate your collections with our stylish ethnic dresses that blend timeless silhouettes and contemporary design. Handcrafted with precision, each piece radiates sophistication while being tailored for the ease of everyday wear—perfect for discerning customers who value both tradition and trend.",
+    images: ["https://ekohum.com/cdn/shop/files/DSC9845.jpg?v=1717778854", "https://ekohum.com/cdn/shop/files/DSC9855.jpg?v=1717778854"]
+  },
+  {
+    name: "Kaftans",
+    description: "Breezy and elegant, our kaftans are designed for those who cherish comfort without compromising on style. Featuring airy fabrics, intricate embroidery, and captivating prints, they're the perfect expression of effortless ethnic fusion—ideal for the customers of retailers who like everything from laid-back lounging to graceful gatherings.",
+    images: ["https://ekohum.com/cdn/shop/files/1P1A4275f.jpg?v=1717779843", "https://ekohum.com/cdn/shop/files/1P1A4278f.jpg?v=1717779843"]
+  },
+  {
+    name: "Anarkali Kurtas",
+    description: "Step into timeless elegance with our Anarkali Kurtas—celebrated for their graceful layers, royal silhouette, and exquisite artisanal detailing. Each piece captures the essence of Indian heritage while embracing a refined, contemporary flair, making it a perfect choice for occasions that call for grandeur with ease.",
+    images: ["https://ekohum.com/cdn/shop/files/DSC_1611_c8d72493-d7b7-4fd8-a066-43dd937a657d.jpg?v=1729164602", "https://ekohum.com/cdn/shop/files/DSC_1622_33b0f5b1-b840-4283-90cc-259f6794734e.jpg?v=1729164681"]
   }
 ]
 
