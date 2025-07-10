@@ -111,8 +111,8 @@ export default function AdminPurchaseOrdersPage() {
     }
   };
 
-  // Download PDF handler
-  const handleDownloadPDF = async (po: PurchaseOrder) => {
+  // Print PO handler
+  const handlePrintPO = async (po: PurchaseOrder) => {
     try {
       const token = localStorage.getItem("adminToken");
       const response = await fetch(`/api/admin/purchase-orders/pdf?poId=${po._id}`, {
@@ -128,18 +128,26 @@ export default function AdminPurchaseOrdersPage() {
         toast.error("Failed to download PDF");
         return;
       }
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `PO_${po.poNumber}.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      window.URL.revokeObjectURL(url);
-    } catch {
-      toast.error("An error occurred while downloading PDF");
-    }
+      
+      // Get the HTML content
+      const htmlContent = await response.text();
+      
+      // Open in new window for printing
+      const newWindow = window.open('', '_blank', 'width=1200,height=800,scrollbars=yes,resizable=yes');
+      if (newWindow) {
+        newWindow.document.write(htmlContent);
+        newWindow.document.close();
+        // Auto-print after a short delay to ensure content is loaded
+        setTimeout(() => {
+          newWindow.focus();
+          newWindow.print();
+        }, 1000);
+      } else {
+        toast.error("Please allow popups to view the purchase order");
+      }
+          } catch {
+        toast.error("An error occurred while opening the purchase order");
+      }
   };
 
   // Mark as Sent handler
@@ -189,20 +197,20 @@ export default function AdminPurchaseOrdersPage() {
       case "GENERATED":
         return (
           <>
-            <Button variant="outline" size="sm" onClick={() => handleDownloadPDF(po)}>Download PDF</Button>
+            <Button variant="outline" size="sm" onClick={() => handlePrintPO(po)}>Print PO</Button>
             <Button variant="default" size="sm" onClick={() => handleMarkAsSent(po)}>Mark as Sent</Button>
           </>
         );
       case "SENT":
         return (
           <>
-            <Button variant="outline" size="sm" onClick={() => handleDownloadPDF(po)}>Download PDF</Button>
+            <Button variant="outline" size="sm" onClick={() => handlePrintPO(po)}>Print PO</Button>
             <Button variant="default" size="sm" onClick={() => handleMarkAsAcknowledged(po)}>Mark as Acknowledged</Button>
           </>
         );
       case "ACKNOWLEDGED":
         return (
-          <Button variant="outline" size="sm" onClick={() => handleDownloadPDF(po)}>Download PDF</Button>
+          <Button variant="outline" size="sm" onClick={() => handlePrintPO(po)}>Print PO</Button>
         );
       default:
         return null;
