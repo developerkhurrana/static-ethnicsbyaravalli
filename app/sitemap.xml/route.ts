@@ -21,6 +21,10 @@ export async function GET() {
     'how-to-choose-the-right-fabric-for-ethnic-wear',
     'top-kurti-manufacturer-in-jaipur',
     'top-kurti-wholesaler-in-jaipur',
+    'festive-ethnic-wear-2025',
+    'kaftan-manufacturer',
+    'dress-manufacturer',
+    'suit-sets-manufacturer',
   ];
 
   // Blog posts

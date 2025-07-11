@@ -22,4 +22,13 @@
 # Subpages under blog (dynamic, e.g. /blog/[slug])
 # Add your actual blog slugs here, e.g. /blog/your-first-post
 
+# New Festive Season Pages
+/festive-ethnic-wear-2025
+/kaftan-manufacturer
+/dress-manufacturer
+/suit-sets-manufacturer
+
+# Blog Posts
+/blog/festive-ethnic-wear-trends-2025
+
 # Add more subpages as needed if you have dynamic or nested routes 
