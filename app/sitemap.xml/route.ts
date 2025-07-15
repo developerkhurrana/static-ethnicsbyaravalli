@@ -25,6 +25,9 @@ export async function GET() {
     'kaftan-manufacturer',
     'dress-manufacturer',
     'suit-sets-manufacturer',
+    'festive-wear',
+    'kurta-manufacturer',
+    'kurta-sets-manufacturer',
   ];
 
   // Blog posts

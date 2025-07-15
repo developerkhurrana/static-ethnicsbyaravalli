@@ -32,6 +32,27 @@ export const metadata = {
     "wholesale ethnic wear",
     "ethnic fashion manufacturer",
     "traditional wear manufacturer",
+    "ethnic wear supplier",
+    "ethnic wear exporter",
+    "designer ethnic wear",
+    "women's ethnic wear manufacturer",
+    "men's ethnic wear manufacturer",
+    "kids ethnic wear manufacturer",
+    "private label ethnic wear",
+    "bulk ethnic wear supplier",
+    "ethnic wear for boutiques",
+    "ethnic wear for retailers",
+    "custom ethnic dress manufacturer",
+    "kurti manufacturer",
+    "lehenga manufacturer",
+    "saree manufacturer",
+    "salwar suit manufacturer",
+    "ethnic gown manufacturer",
+    "Indian ethnic wear manufacturer",
+    "ethnic wear factory India",
+    "ethnic wear OEM",
+    "ethnic wear ODM",
+    "sustainable ethnic wear",
   ],
 };
 
@@ -209,18 +230,20 @@ export default function EthnicWearManufacturerPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
               {/* Kurtas */}
               <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
-                <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
+                <div className="relative w-full h-72 rounded-lg overflow-hidden flex-shrink-0">
                   <Image
                     src="https://ekohum.com/cdn/shop/files/DS5853_2.jpg?v=1741256083"
                     alt="Kurtas Collection"
                     fill
-                    className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
+                    style={{ objectFit: 'cover' }}
+                    className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg w-full h-full"
                   />
                   <Image
                     src="https://ekohum.com/cdn/shop/files/DS5853_10.jpg?v=1741256083"
                     alt="Kurtas Collection Hover"
                     fill
-                    className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg"
+                    style={{ objectFit: 'cover' }}
+                    className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg w-full h-full"
                   />
                 </div>
                 <div className="p-4 bg-white flex flex-col flex-1 justify-between">
@@ -238,18 +261,20 @@ export default function EthnicWearManufacturerPage() {
               </div>
               {/* Kurta Sets */}
               <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
-                <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
+                <div className="relative w-full h-72 rounded-lg overflow-hidden flex-shrink-0">
                   <Image
                     src="https://ekohum.com/cdn/shop/files/DSC_0596.jpg?v=1717780319"
                     alt="Kurta Sets Collection"
                     fill
-                    className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
+                    style={{ objectFit: 'cover' }}
+                    className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg w-full h-full"
                   />
                   <Image
                     src="https://ekohum.com/cdn/shop/files/DSC_0651.jpg?v=1717780319"
                     alt="Kurta Sets Collection Hover"
                     fill
-                    className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg"
+                    style={{ objectFit: 'cover' }}
+                    className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg w-full h-full"
                   />
                 </div>
                 <div className="p-4 bg-white flex flex-col flex-1 justify-between">
@@ -267,18 +292,20 @@ export default function EthnicWearManufacturerPage() {
               </div>
               {/* Suit Sets */}
               <div className="group relative overflow-hidden rounded-lg h-[500px] flex flex-col">
-                <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
+                <div className="relative w-full h-72 rounded-lg overflow-hidden flex-shrink-0">
                   <Image
                     src="https://ekohum.com/cdn/shop/files/DW3962__1.jpg?v=1725534156"
                     alt="Suit Sets Collection"
                     fill
-                    className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg"
+                    style={{ objectFit: 'cover' }}
+                    className="object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 rounded-lg w-full h-full"
                   />
                   <Image
                     src="https://ekohum.com/cdn/shop/files/DW3962_4.jpg?v=1725534157"
                     alt="Suit Sets Collection Hover"
                     fill
-                    className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg"
+                    style={{ objectFit: 'cover' }}
+                    className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg w-full h-full"
                   />
                 </div>
                 <div className="p-4 bg-white flex flex-col flex-1 justify-between">
@@ -302,9 +329,16 @@ export default function EthnicWearManufacturerPage() {
         <section className="max-w-2xl mx-auto px-4 py-16 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-[#2E1B1B] mb-6">Ready to Stock Premium Ethnic Wear?</h2>
           <p className="text-lg text-[#4A3A3A] mb-8">Partner with us for boutique-ready, premium ethnic wear and experience the difference in quality and service.</p>
-          <Link href="/contact">
-            <button className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] font-semibold px-10 py-4 rounded-full text-lg shadow-lg transition">Get in Touch</button>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact">
+              <button className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] font-semibold px-10 py-4 rounded-full text-lg shadow-lg transition">Get in Touch</button>
+            </Link>
+            <Link href="https://wa.me/919828422208">
+              <button className="bg-white border border-[#25D366] text-[#25D366] font-semibold px-10 py-4 rounded-full text-lg shadow-lg transition hover:bg-[#25D366]/10 flex items-center gap-2">
+                WhatsApp Us
+              </button>
+            </Link>
+          </div>
         </section>
       </main>
     </>

@@ -186,16 +186,26 @@ export default function Home() {
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-24 md:mb-0">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-md bg-[#D9A8A0] px-6 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-[#C08478] w-full md:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#D9A8A0] px-6 py-3 text-base font-semibold text-white shadow transition-colors hover:bg-[#C08478] w-full md:w-auto"
+                aria-label="Contact Ethnics by Aravalli"
               >
-                Contact Us
+                <span className="mr-1">
+                  {/* Using react-icons: MdEmail */}
+                  {/** @ts-ignore */}
+                  {require("react-icons/md").MdEmail({ size: 20 })}
+                </span>
+                Get in Touch
               </Link>
               <Link
-                href="https://wa.me/919828422208"
-            target="_blank"
-                className="inline-flex items-center justify-center rounded-md border border-white bg-transparent px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-white/10 w-full md:w-auto"
-          >
-                Whatsapp Us
+                href="https://wa.me/919828422208?text=Hi%20Ethnics%20by%20Aravalli%2C%20I%27m%20interested%20in%20your%20Kurtis%20and%20ethnic%20wear%20collection."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-md border border-[#25D366] bg-[#25D366] px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[#128C7E] w-full md:w-auto"
+              >
+                {/* Using react-icons: FaWhatsapp */}
+                {/** @ts-ignore */}
+                {require("react-icons/fa").FaWhatsapp({ size: 20 })}
+                Chat on WhatsApp
               </Link>
             </div>
           </div>
