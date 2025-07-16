@@ -178,23 +178,23 @@ export default function SuitSetsManufacturerPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {suitSetCategories.map((category, idx) => (
-              <Card key={idx} className="group hover:shadow-xl transition-all duration-300">
-                <div className="relative overflow-hidden rounded-t-lg">
+              <Card key={idx} className="group hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+                <div className="relative overflow-hidden rounded-t-lg h-64">
                   <Image
                     src={category.image}
                     alt={category.name}
                     width={400}
                     height={500}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-4 text-white">
                     <h3 className="text-lg font-semibold">{category.name}</h3>
                   </div>
                 </div>
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col flex-grow">
                   <p className="text-gray-600 mb-4">{category.description}</p>
-                  <div className="space-y-2">
+                  <div className="space-y-2 flex-grow">
                     <h4 className="font-semibold text-sm text-gray-800">Perfect for:</h4>
                     <div className="flex flex-wrap gap-1">
                       {category.occasions.map((occasion, occasionIdx) => (
@@ -204,7 +204,7 @@ export default function SuitSetsManufacturerPage() {
                       ))}
                     </div>
                   </div>
-                  <Button asChild className="w-full mt-4">
+                  <Button asChild className="w-full mt-4 bg-green-600 hover:bg-green-700">
                     <Link href="/contact">Inquire Now</Link>
                   </Button>
                 </CardContent>
