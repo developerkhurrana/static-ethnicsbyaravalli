@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   keywords: [
     "festive wear",
     "festive wear for women",
-    "festive wear for men",
+    "festive ethnic wear for women",
     "festive wear kurta sets",
     "festive wear suits for women",
     "festive wear sarees",
@@ -139,20 +139,20 @@ export default function FestiveWearPage() {
         <div className="relative z-10 text-center px-4 py-24 max-w-6xl mx-auto">
           <Badge className="mb-6 bg-orange-200 text-orange-900 hover:bg-orange-300 border border-orange-300">
             <Sparkles className="w-4 h-4 mr-2" />
-            Festive Wear 2025
+            Festive Ethnic Wear 2025
           </Badge>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-orange-900 mb-6 leading-tight drop-shadow-lg">
-            Festive Wear Collection{" "}
+            Festive Ethnic Wear Collection{" "}
             <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
               2025
             </span>
           </h1>
           
-                      <p className="text-xl md:text-2xl text-orange-800 mb-8 max-w-4xl mx-auto leading-relaxed">
-              Discover the latest festive wear for women. Shop premium kurta sets, suits, sarees, and kurtis for Diwali, Navratri, and all celebrations.
-              <span className="font-semibold text-orange-900"> Wholesale prices for boutiques and retailers.</span>
-            </p>
+                                <p className="text-xl md:text-2xl text-orange-800 mb-8 max-w-4xl mx-auto leading-relaxed">
+            Discover the latest festive ethnic wear for women. Shop premium kurta sets, suits, and kurtis for Diwali, Navratri, and all celebrations.
+            <span className="font-semibold text-orange-900"> Wholesale prices for boutiques and retailers.</span>
+          </p>
           
           {/* Stats Section */}
           <div className="flex flex-wrap justify-center gap-8 mb-10">
@@ -162,7 +162,7 @@ export default function FestiveWearPage() {
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-red-600 mb-1">100+</div>
-              <div className="text-sm text-orange-700">Festive Styles</div>
+              <div className="text-sm text-orange-700">Festive Ethnic Styles</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-yellow-600 mb-1">24/7</div>
@@ -207,10 +207,10 @@ export default function FestiveWearPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orange-900">
-              Explore Our Festive Wear Categories
+              Explore Our Festive Ethnic Wear Categories
             </h2>
             <p className="text-lg text-orange-700 max-w-3xl mx-auto">
-              Shop the best festive wear for every celebration. Premium quality, vibrant colors, and modern designs for women.
+              Shop the best festive ethnic wear for every celebration. Premium quality, vibrant colors, and modern designs for women.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -245,10 +245,10 @@ export default function FestiveWearPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orange-900">
-              Why Choose Our Festive Wear?
+              Why Choose Our Festive Ethnic Wear?
             </h2>
             <p className="text-lg text-orange-700 max-w-3xl mx-auto">
-              Experience the best of festive fashion with Ethnics by Aravalli. Quality, style, and tradition in every piece.
+              Experience the best of festive ethnic fashion with Ethnics by Aravalli. Quality, style, and tradition in every piece.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -270,31 +270,31 @@ export default function FestiveWearPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-sm max-w-none">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Premium Festive Wear Manufacturer in Jaipur - Your Trusted Partner for Celebrations
+              Premium Festive Ethnic Wear Manufacturer in Jaipur - Your Trusted Partner for Celebrations
             </h2>
             
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Welcome to <strong>Ethnics by Aravalli</strong>, your premier festive wear manufacturer in Jaipur specializing in wholesale ethnic wear for all celebrations. We are dedicated to crafting exceptional festive wear that combines traditional Indian aesthetics with contemporary comfort, offering boutique owners and retailers across India access to premium quality festive ethnic wear at competitive wholesale prices.
+              Welcome to <strong>Ethnics by Aravalli</strong>, your premier festive ethnic wear manufacturer in Jaipur specializing in wholesale ethnic wear for all celebrations. We are dedicated to crafting exceptional festive ethnic wear that combines traditional Indian aesthetics with contemporary comfort, offering boutique owners and retailers across India access to premium quality festive ethnic wear at competitive wholesale prices.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Our extensive collection of festive wear for women encompasses everything from elegant kurta sets and designer suits to traditional sarees and trendy kurtis. Each festive piece in our collection is meticulously crafted using premium fabrics including pure cotton, silk, georgette, and other natural materials that ensure breathability, comfort, and durability. As a leading festive wear manufacturer in Jaipur, we understand the diverse needs of modern celebrations and create designs that celebrate both tradition and contemporary fashion trends.
+              Our extensive collection of festive ethnic wear for women encompasses everything from elegant kurta sets and designer suits to trendy kurtis and comfortable dresses. Each festive ethnic piece in our collection is meticulously crafted using premium fabrics including pure cotton, silk, georgette, and other natural materials that ensure breathability, comfort, and durability. As a leading festive ethnic wear manufacturer in Jaipur, we understand the diverse needs of modern celebrations and create designs that celebrate both tradition and contemporary fashion trends.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Whether you're a boutique owner looking to stock the latest festive wear trends for Diwali, Navratri, or wedding season, a retailer seeking reliable wholesale festive wear suppliers, or a fashion entrepreneur wanting to partner with a trusted festive wear manufacturer in India, our comprehensive range of women's festive ethnic wear caters to every business requirement. Our festive collection is perfect for various occasions including Diwali celebrations, Navratri festivities, wedding ceremonies, family gatherings, and special celebrations, making them ideal for retailers serving women's ethnic wear customers.
+              Whether you're a boutique owner looking to stock the latest festive ethnic wear trends for Diwali, Navratri, or wedding season, a retailer seeking reliable wholesale festive ethnic wear suppliers, or a fashion entrepreneur wanting to partner with a trusted festive ethnic wear manufacturer in India, our comprehensive range of women's festive ethnic wear caters to every business requirement. Our festive ethnic collection is perfect for various occasions including Diwali celebrations, Navratri festivities, wedding ceremonies, family gatherings, and special celebrations, making them ideal for retailers serving women's ethnic wear customers.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              As a professional festive wear manufacturer, we prioritize quality control at every stage of production. From fabric selection and pattern making to cutting, stitching, and final finishing, each festive garment undergoes rigorous quality checks to ensure it meets our high standards. Our commitment to excellence has made us one of the most trusted festive wear manufacturers in Jaipur, serving clients across India with reliable wholesale festive wear supply and timely delivery services.
+              As a professional festive ethnic wear manufacturer, we prioritize quality control at every stage of production. From fabric selection and pattern making to cutting, stitching, and final finishing, each festive ethnic garment undergoes rigorous quality checks to ensure it meets our high standards. Our commitment to excellence has made us one of the most trusted festive ethnic wear manufacturers in Jaipur, serving clients across India with reliable wholesale festive ethnic wear supply and timely delivery services.
             </p>
 
             <div className="bg-orange-50 p-6 rounded-lg my-8">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Explore Our Comprehensive Collection of Festive Wear
+                Explore Our Comprehensive Collection of Festive Ethnic Wear
               </h3>
               <p className="text-gray-700 mb-4">
-                Our wholesale festive wear catalog includes:
+                Our wholesale festive ethnic wear catalog includes:
               </p>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
                 <li className="flex items-center">
@@ -303,7 +303,7 @@ export default function FestiveWearPage() {
                 </li>
                 <li className="flex items-center">
                   <Sparkles className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  Festive Wear for Men
+                  Festive Ethnic Wear for Women
                 </li>
                 <li className="flex items-center">
                   <Sparkles className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
@@ -315,7 +315,7 @@ export default function FestiveWearPage() {
                 </li>
                 <li className="flex items-center">
                   <Sparkles className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  Traditional Sarees
+                  Comfortable Dresses
                 </li>
                 <li className="flex items-center">
                   <Sparkles className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
@@ -333,15 +333,15 @@ export default function FestiveWearPage() {
             </div>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Shopping for wholesale festive wear online has never been easier. Our user-friendly catalog system allows retailers and boutique owners to browse our extensive festive collection, select their preferred styles, and place bulk orders with just a few clicks. We understand the importance of seasonal planning and strive to provide a hassle-free wholesale shopping experience with detailed product information, size charts, and competitive pricing for all festive occasions.
+              Shopping for wholesale festive ethnic wear online has never been easier. Our user-friendly catalog system allows retailers and boutique owners to browse our extensive festive ethnic collection, select their preferred styles, and place bulk orders with just a few clicks. We understand the importance of seasonal planning and strive to provide a hassle-free wholesale shopping experience with detailed product information, size charts, and competitive pricing for all festive occasions.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Our commitment to sustainable and ethical fashion practices sets us apart as a responsible festive wear manufacturer. We work closely with trusted fabric suppliers who share our values, ensuring that all materials used in our festive wear are responsibly sourced and of the highest quality. By choosing Ethnics by Aravalli as your festive wear manufacturer, you're supporting ethical manufacturing practices while offering your customers premium quality festive ethnic wear for all celebrations.
+              Our commitment to sustainable and ethical fashion practices sets us apart as a responsible festive ethnic wear manufacturer. We work closely with trusted fabric suppliers who share our values, ensuring that all materials used in our festive ethnic wear are responsibly sourced and of the highest quality. By choosing Ethnics by Aravalli as your festive ethnic wear manufacturer, you're supporting ethical manufacturing practices while offering your customers premium quality festive ethnic wear for all celebrations.
             </p>
 
             <p className="text-gray-700 leading-relaxed">
-              Experience the perfect blend of tradition and modernity with our exclusive collection of festive wear for women. Whether you're looking for vibrant Diwali wear, elegant Navratri dresses, or comfortable wedding season outfits, our wholesale festive wear collection has something for every occasion and customer preference. Partner with us, the leading festive wear manufacturer in Jaipur, and elevate your retail business with premium quality women's festive ethnic wear that your customers will love for every celebration.
+              Experience the perfect blend of tradition and modernity with our exclusive collection of festive ethnic wear for women. Whether you're looking for vibrant Diwali wear, elegant Navratri dresses, or comfortable wedding season outfits, our wholesale festive ethnic wear collection has something for every occasion and customer preference. Partner with us, the leading festive ethnic wear manufacturer in Jaipur, and elevate your retail business with premium quality women's festive ethnic wear that your customers will love for every celebration.
             </p>
           </div>
         </div>
@@ -354,7 +354,7 @@ export default function FestiveWearPage() {
             Ready to Celebrate in Style?
           </h2>
           <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
-            Get your hands on our exclusive festive wear collection. Perfect for boutiques, retailers, and wholesalers.
+            Get your hands on our exclusive festive ethnic wear collection. Perfect for boutiques, retailers, and wholesalers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary">
