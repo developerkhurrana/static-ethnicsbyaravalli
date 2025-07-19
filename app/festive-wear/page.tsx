@@ -149,10 +149,10 @@ export default function FestiveWearPage() {
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-orange-800 mb-8 max-w-4xl mx-auto leading-relaxed">
-            Discover the latest festive wear for women and men. Shop premium kurta sets, suits, sarees, and kurtis for Diwali, Navratri, and all celebrations.
-            <span className="font-semibold text-orange-900"> Wholesale prices for boutiques and retailers.</span>
-          </p>
+                      <p className="text-xl md:text-2xl text-orange-800 mb-8 max-w-4xl mx-auto leading-relaxed">
+              Discover the latest festive wear for women. Shop premium kurta sets, suits, sarees, and kurtis for Diwali, Navratri, and all celebrations.
+              <span className="font-semibold text-orange-900"> Wholesale prices for boutiques and retailers.</span>
+            </p>
           
           {/* Stats Section */}
           <div className="flex flex-wrap justify-center gap-8 mb-10">
@@ -210,7 +210,7 @@ export default function FestiveWearPage() {
               Explore Our Festive Wear Categories
             </h2>
             <p className="text-lg text-orange-700 max-w-3xl mx-auto">
-              Shop the best festive wear for every celebration. Premium quality, vibrant colors, and modern designs for women and men.
+              Shop the best festive wear for every celebration. Premium quality, vibrant colors, and modern designs for women.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -278,11 +278,11 @@ export default function FestiveWearPage() {
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Our extensive collection of festive wear for women and men encompasses everything from elegant kurta sets and designer suits to traditional sarees and trendy kurtis. Each festive piece in our collection is meticulously crafted using premium fabrics including pure cotton, silk, georgette, and other natural materials that ensure breathability, comfort, and durability. As a leading festive wear manufacturer in Jaipur, we understand the diverse needs of modern celebrations and create designs that celebrate both tradition and contemporary fashion trends.
+              Our extensive collection of festive wear for women encompasses everything from elegant kurta sets and designer suits to traditional sarees and trendy kurtis. Each festive piece in our collection is meticulously crafted using premium fabrics including pure cotton, silk, georgette, and other natural materials that ensure breathability, comfort, and durability. As a leading festive wear manufacturer in Jaipur, we understand the diverse needs of modern celebrations and create designs that celebrate both tradition and contemporary fashion trends.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Whether you're a boutique owner looking to stock the latest festive wear trends for Diwali, Navratri, or wedding season, a retailer seeking reliable wholesale festive wear suppliers, or a fashion entrepreneur wanting to partner with a trusted festive wear manufacturer in India, our comprehensive range of festive ethnic wear caters to every business requirement. Our festive collection is perfect for various occasions including Diwali celebrations, Navratri festivities, wedding ceremonies, family gatherings, and special celebrations, making them ideal for retailers serving diverse customer segments.
+              Whether you're a boutique owner looking to stock the latest festive wear trends for Diwali, Navratri, or wedding season, a retailer seeking reliable wholesale festive wear suppliers, or a fashion entrepreneur wanting to partner with a trusted festive wear manufacturer in India, our comprehensive range of women's festive ethnic wear caters to every business requirement. Our festive collection is perfect for various occasions including Diwali celebrations, Navratri festivities, wedding ceremonies, family gatherings, and special celebrations, making them ideal for retailers serving women's ethnic wear customers.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
@@ -341,7 +341,7 @@ export default function FestiveWearPage() {
             </p>
 
             <p className="text-gray-700 leading-relaxed">
-              Experience the perfect blend of tradition and modernity with our exclusive collection of festive wear for women and men. Whether you're looking for vibrant Diwali wear, elegant Navratri dresses, or comfortable wedding season outfits, our wholesale festive wear collection has something for every occasion and customer preference. Partner with us, the leading festive wear manufacturer in Jaipur, and elevate your retail business with premium quality festive ethnic wear that your customers will love for every celebration.
+              Experience the perfect blend of tradition and modernity with our exclusive collection of festive wear for women. Whether you're looking for vibrant Diwali wear, elegant Navratri dresses, or comfortable wedding season outfits, our wholesale festive wear collection has something for every occasion and customer preference. Partner with us, the leading festive wear manufacturer in Jaipur, and elevate your retail business with premium quality women's festive ethnic wear that your customers will love for every celebration.
             </p>
           </div>
         </div>
