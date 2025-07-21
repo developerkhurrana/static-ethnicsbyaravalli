@@ -413,7 +413,7 @@ export default function EthnicWearManufacturerPage() {
                     className="w-full bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 transform group-hover:scale-105" 
                     asChild
                   >
-                    <Link href="/contact">Inquire for</Link>
+                    <Link href="/contact">Inquire for Kurtas</Link>
                   </Button>
                 </div>
               </div>
@@ -440,7 +440,7 @@ export default function EthnicWearManufacturerPage() {
                     className="w-full bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 transform group-hover:scale-105" 
                     asChild
                   >
-                    <Link href="/contact">Inquire for</Link>
+                    <Link href="/contact">Inquire for Kurta Sets</Link>
                   </Button>
                 </div>
               </div>
@@ -467,7 +467,7 @@ export default function EthnicWearManufacturerPage() {
                     className="w-full bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 transform group-hover:scale-105" 
                     asChild
                   >
-                    <Link href="/contact">Inquire for</Link>
+                    <Link href="/contact">Inquire for Suit Sets</Link>
                   </Button>
                 </div>
               </div>
