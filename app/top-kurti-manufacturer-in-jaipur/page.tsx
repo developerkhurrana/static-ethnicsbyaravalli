@@ -414,7 +414,7 @@ export default function TopKurtiManufacturerPage() {
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Whether you're a boutique owner looking to stock the latest kurti trends, a retailer seeking reliable wholesale kurti suppliers, or a fashion entrepreneur wanting to partner with a trusted kurti manufacturer in Jaipur, our comprehensive range of ethnic apparel caters to every business requirement. Our kurti collection is perfect for various occasions including daily wear, office wear, festivals, casual outings, and special celebrations, making them ideal for retailers serving diverse customer segments across different markets.
+              Whether you're a boutique owner looking to stock the latest kurti trends, a retailer seeking reliable wholesale kurti suppliers, or a fashion entrepreneur wanting to partner with a trusted kurti manufacturer in Jaipur, our comprehensive range of ethnic apparel caters to every business requirement. Our kurti collection is perfect for various occasions including daily wear, office wear, <Link href="/festive-ethnic-wear-2025" className="text-pink-600 hover:text-pink-700 underline font-medium">festivals</Link>, casual outings, and special celebrations, making them ideal for retailers serving diverse customer segments across different markets.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
@@ -473,7 +473,7 @@ export default function TopKurtiManufacturerPage() {
             </p>
 
             <p className="text-gray-700 leading-relaxed">
-              Experience the perfect blend of tradition and modernity with our exclusive collection of kurtis from Jaipur's top manufacturer. Whether you're looking for comfortable daily wear kurtis, elegant party wear pieces, or sophisticated office wear options, our wholesale kurti collection has something for every occasion and customer preference. Partner with us, Jaipur's leading kurti manufacturer, and elevate your retail business with premium quality ethnic apparel that your customers will love and trust.
+              Experience the perfect blend of tradition and modernity with our exclusive collection of kurtis from Jaipur's top manufacturer. Whether you're looking for comfortable daily wear kurtis, elegant party wear pieces, or sophisticated office wear options, our wholesale kurti collection has something for every occasion and customer preference. Partner with us, Jaipur's leading kurti manufacturer, and elevate your retail business with premium quality ethnic apparel that your customers will love and trust. For wholesale pricing and bulk orders, explore our <Link href="/top-kurti-wholesaler-in-jaipur" className="text-pink-600 hover:text-pink-700 underline font-medium">wholesale kurti services</Link>.
             </p>
           </div>
         </div>

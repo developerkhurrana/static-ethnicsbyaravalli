@@ -332,7 +332,7 @@ export default function KaftanManufacturerPage() {
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Whether you're a boutique owner looking to stock the latest kaftan trends, a retailer seeking reliable wholesale kaftan suppliers, or a fashion entrepreneur wanting to partner with a trusted kaftan manufacturer in India, our comprehensive range of kaftans caters to every business requirement. Our kaftan collection is perfect for various occasions including daily wear, loungewear, beach wear, festivals, parties, and special celebrations, making them ideal for retailers serving diverse customer segments.
+              Whether you're a boutique owner looking to stock the latest kaftan trends, a retailer seeking reliable wholesale kaftan suppliers, or a fashion entrepreneur wanting to partner with a trusted kaftan manufacturer in India, our comprehensive range of kaftans caters to every business requirement. Our kaftan collection is perfect for various occasions including daily wear, loungewear, beach wear, <Link href="/festive-ethnic-wear-2025" className="text-blue-600 hover:text-blue-700 underline font-medium">festivals</Link>, parties, and special celebrations, making them ideal for retailers serving diverse customer segments.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
@@ -349,35 +349,35 @@ export default function KaftanManufacturerPage() {
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Cotton Kaftans
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-blue-600 transition-colors">Cotton Kaftans</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Silk Kaftans
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-blue-600 transition-colors">Silk Kaftans</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Printed Kaftans
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-blue-600 transition-colors">Printed Kaftans</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Embroidered Kaftans
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-blue-600 transition-colors">Embroidered Kaftans</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Designer Kaftans
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-blue-600 transition-colors">Designer Kaftans</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Ethnic Kaftans
+                  <Link href="/ethnic-wear-manufacturer" className="hover:text-blue-600 transition-colors">Ethnic Kaftans</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Custom Designs
+                  <Link href="/ethnic-wear-manufacturer" className="hover:text-blue-600 transition-colors">Custom Designs</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Private Label
+                  <Link href="/top-kurti-wholesaler-in-jaipur" className="hover:text-blue-600 transition-colors">Private Label</Link>
                 </li>
               </ul>
             </div>
@@ -391,7 +391,7 @@ export default function KaftanManufacturerPage() {
             </p>
 
             <p className="text-gray-700 leading-relaxed">
-              Experience the perfect blend of comfort and style with our exclusive collection of kaftans. Whether you're looking for comfortable daily wear kaftans, elegant silk kaftans for special occasions, or trendy printed kaftans for fashion-forward customers, our wholesale kaftan collection has something for every occasion and customer preference. Partner with us, the leading kaftan manufacturer in Jaipur, and elevate your retail business with premium quality kaftans that your customers will love.
+              Experience the perfect blend of comfort and style with our exclusive collection of kaftans. Whether you're looking for comfortable daily wear kaftans, elegant silk kaftans for special occasions, or trendy printed kaftans for fashion-forward customers, our wholesale kaftan collection has something for every occasion and customer preference. Partner with us, the leading kaftan manufacturer in Jaipur, and elevate your retail business with premium quality kaftans that your customers will love. Explore our complete <Link href="/ethnic-wear-manufacturer" className="text-blue-600 hover:text-blue-700 underline font-medium">ethnic wear collection</Link> for comprehensive business solutions.
             </p>
           </div>
         </div>

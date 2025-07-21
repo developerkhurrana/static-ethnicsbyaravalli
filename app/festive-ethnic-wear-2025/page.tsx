@@ -385,35 +385,35 @@ export default function FestiveEthnicWearPage() {
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  Diwali Ethnic Wear Collection
+                  <Link href="/festive-wear" className="hover:text-orange-600 transition-colors">Diwali Ethnic Wear Collection</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  Navratri Special Collection
+                  <Link href="/kurta-manufacturer" className="hover:text-orange-600 transition-colors">Navratri Special Collection</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  Wedding Season Ethnic Wear
+                  <Link href="/suit-sets-manufacturer" className="hover:text-orange-600 transition-colors">Wedding Season Ethnic Wear</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  New Year Celebration Wear
+                  <Link href="/dress-manufacturer" className="hover:text-orange-600 transition-colors">New Year Celebration Wear</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  Festive Kurtas & Kurta Sets
+                  <Link href="/kurta-sets-manufacturer" className="hover:text-orange-600 transition-colors">Festive Kurtas & Kurta Sets</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  Designer Suit Sets
+                  <Link href="/suit-sets-manufacturer" className="hover:text-orange-600 transition-colors">Designer Suit Sets</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  Ethnic Kaftans & Dresses
+                  <Link href="/kaftan-manufacturer" className="hover:text-orange-600 transition-colors">Ethnic Kaftans & Dresses</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  Custom Festive Designs
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-orange-600 transition-colors">Custom Festive Designs</Link>
                 </li>
               </ul>
             </div>
@@ -427,7 +427,7 @@ export default function FestiveEthnicWearPage() {
             </p>
 
             <p className="text-gray-700 leading-relaxed">
-              Experience the perfect blend of tradition and modernity with our exclusive festive ethnic wear collection 2025. Whether you're looking for traditional Diwali ethnic wear, comfortable Navratri collection pieces, sophisticated wedding season attire, or contemporary New Year celebration wear, our comprehensive festive collection has something for every occasion and customer preference. Partner with us, India's leading festive ethnic wear manufacturer, and elevate your retail business with premium quality ethnic apparel that celebrates the rich cultural heritage of Indian festivals while meeting the demands of modern fashion-conscious consumers.
+              Experience the perfect blend of tradition and modernity with our exclusive festive ethnic wear collection 2025. Whether you're looking for traditional Diwali ethnic wear, comfortable Navratri collection pieces, sophisticated wedding season attire, or contemporary New Year celebration wear, our comprehensive festive collection has something for every occasion and customer preference. Partner with us, India's leading festive ethnic wear manufacturer, and elevate your retail business with premium quality ethnic apparel that celebrates the rich cultural heritage of Indian festivals while meeting the demands of modern fashion-conscious consumers. Explore our complete <Link href="/ethnic-wear-manufacturer" className="text-orange-600 hover:text-orange-700 underline font-medium">ethnic wear collection</Link> for year-round business opportunities.
             </p>
           </div>
         </div>

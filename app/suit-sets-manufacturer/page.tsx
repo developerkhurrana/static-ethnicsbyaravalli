@@ -331,7 +331,7 @@ export default function SuitSetsManufacturerPage() {
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Whether you're a boutique owner looking to stock the latest suit set trends, a retailer seeking reliable wholesale suit set suppliers, or a fashion entrepreneur wanting to partner with a trusted suit sets manufacturer in India, our comprehensive range of suit sets caters to every business requirement. Our suit set collection is perfect for various occasions including daily wear, office wear, festivals, weddings, parties, and special celebrations, making them ideal for retailers serving diverse customer segments.
+              Whether you're a boutique owner looking to stock the latest suit set trends, a retailer seeking reliable wholesale suit set suppliers, or a fashion entrepreneur wanting to partner with a trusted suit sets manufacturer in India, our comprehensive range of suit sets caters to every business requirement. Our suit set collection is perfect for various occasions including daily wear, office wear, <Link href="/festive-ethnic-wear-2025" className="text-green-600 hover:text-green-700 underline font-medium">festivals</Link>, weddings, parties, and special celebrations, making them ideal for retailers serving diverse customer segments.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
@@ -348,35 +348,35 @@ export default function SuitSetsManufacturerPage() {
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Kurta-Palazzo Sets
+                  <Link href="/kurta-sets-manufacturer" className="hover:text-green-600 transition-colors">Kurta-Palazzo Sets</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Kurta-Sharara Sets
+                  <Link href="/kurta-sets-manufacturer" className="hover:text-green-600 transition-colors">Kurta-Sharara Sets</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Kurta-Pant Sets
+                  <Link href="/kurta-sets-manufacturer" className="hover:text-green-600 transition-colors">Kurta-Pant Sets</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Co-ord Sets
+                  <Link href="/kurta-sets-manufacturer" className="hover:text-green-600 transition-colors">Co-ord Sets</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Designer Suit Sets
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-green-600 transition-colors">Designer Suit Sets</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Ethnic Suit Sets
+                  <Link href="/ethnic-wear-manufacturer" className="hover:text-green-600 transition-colors">Ethnic Suit Sets</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Custom Designs
+                  <Link href="/ethnic-wear-manufacturer" className="hover:text-green-600 transition-colors">Custom Designs</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Private Label
+                  <Link href="/top-kurti-wholesaler-in-jaipur" className="hover:text-green-600 transition-colors">Private Label</Link>
                 </li>
               </ul>
             </div>
@@ -390,7 +390,7 @@ export default function SuitSetsManufacturerPage() {
             </p>
 
             <p className="text-gray-700 leading-relaxed">
-              Experience the perfect blend of coordination and style with our exclusive collection of suit sets. Whether you're looking for comfortable daily wear kurta-palazzo sets, elegant kurta-sharara sets for special occasions, or modern kurta-pant sets for professional settings, our wholesale suit set collection has something for every occasion and customer preference. Partner with us, the leading suit sets manufacturer in Jaipur, and elevate your retail business with premium quality coordinated ethnic wear that your customers will love.
+              Experience the perfect blend of coordination and style with our exclusive collection of suit sets. Whether you're looking for comfortable daily wear kurta-palazzo sets, elegant kurta-sharara sets for special occasions, or modern kurta-pant sets for professional settings, our wholesale suit set collection has something for every occasion and customer preference. Partner with us, the leading suit sets manufacturer in Jaipur, and elevate your retail business with premium quality coordinated ethnic wear that your customers will love. Explore our complete <Link href="/ethnic-wear-manufacturer" className="text-green-600 hover:text-green-700 underline font-medium">ethnic wear collection</Link> for comprehensive business solutions.
             </p>
           </div>
         </div>

@@ -356,6 +356,84 @@ export default function TopKurtiWholesalerPage() {
         </div>
       </section>
 
+      {/* SEO-Optimized Summary Section */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="prose prose-sm max-w-none">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+              Top Kurti Wholesaler in Jaipur - Factory Direct Wholesale Ethnic Wear Supply
+            </h2>
+            
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              Welcome to <strong>Ethnics by Aravalli</strong>, Jaipur's premier kurti wholesaler and manufacturer offering factory-direct wholesale prices to boutiques, retailers, and fashion entrepreneurs across India. As a leading <Link href="/top-kurti-manufacturer-in-jaipur" className="text-pink-600 hover:text-pink-700 underline font-medium">kurti manufacturer in Jaipur</Link>, we eliminate middlemen to provide true wholesale pricing, ensuring maximum profitability for your retail business while maintaining the highest quality standards in ethnic wear production.
+            </p>
+
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              Our comprehensive wholesale kurti collection encompasses everything from traditional <Link href="/kurta-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">kurtas</Link> and elegant <Link href="/kurta-sets-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">kurta sets</Link> to modern <Link href="/suit-sets-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">suit sets</Link> and designer ethnic apparel. Each piece is meticulously crafted using premium fabrics including pure cotton, silk, georgette, chiffon, and other natural materials that ensure breathability, comfort, and durability. As a trusted kurti wholesaler in Jaipur, we understand the diverse needs of modern fashion retailers and create designs that celebrate both tradition and contemporary trends.
+            </p>
+
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              Whether you're a boutique owner looking to stock the latest kurti trends, a retailer seeking reliable wholesale ethnic wear suppliers, or a fashion entrepreneur wanting to partner with a trusted kurti wholesaler in Jaipur, our comprehensive range of ethnic apparel caters to every business requirement. Our wholesale kurti collection is perfect for various occasions including daily wear, office wear, <Link href="/festive-ethnic-wear-2025" className="text-pink-600 hover:text-pink-700 underline font-medium">festivals</Link>, casual outings, and special celebrations, making them ideal for retailers serving diverse customer segments across different markets.
+            </p>
+
+            <div className="bg-pink-50 p-6 rounded-lg my-8">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                Explore Our Comprehensive Wholesale Kurti Services
+              </h3>
+              <p className="text-gray-700 mb-4">
+                Our wholesale kurti manufacturing and supply services include:
+              </p>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
+                <li className="flex items-center">
+                  <BadgeCheck className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
+                  <Link href="/kurta-manufacturer" className="hover:text-pink-600 transition-colors">Traditional Kurtas</Link>
+                </li>
+                <li className="flex items-center">
+                  <BadgeCheck className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
+                  <Link href="/kurta-sets-manufacturer" className="hover:text-pink-600 transition-colors">Kurta Sets</Link>
+                </li>
+                <li className="flex items-center">
+                  <BadgeCheck className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
+                  <Link href="/suit-sets-manufacturer" className="hover:text-pink-600 transition-colors">Suit Sets</Link>
+                </li>
+                <li className="flex items-center">
+                  <BadgeCheck className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
+                  <Link href="/dress-manufacturer" className="hover:text-pink-600 transition-colors">Designer Dresses</Link>
+                </li>
+                <li className="flex items-center">
+                  <BadgeCheck className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
+                  <Link href="/kaftan-manufacturer" className="hover:text-pink-600 transition-colors">Ethnic Kaftans</Link>
+                </li>
+                <li className="flex items-center">
+                  <BadgeCheck className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
+                  <Link href="/festive-wear" className="hover:text-pink-600 transition-colors">Festive Collections</Link>
+                </li>
+                <li className="flex items-center">
+                  <BadgeCheck className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
+                  <Link href="/ethnic-wear-manufacturer" className="hover:text-pink-600 transition-colors">Custom Designs</Link>
+                </li>
+                <li className="flex items-center">
+                  <BadgeCheck className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
+                  Private Label Services
+                </li>
+              </ul>
+            </div>
+
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              Shopping for wholesale kurtis from a top wholesaler in Jaipur has never been easier. Our user-friendly catalog system allows retailers and boutique owners to browse our extensive kurti collection, select their preferred styles, and place bulk orders with just a few clicks. We understand the importance of seamless business operations and strive to provide a hassle-free wholesale shopping experience with detailed product information, size charts, and competitive pricing that makes us the preferred choice among kurti wholesalers in Jaipur.
+            </p>
+
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              Our commitment to sustainable and ethical fashion practices sets us apart as a responsible kurti wholesaler in Jaipur. We work closely with trusted fabric suppliers who share our values, ensuring that all materials used in our kurtis are responsibly sourced and of the highest quality. By choosing Ethnics by Aravalli as your kurti wholesaler, you're supporting ethical manufacturing practices while offering your customers premium quality ethnic apparel that meets international standards.
+            </p>
+
+            <p className="text-gray-700 leading-relaxed">
+              Experience the perfect blend of tradition and modernity with our exclusive collection of kurtis from Jaipur's top wholesaler. Whether you're looking for comfortable daily wear kurtis, elegant party wear pieces, or sophisticated office wear options, our wholesale kurti collection has something for every occasion and customer preference. Partner with us, Jaipur's leading kurti wholesaler, and elevate your retail business with premium quality ethnic apparel that your customers will love and trust.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="max-w-2xl mx-auto px-4 py-16 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Ready to Stock Your Store with Jaipur&apos;s Best Kurtis?</h2>

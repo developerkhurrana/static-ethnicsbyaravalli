@@ -310,7 +310,7 @@ export default function DressManufacturerPage() {
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Whether you're a boutique owner looking to stock the latest ethnic dress trends, a retailer seeking reliable wholesale dress suppliers, or a fashion entrepreneur wanting to partner with a trusted dress manufacturer in India, our comprehensive range of dresses caters to every business requirement. Our dresses are perfect for various occasions including festivals, weddings, cultural events, daily wear, and special celebrations, making them ideal for retailers serving diverse customer segments.
+              Whether you're a boutique owner looking to stock the latest ethnic dress trends, a retailer seeking reliable wholesale dress suppliers, or a fashion entrepreneur wanting to partner with a trusted dress manufacturer in India, our comprehensive range of dresses caters to every business requirement. Our dresses are perfect for various occasions including <Link href="/festive-ethnic-wear-2025" className="text-pink-600 hover:text-pink-700 underline font-medium">festivals</Link>, weddings, cultural events, daily wear, and special celebrations, making them ideal for retailers serving diverse customer segments.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
@@ -327,35 +327,35 @@ export default function DressManufacturerPage() {
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Ethnic Dresses & Kurtas
+                  <Link href="/kurta-manufacturer" className="hover:text-green-600 transition-colors">Ethnic Dresses & Kurtas</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Designer Party Wear Dresses
+                  <Link href="/festive-ethnic-wear-2025" className="hover:text-green-600 transition-colors">Designer Party Wear Dresses</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Casual & Daily Wear Dresses
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-green-600 transition-colors">Casual & Daily Wear Dresses</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Indo-Western Fusion Dresses
+                  <Link href="/kaftan-manufacturer" className="hover:text-green-600 transition-colors">Indo-Western Fusion Dresses</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Co-ord Sets & Dress Sets
+                  <Link href="/suit-sets-manufacturer" className="hover:text-green-600 transition-colors">Co-ord Sets & Dress Sets</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Kaftans & Leisure Wear
+                  <Link href="/kaftan-manufacturer" className="hover:text-green-600 transition-colors">Kaftans & Leisure Wear</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Home & Holiday Wear Dresses
+                  <Link href="/festive-wear" className="hover:text-green-600 transition-colors">Home & Holiday Wear Dresses</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  Dupattas & Accessories
+                  <Link href="/ethnic-wear-manufacturer" className="hover:text-green-600 transition-colors">Dupattas & Accessories</Link>
                 </li>
               </ul>
             </div>
@@ -369,7 +369,7 @@ export default function DressManufacturerPage() {
             </p>
 
             <p className="text-gray-700 leading-relaxed">
-              Experience the perfect blend of tradition and modernity with our exclusive collection of dresses for women. Whether you're looking for vibrant festival wear, elegant party dresses, or comfortable daily wear options, our wholesale dress collection has something for every occasion and customer preference. Partner with us, the leading dress manufacturer in Jaipur, and elevate your retail business with premium quality ethnic dresses that your customers will love.
+              Experience the perfect blend of tradition and modernity with our exclusive collection of dresses for women. Whether you're looking for vibrant festival wear, elegant party dresses, or comfortable daily wear options, our wholesale dress collection has something for every occasion and customer preference. Partner with us, the leading dress manufacturer in Jaipur, and elevate your retail business with premium quality ethnic dresses that your customers will love. Explore our complete <Link href="/ethnic-wear-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">ethnic wear collection</Link> for comprehensive business solutions.
             </p>
           </div>
         </div>

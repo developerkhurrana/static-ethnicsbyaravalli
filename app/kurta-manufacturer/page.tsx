@@ -370,7 +370,7 @@ export default function KurtaManufacturerPage() {
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Whether you're a boutique owner looking to stock the latest kurta trends, a retailer seeking reliable wholesale kurta suppliers, or a fashion entrepreneur wanting to partner with a trusted kurta manufacturer in India, our comprehensive range of kurtas caters to every business requirement. Our kurta collection is perfect for various occasions including daily wear, office wear, festivals, weddings, and special celebrations, making them ideal for retailers serving diverse customer segments.
+              Whether you're a boutique owner looking to stock the latest kurta trends, a retailer seeking reliable wholesale kurta suppliers, or a fashion entrepreneur wanting to partner with a trusted kurta manufacturer in India, our comprehensive range of kurtas caters to every business requirement. Our kurta collection is perfect for various occasions including daily wear, office wear, <Link href="/festive-ethnic-wear-2025" className="text-blue-600 hover:text-blue-700 underline font-medium">festivals</Link>, weddings, and special celebrations, making them ideal for retailers serving diverse customer segments.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
@@ -387,35 +387,35 @@ export default function KurtaManufacturerPage() {
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Cotton Kurtas
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-blue-600 transition-colors">Cotton Kurtas</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Silk Kurtas
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-blue-600 transition-colors">Silk Kurtas</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Designer Kurtas
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-blue-600 transition-colors">Designer Kurtas</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Embroidered Kurtas
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-blue-600 transition-colors">Embroidered Kurtas</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Anarkali Kurtas
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-blue-600 transition-colors">Anarkali Kurtas</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Kurta Sets
+                  <Link href="/kurta-sets-manufacturer" className="hover:text-blue-600 transition-colors">Kurta Sets</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Custom Designs
+                  <Link href="/ethnic-wear-manufacturer" className="hover:text-blue-600 transition-colors">Custom Designs</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" />
-                  Private Label
+                  <Link href="/top-kurti-wholesaler-in-jaipur" className="hover:text-blue-600 transition-colors">Private Label</Link>
                 </li>
               </ul>
             </div>
@@ -429,7 +429,7 @@ export default function KurtaManufacturerPage() {
             </p>
 
             <p className="text-gray-700 leading-relaxed">
-              Experience the perfect blend of tradition and modernity with our exclusive collection of kurtas. Whether you're looking for comfortable daily wear kurtas, elegant silk kurtas for special occasions, or trendy designer kurtas for fashion-forward customers, our wholesale kurta collection has something for every occasion and customer preference. Partner with us, the leading kurta manufacturer in Jaipur, and elevate your retail business with premium quality kurtas that your customers will love.
+              Experience the perfect blend of tradition and modernity with our exclusive collection of kurtas. Whether you're looking for comfortable daily wear kurtas, elegant silk kurtas for special occasions, or trendy designer kurtas for fashion-forward customers, our wholesale kurta collection has something for every occasion and customer preference. Partner with us, the leading kurta manufacturer in Jaipur, and elevate your retail business with premium quality kurtas that your customers will love. Explore our complete <Link href="/ethnic-wear-manufacturer" className="text-blue-600 hover:text-blue-700 underline font-medium">ethnic wear collection</Link> for comprehensive business solutions.
             </p>
           </div>
         </div>

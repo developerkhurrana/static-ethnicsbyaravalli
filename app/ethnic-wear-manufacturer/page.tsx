@@ -488,11 +488,11 @@ export default function EthnicWearManufacturerPage() {
               </p>
 
               <p className="text-gray-700 mb-6 leading-relaxed">
-                Our extensive collection of ethnic wear encompasses everything from elegant kurtas and traditional kurta sets to modern suit sets and designer ethnic apparel. Each piece in our collection is meticulously crafted using premium fabrics including pure cotton, silk, georgette, chanderi, and other natural materials that ensure breathability, comfort, and durability. As a leading ethnic wear manufacturer in India, we understand the diverse needs of modern fashion and create designs that celebrate both tradition and contemporary trends.
+                Our extensive collection of ethnic wear encompasses everything from elegant <Link href="/kurta-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">kurtas</Link> and traditional <Link href="/kurta-sets-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">kurta sets</Link> to modern <Link href="/suit-sets-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">suit sets</Link> and designer ethnic apparel. Each piece in our collection is meticulously crafted using premium fabrics including pure cotton, silk, georgette, chanderi, and other natural materials that ensure breathability, comfort, and durability. As a leading ethnic wear manufacturer in India, we understand the diverse needs of modern fashion and create designs that celebrate both tradition and contemporary trends.
               </p>
 
               <p className="text-gray-700 mb-6 leading-relaxed">
-                Whether you're a boutique owner looking to stock the latest ethnic wear trends, a retailer seeking reliable wholesale ethnic wear suppliers, or a fashion entrepreneur wanting to partner with a trusted ethnic wear manufacturer in India, our comprehensive range of ethnic apparel caters to every business requirement. Our ethnic wear collection is perfect for various occasions including daily wear, office wear, festivals, weddings, parties, and special celebrations, making them ideal for retailers serving diverse customer segments.
+                Whether you're a boutique owner looking to stock the latest ethnic wear trends, a retailer seeking reliable wholesale ethnic wear suppliers, or a fashion entrepreneur wanting to partner with a trusted ethnic wear manufacturer in India, our comprehensive range of ethnic apparel caters to every business requirement. Our ethnic wear collection is perfect for various occasions including daily wear, office wear, <Link href="/festive-ethnic-wear-2025" className="text-pink-600 hover:text-pink-700 underline font-medium">festivals</Link>, weddings, parties, and special celebrations, making them ideal for retailers serving diverse customer segments.
               </p>
 
               <p className="text-gray-700 mb-6 leading-relaxed">
@@ -509,35 +509,35 @@ export default function EthnicWearManufacturerPage() {
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    Kurtas
+                    <Link href="/kurta-manufacturer" className="hover:text-pink-600 transition-colors">Kurtas</Link>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    Kurta Sets
+                    <Link href="/kurta-sets-manufacturer" className="hover:text-pink-600 transition-colors">Kurta Sets</Link>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    Suit Sets
+                    <Link href="/suit-sets-manufacturer" className="hover:text-pink-600 transition-colors">Suit Sets</Link>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    Designer Ethnic Wear
+                    <Link href="/dress-manufacturer" className="hover:text-pink-600 transition-colors">Designer Ethnic Wear</Link>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    Traditional Wear
+                    <Link href="/kaftan-manufacturer" className="hover:text-pink-600 transition-colors">Traditional Wear</Link>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    Custom Designs
+                    <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-pink-600 transition-colors">Custom Designs</Link>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    Private Label
+                    <Link href="/top-kurti-wholesaler-in-jaipur" className="hover:text-pink-600 transition-colors">Private Label</Link>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    Sustainable Ethnic Wear
+                    <Link href="/festive-wear" className="hover:text-pink-600 transition-colors">Sustainable Ethnic Wear</Link>
                   </li>
                 </ul>
               </div>
@@ -551,7 +551,7 @@ export default function EthnicWearManufacturerPage() {
               </p>
 
               <p className="text-gray-700 leading-relaxed">
-                Experience the perfect blend of tradition and modernity with our exclusive collection of ethnic wear. Whether you're looking for comfortable daily wear kurtas, elegant kurta sets for special occasions, or modern suit sets for professional settings, our wholesale ethnic wear collection has something for every occasion and customer preference. Partner with us, India's leading ethnic wear manufacturer, and elevate your retail business with premium quality ethnic apparel that your customers will love.
+                Experience the perfect blend of tradition and modernity with our exclusive collection of ethnic wear. Whether you're looking for comfortable daily wear <Link href="/kurta-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">kurtas</Link>, elegant <Link href="/kurta-sets-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">kurta sets</Link> for special occasions, or modern <Link href="/suit-sets-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">suit sets</Link> for professional settings, our wholesale ethnic wear collection has something for every occasion and customer preference. Partner with us, India's leading ethnic wear manufacturer, and elevate your retail business with premium quality ethnic apparel that your customers will love.
               </p>
             </div>
           </div>
