@@ -402,7 +402,7 @@ function ApproveModal({ isOpen, order, onClose, onGeneratePO, onDeleteOrder }: {
                   </div>
                 </div>
               </div>
-            </div>
+        </div>
 
         {/* Action Buttons */}
             <div className="space-y-3">

@@ -5,8 +5,30 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Minus, Plus, Package, Palette, Scissors, ShoppingCart, Calculator, Loader2, AlertCircle } from "lucide-react";
+import { 
+  Minus, 
+  Plus, 
+  Package, 
+  Palette, 
+  Scissors, 
+  ShoppingCart, 
+  Calculator, 
+  Loader2, 
+  AlertCircle,
+  Phone,
+  FileText,
+  CheckCircle,
+  ArrowLeft,
+  Home,
+  User,
+  MapPin,
+  Calendar,
+  CreditCard,
+  ChevronUp,
+  ChevronDown
+} from "lucide-react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface Product {
   _id: string;
@@ -72,6 +94,7 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
   const [isSubmittingOrder, setIsSubmittingOrder] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState<any>(null);
+  const [isOrderSummaryCollapsed, setIsOrderSummaryCollapsed] = useState(false);
 
 
   // Handle async params
@@ -225,160 +248,262 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
   const summary = calculateOrderSummary();
 
   return (
-    <div className="min-h-screen mt-8 bg-gray-50 pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-[#F9F6F4] to-[#E5E0DC]">
       {!catalog ? (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-          <Card className="w-full max-w-lg">
-            <CardHeader>
-              <CardTitle className="text-xl text-center">📋 Access Catalog</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="phoneNumber" className="block mb-2 text-lg font-medium">
-                    Enter your phone number to view this catalog:
-                  </label>
-                  <Input
-                    id="phoneNumber"
-                    value={phoneNumber}
-                    onChange={e => setPhoneNumber(e.target.value)}
-                    required
-                    placeholder="Phone Number"
-                    className="text-lg h-14"
-                    disabled={isLoading}
-                  />
-                </div>
-                {error && (
-                  <div className="text-red-600 text-lg text-center p-3 bg-red-50 rounded-lg flex items-center gap-2">
-                    <AlertCircle className="w-5 h-5" />
-                    {error}
+        <div className="min-h-screen flex items-center justify-center px-4 py-8">
+          <div className="w-full max-w-md">
+            {/* Header */}
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#D9A8A0] to-[#C08478] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <FileText className="h-8 w-8 text-white" />
+              </div>
+              <h1 className="text-2xl font-bold text-[#2E1B1B] mb-2">Access Catalog</h1>
+              <p className="text-[#4A3A3A] text-sm">Enter your phone number to view this exclusive catalog</p>
+            </div>
+
+            {/* Access Form */}
+            <Card className="border-0 shadow-xl rounded-2xl overflow-hidden">
+              <CardContent className="p-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-3">
+                    <label htmlFor="phoneNumber" className="block text-sm font-semibold text-[#2E1B1B] flex items-center gap-2">
+                      <Phone className="h-4 w-4 text-[#D9A8A0]" />
+                      Phone Number
+                    </label>
+                    <div className="relative">
+                      <Input
+                        id="phoneNumber"
+                        type="tel"
+                        value={phoneNumber}
+                        onChange={e => setPhoneNumber(e.target.value)}
+                        required
+                        placeholder="Enter your 10-digit phone number"
+                        className="h-14 text-lg border-2 border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0] rounded-xl pl-4 pr-4"
+                        disabled={isLoading}
+                        pattern="[0-9]{10}"
+                        maxLength={10}
+                        aria-describedby="phone-help"
+                      />
+                    </div>
+                    <p id="phone-help" className="text-xs text-[#4A3A3A]">
+                      Enter your registered phone number to access the catalog
+                    </p>
                   </div>
-                )}
-                <Button type="submit" className="w-full h-14 text-lg" disabled={isLoading}>
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                      Checking...
-                    </>
-                  ) : (
-                    "Access Catalog"
+
+                  {error && (
+                    <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-start gap-3">
+                      <AlertCircle className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-red-800 font-medium text-sm">Access Denied</p>
+                        <p className="text-red-700 text-sm">{error}</p>
+                      </div>
+                    </div>
                   )}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+
+                  <Button 
+                    type="submit" 
+                    className="w-full h-14 text-lg font-semibold bg-gradient-to-r from-[#D9A8A0] to-[#C08478] hover:from-[#C08478] hover:to-[#B0766A] text-white rounded-xl shadow-lg transition-all duration-200 transform hover:scale-[1.02]" 
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                        Verifying Access...
+                      </>
+                    ) : (
+                      <>
+                        <FileText className="w-5 h-5 mr-2" />
+                        Access Catalog
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+
+            {/* Footer Info */}
+            <div className="text-center mt-6">
+              <p className="text-xs text-[#4A3A3A]">
+                Need help? Contact your sales representative
+              </p>
+            </div>
+          </div>
         </div>
       ) : orderSuccess ? (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-          <Card className="w-full max-w-lg">
-            <CardHeader>
-              <CardTitle className="text-xl text-center text-green-600">✅ Order Submitted Successfully!</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-6">
+        <div className="min-h-screen flex items-center justify-center px-4 py-8">
+          <div className="w-full max-w-md">
+            {/* Success Header */}
+            <div className="text-center mb-8">
+              <div className="w-20 h-20 bg-gradient-to-br from-[#D9A8A0] to-[#C08478] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <CheckCircle className="h-10 w-10 text-white" />
+              </div>
+              <h1 className="text-2xl font-bold text-[#2E1B1B] mb-2">Order Submitted Successfully!</h1>
+              <p className="text-[#4A3A3A] text-sm">Your order has been received and is being processed</p>
+            </div>
+
+            {/* Order Details Card */}
+            <Card className="border-0 shadow-xl rounded-2xl overflow-hidden mb-6">
+              <CardContent className="p-6 space-y-6">
                 {/* Order Number */}
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Order Number</h3>
-                  <p className="text-2xl font-bold text-blue-600">{orderSuccess.orderNumber}</p>
+                <div className="text-center bg-gradient-to-r from-[#F9F6F4] to-[#E5E0DC] rounded-xl p-4">
+                  <h3 className="text-sm font-semibold text-[#4A3A3A] mb-2 flex items-center justify-center gap-2">
+                    <FileText className="h-4 w-4" />
+                    Order Number
+                  </h3>
+                  <p className="text-3xl font-bold text-[#D9A8A0] tracking-wider">{orderSuccess.orderNumber}</p>
                 </div>
 
                 {/* Catalog Info */}
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-gray-900 mb-2">Catalog Details</h4>
-                  <p className="text-gray-700">Name: {orderSuccess.catalogName}</p>
-                  <p className="text-gray-700">Code: {orderSuccess.catalogCode}</p>
+                <div className="bg-[#F9F6F4] rounded-xl p-4">
+                  <h4 className="font-semibold text-[#2E1B1B] mb-3 flex items-center gap-2">
+                    <FileText className="h-4 w-4 text-[#D9A8A0]" />
+                    Catalog Details
+                  </h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-[#4A3A3A]">Name:</span>
+                      <span className="font-medium text-[#2E1B1B]">{orderSuccess.catalogName}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-[#4A3A3A]">Code:</span>
+                      <span className="font-medium text-[#2E1B1B]">{orderSuccess.catalogCode}</span>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Retailer Info */}
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-gray-900 mb-2">Retailer Information</h4>
+                <div className="bg-[#F9F6F4] rounded-xl p-4">
+                  <h4 className="font-semibold text-[#2E1B1B] mb-3 flex items-center gap-2">
+                    <User className="h-4 w-4 text-[#D9A8A0]" />
+                    Retailer Information
+                  </h4>
                   {retailer ? (
-                    <div className="space-y-2">
-                      <p className="text-gray-700">
-                        <span className="font-medium">Business:</span> {retailer.businessName}
-                      </p>
-                      <p className="text-gray-700">
-                        <span className="font-medium">Contact Person:</span> {retailer.contactPerson}
-                      </p>
-                      <p className="text-gray-700">
-                        <span className="font-medium">Phone:</span> {retailer.phoneNumber}
-                      </p>
-                      <p className="text-gray-700">
-                        <span className="font-medium">Address:</span> {retailer.address.street}, {retailer.address.city}, {retailer.address.state} - {retailer.address.pincode}, {retailer.address.country}
-                      </p>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex items-start gap-3">
+                        <Home className="h-4 w-4 text-[#C08478] mt-0.5" />
+                        <div>
+                          <p className="font-medium text-[#2E1B1B]">{retailer.businessName}</p>
+                          <p className="text-[#4A3A3A]">{retailer.contactPerson}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Phone className="h-4 w-4 text-[#C08478] mt-0.5" />
+                        <p className="text-[#4A3A3A]">{retailer.phoneNumber}</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <MapPin className="h-4 w-4 text-[#C08478] mt-0.5" />
+                        <p className="text-[#4A3A3A] text-xs leading-relaxed">
+                          {retailer.address.street}, {retailer.address.city}, {retailer.address.state} - {retailer.address.pincode}, {retailer.address.country}
+                        </p>
+                      </div>
                     </div>
                   ) : (
-                    <p className="text-gray-700">Phone: {orderSuccess.retailerPhone}</p>
+                    <div className="flex items-center gap-3">
+                      <Phone className="h-4 w-4 text-[#C08478]" />
+                      <p className="text-[#4A3A3A]">{orderSuccess.retailerPhone}</p>
+                    </div>
                   )}
                 </div>
 
                 {/* Order Summary */}
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-gray-900 mb-2">Order Summary</h4>
-                  <div className="space-y-2">
+                <div className="bg-gradient-to-r from-[#F9F6F4] to-[#E5E0DC] rounded-xl p-4 border border-[#D9A8A0]">
+                  <h4 className="font-semibold text-[#2E1B1B] mb-3 flex items-center gap-2">
+                    <CreditCard className="h-4 w-4 text-[#D9A8A0]" />
+                    Order Summary
+                  </h4>
+                  <div className="space-y-3 text-sm">
                     <div className="flex justify-between">
-                      <span>Total Styles:</span>
-                      <span className="font-semibold">{orderSuccess.totalProducts}</span>
+                      <span className="text-[#4A3A3A]">Total Styles:</span>
+                      <span className="font-semibold text-[#2E1B1B]">{orderSuccess.totalProducts}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Total Sets:</span>
-                      <span className="font-semibold">{orderSuccess.totalSets}</span>
+                      <span className="text-[#4A3A3A]">Total Sets:</span>
+                      <span className="font-semibold text-[#2E1B1B]">{orderSuccess.totalSets}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Total Pieces:</span>
-                      <span className="font-semibold">{orderSuccess.totalPieces}</span>
+                      <span className="text-[#4A3A3A]">Total Pieces:</span>
+                      <span className="font-semibold text-[#2E1B1B]">{orderSuccess.totalPieces}</span>
                     </div>
-                    <div className="flex justify-between text-lg font-bold text-green-600">
-                      <span>Total Amount <sub className=" text-[10px] font-normal text-gray-500">without GST</sub></span>
-                      <span>₹{orderSuccess.totalAmount.toFixed(2)}</span>
+                    <div className="pt-2 border-t border-[#D9A8A0]">
+                      <div className="flex justify-between text-lg font-bold text-[#C08478]">
+                        <span>Total Amount <span className="text-xs font-normal text-[#4A3A3A]">(without GST)</span></span>
+                        <span>₹{orderSuccess.totalAmount.toFixed(2)}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Action Buttons */}
+            <div className="space-y-3">
+              <Button 
+                onClick={() => {
+                  setOrderSuccess(null);
+                  setOrderItems([]);
+                }}
+                className="w-full h-14 text-lg font-semibold bg-gradient-to-r from-[#D9A8A0] to-[#C08478] hover:from-[#C08478] hover:to-[#B0766A] text-white rounded-xl shadow-lg transition-all duration-200"
+              >
+                <ShoppingCart className="w-5 h-5 mr-2" />
+                Place Another Order
+              </Button>
+              <Button 
+                onClick={() => {
+                  setOrderSuccess(null);
+                  setCatalog(null);
+                  setRetailer(null);
+                  setProducts([]);
+                  setOrderItems([]);
+                }}
+                variant="outline"
+                className="w-full h-14 text-lg font-medium border-2 border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] text-[#2E1B1B] rounded-xl"
+              >
+                <ArrowLeft className="w-5 h-5 mr-2" />
+                Back to Catalog Access
+              </Button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="pb-24">
+          {/* Modern Header with Retailer Info */}
+          <div className="bg-gradient-to-r from-[#D9A8A0] to-[#C08478] text-white sticky top-16 z-50 shadow-lg">
+            <div className="px-4 py-6">
+              <div className="flex flex-col gap-4">
+                {/* Catalog Info */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                      <FileText className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h1 className="text-xl font-bold">{catalog.catalogName}</h1>
+                      <p className="text-white/80 text-sm">Code: {catalog.catalogCode}</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
+                      <User className="h-4 w-4" />
                     </div>
                   </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="space-y-3">
-                  <Button 
-                    onClick={() => {
-                      setOrderSuccess(null);
-                      setOrderItems([]);
-                    }}
-                    className="w-full h-12 bg-blue-600 hover:bg-blue-700"
-                  >
-                    Place Another Order
-                  </Button>
-                  <Button 
-                    onClick={() => {
-                      setOrderSuccess(null);
-                      setCatalog(null);
-                      setRetailer(null);
-                      setProducts([]);
-                      setOrderItems([]);
-                    }}
-                    variant="outline"
-                    className="w-full h-12"
-                  >
-                    Back to Catalog Access
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      ) : (
-        <div className="pb-24">
-          {/* Header with Retailer Info */}
-          <div className="bg-white shadow-sm border-b sticky top-0 z-10">
-            <div className="px-4 py-4">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h1 className="text-xl font-bold text-gray-900">{catalog.catalogName}</h1>
-                  <p className="text-gray-600">Catalog Code: {catalog.catalogCode}</p>
-                </div>
+                {/* Retailer Info */}
                 {retailer && (
-                  <div className="text-right text-sm text-gray-600">
-                    <p className="font-medium">{retailer.businessName}</p>
-                    <p>{retailer.contactPerson}</p>
-                    <p>{retailer.phoneNumber}</p>
+                  <div className="bg-white/10 rounded-xl p-4 backdrop-blur-sm">
+                    <div className="flex items-center justify-between">
+                      <div className="flex-1">
+                        <p className="font-semibold text-lg">{retailer.businessName}</p>
+                        <p className="text-white/80 text-sm">{retailer.contactPerson}</p>
+                        <div className="flex items-center gap-2 mt-1">
+                          <Phone className="h-3 w-3" />
+                          <p className="text-white/80 text-xs">{retailer.phoneNumber}</p>
+                        </div>
+                      </div>
+                      <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                        <Home className="h-5 w-5" />
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
@@ -386,12 +511,16 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
           </div>
 
           {/* Products Grid */}
-          <div className="px-4 py-6 space-y-6">
+          <div className="px-4 mt-4 py-6 space-y-6">
             {products.length === 0 ? (
-              <div className="text-center py-12">
-                <Package className="w-16 h-16 mx-auto text-gray-400 mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">No Products Available</h3>
-                <p className="text-gray-600">This catalog doesn't have any products yet.</p>
+              <div className="text-center py-16 px-4">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#E5E0DC] to-[#D9A8A0] rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Package className="h-10 w-10 text-[#C08478]" />
+                </div>
+                <h3 className="text-xl font-semibold text-[#2E1B1B] mb-3">No Products Available</h3>
+                <p className="text-[#4A3A3A] text-sm max-w-sm mx-auto">
+                  This catalog doesn't have any products yet. Please check back later or contact your sales representative.
+                </p>
               </div>
             ) : (
               products.map((product) => {
@@ -399,10 +528,10 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
                 const quantity = getQuantity(product._id);
                 
                 return (
-                  <Card key={product._id} className="overflow-hidden shadow-lg rounded-2xl border-0">
+                  <Card key={product._id} className="overflow-hidden shadow-xl rounded-2xl border-0 bg-white">
                     <div className="flex flex-col">
-                      {/* Product Image with Overlayed Info */}
-                      <div className="relative aspect-[3/4] w-full bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
+                      {/* Product Image with Modern Overlay */}
+                      <div className="relative aspect-[4/5] w-full bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
                         {primaryImage ? (
                           <>
                             {/* Blurred background image */}
@@ -419,129 +548,168 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
                             <Image
                               src={primaryImage.url}
                               alt={primaryImage.alt || product.itemName}
-                              width={350
-                              }
-                              height={533}
-                              className="relative z-10 object-contain"
+                              width={400}
+                              height={500}
+                              className="relative z-10 object-contain p-4"
                               priority
-                              
                             />
-                            {/* Overlay details */}
-                            <div className="absolute bottom-0 left-0 w-full px-4 pb-3 pt-6 bg-gradient-to-t from-black/80 to-black/0 flex flex-col gap-1 z-20">
-                              <span className="text-lg font-bold text-white drop-shadow-sm">{product.itemName}</span>
-                              <span className="text-xs text-gray-200">Code: {product.itemCode}</span>
-                              <div className="flex gap-2 mt-1">
-                                <Badge variant="secondary" className="flex items-center gap-1 text-xs px-2 py-1 bg-black/40 text-white border-0">
-                                  <Palette className="w-4 h-4" /> Color: {product.color}
+                            {/* Modern overlay details */}
+                            <div className="absolute bottom-0 left-0 w-full px-4 pb-4 pt-8 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col gap-2 z-20">
+                              <div className="flex items-center justify-between">
+                                <div className="flex-1">
+                                  <h3 className="text-lg font-bold text-white drop-shadow-sm line-clamp-1">{product.itemName}</h3>
+                                  <p className="text-xs text-gray-200">Code: {product.itemCode}</p>
+                                </div>
+                                <div className="flex flex-col items-end gap-1">
+                                  <span className="text-lg font-bold text-white">₹{product.pricePerSet}</span>
+                                  <span className="text-xs text-gray-200">per set</span>
+                                </div>
+                              </div>
+                              <div className="flex gap-2 flex-wrap">
+                                <Badge className="flex items-center gap-1 text-xs px-2 py-1 bg-white/20 text-white border-0 backdrop-blur-sm">
+                                  <Palette className="w-3 h-3" /> {product.color}
                                 </Badge>
-                                <Badge variant="secondary" className="flex items-center gap-1 text-xs px-2 py-1 bg-black/40 text-white border-0">
-                                  <Scissors className="w-4 h-4" /> Fabric: {product.fabric}
+                                <Badge className="flex items-center gap-1 text-xs px-2 py-1 bg-white/20 text-white border-0 backdrop-blur-sm">
+                                  <Scissors className="w-3 h-3" /> {product.fabric}
                                 </Badge>
                               </div>
                             </div>
                           </>
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-gray-400">
-                            📷 No Image
+                            <div className="text-center">
+                              <Package className="w-12 h-12 mx-auto mb-2" />
+                              <p className="text-sm">No Image</p>
+                            </div>
                           </div>
                         )}
                       </div>
 
-                      {/* Price Info */}
-                      <div className="flex justify-between items-center px-4 py-3 bg-white border-b border-gray-100">
-                        <span className="text-base font-semibold text-gray-700">₹{product.pricePerPc} <span className="text-xs text-gray-400">per piece</span></span>
-                        <span className="text-lg font-bold text-gray-900">₹{product.pricePerSet} <span className="text-base font-medium text-gray-500">per set (5 pcs)</span></span>
-                      </div>
-
-                      {/* Sizes Info */}
-                      {product.sizes && product.sizes.length > 0 && (
-                        <div className="flex flex-wrap gap-2 px-4 py-2 bg-gray-50 border-b border-gray-100">
-                          <span className="text-xs font-semibold text-gray-700">Available Sizes:</span>
-                          {/* If all sizes are present and in order, show as a range */}
-                          {(() => {
-                            const sizeOrder = ["XS","S","M","L","XL","XXL","3XL","4XL","5XL"];
-                            const productSizes = product.sizes.filter(size => SIZE_MEASUREMENTS[size]);
-                            const sortedSizes = sizeOrder.filter(size => productSizes.includes(size));
-                            if (
-                              productSizes.length > 1 &&
-                              productSizes.length === sortedSizes.length &&
-                              productSizes.every((size, idx) => size === sortedSizes[idx])
-                            ) {
-                              // Show as range
-                              const first = sortedSizes[0];
-                              const last = sortedSizes[sortedSizes.length - 1];
-                              return (
-                                <span className="inline-block bg-blue-100 text-blue-800 rounded-full px-2 py-0.5 text-xs font-semibold border border-blue-200">
-                                  {first}({SIZE_MEASUREMENTS[first]}) - {last}({SIZE_MEASUREMENTS[last]})
-                                </span>
-                              );
-                            } else {
-                              // Show each size with measurement
-                              return productSizes.map((size) => (
-                                <span key={size} className="inline-block bg-blue-100 text-blue-800 rounded-full px-2 py-0.5 text-xs font-semibold border border-blue-200">
-                                  {size}({SIZE_MEASUREMENTS[size] || ""})
-                                </span>
-                              ));
-                            }
-                          })()}
-                        </div>
-                      )}
-
-                      {/* MOQ Info */}
-                      <div className="bg-blue-50 px-4 py-2 flex items-center gap-2 text-blue-800 text-base">
-                        <Package className="w-5 h-5" />
-                        <span>MOQ: 1 set = 5 pieces (S to XXL)</span>
-                      </div>
-
-                      {/* Quantity Selector */}
-                      <div className="flex flex-col gap-2 px-4 py-4">
-                        <label className="text-base font-semibold text-gray-800 mb-1">How many sets you want?</label>
-                        <div className="flex items-center gap-3">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => updateQuantity(product._id, quantity - 1)}
-                            disabled={quantity === 0}
-                            className="w-14 h-14 p-0 text-2xl"
-                            aria-label="Decrease quantity"
-                          >
-                            <Minus className="w-6 h-6" />
-                          </Button>
-                          <span className="text-2xl font-bold min-w-[2.5rem] text-center">{quantity}</span>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => updateQuantity(product._id, quantity + 1)}
-                            className="w-14 h-14 p-0 text-2xl"
-                            aria-label="Increase quantity"
-                          >
-                            <Plus className="w-6 h-6" />
-                          </Button>
-                        </div>
-                      </div>
-
-                      {/* Add to Order Button */}
-                      <div className="px-4 pb-4">
-                        <Button
-                          onClick={() => updateQuantity(product._id, quantity + 1)}
-                          className="w-full h-14 text-lg bg-green-600 hover:bg-green-700 text-white flex items-center justify-center gap-2 rounded-xl shadow-md"
-                          variant="default"
-                        >
-                          <ShoppingCart className="w-6 h-6" />
-                          {quantity > 0 ? `Update Order (${quantity} sets)` : "Add to Order"}
-                        </Button>
-                      </div>
-
-                      {/* Current Item Summary */}
-                      {quantity > 0 && (
-                        <div className="bg-green-50 px-4 py-3 rounded-b-xl">
-                          <div className="text-base text-green-800 flex justify-between">
-                            <span>Sets: {quantity}</span>
-                            <span>Pieces: {quantity * 5}</span>
-                            <span className="font-semibold">Total: ₹{quantity * product.pricePerSet}</span>
+                      {/* Product Details */}
+                      <div className="p-4 space-y-4">
+                        {/* Price Info */}
+                        <div className="flex justify-between items-center bg-gradient-to-r from-[#F9F6F4] to-[#E5E0DC] rounded-xl p-3">
+                          <div className="text-center">
+                            <p className="text-sm text-[#4A3A3A]">Per Piece</p>
+                            <p className="text-lg font-bold text-[#2E1B1B]">₹{product.pricePerPc}</p>
+                          </div>
+                          <div className="w-px h-8 bg-[#D9A8A0]"></div>
+                          <div className="text-center">
+                            <p className="text-sm text-[#4A3A3A]">Per Set (5 pcs)</p>
+                            <p className="text-xl font-bold text-[#C08478]">₹{product.pricePerSet}</p>
                           </div>
                         </div>
-                      )}
+
+                        {/* Sizes Info */}
+                        {product.sizes && product.sizes.length > 0 && (
+                          <div className="bg-[#F9F6F4] rounded-xl p-3">
+                            <div className="flex items-center gap-2 mb-2">
+                              <Package className="w-4 h-4 text-[#D9A8A0]" />
+                              <span className="text-sm font-semibold text-[#2E1B1B]">Available Sizes</span>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {(() => {
+                                const sizeOrder = ["XS","S","M","L","XL","XXL","3XL","4XL","5XL"];
+                                const productSizes = product.sizes.filter(size => SIZE_MEASUREMENTS[size]);
+                                const sortedSizes = sizeOrder.filter(size => productSizes.includes(size));
+                                if (
+                                  productSizes.length > 1 &&
+                                  productSizes.length === sortedSizes.length &&
+                                  productSizes.every((size, idx) => size === sortedSizes[idx])
+                                ) {
+                                  const first = sortedSizes[0];
+                                  const last = sortedSizes[sortedSizes.length - 1];
+                                  return (
+                                    <Badge className="bg-[#D9A8A0] text-white border-[#C08478]">
+                                      {first}({SIZE_MEASUREMENTS[first]}) - {last}({SIZE_MEASUREMENTS[last]})
+                                    </Badge>
+                                  );
+                                } else {
+                                  return productSizes.map((size) => (
+                                    <Badge key={size} className="bg-[#D9A8A0] text-white border-[#C08478]">
+                                      {size}({SIZE_MEASUREMENTS[size] || ""})
+                                    </Badge>
+                                  ));
+                                }
+                              })()}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* MOQ Info */}
+                        <div className="bg-gradient-to-r from-[#F9F6F4] to-[#E5E0DC] rounded-xl p-3 border border-[#D9A8A0]">
+                          <div className="flex items-center gap-2">
+                            <Package className="w-4 h-4 text-[#D9A8A0]" />
+                            <span className="text-sm font-medium text-[#2E1B1B]">MOQ: 1 set = 5 pieces (S to XXL)</span>
+                          </div>
+                        </div>
+
+                        {/* Quantity Selector */}
+                        <div className="space-y-3">
+                          <label className="text-sm font-semibold text-[#2E1B1B] flex items-center gap-2">
+                            <ShoppingCart className="w-4 h-4 text-[#D9A8A0]" />
+                            How many sets do you want?
+                          </label>
+                          <div className="flex items-center justify-center gap-4">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => updateQuantity(product._id, quantity - 1)}
+                              disabled={quantity === 0}
+                              className="w-12 h-12 p-0 rounded-xl border-2 hover:border-[#D9A8A0] hover:bg-[#F9F6F4]"
+                              aria-label="Decrease quantity"
+                            >
+                              <Minus className="w-5 h-5" />
+                            </Button>
+                            <div className="min-w-[3rem] text-center">
+                              <span className="text-2xl font-bold text-[#2E1B1B]">{quantity}</span>
+                            </div>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => updateQuantity(product._id, quantity + 1)}
+                              className="w-12 h-12 p-0 rounded-xl border-2 hover:border-[#D9A8A0] hover:bg-[#F9F6F4]"
+                              aria-label="Increase quantity"
+                            >
+                              <Plus className="w-5 h-5" />
+                            </Button>
+                          </div>
+                        </div>
+
+                        {/* Add to Order Button */}
+                        <Button
+                          onClick={() => updateQuantity(product._id, quantity + 1)}
+                          className={cn(
+                            "w-full h-14 text-lg font-semibold rounded-xl shadow-lg transition-all duration-200 transform hover:scale-[1.02]",
+                            quantity > 0
+                              ? "bg-gradient-to-r from-[#C08478] to-[#B0766A] hover:from-[#B0766A] hover:to-[#A0685C] text-white"
+                              : "bg-gradient-to-r from-[#D9A8A0] to-[#C08478] hover:from-[#C08478] hover:to-[#B0766A] text-white"
+                          )}
+                        >
+                          <ShoppingCart className="w-5 h-5 mr-2" />
+                          {quantity > 0 ? `Update Order (${quantity} sets)` : "Add to Order"}
+                        </Button>
+
+                        {/* Current Item Summary */}
+                        {quantity > 0 && (
+                          <div className="bg-gradient-to-r from-[#F9F6F4] to-[#E5E0DC] rounded-xl p-3 border border-[#D9A8A0]">
+                            <div className="grid grid-cols-3 gap-2 text-sm">
+                              <div className="text-center">
+                                <p className="text-[#4A3A3A]">Sets</p>
+                                <p className="font-bold text-[#C08478]">{quantity}</p>
+                              </div>
+                              <div className="text-center">
+                                <p className="text-[#4A3A3A]">Pieces</p>
+                                <p className="font-bold text-[#C08478]">{quantity * 5}</p>
+                              </div>
+                              <div className="text-center">
+                                <p className="text-[#4A3A3A]">Total</p>
+                                <p className="font-bold text-[#C08478]">₹{quantity * product.pricePerSet}</p>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </Card>
                 );
@@ -549,46 +717,79 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
             )}
           </div>
 
-          {/* Sticky Order Summary */}
+          {/* Modern Sticky Order Summary */}
           {orderItems.length > 0 && (
-            <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-20">
+            <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-[#E5E0DC] shadow-2xl z-20 backdrop-blur-sm">
               <div className="px-4 py-4">
-                <div className="space-y-3">
-                  {/* Summary Details */}
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="flex justify-between">
-                      <span>Styles:</span>
-                      <span className="font-semibold">{summary.totalProducts}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Sets:</span>
-                      <span className="font-semibold">{summary.totalSets}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Pieces:</span>
-                      <span className="font-semibold">{summary.totalPieces}</span>
-                    </div>
-                    <div className="flex justify-between col-span-2 text-lg font-bold text-green-600">
-                      <span>Total Amount <sub className=" text-[10px] font-normal text-gray-500">without GST</sub> :</span>
-                      <span>₹{summary.totalAmount.toFixed(2)}</span>
+                <div className="space-y-4">
+                  {/* Collapse Toggle Button */}
+                  <div className="flex justify-center">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setIsOrderSummaryCollapsed(!isOrderSummaryCollapsed)}
+                      className="h-8 px-3 bg-[#F9F6F4] hover:bg-[#E5E0DC] text-[#2E1B1B] rounded-full shadow-sm"
+                    >
+                      {isOrderSummaryCollapsed ? (
+                        <>
+                          <ChevronUp className="w-4 h-4 mr-1" />
+                          Show Summary
+                        </>
+                      ) : (
+                        <>
+                          <ChevronDown className="w-4 h-4 mr-1" />
+                          Hide Summary
+                        </>
+                      )}
+                    </Button>
+                  </div>
+
+                  {/* Summary Details - Collapsible */}
+                  <div className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                    isOrderSummaryCollapsed ? 'max-h-0 opacity-0' : 'max-h-96 opacity-100'
+                  }`}>
+                    <div className="bg-gradient-to-r from-[#F9F6F4] to-[#E5E0DC] rounded-xl p-4">
+                      <div className="grid grid-cols-3 gap-4 text-sm">
+                        <div className="text-center">
+                          <p className="text-[#4A3A3A] text-xs">Styles</p>
+                          <p className="font-bold text-[#2E1B1B] text-lg">{summary.totalProducts}</p>
+                        </div>
+                        <div className="text-center">
+                          <p className="text-[#4A3A3A] text-xs">Sets</p>
+                          <p className="font-bold text-[#2E1B1B] text-lg">{summary.totalSets}</p>
+                        </div>
+                        <div className="text-center">
+                          <p className="text-[#4A3A3A] text-xs">Pieces</p>
+                          <p className="font-bold text-[#2E1B1B] text-lg">{summary.totalPieces}</p>
+                        </div>
+                      </div>
+                      <div className="mt-3 pt-3 border-t border-[#D9A8A0]">
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <p className="text-lg font-bold text-[#2E1B1B]">Total Amount</p>
+                            <p className="text-xs text-[#4A3A3A]">(without GST)</p>
+                          </div>
+                          <p className="text-2xl font-bold text-[#C08478]">₹{summary.totalAmount.toFixed(2)}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Submit Button */}
+                  {/* Submit Button - Always Visible */}
                   <Button
                     onClick={handleSubmitOrder}
-                    className="w-full h-14 text-lg bg-green-600 hover:bg-green-700"
+                    className="w-full h-16 text-lg font-semibold bg-gradient-to-r from-[#D9A8A0] to-[#C08478] hover:from-[#C08478] hover:to-[#B0766A] text-white rounded-xl shadow-lg transition-all duration-200 transform hover:scale-[1.02]"
                     disabled={isSubmittingOrder}
                   >
                     {isSubmittingOrder ? (
                       <>
-                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                        Submitting...
+                        <Loader2 className="w-6 h-6 mr-2 animate-spin" />
+                        Submitting Order...
                       </>
                     ) : (
                       <>
-                        <ShoppingCart className="w-5 h-5 mr-2" />
-                        Submit Order
+                        <ShoppingCart className="w-6 h-6 mr-2" />
+                        Submit Order ({summary.totalSets} sets)
                       </>
                     )}
                   </Button>
