@@ -8,7 +8,10 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
+import { Package, Image, Plus, X, Check } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface ProductModalProps {
   onProductCreated: () => void;
@@ -213,59 +216,77 @@ export default function ProductModal({ onProductCreated, trigger }: ProductModal
       <DialogTrigger asChild>
         {trigger || <Button>Add New Product</Button>}
       </DialogTrigger>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle>Create New Product</DialogTitle>
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogHeader className="pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-[#D9A8A0] to-[#C08478] rounded-lg flex items-center justify-center">
+              <Package className="h-5 w-5 text-white" />
+            </div>
+            <div>
+              <DialogTitle className="text-[#2E1B1B]">Create New Product</DialogTitle>
+              <p className="text-sm text-[#4A3A3A] mt-1">Add a new product to your catalog</p>
+            </div>
+          </div>
         </DialogHeader>
         
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Basic Information */}
+          <div className="bg-[#F9F6F4] rounded-lg p-4">
+            <h3 className="font-semibold text-[#2E1B1B] mb-4 flex items-center gap-2">
+              <Package className="h-4 w-4 text-[#D9A8A0]" />
+              Basic Information
+            </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="itemCode">Item Code *</Label>
+                <Label htmlFor="itemCode" className="text-[#2E1B1B] font-medium">Item Code *</Label>
               <Input
                 id="itemCode"
                 value={formData.itemCode}
                 onChange={(e) => handleInputChange("itemCode", e.target.value)}
                 placeholder="e.g., KUR001"
+                  className="border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0]"
                 required
               />
             </div>
             
             <div>
-              <Label htmlFor="itemName">Item Name *</Label>
+                <Label htmlFor="itemName" className="text-[#2E1B1B] font-medium">Item Name *</Label>
               <Input
                 id="itemName"
                 value={formData.itemName}
                 onChange={(e) => handleInputChange("itemName", e.target.value)}
                 placeholder="e.g., Cotton Kurta"
+                  className="border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0]"
                 required
               />
             </div>
             
             <div>
-              <Label htmlFor="color">Color *</Label>
+                <Label htmlFor="color" className="text-[#2E1B1B] font-medium">Color *</Label>
               <Input
                 id="color"
                 value={formData.color}
                 onChange={(e) => handleInputChange("color", e.target.value)}
                 placeholder="e.g., Blue"
+                  className="border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0]"
                 required
               />
             </div>
             
             <div>
-              <Label htmlFor="fabric">Fabric *</Label>
+                <Label htmlFor="fabric" className="text-[#2E1B1B] font-medium">Fabric *</Label>
               <Input
                 id="fabric"
                 value={formData.fabric}
                 onChange={(e) => handleInputChange("fabric", e.target.value)}
                 placeholder="e.g., Cotton"
+                  className="border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0]"
                 required
               />
             </div>
             
             <div>
-              <Label htmlFor="pricePerPc">Price per Piece (₹) *</Label>
+                <Label htmlFor="pricePerPc" className="text-[#2E1B1B] font-medium">Price per Piece (₹) *</Label>
               <Input
                 id="pricePerPc"
                 type="number"
@@ -275,12 +296,13 @@ export default function ProductModal({ onProductCreated, trigger }: ProductModal
                 onChange={(e) => handleInputChange("pricePerPc", e.target.value)}
                 onBlur={calculatePricePerSet}
                 placeholder="0.00"
+                  className="border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0]"
                 required
               />
             </div>
             
             <div>
-              <Label htmlFor="pricePerSet">Price per Set (₹) *</Label>
+                <Label htmlFor="pricePerSet" className="text-[#2E1B1B] font-medium">Price per Set (₹) *</Label>
               <Input
                 id="pricePerSet"
                 type="number"
@@ -289,15 +311,16 @@ export default function ProductModal({ onProductCreated, trigger }: ProductModal
                 value={formData.pricePerSet}
                 onChange={(e) => handleInputChange("pricePerSet", e.target.value)}
                 placeholder="0.00"
+                  className="border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0]"
                 required
               />
-              <p className="text-xs text-gray-500">1 Set = 5 pieces</p>
+                <p className="text-xs text-[#4A3A3A] mt-1">1 Set = 5 pieces</p>
             </div>
             
             <div>
-              <Label htmlFor="category">Category *</Label>
+                <Label htmlFor="category" className="text-[#2E1B1B] font-medium">Category *</Label>
               <Select value={formData.category} onValueChange={(value) => handleInputChange("category", value)}>
-                <SelectTrigger>
+                  <SelectTrigger className="border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0]">
                   <SelectValue placeholder="Select category" />
                 </SelectTrigger>
                 <SelectContent>
@@ -308,12 +331,16 @@ export default function ProductModal({ onProductCreated, trigger }: ProductModal
                   ))}
                 </SelectContent>
               </Select>
+              </div>
             </div>
           </div>
 
           {/* Size Selection */}
-          <div className="space-y-3">
-            <Label className="text-base font-medium">Available Sizes *</Label>
+          <div className="bg-[#F9F6F4] rounded-lg p-4">
+            <h3 className="font-semibold text-[#2E1B1B] mb-4 flex items-center gap-2">
+              <Package className="h-4 w-4 text-[#D9A8A0]" />
+              Available Sizes *
+            </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {AVAILABLE_SIZES.map((size) => (
                 <div key={size} className="flex items-center space-x-2">
@@ -321,15 +348,16 @@ export default function ProductModal({ onProductCreated, trigger }: ProductModal
                     id={`size-${size}`}
                     checked={formData.sizes.includes(size)}
                     onChange={(e) => handleSizeChange(size, e.target.checked)}
+                    className="border-[#E5E0DC] data-[state=checked]:bg-[#D9A8A0] data-[state=checked]:border-[#D9A8A0]"
                   />
-                  <Label htmlFor={`size-${size}`} className="text-sm font-medium">
+                  <Label htmlFor={`size-${size}`} className="text-sm font-medium text-[#2E1B1B]">
                     {size}
                   </Label>
                 </div>
               ))}
             </div>
             {formData.sizes.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-2">
+              <div className="flex flex-wrap gap-2 mt-3">
                 {formData.sizes.map((size) => {
                   const sizeMap: { [key: string]: string } = {
                     'XS': '34"',
@@ -341,9 +369,9 @@ export default function ProductModal({ onProductCreated, trigger }: ProductModal
                     '3XL': '46"'
                   };
                   return (
-                    <span key={size} className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
+                    <Badge key={size} className="bg-[#D9A8A0] text-[#2E1B1B] font-medium">
                       {size}({sizeMap[size]})
-                    </span>
+                    </Badge>
                   );
                 })}
               </div>
@@ -351,75 +379,89 @@ export default function ProductModal({ onProductCreated, trigger }: ProductModal
           </div>
 
           {/* Product Images Section */}
-          <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <Label className="text-base font-medium">Product Images</Label>
+          <div className="bg-[#F9F6F4] rounded-lg p-4">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="font-semibold text-[#2E1B1B] flex items-center gap-2">
+                <Image className="h-4 w-4 text-[#D9A8A0]" />
+                Product Images
+              </h3>
               <Button 
                 type="button" 
                 variant="outline" 
                 size="sm" 
                 onClick={addImage}
+                className="border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] text-[#2E1B1B]"
               >
+                <Plus className="h-4 w-4 mr-1" />
                 Add Image
               </Button>
             </div>
             
             {formData.images.map((image, index) => (
-              <div key={index} className="border rounded-lg p-4 space-y-3">
+              <div key={index} className="border border-[#E5E0DC] rounded-lg p-4 space-y-3 bg-white mb-3">
                 <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-2">
-                    <Label className="text-sm font-medium">Image {index + 1}</Label>
+                  <div className="flex items-center gap-3">
+                    <Label className="text-sm font-medium text-[#2E1B1B]">Image {index + 1}</Label>
                     <div className="flex items-center gap-2">
                       <Checkbox
                         id={`primary-${index}`}
                         checked={image.isPrimary}
                         onChange={() => handlePrimaryImageChange(index)}
+                        className="border-[#E5E0DC] data-[state=checked]:bg-[#D9A8A0] data-[state=checked]:border-[#D9A8A0]"
                       />
-                      <Label htmlFor={`primary-${index}`} className="text-xs text-gray-600">
+                      <Label htmlFor={`primary-${index}`} className="text-xs text-[#4A3A3A]">
                         Primary
                       </Label>
                     </div>
+                    {image.isPrimary && (
+                      <Badge className="bg-[#D9A8A0] text-[#2E1B1B] text-xs">
+                        Primary
+                      </Badge>
+                    )}
                   </div>
                   {formData.images.length > 1 && (
                     <Button
                       type="button"
-                      variant="destructive"
+                      variant="outline"
                       size="sm"
                       onClick={() => removeImage(index)}
+                      className="border-red-200 hover:border-red-400 hover:bg-red-50 text-red-600"
                     >
-                      Remove
+                      <X className="h-4 w-4" />
                     </Button>
                   )}
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div>
-                    <Label htmlFor={`image-url-${index}`} className="text-sm">Image URL *</Label>
+                    <Label htmlFor={`image-url-${index}`} className="text-sm text-[#2E1B1B] font-medium">Image URL *</Label>
                     <Input
                       id={`image-url-${index}`}
                       value={image.url}
                       onChange={(e) => handleImageChange(index, 'url', e.target.value)}
                       placeholder="https://example.com/image.jpg"
+                      className="border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0]"
                       required
                     />
                   </div>
                   
                   <div>
-                    <Label htmlFor={`image-alt-${index}`} className="text-sm">Alt Text</Label>
+                    <Label htmlFor={`image-alt-${index}`} className="text-sm text-[#2E1B1B] font-medium">Alt Text</Label>
                     <Input
                       id={`image-alt-${index}`}
                       value={image.alt}
                       onChange={(e) => handleImageChange(index, 'alt', e.target.value)}
                       placeholder="Product description for accessibility"
+                      className="border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0]"
                     />
                   </div>
                 </div>
                 
                 {/* Image Preview */}
                 {image.url && (
-                  <div className="mt-2">
-                    <Label className="text-sm text-gray-600">Preview:</Label>
-                    <div className="mt-1 border rounded overflow-hidden">
+                  <div className="mt-3">
+                    <Label className="text-sm text-[#4A3A3A] font-medium">Preview:</Label>
+                    <div className="mt-1 border border-[#E5E0DC] rounded-lg overflow-hidden">
                       <img 
                         src={image.url} 
                         alt={image.alt || "Product preview"}
@@ -434,10 +476,13 @@ export default function ProductModal({ onProductCreated, trigger }: ProductModal
                         }}
                       />
                       <div 
-                        className="w-full h-32 bg-gray-100 flex items-center justify-center text-gray-500 text-sm"
+                        className="w-full h-32 bg-[#F9F6F4] flex items-center justify-center text-[#4A3A3A] text-sm"
                         style={{ display: 'none' }}
                       >
-                        Image not found
+                        <div className="text-center">
+                          <Image className="h-6 w-6 mx-auto mb-1 text-[#4A3A3A] opacity-50" />
+                          <span>Image not found</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -446,18 +491,29 @@ export default function ProductModal({ onProductCreated, trigger }: ProductModal
             ))}
             
             {formData.images.length === 0 && (
-              <div className="text-center py-8 text-gray-500 border-2 border-dashed rounded-lg">
-                <p>No images added yet</p>
+              <div className="text-center py-8 text-[#4A3A3A] border-2 border-dashed border-[#E5E0DC] rounded-lg bg-white">
+                <Image className="h-8 w-8 mx-auto mb-2 text-[#4A3A3A] opacity-50" />
+                <p className="font-medium">No images added yet</p>
                 <p className="text-sm">Click "Add Image" to add product images</p>
               </div>
             )}
           </div>
 
-          <div className="flex justify-end gap-2">
-            <Button type="button" variant="outline" onClick={() => setOpen(false)}>
+          {/* Action Buttons */}
+          <div className="flex gap-3 pt-4 border-t border-[#E5E0DC]">
+            <Button 
+              type="button" 
+              variant="outline" 
+              onClick={() => setOpen(false)}
+              className="flex-1 border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4]"
+            >
               Cancel
             </Button>
-            <Button type="submit" disabled={isLoading}>
+            <Button 
+              type="submit" 
+              disabled={isLoading}
+              className="flex-1 bg-[#D9A8A0] hover:bg-[#C08478] text-white font-medium"
+            >
               {isLoading ? "Creating..." : "Create Product"}
             </Button>
           </div>

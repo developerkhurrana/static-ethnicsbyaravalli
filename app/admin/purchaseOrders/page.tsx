@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import AdminLayout from "@/components/admin/admin-layout";
+import ModernAdminLayout from "@/components/admin/modern-admin-layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Search, Filter, Eye, Printer, Send, CheckCircle, FileText, Calendar, User, Building, Package, DollarSign } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface PurchaseOrder {
   _id: string;
@@ -197,20 +200,60 @@ export default function AdminPurchaseOrdersPage() {
       case "GENERATED":
         return (
           <>
-            <Button variant="outline" size="sm" onClick={() => handlePrintPO(po)}>Print PO</Button>
-            <Button variant="default" size="sm" onClick={() => handleMarkAsSent(po)}>Mark as Sent</Button>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={() => handlePrintPO(po)}
+              className="border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] text-[#2E1B1B]"
+            >
+              <Printer className="h-4 w-4 mr-1" />
+              Print PO
+            </Button>
+            <Button 
+              variant="default" 
+              size="sm" 
+              onClick={() => handleMarkAsSent(po)}
+              className="bg-gradient-to-r from-[#D9A8A0] to-[#C08478] hover:from-[#C08478] hover:to-[#B0766A] text-white"
+            >
+              <Send className="h-4 w-4 mr-1" />
+              Mark as Sent
+            </Button>
           </>
         );
       case "SENT":
         return (
           <>
-            <Button variant="outline" size="sm" onClick={() => handlePrintPO(po)}>Print PO</Button>
-            <Button variant="default" size="sm" onClick={() => handleMarkAsAcknowledged(po)}>Mark as Acknowledged</Button>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={() => handlePrintPO(po)}
+              className="border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] text-[#2E1B1B]"
+            >
+              <Printer className="h-4 w-4 mr-1" />
+              Print PO
+            </Button>
+            <Button 
+              variant="default" 
+              size="sm" 
+              onClick={() => handleMarkAsAcknowledged(po)}
+              className="bg-gradient-to-r from-[#D9A8A0] to-[#C08478] hover:from-[#C08478] hover:to-[#B0766A] text-white"
+            >
+              <CheckCircle className="h-4 w-4 mr-1" />
+              Mark as Acknowledged
+            </Button>
           </>
         );
       case "ACKNOWLEDGED":
         return (
-          <Button variant="outline" size="sm" onClick={() => handlePrintPO(po)}>Print PO</Button>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={() => handlePrintPO(po)}
+            className="border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] text-[#2E1B1B]"
+          >
+            <Printer className="h-4 w-4 mr-1" />
+            Print PO
+          </Button>
         );
       default:
         return null;
@@ -244,44 +287,57 @@ export default function AdminPurchaseOrdersPage() {
 
   if (isLoading) {
     return (
-      <AdminLayout>
-        <div className="text-center">Loading purchase orders...</div>
-      </AdminLayout>
+      <ModernAdminLayout>
+        <div className="flex items-center justify-center h-64">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#D9A8A0] mx-auto mb-4"></div>
+            <p className="text-[#4A3A3A]">Loading purchase orders...</p>
+          </div>
+        </div>
+      </ModernAdminLayout>
     );
   }
 
   return (
-    <AdminLayout>
+    <ModernAdminLayout>
       <div className="space-y-6">
+        {/* Header */}
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Purchase Orders</h1>
-            <p className="text-gray-600 mt-1">
+            <h1 className="text-2xl font-bold text-[#2E1B1B]">Purchase Orders</h1>
+            <p className="text-[#4A3A3A] mt-1 flex items-center gap-2">
+              <FileText className="h-4 w-4" />
               Manage and track purchase orders
             </p>
           </div>
         </div>
 
-        {/* Filters */}
-        <Card>
+        {/* Search and Filters */}
+        <Card className="border-[#E5E0DC] bg-[#F9F6F4]">
           <CardContent className="pt-6">
             <div className="flex gap-4">
-              <Input
-                placeholder="Search POs by number, business name, or contact person..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="flex-1"
-              />
-              <select
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="all">All Status</option>
-                <option value="GENERATED">Generated</option>
-                <option value="SENT">Sent</option>
-                <option value="ACKNOWLEDGED">Acknowledged</option>
-              </select>
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#4A3A3A] h-4 w-4 pointer-events-none" />
+                <Input
+                  placeholder="Search POs by number, business name, or contact person..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="!pl-10 !pr-4 border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0]"
+                />
+              </div>
+              <div className="relative">
+                <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#4A3A3A] h-4 w-4 pointer-events-none" />
+                <select
+                  value={statusFilter}
+                  onChange={(e) => setStatusFilter(e.target.value)}
+                  className="!pl-10 !pr-8 py-2 border border-[#E5E0DC] rounded-md focus:outline-none focus:ring-2 focus:ring-[#D9A8A0] focus:border-[#D9A8A0] bg-white text-[#2E1B1B] min-w-[140px]"
+                >
+                  <option value="all">All Status</option>
+                  <option value="GENERATED">Generated</option>
+                  <option value="SENT">Sent</option>
+                  <option value="ACKNOWLEDGED">Acknowledged</option>
+                </select>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -289,51 +345,82 @@ export default function AdminPurchaseOrdersPage() {
         {/* Purchase Orders List */}
         <div className="space-y-4">
           {filteredPurchaseOrders.map((po) => (
-            <Card key={po._id} className="hover:shadow-md transition-shadow">
-              <CardHeader>
+            <Card key={po._id} className="border-[#E5E0DC] shadow-sm hover:shadow-md transition-all duration-200">
+              <CardHeader className="pb-4">
                 <div className="flex justify-between items-start">
-                  <div>
-                    <CardTitle className="text-lg">PO #{po.poNumber}</CardTitle>
-                    <CardDescription className="text-sm">
-                      {po.retailerInfo.businessName} • {po.retailerInfo.contactPerson}
-                    </CardDescription>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-8 h-8 bg-gradient-to-br from-[#D9A8A0] to-[#C08478] rounded-lg flex items-center justify-center">
+                        <FileText className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                        <CardTitle className="text-lg text-[#2E1B1B]">PO #{po.poNumber}</CardTitle>
+                        <CardDescription className="text-sm text-[#4A3A3A] flex items-center gap-1">
+                          <Building className="h-3 w-3" />
+                          {po.retailerInfo.businessName} • {po.retailerInfo.contactPerson}
+                        </CardDescription>
+                      </div>
+                    </div>
                   </div>
-                  <div className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(po.status)}`}>
+                  <Badge 
+                    className={cn(
+                      "px-3 py-1 text-xs font-medium",
+                      po.status === "GENERATED" && "bg-blue-100 text-blue-800 border-blue-200",
+                      po.status === "SENT" && "bg-yellow-100 text-yellow-800 border-yellow-200",
+                      po.status === "ACKNOWLEDGED" && "bg-green-100 text-green-800 border-green-200"
+                    )}
+                  >
                     {po.status}
-                  </div>
+                  </Badge>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                  <div className="text-sm">
-                    <span className="text-gray-600">Total Pieces:</span>
-                    <span className="font-medium ml-2">{po.poSummary.totalPcs}</span>
+                  <div className="flex items-center gap-2 text-sm">
+                    <Package className="h-4 w-4 text-[#D9A8A0]" />
+                    <span className="text-[#4A3A3A]">Total Pieces:</span>
+                    <span className="font-semibold text-[#2E1B1B]">{po.poSummary.totalPcs}</span>
                   </div>
-                  <div className="text-sm">
-                    <span className="text-gray-600">Total Sets:</span>
-                    <span className="font-medium ml-2">{po.poSummary.totalSets}</span>
+                  <div className="flex items-center gap-2 text-sm">
+                    <FileText className="h-4 w-4 text-[#D9A8A0]" />
+                    <span className="text-[#4A3A3A]">Total Sets:</span>
+                    <span className="font-semibold text-[#2E1B1B]">{po.poSummary.totalSets}</span>
                   </div>
-                  <div className="text-sm">
-                    <span className="text-gray-600">Total Amount:</span>
-                    <span className="font-medium ml-2">₹{po.poSummary.totalAmountAfterGST.toLocaleString()}</span>
+                  <div className="flex items-center gap-2 text-sm">
+                    <DollarSign className="h-4 w-4 text-[#D9A8A0]" />
+                    <span className="text-[#4A3A3A]">Total Amount:</span>
+                    <span className="font-semibold text-[#2E1B1B]">₹{po.poSummary.totalAmountAfterGST.toLocaleString()}</span>
                   </div>
-                  <div className="text-sm">
-                    <span className="text-gray-600">Generated By:</span>
-                    <span className="font-medium ml-2">{po.generatedBy}</span>
+                  <div className="flex items-center gap-2 text-sm">
+                    <User className="h-4 w-4 text-[#D9A8A0]" />
+                    <span className="text-[#4A3A3A]">Generated By:</span>
+                    <span className="font-semibold text-[#2E1B1B]">{po.generatedBy}</span>
                   </div>
                 </div>
                 
-                <div className="flex justify-between items-center">
-                  <div className="text-sm text-gray-500">
-                    Created: {new Date(po.createdAt).toLocaleDateString()}
+                <div className="flex justify-between items-center pt-4 border-t border-[#E5E0DC]">
+                  <div className="flex items-center gap-4 text-sm text-[#4A3A3A]">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="h-3 w-3" />
+                      Created: {new Date(po.createdAt).toLocaleDateString()}
+                    </div>
                     {po.sentAt && (
-                      <span className="ml-4">
+                      <div className="flex items-center gap-1">
+                        <Send className="h-3 w-3" />
                         Sent: {new Date(po.sentAt).toLocaleDateString()}
-                      </span>
+                      </div>
                     )}
                   </div>
                   <div className="flex gap-2">
-                    <Button variant="outline" size="sm" onClick={() => openPODetails(po)}>View Details</Button>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => openPODetails(po)}
+                      className="border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] text-[#2E1B1B]"
+                    >
+                      <Eye className="h-4 w-4 mr-1" />
+                      View Details
+                    </Button>
                     {getStatusActions(po)}
                   </div>
                 </div>
@@ -343,79 +430,173 @@ export default function AdminPurchaseOrdersPage() {
         </div>
 
         {filteredPurchaseOrders.length === 0 && (
-          <Card>
-            <CardContent className="pt-6 text-center text-gray-500">
-              {searchTerm || statusFilter !== "all" 
-                ? "No purchase orders found matching your filters." 
-                : "No purchase orders available."}
+          <Card className="border-[#E5E0DC] shadow-sm">
+            <CardContent className="p-12 text-center">
+              <FileText className="h-12 w-12 text-[#D9A8A0] mx-auto mb-4" />
+              <p className="text-[#4A3A3A] text-lg font-medium mb-2">
+                {searchTerm || statusFilter !== "all" 
+                  ? "No purchase orders found" 
+                  : "No purchase orders available"}
+              </p>
+              <p className="text-[#4A3A3A] text-sm">
+                {searchTerm || statusFilter !== "all" 
+                  ? "Try adjusting your search or filter criteria." 
+                  : "Purchase orders will appear here once created."}
+              </p>
             </CardContent>
           </Card>
         )}
       </div>
 
       <Dialog open={isDetailsModalOpen} onOpenChange={setIsDetailsModalOpen}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
-          <DialogTitle>
-            PO Details{selectedPO ? ` - #${selectedPO.poNumber}` : ""}
-          </DialogTitle>
-          <DialogDescription>
-            View all details for this purchase order, including retailer info, items, and summary.
-          </DialogDescription>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0">
+          <div className="p-6 border-b border-[#E5E0DC]">
+            <DialogTitle className="text-xl font-bold text-[#2E1B1B] flex items-center gap-3">
+              <div className="w-8 h-8 bg-gradient-to-br from-[#D9A8A0] to-[#C08478] rounded-lg flex items-center justify-center">
+                <FileText className="h-4 w-4 text-white" />
+              </div>
+              PO Details{selectedPO ? ` - #${selectedPO.poNumber}` : ""}
+            </DialogTitle>
+            <DialogDescription className="text-[#4A3A3A] mt-2">
+              View all details for this purchase order, including retailer info, items, and summary.
+            </DialogDescription>
+          </div>
           {selectedPO && (
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <div className="font-semibold">Retailer:</div>
-                  <div>{selectedPO.retailerInfo.businessName}</div>
-                  <div>{selectedPO.retailerInfo.contactPerson}</div>
-                  <div>{selectedPO.retailerInfo.phoneNumber}</div>
-                  <div>{selectedPO.retailerInfo.address.street}, {selectedPO.retailerInfo.address.city}, {selectedPO.retailerInfo.address.state} - {selectedPO.retailerInfo.address.pincode}, {selectedPO.retailerInfo.address.country}</div>
-                </div>
-                <div>
-                  <div className="font-semibold">Status:</div>
-                  <div>{selectedPO.status}</div>
-                  <div className="font-semibold mt-2">Generated By:</div>
-                  <div>{selectedPO.generatedBy}</div>
-                  <div className="font-semibold mt-2">Created:</div>
-                  <div>{new Date(selectedPO.createdAt).toLocaleString()}</div>
-                  {selectedPO.sentAt && <div>Sent: {new Date(selectedPO.sentAt).toLocaleString()}</div>}
-                </div>
-              </div>
-              <div>
-                <div className="font-semibold mb-2">Order Items</div>
-                <div className="space-y-2">
-                  {selectedPO.items.map((item, idx) => (
-                    <div key={idx} className="border rounded p-2 flex flex-col md:flex-row md:items-center md:justify-between">
-                      <div>
-                        <div className="font-semibold">{item.itemName} <span className="text-xs text-gray-500">({item.itemCode})</span></div>
-                        <div className="text-xs text-gray-500">{item.color} • {item.fabric}</div>
-                      </div>
-                      <div className="text-sm text-gray-700 mt-2 md:mt-0">
-                        <span className="font-semibold">Sets:</span> {item.quantitySets} | <span className="font-semibold">Total:</span> {item.totalPcs} pcs | <span className="font-semibold">Amount:</span> ₹{item.totalAmount}
-                      </div>
+            <div className="p-6 space-y-6">
+              {/* Retailer and Status Info */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card className="border-[#E5E0DC]">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg text-[#2E1B1B] flex items-center gap-2">
+                      <Building className="h-5 w-5 text-[#D9A8A0]" />
+                      Retailer Information
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-2">
+                    <div className="font-semibold text-[#2E1B1B]">{selectedPO.retailerInfo.businessName}</div>
+                    <div className="text-[#4A3A3A]">{selectedPO.retailerInfo.contactPerson}</div>
+                    <div className="text-[#4A3A3A]">{selectedPO.retailerInfo.phoneNumber}</div>
+                    <div className="text-sm text-[#4A3A3A]">
+                      {selectedPO.retailerInfo.address.street}, {selectedPO.retailerInfo.address.city}, {selectedPO.retailerInfo.address.state} - {selectedPO.retailerInfo.address.pincode}, {selectedPO.retailerInfo.address.country}
                     </div>
-                  ))}
-                </div>
+                  </CardContent>
+                </Card>
+                <Card className="border-[#E5E0DC]">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg text-[#2E1B1B] flex items-center gap-2">
+                      <FileText className="h-5 w-5 text-[#D9A8A0]" />
+                      Order Information
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#4A3A3A]">Status:</span>
+                      <Badge 
+                        className={cn(
+                          "text-xs",
+                          selectedPO.status === "GENERATED" && "bg-blue-100 text-blue-800 border-blue-200",
+                          selectedPO.status === "SENT" && "bg-yellow-100 text-yellow-800 border-yellow-200",
+                          selectedPO.status === "ACKNOWLEDGED" && "bg-green-100 text-green-800 border-green-200"
+                        )}
+                      >
+                        {selectedPO.status}
+                      </Badge>
+                    </div>
+                    <div><span className="text-[#4A3A3A]">Generated By:</span> <span className="font-semibold text-[#2E1B1B]">{selectedPO.generatedBy}</span></div>
+                    <div><span className="text-[#4A3A3A]">Created:</span> <span className="font-semibold text-[#2E1B1B]">{new Date(selectedPO.createdAt).toLocaleString()}</span></div>
+                    {selectedPO.sentAt && (
+                      <div><span className="text-[#4A3A3A]">Sent:</span> <span className="font-semibold text-[#2E1B1B]">{new Date(selectedPO.sentAt).toLocaleString()}</span></div>
+                    )}
+                  </CardContent>
+                </Card>
               </div>
-              <div>
-                <div className="font-semibold mb-2">Order Summary</div>
-                <div>Total Sets: {selectedPO.poSummary.totalSets}</div>
-                <div>Total Pieces: {selectedPO.poSummary.totalPcs}</div>
-                <div className="font-bold">Total Amount: ₹{selectedPO.poSummary.totalAmountAfterGST.toLocaleString()}</div>
-              </div>
-              <div>
-                <div className="font-semibold mb-2">Terms & Conditions</div>
-                <div>Payment Terms: {selectedPO.terms.paymentTerms}</div>
-                <div>Delivery Terms: {selectedPO.terms.deliveryTerms}</div>
-                <div>Warranty: {selectedPO.terms.warranty}</div>
-              </div>
-              <div className="flex justify-end">
-                <Button variant="outline" onClick={closePODetails}>Close</Button>
+
+              {/* Order Items */}
+              <Card className="border-[#E5E0DC]">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg text-[#2E1B1B] flex items-center gap-2">
+                    <Package className="h-5 w-5 text-[#D9A8A0]" />
+                    Order Items
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {selectedPO.items.map((item, idx) => (
+                      <div key={idx} className="border border-[#E5E0DC] rounded-lg p-4 hover:bg-[#F9F6F4] transition-colors">
+                        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                          <div className="flex-1">
+                            <div className="font-semibold text-[#2E1B1B]">
+                              {item.itemName} <span className="text-xs text-[#4A3A3A]">({item.itemCode})</span>
+                            </div>
+                            <div className="text-sm text-[#4A3A3A] mt-1">{item.color} • {item.fabric}</div>
+                          </div>
+                          <div className="flex items-center gap-4 text-sm">
+                            <div><span className="text-[#4A3A3A]">Sets:</span> <span className="font-semibold text-[#2E1B1B]">{item.quantitySets}</span></div>
+                            <div><span className="text-[#4A3A3A]">Total:</span> <span className="font-semibold text-[#2E1B1B]">{item.totalPcs} pcs</span></div>
+                            <div><span className="text-[#4A3A3A]">Amount:</span> <span className="font-semibold text-[#2E1B1B]">₹{item.totalAmount.toLocaleString()}</span></div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Order Summary */}
+              <Card className="border-[#E5E0DC]">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg text-[#2E1B1B] flex items-center gap-2">
+                    <DollarSign className="h-5 w-5 text-[#D9A8A0]" />
+                    Order Summary
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="text-center p-4 bg-[#F9F6F4] rounded-lg">
+                      <div className="text-2xl font-bold text-[#2E1B1B]">{selectedPO.poSummary.totalSets}</div>
+                      <div className="text-sm text-[#4A3A3A]">Total Sets</div>
+                    </div>
+                    <div className="text-center p-4 bg-[#F9F6F4] rounded-lg">
+                      <div className="text-2xl font-bold text-[#2E1B1B]">{selectedPO.poSummary.totalPcs}</div>
+                      <div className="text-sm text-[#4A3A3A]">Total Pieces</div>
+                    </div>
+                    <div className="text-center p-4 bg-[#F9F6F4] rounded-lg">
+                      <div className="text-2xl font-bold text-[#2E1B1B]">₹{selectedPO.poSummary.totalAmountAfterGST.toLocaleString()}</div>
+                      <div className="text-sm text-[#4A3A3A]">Total Amount</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Terms & Conditions */}
+              <Card className="border-[#E5E0DC]">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg text-[#2E1B1B] flex items-center gap-2">
+                    <FileText className="h-5 w-5 text-[#D9A8A0]" />
+                    Terms & Conditions
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div><span className="text-[#4A3A3A]">Payment Terms:</span> <span className="font-semibold text-[#2E1B1B]">{selectedPO.terms.paymentTerms}</span></div>
+                  <div><span className="text-[#4A3A3A]">Delivery Terms:</span> <span className="font-semibold text-[#2E1B1B]">{selectedPO.terms.deliveryTerms}</span></div>
+                  <div><span className="text-[#4A3A3A]">Warranty:</span> <span className="font-semibold text-[#2E1B1B]">{selectedPO.terms.warranty}</span></div>
+                </CardContent>
+              </Card>
+
+              {/* Action Buttons */}
+              <div className="flex justify-end pt-4 border-t border-[#E5E0DC]">
+                <Button 
+                  variant="outline" 
+                  onClick={closePODetails}
+                  className="border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] text-[#2E1B1B]"
+                >
+                  Close
+                </Button>
               </div>
             </div>
           )}
         </DialogContent>
       </Dialog>
-    </AdminLayout>
+    </ModernAdminLayout>
   );
 } 

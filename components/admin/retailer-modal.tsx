@@ -5,8 +5,10 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
+import { Building, Users, Phone, Mail, MapPin, Star, Database, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface RetailerModalProps {
   onRetailerCreated: () => void;
@@ -130,91 +132,184 @@ export default function RetailerModal({ onRetailerCreated, trigger }: RetailerMo
       <DialogTrigger asChild>
         {trigger || <Button>Add New Retailer</Button>}
       </DialogTrigger>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle>Create New Retailer</DialogTitle>
-        </DialogHeader>
-        
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-4">
-            <div>
-              <Label htmlFor="phoneNumber">Phone Number *</Label>
-              <Input
-                id="phoneNumber"
-                value={formData.phoneNumber || ""}
-                onChange={e => setFormData(prev => ({ ...prev, phoneNumber: e.target.value }))}
-                required
-              />
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto p-0">
+        <DialogHeader className="px-6 py-6 border-b border-[#E5E0DC]">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-[#D9A8A0] to-[#C08478] rounded-lg flex items-center justify-center">
+              <Building className="h-5 w-5 text-white" />
             </div>
             <div>
-              <Label htmlFor="contactPerson">Contact Person *</Label>
-              <Input
-                id="contactPerson"
-                value={formData.contactPerson || ""}
-                onChange={e => setFormData(prev => ({ ...prev, contactPerson: e.target.value }))}
-                required
-              />
-            </div>
-            <div>
-              <Label htmlFor="businessName">Business Name *</Label>
-              <Input
-                id="businessName"
-                value={formData.businessName || ""}
-                onChange={e => setFormData(prev => ({ ...prev, businessName: e.target.value }))}
-                required
-              />
-            </div>
-            <div>
-              <Label>Priorities *</Label>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-40 overflow-y-auto border rounded p-2">
-                {priorities.map(priority => (
-                  <div key={priority._id} className="flex items-center space-x-2">
-                    <input
-                      type="checkbox"
-                      id={`priority-${priority._id}`}
-                      checked={selectedPriorities.includes(priority._id)}
-                      onChange={() => togglePriority(priority._id)}
-                    />
-                    <label htmlFor={`priority-${priority._id}`}>
-                      {priority.priorityCode} - {priority.priorityName}
-                    </label>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <Label>Catalog Access</Label>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-40 overflow-y-auto border rounded p-2">
-                {catalogs.map(catalog => (
-                  <div key={catalog._id} className="flex items-center space-x-2">
-                    <input
-                      type="checkbox"
-                      id={`catalog-${catalog._id}`}
-                      checked={selectedCatalogs.includes(catalog._id)}
-                      onChange={() => toggleCatalog(catalog._id)}
-                    />
-                    <label htmlFor={`catalog-${catalog._id}`}>{catalog.catalogName} ({catalog.catalogCode})</label>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <Label htmlFor="city">City *</Label>
-              <Input
-                id="city"
-                value={formData.city || ""}
-                onChange={e => setFormData(prev => ({ ...prev, city: e.target.value }))}
-                required
-              />
+              <DialogTitle className="text-xl font-bold text-[#2E1B1B]">Create New Retailer</DialogTitle>
+              <p className="text-sm text-[#4A3A3A] mt-1">Add a new retailer to your system</p>
             </div>
           </div>
+        </DialogHeader>
+        
+        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+          {/* Basic Information */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-[#4A3A3A] uppercase tracking-wide flex items-center gap-2">
+              <Users className="h-4 w-4 text-[#D9A8A0]" />
+              Basic Information
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="businessName" className="text-sm font-medium text-[#2E1B1B]">
+                  Business Name *
+                </Label>
+                <Input
+                  id="businessName"
+                  value={formData.businessName || ""}
+                  onChange={e => setFormData(prev => ({ ...prev, businessName: e.target.value }))}
+                  className="border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0]"
+                  placeholder="Enter business name"
+                  required
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="contactPerson" className="text-sm font-medium text-[#2E1B1B]">
+                  Contact Person *
+                </Label>
+                <Input
+                  id="contactPerson"
+                  value={formData.contactPerson || ""}
+                  onChange={e => setFormData(prev => ({ ...prev, contactPerson: e.target.value }))}
+                  className="border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0]"
+                  placeholder="Enter contact person name"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="phoneNumber" className="text-sm font-medium text-[#2E1B1B]">
+                  Phone Number *
+                </Label>
+                <Input
+                  id="phoneNumber"
+                  value={formData.phoneNumber || ""}
+                  onChange={e => setFormData(prev => ({ ...prev, phoneNumber: e.target.value }))}
+                  className="border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0]"
+                  placeholder="Enter phone number"
+                  required
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="city" className="text-sm font-medium text-[#2E1B1B]">
+                  City *
+                </Label>
+                <Input
+                  id="city"
+                  value={formData.city || ""}
+                  onChange={e => setFormData(prev => ({ ...prev, city: e.target.value }))}
+                  className="border-[#E5E0DC] focus:border-[#D9A8A0] focus:ring-[#D9A8A0]"
+                  placeholder="Enter city"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+                    {/* Priorities */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-[#4A3A3A] uppercase tracking-wide flex items-center gap-2">
+              <Star className="h-4 w-4 text-[#D9A8A0]" />
+              Priority Levels *
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {priorities.map(priority => (
+                <div
+                  key={priority._id}
+                  onClick={() => togglePriority(priority._id)}
+                  className={cn(
+                    "p-4 rounded-lg border-2 cursor-pointer transition-all duration-200",
+                    selectedPriorities.includes(priority._id)
+                      ? "border-[#D9A8A0] bg-[#F9F6F4] shadow-sm"
+                      : "border-[#E5E0DC] bg-white hover:border-[#D9A8A0] hover:bg-[#F9F6F4]"
+                  )}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="font-semibold text-[#2E1B1B]">{priority.priorityCode}</div>
+                      <div className="text-sm text-[#4A3A3A]">{priority.priorityName}</div>
+                    </div>
+                    {selectedPriorities.includes(priority._id) && (
+                      <div className="w-6 h-6 bg-[#D9A8A0] rounded-full flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Catalog Access */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-[#4A3A3A] uppercase tracking-wide flex items-center gap-2">
+              <Database className="h-4 w-4 text-[#D9A8A0]" />
+              Catalog Access
+            </h3>
+            
+            {catalogs.length > 0 ? (
+              <div className="space-y-3">
+                {catalogs.map(catalog => (
+                  <div
+                    key={catalog._id}
+                    onClick={() => toggleCatalog(catalog._id)}
+                    className={cn(
+                      "p-4 rounded-lg border-2 cursor-pointer transition-all duration-200",
+                      selectedCatalogs.includes(catalog._id)
+                        ? "border-[#D9A8A0] bg-[#F9F6F4] shadow-sm"
+                        : "border-[#E5E0DC] bg-white hover:border-[#D9A8A0] hover:bg-[#F9F6F4]"
+                    )}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="font-semibold text-[#2E1B1B]">{catalog.catalogName}</div>
+                        <div className="text-sm text-[#4A3A3A]">Code: {catalog.catalogCode}</div>
+                      </div>
+                      {selectedCatalogs.includes(catalog._id) && (
+                        <div className="w-6 h-6 bg-[#D9A8A0] rounded-full flex items-center justify-center">
+                          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-8 text-[#4A3A3A] text-sm bg-[#F9F6F4] border border-[#E5E0DC] rounded-lg">
+                No catalogs available
+              </div>
+            )}
+          </div>
           
-          <div className="flex gap-2 pt-4">
-            <Button type="submit" disabled={isLoading} className="flex-1">
-              {isLoading ? "Creating..." : "Create Retailer"}
-            </Button>
-            <Button type="button" variant="outline" onClick={() => setOpen(false)}>
+          {/* Action Buttons */}
+          <div className="flex gap-3 pt-6 border-t border-[#E5E0DC]">
+            <Button 
+              type="button" 
+              variant="outline" 
+              onClick={() => setOpen(false)}
+              className="flex-1 border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] text-[#2E1B1B] font-medium"
+            >
               Cancel
+            </Button>
+            <Button 
+              type="submit" 
+              disabled={isLoading} 
+              className="flex-1 bg-gradient-to-r from-[#D9A8A0] to-[#C08478] hover:from-[#C08478] hover:to-[#B0766A] text-white font-medium"
+            >
+              {isLoading ? "Creating..." : "Create Retailer"}
             </Button>
           </div>
         </form>
