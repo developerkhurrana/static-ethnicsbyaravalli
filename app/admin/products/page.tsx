@@ -292,7 +292,10 @@ export default function AdminProductsPage() {
                                 target.style.display = 'none';
                                 const parent = target.parentElement;
                                 if (parent) {
-                                  parent.innerHTML = '<div class="w-full h-full bg-[#F9F6F4] rounded-lg flex items-center justify-center text-[#4A3A3A] text-sm font-medium">No Image</div>';
+                                  const placeholder = document.createElement('div');
+                                  placeholder.className = 'w-full h-full bg-[#F9F6F4] rounded-lg flex items-center justify-center text-[#4A3A3A] text-sm font-medium';
+                                  placeholder.textContent = 'No Image';
+                                  parent.appendChild(placeholder);
                                 }
                               }}
                             />
@@ -431,7 +434,12 @@ export default function AdminProductsPage() {
                                   target.style.display = 'none';
                                   const parent = target.parentElement;
                                   if (parent) {
-                                      parent.innerHTML = '<div class="w-14 h-14 bg-[#F9F6F4] rounded-lg border border-[#E5E0DC] flex items-center justify-center text-[#4A3A3A] text-xs shadow-sm"><Package className="h-4 w-4" /></div>';
+                                    const placeholder = document.createElement('div');
+                                    placeholder.className = 'w-14 h-14 bg-[#F9F6F4] rounded-lg border border-[#E5E0DC] flex items-center justify-center text-[#4A3A3A] text-xs shadow-sm';
+                                    const packageIcon = document.createElement('div');
+                                    packageIcon.innerHTML = '<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>';
+                                    placeholder.appendChild(packageIcon);
+                                    parent.appendChild(placeholder);
                                   }
                                 }}
                               />
@@ -585,7 +593,10 @@ export default function AdminProductsPage() {
                             target.style.display = 'none';
                             const parent = target.parentElement;
                             if (parent) {
-                              parent.innerHTML = '<div class="w-full h-full flex items-center justify-center text-[#4A3A3A] text-xs">No Image</div>';
+                              const placeholder = document.createElement('div');
+                              placeholder.className = 'w-full h-full flex items-center justify-center text-[#4A3A3A] text-xs';
+                              placeholder.textContent = 'No Image';
+                              parent.appendChild(placeholder);
                             }
                           }}
                         />

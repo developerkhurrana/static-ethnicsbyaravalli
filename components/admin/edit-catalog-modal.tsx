@@ -249,7 +249,12 @@ export default function EditCatalogModal({ catalog, onCatalogUpdated, trigger }:
                               target.style.display = 'none';
                               const parent = target.parentElement;
                               if (parent) {
-                                parent.innerHTML = '<div class="w-full h-full flex items-center justify-center"><Package className="h-4 w-4 text-[#4A3A3A]" /></div>';
+                                const placeholder = document.createElement('div');
+                                placeholder.className = 'w-full h-full flex items-center justify-center';
+                                const packageIcon = document.createElement('div');
+                                packageIcon.innerHTML = '<svg class="h-4 w-4 text-[#4A3A3A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>';
+                                placeholder.appendChild(packageIcon);
+                                parent.appendChild(placeholder);
                               }
                             }}
                           />

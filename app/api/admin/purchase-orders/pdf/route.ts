@@ -52,6 +52,8 @@ export const GET = requireAdminAuth(async (
         <head>
           <title>Purchase Order #${po.poNumber}</title>
           <style>
+            @import url('https://fonts.googleapis.com/css2?family=Calibri:wght@400;600;700&display=swap');
+            
             @media print {
               body { 
                 margin: 0; 
@@ -59,7 +61,7 @@ export const GET = requireAdminAuth(async (
               }
               .no-print { display: none; }
               @page {
-                margin: 20mm;
+                margin: 20mm 15mm;
                 size: A4;
                 counter-increment: page;
               }
@@ -74,197 +76,479 @@ export const GET = requireAdminAuth(async (
                 print-color-adjust: exact !important;
               }
             }
+            
+            * {
+              box-sizing: border-box;
+            }
+            
             body { 
-              font-family: Arial, sans-serif; 
-              margin: 40px; 
-              line-height: 1.6;
-              color: #333;
+              font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; 
+              margin: 0; 
+              padding: 0;
+              line-height: 1.3;
+              color: #000000;
+              background: #ffffff;
+              font-size: 11pt;
             }
-            h1 { 
-              color: #333; 
-              text-align: center;
-              margin-bottom: 30px;
-              font-size: 28px;
+            
+            .page {
+              width: 210mm;
+              min-height: 297mm;
+              margin: 0 auto;
+              background: white;
+              position: relative;
+              padding-bottom: 80px;
             }
-            .brand-heading { 
-              text-align: center; 
-              font-size: 1.5rem; 
-              font-weight: bold; 
-              letter-spacing: 2px; 
-              margin-bottom: 20px; 
-              color: #222; 
-            }
-            .section { 
-              margin-bottom: 24px; 
-              padding: 15px;
-              border: 1px solid #eee;
-              border-radius: 8px;
-            }
-            .section-title {
-              font-weight: bold;
-              font-size: 16px;
-              margin-bottom: 10px;
-              color: #555;
-            }
-            .items-table { 
-              width: 100%; 
-              border-collapse: collapse; 
-              margin-top: 16px; 
-              font-size: 12px;
-            }
-            .items-table th, .items-table td { 
-              border: 1px solid #ccc; 
-              padding: 8px; 
-              text-align: left;
-              vertical-align: top;
-            }
-            .items-table th { 
-              background: #f5f5f5; 
-              font-weight: bold;
-            }
-            .product-img { 
-              width: 80px; 
-              height: auto; 
-              border-radius: 6px; 
-              border: 1px solid #eee;
-              max-width: 80px;
-              display: block;
-            }
-            .summary-box {
-              background: #f8f9fa;
-              padding: 15px;
-              border-radius: 8px;
-              margin-top: 20px;
-            }
-            .total-amount {
-              font-size: 18px;
-              font-weight: bold;
-              color: #2c5aa0;
-            }
-            .disclaimer { 
-              margin-top: 40px; 
-              font-size: 13px; 
-              color: #a00; 
-              font-style: italic;
-              text-align: center;
-              padding: 15px;
-              border-top: 1px solid #eee;
-            }
-            .header-info {
-              display: flex;
-              justify-content: space-between;
+            
+            .header {
+              border-bottom: 2px solid #000;
+              padding: 10px 0;
               margin-bottom: 20px;
             }
-            .po-number {
-              font-size: 20px;
-              font-weight: bold;
-              color: #2c5aa0;
+            
+            .company-header {
+              text-align: center;
+              margin-bottom: 15px;
             }
-            .status-badge {
-              padding: 5px 15px;
-              border-radius: 20px;
-              font-size: 12px;
+            
+            .company-name {
+              font-size: 18pt;
               font-weight: bold;
+              margin: 0;
+              color: #000;
+            }
+            
+            .company-tagline {
+              font-size: 10pt;
+              margin: 5px 0 0 0;
+              color: #333;
+            }
+            
+            .document-title {
+              font-size: 16pt;
+              font-weight: bold;
+              text-align: center;
+              margin: 10px 0;
               text-transform: uppercase;
+              letter-spacing: 1px;
             }
-            .status-generated { background: #e3f2fd; color: #1976d2; }
-            .status-sent { background: #fff3e0; color: #f57c00; }
-            .status-acknowledged { background: #e8f5e8; color: #388e3c; }
+            
+            .po-info {
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-start;
+              margin-bottom: 20px;
+            }
+            
+            .po-details {
+              flex: 1;
+            }
+            
+            .po-number {
+              font-size: 12pt;
+              font-weight: bold;
+              margin-bottom: 5px;
+            }
+            
+            .po-date {
+              font-size: 10pt;
+              color: #333;
+            }
+            
+            .status-section {
+              text-align: right;
+            }
+            
+            .status-label {
+              font-size: 10pt;
+              font-weight: bold;
+              margin-bottom: 5px;
+            }
+            
+            .status-value {
+              font-size: 10pt;
+              padding: 3px 8px;
+              background: #f0f0f0;
+              border: 1px solid #ccc;
+              display: inline-block;
+              border-radius: 3px;
+            }
+            
+            .info-sections {
+              display: flex;
+              gap: 30px;
+              margin-bottom: 25px;
+            }
+            
+            .info-section {
+              flex: 1;
+            }
+            
+            .section-title {
+              font-size: 11pt;
+              font-weight: bold;
+              margin-bottom: 8px;
+              border-bottom: 1px solid #000;
+              padding-bottom: 3px;
+            }
+            
+            .info-row {
+              margin-bottom: 5px;
+              display: flex;
+              align-items: center;
+            }
+            
+            .info-label {
+              font-weight: bold;
+              min-width: 80px;
+              font-size: 10pt;
+            }
+            
+            .info-value {
+              font-size: 10pt;
+              flex: 1;
+            }
+            
+            .items-section {
+              margin-bottom: 25px;
+            }
+            
+            .items-title {
+              font-size: 12pt;
+              font-weight: bold;
+              margin-bottom: 10px;
+              border-bottom: 1px solid #000;
+              padding-bottom: 5px;
+            }
+            
+            .items-table {
+              width: 100%;
+              border-collapse: collapse;
+              border: 1px solid #000;
+              font-size: 9pt;
+            }
+            
+            .items-table th {
+              background: #f0f0f0;
+              border: 1px solid #000;
+              padding: 6px 4px;
+              text-align: center;
+              font-weight: bold;
+              vertical-align: middle;
+            }
+            
+            .items-table td {
+              border: 1px solid #000;
+              padding: 4px 6px;
+              vertical-align: top;
+            }
+            
+            .items-table .image-cell {
+              width: 15%;
+              text-align: center;
+              vertical-align: middle;
+            }
+            
+            .items-table .product-cell {
+              width: 20%;
+            }
+            
+            .items-table .details-cell {
+              width: 25%;
+            }
+            
+            .items-table .quantity-cell {
+              width: 10%;
+              text-align: center;
+            }
+            
+            .items-table .amount-cell {
+              width: 15%;
+              text-align: right;
+            }
+            
+            .image-cell {
+              width: 80px;
+              padding: 4px;
+            }
+            
+            .product-image {
+              width: 100%;
+              height: auto;
+              object-fit: contain;
+              border: 1px solid #ccc;
+              border-radius: 2px;
+              aspect-ratio: 4/3;
+            }
+            
+            .no-image {
+              width: 100%;
+              height: auto;
+              background: #f5f5f5;
+              border: 1px solid #ccc;
+              border-radius: 2px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 8pt;
+              color: #999;
+              aspect-ratio: 4/3;
+            }
+            
+            .product-name {
+              font-weight: bold;
+              margin-bottom: 2px;
+            }
+            
+            .product-code {
+              font-size: 8pt;
+              color: #666;
+              font-family: 'Courier New', monospace;
+            }
+            
+            .product-specs {
+              font-size: 8pt;
+              color: #666;
+              margin-top: 2px;
+            }
+            
+            .summary-section {
+              margin-bottom: 100px;
+            }
+            
+            .summary-title {
+              font-size: 12pt;
+              font-weight: bold;
+              margin-bottom: 10px;
+              border-bottom: 1px solid #000;
+              padding-bottom: 5px;
+            }
+            
+            .summary-table {
+              width: 100%;
+              border-collapse: collapse;
+              border: 1px solid #000;
+              font-size: 10pt;
+            }
+            
+            .summary-table th {
+              background: #f0f0f0;
+              border: 1px solid #000;
+              padding: 8px;
+              text-align: center;
+              font-weight: bold;
+            }
+            
+            .summary-table td {
+              border: 1px solid #000;
+              padding: 8px;
+              text-align: center;
+            }
+            
+            .summary-table .total-row {
+              background: #f0f0f0;
+              font-weight: bold;
+            }
+            
+            .footer {
+              position: absolute;
+              bottom: 20px;
+              left: 0;
+              right: 0;
+              text-align: center;
+              font-size: 9pt;
+              color: #666;
+              border-top: 1px solid #ccc;
+              padding-top: 10px;
+              background: white;
+            }
+            
+            .footer-text {
+              margin-bottom: 5px;
+            }
+            
+            .footer-disclaimer {
+              font-style: italic;
+            }
+            
+            .page-number {
+              position: absolute;
+              bottom: 10px;
+              right: 15px;
+              font-size: 9pt;
+              color: #666;
+            }
+            
             .print-button {
               position: fixed;
               top: 20px;
               right: 20px;
               padding: 10px 20px;
-              background: #007bff;
+              background: #0078d4;
               color: white;
               border: none;
-              border-radius: 5px;
+              border-radius: 4px;
               cursor: pointer;
-              font-size: 14px;
+              font-size: 12pt;
+              font-weight: bold;
+              box-shadow: 0 2px 4px rgba(0,0,0,0.2);
             }
+            
             .print-button:hover {
-              background: #0056b3;
+              background: #106ebe;
             }
-            .item-details {
-              margin-top: 5px;
-              font-size: 11px;
-              color: #666;
+            
+            @media (max-width: 768px) {
+              .info-sections {
+                flex-direction: column;
+                gap: 15px;
+              }
+              
+              .po-info {
+                flex-direction: column;
+                gap: 10px;
+              }
+              
+              .status-section {
+                text-align: left;
+              }
             }
           </style>
         </head>
         <body>
-          <button class="print-button no-print" onclick="window.print()">Print PDF</button>
+          <button class="print-button no-print" onclick="window.print()">🖨️ Print Document</button>
           
-          <div class="brand-heading">Ethnics by Aravalli</div>
-          
-          <div class="header-info">
-            <div class="po-number">Purchase Order #${po.poNumber}</div>
-            <div class="status-badge status-${po.status.toLowerCase()}">${po.status}</div>
-          </div>
-          
-          <div class="section">
-            <div class="section-title">Retailer Information</div>
-            <strong>Business Name:</strong> ${po.retailerInfo.businessName}<br/>
-            <strong>Contact Person:</strong> ${po.retailerInfo.contactPerson}<br/>
-            <strong>Phone:</strong> ${po.retailerInfo.phoneNumber}<br/>
-            <strong>Address:</strong> ${po.retailerInfo.address.street}, ${po.retailerInfo.address.city}, ${po.retailerInfo.address.state} - ${po.retailerInfo.address.pincode}, ${po.retailerInfo.address.country}
-          </div>
-          
-          <div class="section">
-            <div class="section-title">Order Details</div>
-            <strong>Generated By:</strong> ${po.generatedBy}<br/>
-            <strong>Created:</strong> ${new Date(po.createdAt).toLocaleString()}<br/>
-            ${po.sentAt ? `<strong>Sent:</strong> ${new Date(po.sentAt).toLocaleString()}<br/>` : ""}
-          </div>
-          
-          <div class="section">
-            <div class="section-title">Order Items</div>
-            <table class="items-table">
-              <thead>
-                <tr>
-                  <th>Image</th>
-                  <th>Item Details</th>
-                  <th>Color</th>
-                  <th>Fabric</th>
-                  <th>Sets</th>
-                  <th>Total Pcs</th>
-                  <th>Amount (₹)</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${po.items.map((item: any) => `
+          <div class="page">
+            <div class="header">
+              <div class="company-header">
+                <div class="company-name">Ethnics by Aravalli</div>
+                <div class="company-tagline">Premium Ethnic Wear Manufacturer</div>
+              </div>
+              <div class="document-title">Purchase Order</div>
+            </div>
+            
+            <div class="po-info">
+              <div class="po-details">
+                <div class="po-number">Purchase Order #${po.poNumber}</div>
+                <div class="po-date">Date: ${new Date(po.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+              </div>
+              <div class="status-section">
+                <div class="status-label">Status:</div>
+                <div class="status-value">${po.status}</div>
+              </div>
+            </div>
+            
+            <div class="info-sections">
+              <div class="info-section">
+                <div class="section-title">Retailer Information</div>
+                <div class="info-row">
+                  <span class="info-label">Business:</span>
+                  <span class="info-value">${po.retailerInfo.businessName}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Contact:</span>
+                  <span class="info-value">${po.retailerInfo.contactPerson}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Phone:</span>
+                  <span class="info-value">${po.retailerInfo.phoneNumber}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Address:</span>
+                  <span class="info-value">${po.retailerInfo.address.street}, ${po.retailerInfo.address.city}, ${po.retailerInfo.address.state} - ${po.retailerInfo.address.pincode}, ${po.retailerInfo.address.country}</span>
+                </div>
+              </div>
+              
+              <div class="info-section">
+                <div class="section-title">Order Information</div>
+                <div class="info-row">
+                  <span class="info-label">Generated By:</span>
+                  <span class="info-value">${po.generatedBy}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Created:</span>
+                  <span class="info-value">${new Date(po.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                </div>
+                ${po.sentAt ? `
+                <div class="info-row">
+                  <span class="info-label">Sent:</span>
+                  <span class="info-value">${new Date(po.sentAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                </div>
+                ` : ""}
+                <div class="info-row">
+                  <span class="info-label">Status:</span>
+                  <span class="info-value">${po.status}</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="items-section">
+              <div class="items-title">Order Items</div>
+                              <table class="items-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 15%">Image</th>
+                      <th style="width: 20%">Product</th>
+                      <th style="width: 25%">Details</th>
+                      <th style="width: 10%">Sets</th>
+                      <th style="width: 10%">Pieces</th>
+                      <th style="width: 20%">Amount (₹)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${po.items.map((item: any) => `
+                      <tr>
+                        <td class="image-cell">
+                          ${productImages[item.itemCode] ? 
+                            `<img src="${productImages[item.itemCode]}" class="product-image" alt="${item.itemName}" />` : 
+                            '<div class="no-image">No Image</div>'
+                          }
+                        </td>
+                        <td class="product-cell">
+                          <div class="product-name">${item.itemName}</div>
+                          <div class="product-code">${item.itemCode}</div>
+                        </td>
+                        <td class="details-cell">
+                          <div class="product-specs">Color: ${item.color}</div>
+                          <div class="product-specs">Fabric: ${item.fabric}</div>
+                        </td>
+                        <td class="quantity-cell">${item.quantitySets}</td>
+                        <td class="quantity-cell">${item.totalPcs}</td>
+                        <td class="amount-cell">₹${item.totalAmount.toLocaleString()}</td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+            </div>
+            
+            <div class="summary-section">
+              <div class="summary-title">Order Summary</div>
+              <table class="summary-table">
+                <thead>
                   <tr>
-                    <td>
-                      ${productImages[item.itemCode] ? 
-                        `<img src="${productImages[item.itemCode]}" class="product-img" alt="${item.itemName}" onerror="this.style.display='none'"/>` : 
-                        '<div style="width: 80px; height: 60px; background: #f5f5f5; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #999;">No Image</div>'
-                      }
-                    </td>
-                    <td>
-                      <strong>${item.itemName}</strong>
-                      <div class="item-details">Code: ${item.itemCode}</div>
-                    </td>
-                    <td>${item.color}</td>
-                    <td>${item.fabric}</td>
-                    <td>${item.quantitySets}</td>
-                    <td>${item.totalPcs}</td>
-                    <td>${item.totalAmount.toLocaleString()}</td>
+                    <th>Total Styles</th>
+                    <th>Total Sets</th>
+                    <th>Total Pieces</th>
+                    <th>Total Amount</th>
                   </tr>
-                `).join('')}
-              </tbody>
-            </table>
-          </div>
-          
-          <div class="summary-box">
-            <div class="section-title">Order Summary</div>
-            <div>Total Styles: ${[...new Set(po.items.map((item: any) => item.itemCode))].length}</div>
-            <div>Total Sets: ${po.poSummary.totalSets}</div>
-            <div>Total Pieces: ${po.poSummary.totalPcs}</div>
-            <div class="total-amount">Total Amount: ₹${po.poSummary.totalAmountAfterGST.toLocaleString()}</div>
-          </div>
-          
-          <div class="disclaimer">
-            This PO is for reference purposes only. <i>Not an official document</i>. Tax invoice will be generated post payment.
+                </thead>
+                <tbody>
+                  <tr class="total-row">
+                    <td>${[...new Set(po.items.map((item: any) => item.itemCode))].length}</td>
+                    <td>${po.poSummary.totalSets}</td>
+                    <td>${po.poSummary.totalPcs}</td>
+                    <td>₹${po.poSummary.totalAmountAfterGST.toLocaleString()}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="footer">
+              <div class="footer-text">Thank you for choosing Ethnics by Aravalli</div>
+              <div class="footer-disclaimer">This is a reference document. Tax invoice will be generated post payment.</div>
+            </div>
+            
+            <div class="page-number">Page 1</div>
           </div>
         </body>
       </html>

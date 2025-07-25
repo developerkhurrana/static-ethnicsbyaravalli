@@ -8,7 +8,14 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Search, Filter, Eye, Printer, Send, CheckCircle, FileText, Calendar, User, Building, Package, DollarSign } from "lucide-react";
+import { Search, Filter, Eye, Printer, Send, CheckCircle, FileText, Calendar, User, Building, Package, MoreVertical } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
 interface PurchaseOrder {
@@ -195,70 +202,7 @@ export default function AdminPurchaseOrdersPage() {
     }
   };
 
-  const getStatusActions = (po: PurchaseOrder) => {
-    switch (po.status) {
-      case "GENERATED":
-        return (
-          <>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={() => handlePrintPO(po)}
-              className="border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] text-[#2E1B1B]"
-            >
-              <Printer className="h-4 w-4 mr-1" />
-              Print PO
-            </Button>
-            <Button 
-              variant="default" 
-              size="sm" 
-              onClick={() => handleMarkAsSent(po)}
-              className="bg-gradient-to-r from-[#D9A8A0] to-[#C08478] hover:from-[#C08478] hover:to-[#B0766A] text-white"
-            >
-              <Send className="h-4 w-4 mr-1" />
-              Mark as Sent
-            </Button>
-          </>
-        );
-      case "SENT":
-        return (
-          <>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={() => handlePrintPO(po)}
-              className="border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] text-[#2E1B1B]"
-            >
-              <Printer className="h-4 w-4 mr-1" />
-              Print PO
-            </Button>
-            <Button 
-              variant="default" 
-              size="sm" 
-              onClick={() => handleMarkAsAcknowledged(po)}
-              className="bg-gradient-to-r from-[#D9A8A0] to-[#C08478] hover:from-[#C08478] hover:to-[#B0766A] text-white"
-            >
-              <CheckCircle className="h-4 w-4 mr-1" />
-              Mark as Acknowledged
-            </Button>
-          </>
-        );
-      case "ACKNOWLEDGED":
-        return (
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={() => handlePrintPO(po)}
-            className="border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] text-[#2E1B1B]"
-          >
-            <Printer className="h-4 w-4 mr-1" />
-            Print PO
-          </Button>
-        );
-      default:
-        return null;
-    }
-  };
+
 
   const openPODetails = async (po: PurchaseOrder) => {
     try {
@@ -342,29 +286,23 @@ export default function AdminPurchaseOrdersPage() {
           </CardContent>
         </Card>
 
-        {/* Purchase Orders List */}
-        <div className="space-y-4">
+        {/* Purchase Orders Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {filteredPurchaseOrders.map((po) => (
-            <Card key={po._id} className="border-[#E5E0DC] shadow-sm hover:shadow-md transition-all duration-200">
-              <CardHeader className="pb-4">
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 bg-gradient-to-br from-[#D9A8A0] to-[#C08478] rounded-lg flex items-center justify-center">
-                        <FileText className="h-4 w-4 text-white" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-lg text-[#2E1B1B]">PO #{po.poNumber}</CardTitle>
-                        <CardDescription className="text-sm text-[#4A3A3A] flex items-center gap-1">
-                          <Building className="h-3 w-3" />
-                          {po.retailerInfo.businessName} • {po.retailerInfo.contactPerson}
-                        </CardDescription>
-                      </div>
-                    </div>
+            <Card key={po._id} className="border-[#E5E0DC] shadow-sm hover:shadow-md transition-all duration-200 h-full flex flex-col">
+              <CardContent className="p-4 flex flex-col h-full">
+                {/* Header with Icon and Status */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-gradient-to-br from-[#D9A8A0] to-[#C08478] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <FileText className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-[#2E1B1B] text-sm truncate">PO #{po.poNumber}</h3>
+                    <p className="text-xs text-[#4A3A3A] truncate">{po.retailerInfo.businessName}</p>
                   </div>
                   <Badge 
                     className={cn(
-                      "px-3 py-1 text-xs font-medium",
+                      "text-xs font-medium flex-shrink-0",
                       po.status === "GENERATED" && "bg-blue-100 text-blue-800 border-blue-200",
                       po.status === "SENT" && "bg-yellow-100 text-yellow-800 border-yellow-200",
                       po.status === "ACKNOWLEDGED" && "bg-green-100 text-green-800 border-green-200"
@@ -373,56 +311,68 @@ export default function AdminPurchaseOrdersPage() {
                     {po.status}
                   </Badge>
                 </div>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                  <div className="flex items-center gap-2 text-sm">
-                    <Package className="h-4 w-4 text-[#D9A8A0]" />
-                    <span className="text-[#4A3A3A]">Total Pieces:</span>
-                    <span className="font-semibold text-[#2E1B1B]">{po.poSummary.totalPcs}</span>
+
+                {/* Key Metrics */}
+                <div className="space-y-2 mb-4 flex-1">
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-[#4A3A3A]">Pieces:</span>
+                    <span className="font-medium text-[#2E1B1B]">{po.poSummary.totalPcs}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <FileText className="h-4 w-4 text-[#D9A8A0]" />
-                    <span className="text-[#4A3A3A]">Total Sets:</span>
-                    <span className="font-semibold text-[#2E1B1B]">{po.poSummary.totalSets}</span>
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-[#4A3A3A]">Sets:</span>
+                    <span className="font-medium text-[#2E1B1B]">{po.poSummary.totalSets}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <DollarSign className="h-4 w-4 text-[#D9A8A0]" />
-                    <span className="text-[#4A3A3A]">Total Amount:</span>
-                    <span className="font-semibold text-[#2E1B1B]">₹{po.poSummary.totalAmountAfterGST.toLocaleString()}</span>
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-[#4A3A3A]">Amount:</span>
+                    <span className="font-medium text-[#2E1B1B]">₹{po.poSummary.totalAmountAfterGST.toLocaleString()}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <User className="h-4 w-4 text-[#D9A8A0]" />
-                    <span className="text-[#4A3A3A]">Generated By:</span>
-                    <span className="font-semibold text-[#2E1B1B]">{po.generatedBy}</span>
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-[#4A3A3A]">By:</span>
+                    <span className="font-medium text-[#2E1B1B] truncate">{po.generatedBy}</span>
                   </div>
                 </div>
-                
-                <div className="flex justify-between items-center pt-4 border-t border-[#E5E0DC]">
-                  <div className="flex items-center gap-4 text-sm text-[#4A3A3A]">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
-                      Created: {new Date(po.createdAt).toLocaleDateString()}
-                    </div>
-                    {po.sentAt && (
-                      <div className="flex items-center gap-1">
-                        <Send className="h-3 w-3" />
-                        Sent: {new Date(po.sentAt).toLocaleDateString()}
-                      </div>
-                    )}
+
+                {/* Footer with Date and Actions */}
+                <div className="flex justify-between items-center pt-3 border-t border-[#E5E0DC]">
+                  <div className="text-xs text-[#4A3A3A]">
+                    {new Date(po.createdAt).toLocaleDateString()}
                   </div>
-                  <div className="flex gap-2">
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => openPODetails(po)}
-                      className="border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] text-[#2E1B1B]"
-                    >
-                      <Eye className="h-4 w-4 mr-1" />
-                      View Details
-                    </Button>
-                    {getStatusActions(po)}
-                  </div>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button 
+                        size="sm" 
+                        variant="outline" 
+                        className="h-7 w-7 p-0 border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] transition-all duration-200"
+                      >
+                        <MoreVertical className="h-3.5 w-3.5 text-[#4A3A3A]" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" className="w-48">
+                      <DropdownMenuItem onClick={() => openPODetails(po)}>
+                        <Eye className="h-4 w-4 mr-2 text-[#4A3A3A]" />
+                        View Details
+                      </DropdownMenuItem>
+                      
+                      <DropdownMenuItem onClick={() => handlePrintPO(po)}>
+                        <Printer className="h-4 w-4 mr-2 text-[#4A3A3A]" />
+                        Print PO
+                      </DropdownMenuItem>
+                      
+                      {po.status === "GENERATED" && (
+                        <DropdownMenuItem onClick={() => handleMarkAsSent(po)}>
+                          <Send className="h-4 w-4 mr-2 text-[#4A3A3A]" />
+                          Mark as Sent
+                        </DropdownMenuItem>
+                      )}
+                      
+                      {po.status === "SENT" && (
+                        <DropdownMenuItem onClick={() => handleMarkAsAcknowledged(po)}>
+                          <CheckCircle className="h-4 w-4 mr-2 text-[#4A3A3A]" />
+                          Mark as Acknowledged
+                        </DropdownMenuItem>
+                      )}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </div>
               </CardContent>
             </Card>
@@ -546,7 +496,7 @@ export default function AdminPurchaseOrdersPage() {
               <Card className="border-[#E5E0DC]">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg text-[#2E1B1B] flex items-center gap-2">
-                    <DollarSign className="h-5 w-5 text-[#D9A8A0]" />
+                    <span className="text-[#D9A8A0] font-bold text-xl">₹</span>
                     Order Summary
                   </CardTitle>
                 </CardHeader>

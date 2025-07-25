@@ -10,7 +10,14 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import EditCatalogModal from "@/components/admin/edit-catalog-modal";
-import { Search, FileText, Edit, Trash2 } from "lucide-react";
+import { Search, FileText, Edit, Trash2, Share2, MoreVertical } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface Catalog {
   _id: string;
@@ -157,6 +164,66 @@ export default function AdminCatalogsPage() {
                     <h3 className="font-semibold text-[#2E1B1B] text-sm truncate">{catalog.catalogName}</h3>
                     <p className="text-xs text-[#4A3A3A] font-mono">{catalog.catalogCode}</p>
                   </div>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button 
+                        size="sm" 
+                        variant="outline" 
+                        className="h-8 w-8 p-0 border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] transition-all duration-200"
+                      >
+                        <MoreVertical className="h-4 w-4 text-[#4A3A3A]" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" className="w-48">
+                      <EditCatalogModal 
+                        catalog={catalog} 
+                        onCatalogUpdated={fetchCatalogs}
+                        trigger={
+                          <DropdownMenuItem onSelect={(e: Event) => e.preventDefault()}>
+                            <Edit className="h-4 w-4 mr-2 text-[#4A3A3A]" />
+                            Edit Catalog
+                          </DropdownMenuItem>
+                        }
+                      />
+                      
+                      <DropdownMenuItem 
+                        onClick={() => {
+                          const shareUrl = `${window.location.origin}/retailer/catalog/${catalog.catalogCode}`;
+                          navigator.clipboard.writeText(shareUrl).then(() => {
+                            toast.success(`Catalog link copied to clipboard!`, {
+                              description: `Share this link with retailers to access catalog ${catalog.catalogCode}`,
+                              duration: 4000,
+                            });
+                          }).catch(() => {
+                            // Fallback for older browsers
+                            const textArea = document.createElement('textarea');
+                            textArea.value = shareUrl;
+                            document.body.appendChild(textArea);
+                            textArea.select();
+                            document.execCommand('copy');
+                            document.body.removeChild(textArea);
+                            toast.success(`Catalog link copied to clipboard!`, {
+                              description: `Share this link with retailers to access catalog ${catalog.catalogCode}`,
+                              duration: 4000,
+                            });
+                          });
+                        }}
+                      >
+                        <Share2 className="h-4 w-4 mr-2 text-[#4A3A3A]" />
+                        Share Catalog
+                      </DropdownMenuItem>
+                      
+                      <DropdownMenuSeparator />
+                      
+                      <DropdownMenuItem 
+                        onClick={() => setDeleteConfirm(catalog._id)}
+                        className="text-red-600 focus:text-red-600 focus:bg-red-50"
+                      >
+                        <Trash2 className="h-4 w-4 mr-2" />
+                        Delete Catalog
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </div>
 
                 {/* Status Badges */}
@@ -204,7 +271,12 @@ export default function AdminCatalogsPage() {
                                 target.style.display = 'none';
                                 const parent = target.parentElement;
                                 if (parent) {
-                                  parent.innerHTML = '<div class="w-full h-full bg-[#F9F6F4] flex items-center justify-center"><div class="w-2 h-2 bg-[#4A3A3A] rounded-full"></div></div>';
+                                  const placeholder = document.createElement('div');
+                                  placeholder.className = 'w-full h-full bg-[#F9F6F4] flex items-center justify-center';
+                                  const dot = document.createElement('div');
+                                  dot.className = 'w-2 h-2 bg-[#4A3A3A] rounded-full';
+                                  placeholder.appendChild(dot);
+                                  parent.appendChild(placeholder);
                                 }
                               }}
                             />
@@ -236,31 +308,7 @@ export default function AdminCatalogsPage() {
                   </div>
                 </div>
                 
-                {/* Action Buttons */}
-                <div className="flex gap-1 mt-auto pt-3 border-t border-[#E5E0DC]">
-                  <EditCatalogModal 
-                    catalog={catalog} 
-                    onCatalogUpdated={fetchCatalogs}
-                    trigger={
-                      <Button 
-                        size="sm" 
-                        variant="outline" 
-                        className="h-7 w-7 p-0 border-[#E5E0DC] hover:border-[#D9A8A0] hover:bg-[#F9F6F4] transition-all duration-200"
-                      >
-                        <Edit className="h-3.5 w-3.5 text-[#4A3A3A]" />
-                      </Button>
-                    }
-                  />
-                  
-                  <Button 
-                    size="sm" 
-                    variant="outline"
-                    className="h-7 w-7 p-0 border-red-200 hover:border-red-400 hover:bg-red-50 transition-all duration-200"
-                    onClick={() => setDeleteConfirm(catalog._id)}
-                  >
-                    <Trash2 className="h-3.5 w-3.5 text-red-600" />
-                  </Button>
-                </div>
+
               </CardContent>
             </Card>
           ))}
