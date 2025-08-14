@@ -28,16 +28,36 @@ if (!cached) {
 
 async function dbConnect() {
   if (cached.conn) {
-    return cached.conn;
+    // Check if connection is still alive
+    if (mongoose.connection.readyState === 1) {
+      return cached.conn;
+    } else {
+      // Connection is dead, clear cache
+      cached.conn = null;
+      cached.promise = null;
+    }
   }
 
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
+      serverSelectionTimeoutMS: 15000, // 15 seconds
+      socketTimeoutMS: 60000, // 60 seconds
+      connectTimeoutMS: 15000, // 15 seconds
+      maxPoolSize: 5,
+      minPoolSize: 1,
+      maxIdleTimeMS: 60000,
+      retryWrites: true,
+      retryReads: true,
     };
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+      console.log("MongoDB connected successfully");
       return mongoose;
+    }).catch((error) => {
+      console.error("MongoDB connection error:", error);
+      cached.promise = null;
+      throw error;
     });
   }
 

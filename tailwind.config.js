@@ -20,7 +20,7 @@ module.exports = {
         DEFAULT: {
           css: {
             color: '#222',
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
             h1: { color: '#1a1a1a', fontWeight: '700', marginBottom: '0.5em' },
             h2: { color: '#222', fontWeight: '600', marginTop: '1.5em', marginBottom: '0.5em' },
             h3: { color: '#333', fontWeight: '600', marginTop: '1em', marginBottom: '0.5em' },
@@ -90,8 +90,8 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)", "Georgia", "serif"],
+        sans: ["var(--font-system)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif"],
+        serif: ["Georgia", "serif"],
       },
       keyframes: {
         "accordion-down": {

@@ -10,11 +10,22 @@ export async function POST(request: NextRequest) {
     if (!phoneNumber || !catalogCode) {
       return NextResponse.json({ error: "Phone number and catalog code are required" }, { status: 400 });
     }
-    await dbConnect();
+    
+    // Connect to database with timeout
+    try {
+      await dbConnect();
+    } catch (dbError) {
+      console.error("Database connection error:", dbError);
+      return NextResponse.json({ 
+        error: "Database connection failed. Please try again in a moment." 
+      }, { status: 503 });
+    }
+    // Database queries with better error handling
     const retailer = await Retailer.findOne({ phoneNumber });
     if (!retailer) {
       return NextResponse.json({ error: "Retailer not found" }, { status: 404 });
     }
+    
     const catalog = await Catalog.findOne({ catalogCode });
     if (!catalog) {
       return NextResponse.json({ error: "Catalog not found" }, { status: 404 });
@@ -68,6 +79,9 @@ export async function POST(request: NextRequest) {
       }))
     });
   } catch (error) {
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    console.error("Catalog access error:", error);
+    return NextResponse.json({ 
+      error: "An error occurred while accessing the catalog. Please try again." 
+    }, { status: 500 });
   }
 } 

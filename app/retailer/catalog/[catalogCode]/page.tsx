@@ -479,19 +479,19 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
           getQuantity={getQuantity}
         >
           {/* Products Grid */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {products.length === 0 ? (
-              <div className="text-center py-16 px-4">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#E5E0DC] to-[#D9A8A0] rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Package className="h-10 w-10 text-[#C08478]" />
+              <div className="text-center py-12 sm:py-16 px-4">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#E5E0DC] to-[#D9A8A0] rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <Package className="h-8 w-8 sm:h-10 sm:w-10 text-[#C08478]" />
                 </div>
-                <h3 className="text-xl font-semibold text-[#2E1B1B] mb-3">No Products Available</h3>
-                <p className="text-[#4A3A3A] text-sm max-w-sm mx-auto">
+                <h3 className="text-lg sm:text-xl font-semibold text-[#2E1B1B] mb-2 sm:mb-3">No Products Available</h3>
+                <p className="text-[#4A3A3A] text-xs sm:text-sm max-w-sm mx-auto">
                   This catalog doesn't have any products yet. Please check back later or contact your sales representative.
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                 {products.map((product) => {
                   const primaryImage = product.images.find(img => img.isPrimary) || product.images[0];
                   const quantity = getQuantity(product._id);
@@ -521,10 +521,10 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
                         </div>
 
                         {/* Product Details */}
-                        <div className="p-3 space-y-3">
+                        <div className="p-2 sm:p-3 space-y-2 sm:space-y-3">
                           {/* Product Info Header */}
-                          <div className="space-y-1.5">
-                            <h3 className="text-base font-semibold text-[#2E1B1B] line-clamp-1">{product.itemName}</h3>
+                          <div className="space-y-1">
+                            <h3 className="text-sm sm:text-base font-semibold text-[#2E1B1B] line-clamp-1">{product.itemName}</h3>
                             <p className="text-xs text-[#4A3A3A]">Code: {product.itemCode}</p>
                             <div className="flex gap-1.5 flex-wrap">
                               <Badge className="flex items-center gap-1 text-xs px-1.5 py-0.5 bg-[#F9F6F4] text-[#2E1B1B] border border-[#E5E0DC]">
@@ -537,7 +537,7 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
                           </div>
 
                           {/* Price Info */}
-                          <div className="flex justify-between items-center bg-gradient-to-r from-[#F9F6F4] to-[#E5E0DC] rounded-lg p-2">
+                          <div className="flex justify-between items-center bg-gradient-to-r from-[#F9F6F4] to-[#E5E0DC] rounded-lg p-1.5 sm:p-2">
                             <div className="text-center">
                               <p className="text-xs text-[#4A3A3A]">Per Piece</p>
                               <p className="text-sm font-bold text-[#2E1B1B]">₹{product.pricePerPc}</p>
@@ -545,13 +545,13 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
                             <div className="w-px h-6 bg-[#D9A8A0]"></div>
                             <div className="text-center">
                               <p className="text-xs text-[#4A3A3A]">Per Set (5 pcs)</p>
-                              <p className="text-lg font-bold text-[#C08478]">₹{product.pricePerSet}</p>
+                              <p className="text-base sm:text-lg font-bold text-[#C08478]">₹{product.pricePerSet}</p>
                             </div>
                           </div>
 
                           {/* Sizes Info */}
                           {product.sizes && product.sizes.length > 0 && (
-                            <div className="bg-[#F9F6F4] rounded-lg p-2">
+                            <div className="bg-[#F9F6F4] rounded-lg p-1.5 sm:p-2">
                               <div className="flex items-center gap-1.5 mb-1.5">
                                 <Package className="w-3 h-3 text-[#D9A8A0]" />
                                 <span className="text-xs font-semibold text-[#2E1B1B]">Available Sizes</span>
@@ -586,7 +586,7 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
                           )}
 
                           {/* MOQ Info */}
-                          <div className="bg-gradient-to-r from-[#F9F6F4] to-[#E5E0DC] rounded-lg p-2 border border-[#D9A8A0]">
+                          <div className="bg-gradient-to-r from-[#F9F6F4] to-[#E5E0DC] rounded-lg p-1.5 sm:p-2 border border-[#D9A8A0]">
                             <div className="flex items-center gap-1.5">
                               <Package className="w-3 h-3 text-[#D9A8A0]" />
                               <span className="text-xs font-medium text-[#2E1B1B]">MOQ: 1 set = 5 pieces (S to XXL)</span>
@@ -594,33 +594,33 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
                           </div>
 
                           {/* Quantity Selector */}
-                          <div className="space-y-2">
+                          <div className="space-y-1.5 sm:space-y-2">
                             <label className="text-xs font-semibold text-[#2E1B1B] flex items-center gap-1.5">
                               <ShoppingCart className="w-3 h-3 text-[#D9A8A0]" />
                               How many sets do you want?
                             </label>
-                            <div className="flex items-center justify-center gap-3">
+                            <div className="flex items-center justify-center gap-2 sm:gap-3">
                               <Button
                                 variant="outline"
                                 size="sm"
                                 onClick={() => updateQuantity(product._id, quantity - 1)}
                                 disabled={quantity === 0}
-                                className="w-10 h-10 p-0 rounded-lg border-2 hover:border-[#D9A8A0] hover:bg-[#F9F6F4]"
+                                className="w-8 h-8 sm:w-10 sm:h-10 p-0 rounded-lg border-2 hover:border-[#D9A8A0] hover:bg-[#F9F6F4]"
                                 aria-label="Decrease quantity"
                               >
-                                <Minus className="w-4 h-4" />
+                                <Minus className="w-3 h-3 sm:w-4 sm:h-4" />
                               </Button>
-                              <div className="min-w-[2.5rem] text-center">
-                                <span className="text-xl font-bold text-[#2E1B1B]">{quantity}</span>
+                              <div className="min-w-[2rem] sm:min-w-[2.5rem] text-center">
+                                <span className="text-lg sm:text-xl font-bold text-[#2E1B1B]">{quantity}</span>
                               </div>
                               <Button
                                 variant="outline"
                                 size="sm"
                                 onClick={() => updateQuantity(product._id, quantity + 1)}
-                                className="w-10 h-10 p-0 rounded-lg border-2 hover:border-[#D9A8A0] hover:bg-[#F9F6F4]"
+                                className="w-8 h-8 sm:w-10 sm:h-10 p-0 rounded-lg border-2 hover:border-[#D9A8A0] hover:bg-[#F9F6F4]"
                                 aria-label="Increase quantity"
                               >
-                                <Plus className="w-4 h-4" />
+                                <Plus className="w-3 h-3 sm:w-4 sm:h-4" />
                               </Button>
                             </div>
                           </div>
@@ -629,20 +629,20 @@ export default function RetailerCatalogPage({ params }: { params: Promise<{ cata
                           <Button
                             onClick={() => updateQuantity(product._id, quantity + 1)}
                             className={cn(
-                              "w-full h-12 text-sm font-semibold rounded-lg shadow-md transition-all duration-200 transform hover:scale-[1.02]",
+                              "w-full h-10 sm:h-12 text-xs sm:text-sm font-semibold rounded-lg shadow-md transition-all duration-200 transform hover:scale-[1.02]",
                               quantity > 0
                                 ? "bg-gradient-to-r from-[#C08478] to-[#B0766A] hover:from-[#B0766A] hover:to-[#A0685C] text-white"
                                 : "bg-gradient-to-r from-[#D9A8A0] to-[#C08478] hover:from-[#C08478] hover:to-[#B0766A] text-white"
                             )}
                           >
-                            <ShoppingCart className="w-4 h-4 mr-1.5" />
+                            <ShoppingCart className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-1.5" />
                             {quantity > 0 ? `Update (${quantity} sets)` : "Add to Order"}
                           </Button>
 
                           {/* Current Item Summary */}
                           {quantity > 0 && (
-                            <div className="bg-gradient-to-r from-[#F9F6F4] to-[#E5E0DC] rounded-lg p-2 border border-[#D9A8A0]">
-                              <div className="grid grid-cols-3 gap-1.5 text-xs">
+                            <div className="bg-gradient-to-r from-[#F9F6F4] to-[#E5E0DC] rounded-lg p-1.5 sm:p-2 border border-[#D9A8A0]">
+                              <div className="grid grid-cols-3 gap-1 sm:gap-1.5 text-xs">
                                 <div className="text-center">
                                   <p className="text-[#4A3A3A]">Sets</p>
                                   <p className="font-bold text-[#C08478]">{quantity}</p>

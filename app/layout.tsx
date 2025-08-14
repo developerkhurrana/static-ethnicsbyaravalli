@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// Remove Google Fonts dependency to avoid network issues
 import "./globals.css";
 import { Analytics } from '@vercel/analytics/next';
 import { Header } from "@/components/layout/header";
@@ -8,12 +8,11 @@ import { Toaster } from "@/components/ui/sonner";
 
 import Link from "next/link";
 
-const inter = Inter({ 
-  subsets: ["latin"],
-  display: 'swap',
-  preload: true,
-  fallback: ['system-ui', 'arial'],
-});
+// Use system fonts only to avoid network issues
+const systemFonts = {
+  className: 'font-sans',
+  variable: '--font-system',
+};
 
 export const metadata: Metadata = {
   title: "Ethnics By Aravalli - Women's Ethnic Wear Manufacturer in Jaipur Premium Kurtis & Kurta Sets",
@@ -64,7 +63,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className={`h-full ${systemFonts.variable}`}>
       <head>
         <meta name="google-site-verification" content="pEZGKnigOCdWKqcGTVPfnS8nJPIUCJepodGBd2TlJY0" />
         {/* Preload critical resources */}
@@ -76,8 +75,19 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//lh3.googleusercontent.com" />
         <link rel="dns-prefetch" href="//www.youtube.com" />
         <link rel="dns-prefetch" href="//wa.me" />
+        {/* System font optimization */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+              --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            }
+            body {
+              font-family: var(--font-system);
+            }
+          `
+        }} />
       </head>
-      <body className={`${inter.className} h-full`}>
+      <body className={`${systemFonts.className} h-full font-sans`}>
         <div className="flex min-h-full flex-col">
           <Header />
           <main className="flex-1">
