@@ -35,7 +35,46 @@ export function ContactForm() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
     try {
-      // First, store the submission in Google Sheets
+      // First, get rate limit token
+      const rateLimitResponse = await fetch('/api/rate-limit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          mobile: data.phone,
+          action: 'contact',
+        }),
+      })
+
+      const rateLimitResult = await rateLimitResponse.json()
+
+      if (!rateLimitResponse.ok) {
+        if (rateLimitResult.type === 'cooldown') {
+          toast({
+            title: "Submission Rate Limited",
+            description: `Please wait ${rateLimitResult.remainingTime} seconds before submitting again.`,
+            variant: "destructive",
+          })
+        } else if (rateLimitResult.type === 'daily') {
+          toast({
+            title: "Daily Limit Reached",
+            description: "You've reached the daily submission limit. Please try again tomorrow or contact us directly.",
+            variant: "destructive",
+          })
+        } else if (rateLimitResult.type === 'total') {
+          toast({
+            title: "Maximum Submissions Reached",
+            description: "You've reached the maximum number of submissions. Please contact us directly.",
+            variant: "destructive",
+          })
+        } else {
+          throw new Error(rateLimitResult.error || 'Rate limit check failed')
+        }
+        return
+      }
+
+      // Then, submit the contact form with the token
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -46,34 +85,14 @@ export function ContactForm() {
           email: data.email,
           mobile: data.phone,
           message: data.message,
+          token: rateLimitResult.token,
         }),
       })
 
       const result = await response.json()
 
       if (!response.ok) {
-        if (result.type === 'cooldown') {
-          toast({
-            title: "Submission Rate Limited",
-            description: `Please wait ${result.remainingTime} seconds before submitting again.`,
-            variant: "destructive",
-          })
-        } else if (result.type === 'daily') {
-          toast({
-            title: "Daily Limit Reached",
-            description: "You've reached the daily submission limit. Please try again tomorrow or contact us directly.",
-            variant: "destructive",
-          })
-        } else if (result.type === 'total') {
-          toast({
-            title: "Maximum Submissions Reached",
-            description: "You've reached the maximum number of submissions. Please contact us directly.",
-            variant: "destructive",
-          })
-        } else {
-          throw new Error(result.error || 'Failed to submit form')
-        }
-        return
+        throw new Error(result.error || 'Failed to submit form')
       }
 
       // Format the message for WhatsApp

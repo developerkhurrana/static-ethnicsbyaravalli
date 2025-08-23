@@ -10,7 +10,8 @@
     "seed-priorities": "tsx scripts/seed-priorities.ts",
     "migrate-priorities": "tsx scripts/migrate-retailer-priorities.ts",
     "audit": "tsx scripts/performance-audit.ts",
-    "audit:report": "tsx scripts/performance-audit.ts --report"
+    "audit:report": "tsx scripts/performance-audit.ts --report",
+    "check-env": "tsx scripts/check-env.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
