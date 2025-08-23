@@ -61,42 +61,48 @@ const festiveCategories = [
   {
     name: "Kurtas",
     description: "Our premium kurtas blend traditional craftsmanship with contemporary aesthetics, thoughtfully crafted using fine fabrics like cotton, linen, modal, muslin, chanderi and more. The result is apparel that offers effortless elegance, breathable comfort, and lasting appeal for the discerning customers of fashion retailers.",
-    image: "/products/kurta_1.png",
+    image: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929303/Kurta_hq3pka.png",
+    hoverImage: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929303/Kurta_hover_e6n7p3.jpg",
     link: "/contact",
     cta: "Inquire for Kurtas"
   },
   {
     name: "Kurta Sets",
     description: "Our Kurta sets are elegant two-piece ethnic ensembles for women, thoughtfully paired with vibrant colours and stylish prints. Each set features a kurta top matched with coordinated bottoms, offering a variety of styles including pants, palazzos, shararas, and more.",
-    image: "/products/kurta_2.png",
+    image: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929301/Kurta_sets_eut7hb.jpg",
+    hoverImage: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929303/Kurta_sets_hover_z4xfq9.jpg",
     link: "/contact",
     cta: "Inquire for Kurta Sets"
   },
   {
     name: "Suit Sets",
     description: "Our timeless ethnic suit sets are crafted from premium materials and tailored with elegant cuts, offering a blend of comfort and sophistication. Each kurta set comes paired with a matching bottom and dupatta, making it an ideal choice for festive celebrations, professional settings, and boutique showcases alike.",
-    image: "/products/kurta_3.png",
+    image: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929303/Suit_sets_zgl1py.jpg",
+    hoverImage: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929303/Suit_sets_hover_r8pplx.jpg",
     link: "/contact",
     cta: "Inquire for Suit Sets"
   },
   {
     name: "Dresses",
     description: "Shop owners, elevate your collections with our stylish ethnic dresses that blend timeless silhouettes and contemporary design. Handcrafted with precision, each piece radiates sophistication while being tailored for the ease of everyday wear—perfect for discerning customers who value both tradition and trend.",
-    image: "/products/kurta_4.png",
+    image: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929301/Dresses_krxyu4.jpg",
+    hoverImage: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929302/Dresses_hover_cnfrrs.jpg",
     link: "/contact",
     cta: "Inquire for Dresses"
   },
   {
     name: "Kaftans",
     description: "Breezy and elegant, our kaftans are designed for those who cherish comfort without compromising on style. Featuring airy fabrics, intricate embroidery, and captivating prints, they're the perfect expression of effortless ethnic fusion—ideal for the customers of retailers who like everything from laid-back lounging to graceful gatherings.",
-    image: "/products/kurta_5.png",
+    image: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929302/Kaftans_uyhm7a.jpg",
+    hoverImage: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929302/Kaftans_hover_nnhekp.jpg",
     link: "/contact",
     cta: "Inquire for Kaftans"
   },
   {
     name: "Anarkali Kurtas",
     description: "Step into timeless elegance with our Anarkali Kurtas—celebrated for their graceful layers, royal silhouette, and exquisite artisanal detailing. Each piece captures the essence of Indian heritage while embracing a refined, contemporary flair, making it a perfect choice for occasions that call for grandeur with ease.",
-    image: "/products/dupatta_1.png",
+    image: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929304/Anarkali_v7kggh.jpg",
+    hoverImage: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929302/Anarkali_hover_q6jtvw.jpg",
     link: "/contact",
     cta: "Inquire for Anarkalis"
   }
@@ -217,11 +223,19 @@ export default function FestiveWearPage() {
             {festiveCategories.map((category, idx) => (
               <Card key={idx} className="group hover:shadow-xl transition-all duration-300 border-orange-200 h-full flex flex-col">
                 <div className="relative overflow-hidden rounded-t-lg flex-shrink-0 aspect-[4/5]">
+                  {/* Main Image */}
                   <Image
                     src={category.image}
                     alt={category.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover transition-opacity duration-500 group-hover:opacity-0"
+                  />
+                  {/* Hover Image */}
+                  <Image
+                    src={category.hoverImage}
+                    alt={`${category.name} - Hover View`}
+                    fill
+                    className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-orange-400/60 to-transparent" />
                   <div className="absolute bottom-4 left-4 text-white drop-shadow-lg">
