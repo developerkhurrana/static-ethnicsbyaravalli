@@ -559,21 +559,12 @@ export default function RetailerCatalogPage({
           <div className="space-y-4 sm:space-y-6">
             {products.length === 0 ? (
               <div className="text-center py-12 sm:py-16 px-4">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#E5E0DC] to-[#D9A8A0] rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <Package className="h-8 w-8 sm:h-10 sm:w-10 text-[#C08478]" />
-                </div>
-<<<<<<< HEAD
-                <h3 className="text-lg sm:text-xl font-semibold text-[#2E1B1B] mb-2 sm:mb-3">No Products Available</h3>
-                <p className="text-[#4A3A3A] text-xs sm:text-sm max-w-sm mx-auto">
-                  This catalog doesn't have any products yet. Please check back later or contact your sales representative.
-=======
-                <h3 className="text-xl font-semibold text-[#2E1B1B] mb-3">
-                  No Products Available
-                </h3>
-                <p className="text-[#4A3A3A] text-sm max-w-sm mx-auto">
-                  This catalog doesn&apos;t have any products yet. Please check
-                  back later or contact your sales representative.
->>>>>>> d16314ca09e191a389c50fc0a345c7d513634e1e
+                                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#E5E0DC] to-[#D9A8A0] rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                   <Package className="h-8 w-8 sm:h-10 sm:w-10 text-[#C08478]" />
+                 </div>
+                 <h3 className="text-lg sm:text-xl font-semibold text-[#2E1B1B] mb-2 sm:mb-3">No Products Available</h3>
+                 <p className="text-[#4A3A3A] text-xs sm:text-sm max-w-sm mx-auto">
+                   This catalog doesn't have any products yet. Please check back later or contact your sales representative.
                 </p>
               </div>
             ) : (
@@ -611,22 +602,12 @@ export default function RetailerCatalogPage({
                           )}
                         </div>
 
-                        {/* Product Details */}
-                        <div className="p-2 sm:p-3 space-y-2 sm:space-y-3">
-                          {/* Product Info Header */}
-<<<<<<< HEAD
-                          <div className="space-y-1">
-                            <h3 className="text-sm sm:text-base font-semibold text-[#2E1B1B] line-clamp-1">{product.itemName}</h3>
-                            <p className="text-xs text-[#4A3A3A]">Code: {product.itemCode}</p>
-=======
-                          <div className="space-y-1.5">
-                            <h3 className="text-base font-semibold text-[#2E1B1B] line-clamp-1">
-                              {product.itemName}
-                            </h3>
-                            <p className="text-xs text-[#4A3A3A]">
-                              Code: {product.itemCode}
-                            </p>
->>>>>>> d16314ca09e191a389c50fc0a345c7d513634e1e
+                                                 {/* Product Details */}
+                         <div className="p-2 sm:p-3 space-y-2 sm:space-y-3">
+                           {/* Product Info Header */}
+                           <div className="space-y-1">
+                             <h3 className="text-sm sm:text-base font-semibold text-[#2E1B1B] line-clamp-1">{product.itemName}</h3>
+                             <p className="text-xs text-[#4A3A3A]">Code: {product.itemCode}</p>
                             <div className="flex gap-1.5 flex-wrap">
                               <Badge className="flex items-center gap-1 text-xs px-1.5 py-0.5 bg-[#F9F6F4] text-[#2E1B1B] border border-[#E5E0DC]">
                                 <Palette className="w-2.5 h-2.5 text-[#D9A8A0]" />{" "}
@@ -649,19 +630,10 @@ export default function RetailerCatalogPage({
                                 ₹{product.pricePerPc}
                               </p>
                             </div>
-                            <div className="w-px h-6 bg-[#D9A8A0]"></div>
-                            <div className="text-center">
-<<<<<<< HEAD
-                              <p className="text-xs text-[#4A3A3A]">Per Set (5 pcs)</p>
-                              <p className="text-base sm:text-lg font-bold text-[#C08478]">₹{product.pricePerSet}</p>
-=======
-                              <p className="text-xs text-[#4A3A3A]">
-                                Per Set (5 pcs)
-                              </p>
-                              <p className="text-lg font-bold text-[#C08478]">
-                                ₹{product.pricePerSet}
-                              </p>
->>>>>>> d16314ca09e191a389c50fc0a345c7d513634e1e
+                                                         <div className="w-px h-6 bg-[#D9A8A0]"></div>
+                             <div className="text-center">
+                               <p className="text-xs text-[#4A3A3A]">Per Set (5 pcs)</p>
+                               <p className="text-base sm:text-lg font-bold text-[#C08478]">₹{product.pricePerSet}</p>
                             </div>
                           </div>
 
