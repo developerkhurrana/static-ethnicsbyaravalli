@@ -28,7 +28,17 @@ const RATE_LIMIT = {
 
 export async function POST(request: Request) {
   try {
-    const { mobile, action = 'contact' } = await request.json()
+    let body
+    try {
+      body = await request.json()
+    } catch (parseError) {
+      return NextResponse.json(
+        { error: 'Invalid JSON in request body' },
+        { status: 400 }
+      )
+    }
+    
+    const { mobile, action = 'contact' } = body
     
     // In development or if Redis is not available, bypass rate limiting
     if (process.env.NODE_ENV === 'development' || !redis) {
@@ -42,6 +52,14 @@ export async function POST(request: Request) {
         token: `${mobile}:${action}:${Date.now()}`,
         bypassed: true
       })
+    }
+
+    // Validate mobile number
+    if (!mobile || typeof mobile !== 'string') {
+      return NextResponse.json(
+        { error: 'Invalid mobile number' },
+        { status: 400 }
+      )
     }
 
     // Get IP from Vercel headers
@@ -141,8 +159,15 @@ export async function POST(request: Request) {
     })
   } catch (error) {
     console.error('Rate limit error:', error)
+    
+    // Return a more specific error message
+    const errorMessage = error instanceof Error ? error.message : 'Internal server error'
+    
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { 
+        error: errorMessage,
+        details: process.env.NODE_ENV === 'development' ? error : undefined
+      },
       { status: 500 }
     )
   }

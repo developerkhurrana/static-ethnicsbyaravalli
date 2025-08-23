@@ -95,8 +95,13 @@ export function ContactForm() {
         throw new Error(result.error || 'Failed to submit form')
       }
 
-      // Format the message for WhatsApp
-      const whatsappMessage = `New Contact Form Submission:\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nMessage: ${data.message}`
+      // Format the message for WhatsApp with proper sanitization
+      const sanitizedName = data.name?.toString().trim() || 'N/A'
+      const sanitizedEmail = data.email?.toString().trim() || 'N/A'
+      const sanitizedPhone = data.phone?.toString().trim() || 'N/A'
+      const sanitizedMessage = data.message?.toString().trim() || 'N/A'
+      
+      const whatsappMessage = `New Contact Form Submission:\n\nName: ${sanitizedName}\nEmail: ${sanitizedEmail}\nPhone: ${sanitizedPhone}\nMessage: ${sanitizedMessage}`
       
       // Create WhatsApp URL with the actual number from siteConfig
       const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(whatsappMessage)}`

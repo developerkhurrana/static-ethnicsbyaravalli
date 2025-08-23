@@ -66,10 +66,7 @@ export default function RootLayout({
     <html lang="en" className={`h-full ${systemFonts.variable}`}>
       <head>
         <meta name="google-site-verification" content="pEZGKnigOCdWKqcGTVPfnS8nJPIUCJepodGBd2TlJY0" />
-        {/* Preload critical resources */}
-        <link rel="preload" href="/products/hero_banner_1.jpg" as="image" />
-        {/* Only preload mobile banner on mobile devices to avoid unused preload warnings */}
-        <link rel="preload" href="/products/hero_mobile_banner.jpg" as="image" media="(max-width: 768px)" />
+        {/* DNS prefetch for performance */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <link rel="dns-prefetch" href="//res.cloudinary.com" />

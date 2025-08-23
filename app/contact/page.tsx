@@ -169,10 +169,15 @@ export default function ContactPage() {
         console.error('❌ Error storing in Notion:', error)
       }
 
-      // Construct message
-      let message = `Hi, I'm ${name} from ${city}`
-      if (shop) message += `, I have a shop named ${shop}`
-      message += `. I represent a brand/business interested in manufacturing ethnicwear. Please contact me at ${mobile}.`
+      // Construct message with proper sanitization
+      const sanitizedName = name?.toString().trim() || 'N/A'
+      const sanitizedCity = city?.toString().trim() || 'N/A'
+      const sanitizedShop = shop?.toString().trim() || ''
+      const sanitizedMobile = mobile?.toString().trim() || 'N/A'
+      
+      let message = `Hi, I'm ${sanitizedName} from ${sanitizedCity}`
+      if (sanitizedShop) message += `, I have a shop named ${sanitizedShop}`
+      message += `. I represent a brand/business interested in manufacturing ethnicwear. Please contact me at ${sanitizedMobile}.`
       
       // Open WhatsApp
       const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(message)}`
