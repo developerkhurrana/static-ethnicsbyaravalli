@@ -4,7 +4,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Sparkles, Gift, Users, Star, Calendar, ArrowRight } from "lucide-react"
+import { Sparkles, Palette, Users, Star, Calendar, ArrowRight } from "lucide-react"
 import { FaWhatsapp } from "react-icons/fa"
 
 export const metadata: Metadata = {
@@ -115,7 +115,7 @@ const festiveHighlights = [
     description: "Celebrate with a palette of rich, festive hues and traditional motifs."
   },
   {
-    icon: Gift,
+    icon: Palette,
     title: "Exclusive Designs",
     description: "Unique festive designs that stand out in your collection."
   },
@@ -193,7 +193,7 @@ export default function FestiveWearPage() {
           {/* Trust Indicators */}
           <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-orange-700">
             <div className="flex items-center">
-              <Gift className="w-4 h-4 text-orange-500 mr-2" />
+              <Palette className="w-4 h-4 text-orange-500 mr-2" />
               Exclusive Designs
             </div>
             <div className="flex items-center">
