@@ -61,42 +61,49 @@ export function ContactForm() {
       }
 
       // Original logic with rate limiting and API calls
-      const rateLimitResponse = await fetch('/api/rate-limit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          mobile: data.phone,
-          action: 'contact',
-        }),
-      })
+      let rateLimitResult;
+      try {
+        const rateLimitResponse = await fetch('/api/rate-limit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            mobile: data.phone,
+            action: 'contact',
+          }),
+        })
 
-      const rateLimitResult = await rateLimitResponse.json()
+        rateLimitResult = await rateLimitResponse.json()
 
-      if (!rateLimitResponse.ok) {
-        if (rateLimitResult.type === 'cooldown') {
-          toast({
-            title: "Submission Rate Limited",
-            description: `Please wait ${rateLimitResult.remainingTime} seconds before submitting again.`,
-            variant: "destructive",
-          })
-        } else if (rateLimitResult.type === 'daily') {
-          toast({
-            title: "Daily Limit Reached",
-            description: "You've reached the daily submission limit. Please try again tomorrow or contact us directly.",
-            variant: "destructive",
-          })
-        } else if (rateLimitResult.type === 'total') {
-          toast({
-            title: "Maximum Submissions Reached",
-            description: "You've reached the maximum number of submissions. Please contact us directly.",
-            variant: "destructive",
-          })
-        } else {
-          throw new Error(rateLimitResult.error || 'Rate limit check failed')
+        if (!rateLimitResponse.ok) {
+          if (rateLimitResult.type === 'cooldown') {
+            toast({
+              title: "Submission Rate Limited",
+              description: `Please wait ${rateLimitResult.remainingTime} seconds before submitting again.`,
+              variant: "destructive",
+            })
+          } else if (rateLimitResult.type === 'daily') {
+            toast({
+              title: "Daily Limit Reached",
+              description: "You've reached the daily submission limit. Please try again tomorrow or contact us directly.",
+              variant: "destructive",
+            })
+          } else if (rateLimitResult.type === 'total') {
+            toast({
+              title: "Maximum Submissions Reached",
+              description: "You've reached the maximum number of submissions. Please contact us directly.",
+              variant: "destructive",
+            })
+          } else {
+            throw new Error(rateLimitResult.error || 'Rate limit check failed')
+          }
+          return
         }
-        return
+      } catch (rateLimitError) {
+        console.error('Rate limit API error:', rateLimitError)
+        // If rate limit API fails, continue with form submission without rate limiting
+        rateLimitResult = { token: `${data.phone}:contact:${Date.now()}` }
       }
 
       // Then, submit the contact form with the token

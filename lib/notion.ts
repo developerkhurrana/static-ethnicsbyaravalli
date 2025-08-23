@@ -70,17 +70,28 @@ function extractTextFromRichText(contentObj: unknown): string {
 
 // Helper to extract bracketed strings as array
 function extractBracketedStrings(str: string): string[] {
-  if (!str) return [];
-  // Use [\s\S] to match across newlines (instead of 's' flag)
-  const matches = str.match(/\[([\s\S]*?)\]/g) || [];
-  return matches.map(s => s.slice(1, -1).trim()).filter(Boolean);
+  if (!str || typeof str !== 'string') return [];
+  
+  try {
+    // Use [\s\S] to match across newlines (instead of 's' flag)
+    const matches = str.match(/\[([\s\S]*?)\]/g) || [];
+    return matches.map(s => s.slice(1, -1).trim()).filter(Boolean);
+  } catch (error) {
+    console.error('Error extracting bracketed strings:', error);
+    return [];
+  }
 }
 
 type NotionResponse = PageObjectResponse | PartialPageObjectResponse | DatabaseObjectResponse | PartialDatabaseObjectResponse;
 
 function getContentImages(properties: NotionProperties): string[] {
-  const contentImagesStr = extractTextFromRichText(properties.contentImages) || '';
-  return extractBracketedStrings(contentImagesStr);
+  try {
+    const contentImagesStr = extractTextFromRichText(properties.contentImages) || '';
+    return extractBracketedStrings(contentImagesStr);
+  } catch (error) {
+    console.error('Error extracting content images:', error);
+    return [];
+  }
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
@@ -102,36 +113,42 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     })
 
     const posts = response.results.map((page: NotionResponse) => {
-      if (!('properties' in page)) {
-        return null;
-      }
-      const properties = page.properties as NotionProperties;
-      
-      // Extract contentTitles, contentBlocks, and contentImages
-      const contentTitlesStr = extractTextFromRichText(properties.contentTitles) || '';
-      const contentBlocksStr = extractTextFromRichText(properties.contentBlocks) || '';
-      
-      // Use bracket extraction
-      const contentTitles = extractBracketedStrings(contentTitlesStr);
-      const contentBlocks = extractBracketedStrings(contentBlocksStr);
-      const contentImages = getContentImages(properties);
+      try {
+        if (!('properties' in page)) {
+          console.warn('Page does not have properties:', page.id);
+          return null;
+        }
+        const properties = page.properties as NotionProperties;
+        
+        // Extract contentTitles, contentBlocks, and contentImages with error handling
+        const contentTitlesStr = extractTextFromRichText(properties.contentTitles) || '';
+        const contentBlocksStr = extractTextFromRichText(properties.contentBlocks) || '';
+        
+        // Use bracket extraction
+        const contentTitles = extractBracketedStrings(contentTitlesStr);
+        const contentBlocks = extractBracketedStrings(contentBlocksStr);
+        const contentImages = getContentImages(properties);
 
-      return {
-        id: page.id,
-        slug: properties.slug?.rich_text?.[0]?.plain_text || properties.Slug?.rich_text?.[0]?.plain_text || '',
-        title: properties.title?.title?.[0]?.plain_text || properties.Title?.title?.[0]?.plain_text || '',
-        description: properties.description?.rich_text?.[0]?.plain_text || properties.Description?.rich_text?.[0]?.plain_text || '',
-        coverImage: getCoverImageUrl(properties),
-        createdAt: properties.created?.created_time || properties.Created?.created_time || new Date().toISOString(),
-        updatedAt: properties.updated?.last_edited_time || properties.Updated?.last_edited_time || new Date().toISOString(),
-        contentTitles,
-        contentBlocks,
-        contentImages,
-        published: properties.published?.checkbox || properties.Published?.checkbox || false,
-        metaTitle: properties.metaTitle?.rich_text?.[0]?.plain_text || '',
-        metaDescription: properties.metaDescription?.rich_text?.[0]?.plain_text || '',
-        keywords: properties.keywords?.rich_text?.[0]?.plain_text?.split(',').map(k => k.trim()).filter(Boolean) || [],
-        ogImage: properties.ogImage?.url || '',
+        return {
+          id: page.id,
+          slug: properties.slug?.rich_text?.[0]?.plain_text || properties.Slug?.rich_text?.[0]?.plain_text || '',
+          title: properties.title?.title?.[0]?.plain_text || properties.Title?.title?.[0]?.plain_text || '',
+          description: properties.description?.rich_text?.[0]?.plain_text || properties.Description?.rich_text?.[0]?.plain_text || '',
+          coverImage: getCoverImageUrl(properties),
+          createdAt: properties.created?.created_time || properties.Created?.created_time || new Date().toISOString(),
+          updatedAt: properties.updated?.last_edited_time || properties.Updated?.last_edited_time || new Date().toISOString(),
+          contentTitles,
+          contentBlocks,
+          contentImages,
+          published: properties.published?.checkbox || properties.Published?.checkbox || false,
+          metaTitle: properties.metaTitle?.rich_text?.[0]?.plain_text || '',
+          metaDescription: properties.metaDescription?.rich_text?.[0]?.plain_text || '',
+          keywords: properties.keywords?.rich_text?.[0]?.plain_text?.split(',').map(k => k.trim()).filter(Boolean) || [],
+          ogImage: properties.ogImage?.url || '',
+        }
+      } catch (error) {
+        console.error('Error processing blog post:', page.id, error);
+        return null;
       }
     }).filter((post): post is BlogPost => post !== null);
     return posts;
@@ -169,37 +186,43 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
 
     const page = response.results[0] as NotionResponse;
     if (!('properties' in page)) {
+      console.warn('Page does not have properties:', page.id);
       return null;
     }
     const properties = page.properties as NotionProperties;
     
-    // Extract contentTitles, contentBlocks, and contentImages
-    const contentTitlesStr = extractTextFromRichText(properties.contentTitles) || '';
-    const contentBlocksStr = extractTextFromRichText(properties.contentBlocks) || '';
+    try {
+      // Extract contentTitles, contentBlocks, and contentImages
+      const contentTitlesStr = extractTextFromRichText(properties.contentTitles) || '';
+      const contentBlocksStr = extractTextFromRichText(properties.contentBlocks) || '';
 
-    // Extract content from Notion properties
+      // Extract content from Notion properties
 
-    // Use bracket extraction
-    const contentTitles = extractBracketedStrings(contentTitlesStr);
-    const contentBlocks = extractBracketedStrings(contentBlocksStr);
-    const contentImages = getContentImages(properties);
+      // Use bracket extraction
+      const contentTitles = extractBracketedStrings(contentTitlesStr);
+      const contentBlocks = extractBracketedStrings(contentBlocksStr);
+      const contentImages = getContentImages(properties);
 
-    return {
-      id: page.id,
-      slug: properties.slug?.rich_text?.[0]?.plain_text || properties.Slug?.rich_text?.[0]?.plain_text || '',
-      title: properties.title?.title?.[0]?.plain_text || properties.Title?.title?.[0]?.plain_text || '',
-      description: properties.description?.rich_text?.[0]?.plain_text || properties.Description?.rich_text?.[0]?.plain_text || '',
-      coverImage: getCoverImageUrl(properties),
-      createdAt: properties.created?.created_time || properties.Created?.created_time || new Date().toISOString(),
-      updatedAt: properties.updated?.last_edited_time || properties.Updated?.last_edited_time || new Date().toISOString(),
-      contentTitles,
-      contentBlocks,
-      contentImages,
-      published: properties.published?.checkbox || properties.Published?.checkbox || false,
-      metaTitle: properties.metaTitle?.rich_text?.[0]?.plain_text || '',
-      metaDescription: properties.metaDescription?.rich_text?.[0]?.plain_text || '',
-      keywords: properties.keywords?.rich_text?.[0]?.plain_text?.split(',').map(k => k.trim()).filter(Boolean) || [],
-      ogImage: properties.ogImage?.url || '',
+      return {
+        id: page.id,
+        slug: properties.slug?.rich_text?.[0]?.plain_text || properties.Slug?.rich_text?.[0]?.plain_text || '',
+        title: properties.title?.title?.[0]?.plain_text || properties.Title?.title?.[0]?.plain_text || '',
+        description: properties.description?.rich_text?.[0]?.plain_text || properties.Description?.rich_text?.[0]?.plain_text || '',
+        coverImage: getCoverImageUrl(properties),
+        createdAt: properties.created?.created_time || properties.Created?.created_time || new Date().toISOString(),
+        updatedAt: properties.updated?.last_edited_time || properties.Updated?.last_edited_time || new Date().toISOString(),
+        contentTitles,
+        contentBlocks,
+        contentImages,
+        published: properties.published?.checkbox || properties.Published?.checkbox || false,
+        metaTitle: properties.metaTitle?.rich_text?.[0]?.plain_text || '',
+        metaDescription: properties.metaDescription?.rich_text?.[0]?.plain_text || '',
+        keywords: properties.keywords?.rich_text?.[0]?.plain_text?.split(',').map(k => k.trim()).filter(Boolean) || [],
+        ogImage: properties.ogImage?.url || '',
+      }
+    } catch (error) {
+      console.error('Error processing blog post by slug:', page.id, error);
+      return null;
     }
   } catch (error) {
     console.error('Error fetching blog post:', error)

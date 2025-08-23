@@ -7,6 +7,26 @@ import { getBlogPostBySlug, getBlogPosts } from "@/lib/notion"
 import { BlogPostImage } from "@/components/blog/blog-post-image"
 import { formatDate } from '@/lib/utils'
 
+// Add content sanitization function
+function sanitizeHtmlContent(content: string): string {
+  if (!content) return '';
+  
+  // Remove any script tags and other potentially dangerous content
+  let sanitized = content
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '')
+    .replace(/<object\b[^<]*(?:(?!<\/object>)<[^<]*)*<\/object>/gi, '')
+    .replace(/<embed\b[^<]*(?:(?!<\/embed>)<[^<]*)*<\/embed>/gi, '')
+    .replace(/javascript:/gi, '')
+    .replace(/on\w+\s*=/gi, '')
+    .replace(/data:/gi, '');
+  
+  // Replace newlines with <br/> tags
+  sanitized = sanitized.replace(/\n/g, '<br/>');
+  
+  return sanitized;
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function generateMetadata({ params }: any) {
   const resolvedParams = await params;
@@ -149,7 +169,7 @@ export default async function Page({ params }: any) {
                     <div
                       className="prose prose-lg dark:prose-invert"
                       dangerouslySetInnerHTML={{
-                        __html: block.replace(/\n/g, '<br/>')
+                        __html: sanitizeHtmlContent(block)
                       }}
                     />
                     {image && (
