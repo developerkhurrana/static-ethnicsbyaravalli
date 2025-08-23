@@ -1,6 +1,5 @@
 // This is a Server Component
-export const dynamic = 'force-static'
-export const revalidate = 3600 // revalidate every hour
+export const dynamic = 'force-dynamic'
 
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -61,20 +60,27 @@ export async function generateMetadata({ params }: any) {
   }
 }
 
-export async function generateStaticParams() {
-  const posts = await getBlogPosts()
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
-}
+// Temporarily disabled for build issues
+// export async function generateStaticParams() {
+//   try {
+//     const posts = await getBlogPosts()
+//     return posts.map((post) => ({
+//       slug: post.slug,
+//     }))
+//   } catch (error) {
+//     console.error('Error generating static params for blog posts:', error)
+//     return []
+//   }
+// }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function Page({ params }: any) {
-  const resolvedParams = await params;
-  const post = await getBlogPostBySlug(resolvedParams.slug)
-  if (!post) {
-    notFound()
-  }
+  try {
+    const resolvedParams = await params;
+    const post = await getBlogPostBySlug(resolvedParams.slug)
+    if (!post) {
+      notFound()
+    }
 
   // Content arrays extracted from Notion
 
@@ -183,4 +189,8 @@ export default async function Page({ params }: any) {
       />
     </div>
   )
+  } catch (error) {
+    console.error('Error loading blog post:', error)
+    notFound()
+  }
 } 

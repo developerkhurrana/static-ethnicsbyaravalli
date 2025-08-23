@@ -35,7 +35,32 @@ export function ContactForm() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
     try {
-      // First, get rate limit token
+      // Check if we have the required environment variables
+      const hasRequiredEnv = process.env.NODE_ENV === 'development' || 
+        (process.env.NOTION_TOKEN && process.env.NOTION_DATABASE_ID && process.env.RESEND_API_KEY)
+
+      if (!hasRequiredEnv) {
+        // Fallback: Just open WhatsApp with the message
+        const sanitizedName = data.name?.toString().trim() || 'N/A'
+        const sanitizedEmail = data.email?.toString().trim() || 'N/A'
+        const sanitizedPhone = data.phone?.toString().trim() || 'N/A'
+        const sanitizedMessage = data.message?.toString().trim() || 'N/A'
+        
+        const whatsappMessage = `New Contact Form Submission:\n\nName: ${sanitizedName}\nEmail: ${sanitizedEmail}\nPhone: ${sanitizedPhone}\nMessage: ${sanitizedMessage}`
+        
+        const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(whatsappMessage)}`
+        
+        window.open(whatsappUrl, '_blank')
+
+        toast({
+          title: "WhatsApp Opened!",
+          description: "Please send your message on WhatsApp. We'll get back to you soon!",
+        })
+        reset()
+        return
+      }
+
+      // Original logic with rate limiting and API calls
       const rateLimitResponse = await fetch('/api/rate-limit', {
         method: 'POST',
         headers: {
