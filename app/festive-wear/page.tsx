@@ -116,8 +116,8 @@ const festiveHighlights = [
   },
   {
     icon: Gift,
-    title: "Gift-Ready Packaging",
-    description: "Beautiful packaging, perfect for gifting during the festive season."
+    title: "Exclusive Designs",
+    description: "Unique festive designs that stand out in your collection."
   },
   {
     icon: Calendar,
@@ -194,7 +194,7 @@ export default function FestiveWearPage() {
           <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-orange-700">
             <div className="flex items-center">
               <Gift className="w-4 h-4 text-orange-500 mr-2" />
-              Gift-Ready Packaging
+              Exclusive Designs
             </div>
             <div className="flex items-center">
               <Calendar className="w-4 h-4 text-red-500 mr-2" />
