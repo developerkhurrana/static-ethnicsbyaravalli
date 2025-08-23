@@ -754,28 +754,14 @@ export default function RetailerCatalogPage({
                               >
                                 <Minus className="w-3 h-3 sm:w-4 sm:h-4" />
                               </Button>
-<<<<<<< HEAD
                               <div className="min-w-[2rem] sm:min-w-[2.5rem] text-center">
                                 <span className="text-lg sm:text-xl font-bold text-[#2E1B1B]">{quantity}</span>
-=======
-                              <div className="min-w-[2.5rem] text-center">
-                                <span className="text-xl font-bold text-[#2E1B1B]">
-                                  {quantity}
-                                </span>
->>>>>>> d16314ca09e191a389c50fc0a345c7d513634e1e
                               </div>
                               <Button
                                 variant="outline"
                                 size="sm"
-<<<<<<< HEAD
                                 onClick={() => updateQuantity(product._id, quantity + 1)}
                                 className="w-8 h-8 sm:w-10 sm:h-10 p-0 rounded-lg border-2 hover:border-[#D9A8A0] hover:bg-[#F9F6F4]"
-=======
-                                onClick={() =>
-                                  updateQuantity(product._id, quantity + 1)
-                                }
-                                className="w-10 h-10 p-0 rounded-lg border-2 hover:border-[#D9A8A0] hover:bg-[#F9F6F4]"
->>>>>>> d16314ca09e191a389c50fc0a345c7d513634e1e
                                 aria-label="Increase quantity"
                               >
                                 <Plus className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -795,15 +781,8 @@ export default function RetailerCatalogPage({
                                 : "bg-gradient-to-r from-[#D9A8A0] to-[#C08478] hover:from-[#C08478] hover:to-[#B0766A] text-white"
                             )}
                           >
-<<<<<<< HEAD
                             <ShoppingCart className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-1.5" />
                             {quantity > 0 ? `Update (${quantity} sets)` : "Add to Order"}
-=======
-                            <ShoppingCart className="w-4 h-4 mr-1.5" />
-                            {quantity > 0
-                              ? `Update (${quantity} sets)`
-                              : "Add to Order"}
->>>>>>> d16314ca09e191a389c50fc0a345c7d513634e1e
                           </Button>
 
                           {/* Current Item Summary */}
