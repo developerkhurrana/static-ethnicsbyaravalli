@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Sparkles, Palette, Users, Star, Calendar, ArrowRight } from "lucide-react"
 import { FaWhatsapp } from "react-icons/fa"
+import { festiveWearImageLinks } from "@/lib/constants"
 
 export const metadata: Metadata = {
   title: "Festive Wear Collection 2025 | Women, Men, Kurta Sets, Suits, Sarees | Ethnics by Aravalli",
@@ -61,48 +62,48 @@ const festiveCategories = [
   {
     name: "Kurtas",
     description: "Our premium kurtas blend traditional craftsmanship with contemporary aesthetics, thoughtfully crafted using fine fabrics like cotton, linen, modal, muslin, chanderi and more. The result is apparel that offers effortless elegance, breathable comfort, and lasting appeal for the discerning customers of fashion retailers.",
-    image: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929303/Kurta_hq3pka.png",
-    hoverImage: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929303/Kurta_hover_e6n7p3.jpg",
+    image: festiveWearImageLinks[2], // festive-wearkurta_dzlyzn.jpg
+    hoverImage: festiveWearImageLinks[5], // festive-wearkurta_hover_qlxbcc.jpg
     link: "/contact",
     cta: "Inquire for Kurtas"
   },
   {
     name: "Kurta Sets",
     description: "Our Kurta sets are elegant two-piece ethnic ensembles for women, thoughtfully paired with vibrant colours and stylish prints. Each set features a kurta top matched with coordinated bottoms, offering a variety of styles including pants, palazzos, shararas, and more.",
-    image: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929301/Kurta_sets_eut7hb.jpg",
-    hoverImage: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929303/Kurta_sets_hover_z4xfq9.jpg",
+    image: festiveWearImageLinks[1], // festive-wearkurta_set_g3hixx.jpg
+    hoverImage: festiveWearImageLinks[0], // festive-wearkurta_set_hover_mjnqex.jpg
     link: "/contact",
     cta: "Inquire for Kurta Sets"
   },
   {
     name: "Suit Sets",
     description: "Our timeless ethnic suit sets are crafted from premium materials and tailored with elegant cuts, offering a blend of comfort and sophistication. Each kurta set comes paired with a matching bottom and dupatta, making it an ideal choice for festive celebrations, professional settings, and boutique showcases alike.",
-    image: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929303/Suit_sets_zgl1py.jpg",
-    hoverImage: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929303/Suit_sets_hover_r8pplx.jpg",
+    image: festiveWearImageLinks[8], // festive-wearsuit_sets_lzrwx6.jpg
+    hoverImage: festiveWearImageLinks[9], // festive-wearsuit_sets_hover_aqnrqr.jpg
     link: "/contact",
     cta: "Inquire for Suit Sets"
   },
   {
     name: "Dresses",
     description: "Shop owners, elevate your collections with our stylish ethnic dresses that blend timeless silhouettes and contemporary design. Handcrafted with precision, each piece radiates sophistication while being tailored for the ease of everyday wear—perfect for discerning customers who value both tradition and trend.",
-    image: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929301/Dresses_krxyu4.jpg",
-    hoverImage: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929302/Dresses_hover_cnfrrs.jpg",
+    image: festiveWearImageLinks[10], // festive-weardress_uio8lg.jpg
+    hoverImage: festiveWearImageLinks[4], // festive-weardress_hover_ihowmn.jpg
     link: "/contact",
     cta: "Inquire for Dresses"
   },
   {
     name: "Kaftans",
     description: "Breezy and elegant, our kaftans are designed for those who cherish comfort without compromising on style. Featuring airy fabrics, intricate embroidery, and captivating prints, they're the perfect expression of effortless ethnic fusion—ideal for the customers of retailers who like everything from laid-back lounging to graceful gatherings.",
-    image: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929302/Kaftans_uyhm7a.jpg",
-    hoverImage: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929302/Kaftans_hover_nnhekp.jpg",
+    image: festiveWearImageLinks[6], // festive-wearkaftans_uu1fik.jpg
+    hoverImage: festiveWearImageLinks[3], // festive-wearkaftans_hover_jgxltj.jpg
     link: "/contact",
     cta: "Inquire for Kaftans"
   },
   {
     name: "Anarkali Kurtas",
     description: "Step into timeless elegance with our Anarkali Kurtas—celebrated for their graceful layers, royal silhouette, and exquisite artisanal detailing. Each piece captures the essence of Indian heritage while embracing a refined, contemporary flair, making it a perfect choice for occasions that call for grandeur with ease.",
-    image: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929304/Anarkali_v7kggh.jpg",
-    hoverImage: "https://res.cloudinary.com/dfye0gag9/image/upload/v1755929302/Anarkali_hover_q6jtvw.jpg",
+    image: festiveWearImageLinks[11], // festive-wearanarkali_qaxwt7.jpg
+    hoverImage: festiveWearImageLinks[7], // festive-wearanarkali_hover_mygrpv.jpg
     link: "/contact",
     cta: "Inquire for Anarkalis"
   }
@@ -237,7 +238,7 @@ export default function FestiveWearPage() {
                     fill
                     className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-orange-400/60 to-transparent" />
+
                   <div className="absolute bottom-4 left-4 text-white drop-shadow-lg">
                     <h3 className="text-xl font-bold">{category.name}</h3>
                   </div>
