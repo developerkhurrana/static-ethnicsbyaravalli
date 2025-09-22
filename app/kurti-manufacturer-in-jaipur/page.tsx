@@ -8,12 +8,12 @@ import { CheckCircle, MapPin, Phone, Mail, Clock, Users, Award, Truck, Shield } 
 import { siteConfig } from "@/lib/constants"
 
 export const metadata: Metadata = {
-  title: "Wholesale Kurti Manufacturer in Jaipur | Cotton & Designer Kurtis",
-  description: "Premium kurti manufacturer in Jaipur. Cotton, silk, and designer kurtis at wholesale prices for boutiques. Fast delivery. Get your catalog now!",
-  keywords: "kurti manufacturer in Jaipur, wholesale kurti Jaipur, Jaipuri kurtis supplier, kurti manufacturer in India, cotton kurti manufacturer, kurti catalog WhatsApp, boutique kurti supplier, retail kurti wholesaler",
+  title: "Festive Wear for Women Jaipur | Wholesale Manufacturers | Navratri 2025 Collection",
+  description: "Premium festive wear for women in Jaipur from leading wholesale manufacturers. Navratri 2025 collection, kalidaar for women, ethnic wear, bulk supply. Export quality.",
+  keywords: "festive wear for women Jaipur, wholesale ethnic wear manufacturers Jaipur, kalidaar for women Jaipur, ethnic wear for women in Jaipur, Navratri ethnic collection 2025 Jaipur, wholesale ethnic wear suppliers in Jaipur, Navratri festive wear manufacturers Jaipur, bulk kalidaar manufacturers Jaipur, ethnic wear wholesalers Jaipur Rajasthan, Jaipur festive wear for women bulk orders, B2B ethnic wear suppliers Jaipur, customized ethnic wear for women Jaipur manufacturers, Navratri 2025 ethnic wear manufacturers in Jaipur for bulk orders, best kalidaar for women wholesale suppliers Jaipur, festive ethnic wear for women manufacturers Jaipur Rajasthan, Jaipur-based ethnic wear manufacturers for Navratri retailers, export quality ethnic wear manufacturers Jaipur for Navratri 2025, bulk festive wear suppliers Jaipur for Navratri season, premium ethnic wear for women Jaipur manufacturers and exporters",
   openGraph: {
-    title: "Wholesale Kurti Manufacturer in Jaipur | Cotton & Designer Kurtis",
-    description: "Premium kurti manufacturer in Jaipur. Cotton, silk, and designer kurtis at wholesale prices for boutiques. Fast delivery. Get your catalog now!",
+    title: "Festive Wear for Women Jaipur | Wholesale Manufacturers | Navratri 2025 Collection",
+    description: "Premium festive wear for women in Jaipur from leading wholesale manufacturers. Navratri 2025 collection, kalidaar for women, ethnic wear, bulk supply.",
     type: "website",
     locale: "en_IN",
   },
@@ -24,28 +24,28 @@ export const metadata: Metadata = {
 
 const bestSellingCategories = [
   {
-    name: "Cotton Kurti Sets",
-    description: "Breathable cotton kurtis perfect for daily wear",
+    name: "Festive Wear for Women",
+    description: "Comprehensive festive wear collection for women including kurtas, suits, and ethnic dresses",
     image: "/products/kurta_1.png",
-    features: ["Pure cotton fabric", "Comfortable fit", "Multiple colors", "Bulk pricing available"]
+    features: ["Festive designs", "Contemporary styling", "Multiple sizes", "Bulk pricing available"]
   },
   {
-    name: "Designer Silk Kurtis",
-    description: "Premium silk kurtis for special occasions",
+    name: "Navratri Ethnic Collection 2025",
+    description: "Premium ethnic wear for women designed specifically for Navratri 2025 celebrations",
     image: "/products/kurta_2.png",
-    features: ["Pure silk fabric", "Embroidered designs", "Festive collection", "Wholesale rates"]
+    features: ["Navratri special designs", "Comfortable fit", "Festive collection", "Wholesale rates"]
   },
   {
-    name: "Printed Cotton Kurtis",
-    description: "Trendy printed patterns for modern women",
+    name: "Kalidaar for Women",
+    description: "Exquisite kalidaar ethnic wear for women featuring traditional craftsmanship and contemporary styling",
     image: "/products/kurta_3.png",
-    features: ["Latest prints", "Comfortable cotton", "Multiple sizes", "B2B pricing"]
+    features: ["Traditional kalidaar cuts", "Premium fabrics", "Festive colors", "B2B pricing"]
   },
   {
-    name: "Kurta-Palazzo Sets",
-    description: "Complete ethnic sets for boutique collections",
+    name: "Ethnic Wear for Women",
+    description: "Handcrafted ethnic wear for women with intricate detailing and premium finishes",
     image: "/products/kurta_4.png",
-    features: ["Matching sets", "Co-ordinated designs", "Bulk orders", "Custom sizing"]
+    features: ["Hand embroidery", "Premium quality", "Designer pieces", "Custom sizing"]
   }
 ]
 
@@ -87,18 +87,18 @@ export default function KurtiManufacturerJaipur() {
                   {siteConfig.address}
                 </Badge>
                 <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-                  Wholesale Kurti Manufacturer in Jaipur
+                  Festive Wear for Women Jaipur
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Premium wholesale kurti supplier for boutiques, retailers, and online sellers. 
-                  Quality cotton and silk kurtis with competitive bulk pricing. 
-                  <span className="font-semibold text-[#D9A8A0]"> 10+ years of trusted manufacturing.</span>
+                  Premium festive wear for women from Jaipur's leading wholesale manufacturers. 
+                  Navratri 2025 collection, kalidaar for women, ethnic wear, bulk supply. 
+                  <span className="font-semibold text-[#D9A8A0]"> Export quality, competitive pricing.</span>
                 </p>
               </div>
               
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in wholesale kurtis. Please share your catalog.`}>
+                  <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in festive wear for women. Please share your Navratri 2025 catalog.`}>
                     <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] w-full sm:w-auto">
                       <Phone className="w-5 h-5 mr-2" />
                       Get WhatsApp Catalog
@@ -123,7 +123,7 @@ export default function KurtiManufacturerJaipur() {
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <Image
                       src="/products/kurta_1.png"
-                      alt="Cotton Kurti Manufacturer Jaipur"
+                      alt="Festive Wear for Women Jaipur"
                       width={300}
                       height={400}
                       className="w-full h-64 object-cover"
@@ -132,7 +132,7 @@ export default function KurtiManufacturerJaipur() {
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <Image
                       src="/products/kurta_3.png"
-                      alt="Printed Kurti Wholesale Jaipur"
+                      alt="Kalidaar for Women Jaipur"
                       width={300}
                       height={400}
                       className="w-full h-48 object-cover"
@@ -143,7 +143,7 @@ export default function KurtiManufacturerJaipur() {
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <Image
                       src="/products/kurta_2.png"
-                      alt="Designer Kurti Supplier Jaipur"
+                      alt="Navratri Ethnic Collection 2025 Jaipur"
                       width={300}
                       height={400}
                       className="w-full h-48 object-cover"
@@ -152,7 +152,7 @@ export default function KurtiManufacturerJaipur() {
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <Image
                       src="/products/kurta_4.png"
-                      alt="Kurta Set Manufacturer Jaipur"
+                      alt="Ethnic Wear for Women Jaipur"
                       width={300}
                       height={400}
                       className="w-full h-64 object-cover"
@@ -170,10 +170,10 @@ export default function KurtiManufacturerJaipur() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Us as Your Kurti Supplier?
+              Why Choose Us as Your Festive Wear Supplier?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Trusted by 500+ boutiques and retailers across India for premium quality kurtis 
+              Trusted by 500+ boutiques and retailers across India for premium quality festive wear for women 
               and exceptional wholesale services.
             </p>
           </div>
@@ -205,10 +205,10 @@ export default function KurtiManufacturerJaipur() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Our Best-Selling Kurti Categories
+              Our Best-Selling Festive Wear Categories
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore our most popular kurti collections that are in high demand among 
+              Explore our most popular festive wear for women collections that are in high demand among 
               boutiques and retailers across India.
             </p>
           </div>
@@ -219,7 +219,7 @@ export default function KurtiManufacturerJaipur() {
                 <div className="relative h-64">
                   <Image
                     src={category.image}
-                    alt={`${category.name} - Kurti Manufacturer Jaipur`}
+                    alt={`${category.name} - Festive Wear Manufacturer Jaipur`}
                     fill
                     className="object-cover"
                   />
@@ -260,7 +260,7 @@ export default function KurtiManufacturerJaipur() {
                 </Badge>
                 <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
                   Your Trusted{" "}
-                  <span className="text-[#D9A8A0]">Kurti Manufacturer</span>{" "}
+                  <span className="text-[#D9A8A0]">Festive Wear Manufacturer</span>{" "}
                   in Malviya Nagar, Jaipur
                 </h2>
                 <p className="text-xl text-gray-600 leading-relaxed">
@@ -302,7 +302,7 @@ export default function KurtiManufacturerJaipur() {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in visiting your manufacturing unit in Malviya Nagar, Jaipur.`}>
+                <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in visiting your festive wear manufacturing unit in Malviya Nagar, Jaipur.`}>
                   <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] w-full sm:w-auto">
                     <Phone className="w-5 h-5 mr-2" />
                     Schedule Factory Visit
@@ -320,13 +320,13 @@ export default function KurtiManufacturerJaipur() {
               <div className="bg-gray-200 rounded-lg p-8 text-center">
                 <MapPin className="w-16 h-16 text-[#D9A8A0] mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Manufacturing Unit
+                  Festive Wear Manufacturing Unit
                 </h3>
                 <p className="text-gray-600 mb-4">
                   {siteConfig.address}
                 </p>
                 <p className="text-sm text-gray-500">
-                  Visit our facility to see our production process and quality standards
+                  Visit our facility to see our festive wear production process and quality standards
                 </p>
               </div>
             </div>
@@ -339,14 +339,14 @@ export default function KurtiManufacturerJaipur() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
             Ready to Partner with the Best{" "}
-            <span className="text-yellow-300">Kurti Manufacturer in Jaipur</span>?
+            <span className="text-yellow-300">Festive Wear Manufacturer in Jaipur</span>?
           </h2>
           <p className="text-xl text-rose-100 mb-8 leading-relaxed">
             Join 500+ successful boutiques and retailers who trust Ethnics by Aravalli 
-            for their kurti wholesale needs. Get competitive pricing and premium quality.
+            for their festive wear wholesale needs. Get competitive pricing and premium quality.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in wholesale kurtis from Ethnics by Aravalli. Please share your catalog and pricing.`}>
+            <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in festive wear for women. Please share your Navratri 2025 catalog.`}>
               <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-white">
                 <Phone className="w-5 h-5 mr-2" />
                 Get WhatsApp Catalog Now
@@ -370,10 +370,10 @@ export default function KurtiManufacturerJaipur() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions about Wholesale Kurtis
+              Frequently Asked Questions about Wholesale Festive Wear
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Find answers to common questions about our kurti manufacturing process and services.
+              Find answers to common questions about our festive wear manufacturing process and services.
             </p>
           </div>
           

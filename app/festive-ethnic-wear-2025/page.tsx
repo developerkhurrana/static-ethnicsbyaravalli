@@ -7,28 +7,38 @@ import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Star, Truck, Clock, Users, Award, Shield, Sparkles, Calendar, Gift } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Festive Ethnic Wear 2025 | Diwali Navratri Collection | Ethnics by Aravalli",
-  description: "Premium festive ethnic wear for Diwali, Navratri, and celebrations 2025. Designer kurtas, suit sets, dresses, kaftans at wholesale prices. Fast delivery across India.",
+  title: "Navratri Ethnic Collection 2025 | Festive Wear for Women | Wholesale Manufacturers Jaipur",
+  description: "Premium Navratri ethnic collection 2025 for women. Wholesale ethnic wear manufacturers in Jaipur. Kalidaar for women, festive wear, bulk supply. Export quality.",
   keywords: [
-    "festive ethnic wear 2025",
-    "Diwali ethnic wear",
-    "Navratri collection",
-    "festive kurtas",
-    "celebration dresses",
-    "ethnic wear manufacturer",
-    "wholesale festive wear",
-    "designer ethnic wear",
-    "festive suit sets",
-    "ethnic kaftans",
-    "festive collection 2025",
-    "Diwali kurta sets",
-    "Navratri dresses",
-    "celebration ethnic wear",
-    "festive wholesale supplier"
+    "Navratri ethnic collection 2025",
+    "ethnic wear for women",
+    "kalidaar for women",
+    "festive wear for women",
+    "wholesale ethnic wear manufacturers",
+    "bulk festive wear supply",
+    "Navratri ethnic collection 2025 Jaipur",
+    "ethnic wear for women in Jaipur",
+    "wholesale ethnic wear manufacturers Jaipur",
+    "kalidaar for women Jaipur",
+    "festive wear for women Jaipur",
+    "wholesale ethnic wear suppliers in Jaipur",
+    "Navratri festive wear manufacturers Jaipur",
+    "bulk kalidaar manufacturers Jaipur",
+    "ethnic wear wholesalers Jaipur Rajasthan",
+    "Jaipur festive wear for women bulk orders",
+    "B2B ethnic wear suppliers Jaipur",
+    "customized ethnic wear for women Jaipur manufacturers",
+    "Navratri 2025 ethnic wear manufacturers in Jaipur for bulk orders",
+    "best kalidaar for women wholesale suppliers Jaipur",
+    "festive ethnic wear for women manufacturers Jaipur Rajasthan",
+    "Jaipur-based ethnic wear manufacturers for Navratri retailers",
+    "export quality ethnic wear manufacturers Jaipur for Navratri 2025",
+    "bulk festive wear suppliers Jaipur for Navratri season",
+    "premium ethnic wear for women Jaipur manufacturers and exporters"
   ].join(', '),
   openGraph: {
-    title: "Festive Ethnic Wear 2025 | Diwali Navratri Collection | Ethnics by Aravalli",
-    description: "Premium festive ethnic wear for Diwali, Navratri, and celebrations 2025. Designer kurtas, suit sets, dresses, kaftans at wholesale prices.",
+    title: "Navratri Ethnic Collection 2025 | Festive Wear for Women | Wholesale Manufacturers Jaipur",
+    description: "Premium Navratri ethnic collection 2025 for women. Wholesale ethnic wear manufacturers in Jaipur. Kalidaar for women, festive wear, bulk supply.",
     type: "website",
     locale: "en_IN",
     url: "https://ethnicsbyaravalli.com/festive-ethnic-wear-2025",
@@ -38,7 +48,7 @@ export const metadata: Metadata = {
         url: "https://ethnicsbyaravalli.com/products/hero_banner_1.jpg",
         width: 1200,
         height: 630,
-        alt: "Festive Ethnic Wear Collection 2025 - Ethnics by Aravalli",
+        alt: "Navratri Ethnic Collection 2025 - Wholesale Manufacturers Jaipur",
       },
     ],
   },
@@ -60,32 +70,32 @@ export const metadata: Metadata = {
 
 const festiveCategories = [
   {
-    name: "Diwali Collection 2025",
-    description: "Elegant ethnic wear perfect for Diwali celebrations",
+    name: "Navratri Ethnic Collection 2025",
+    description: "Premium ethnic wear for women designed specifically for Navratri celebrations with traditional elegance and modern comfort",
     image: "/products/kurta_1.png",
-    features: ["Traditional designs", "Premium fabrics", "Festive colors", "Bulk pricing"],
-    occasions: ["Diwali", "Family gatherings", "Temple visits", "Cultural events"]
-  },
-  {
-    name: "Navratri Special",
-    description: "Comfortable and stylish ethnic wear for Navratri festivities",
-    image: "/products/kurta_2.png",
-    features: ["Comfortable fit", "Vibrant colors", "Easy movement", "Wholesale rates"],
+    features: ["Traditional kalidaar designs", "Premium fabrics", "Festive colors", "Bulk pricing"],
     occasions: ["Navratri", "Garba", "Dandiya", "Religious ceremonies"]
   },
   {
-    name: "Wedding Season Collection",
-    description: "Sophisticated ethnic wear for wedding celebrations",
-    image: "/products/kurta_3.png",
-    features: ["Luxury fabrics", "Intricate embroidery", "Designer pieces", "Custom sizing"],
-    occasions: ["Weddings", "Receptions", "Engagement parties", "Sangeet"]
+    name: "Kalidaar for Women",
+    description: "Exquisite kalidaar ethnic wear for women featuring traditional craftsmanship and contemporary styling",
+    image: "/products/kurta_2.png",
+    features: ["Traditional kalidaar cuts", "Vibrant colors", "Comfortable fit", "Wholesale rates"],
+    occasions: ["Navratri", "Festivals", "Cultural events", "Traditional gatherings"]
   },
   {
-    name: "New Year Ethnic Wear",
-    description: "Contemporary ethnic fusion for New Year celebrations",
+    name: "Festive Wear for Women",
+    description: "Comprehensive festive wear collection for women including kurtas, suits, and ethnic dresses",
+    image: "/products/kurta_3.png",
+    features: ["Luxury fabrics", "Intricate embroidery", "Designer pieces", "Custom sizing"],
+    occasions: ["Navratri", "Diwali", "Weddings", "Festivals"]
+  },
+  {
+    name: "Bulk Ethnic Wear Supply",
+    description: "Wholesale ethnic wear supply for retailers, boutiques, and distributors with competitive pricing",
     image: "/products/kurta_4.png",
-    features: ["Modern designs", "Indo-western fusion", "Party wear", "B2B pricing"],
-    occasions: ["New Year", "Corporate parties", "Social gatherings", "Cocktail events"]
+    features: ["Bulk orders", "Competitive pricing", "Fast delivery", "B2B focus"],
+    occasions: ["Retail supply", "Boutique collections", "Wholesale distribution", "Export orders"]
   }
 ]
 
@@ -153,15 +163,15 @@ export default function FestiveEthnicWearPage() {
           </div>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-            Festive Ethnic Wear{" "}
+            Navratri Ethnic Collection{" "}
             <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-              Collection 2025
+              2025
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed">
-            Celebrate every occasion with our premium ethnic wear collection. 
-            <span className="font-semibold text-gray-800"> Designer kurtas, suit sets, dresses, and kaftans for Diwali, Navratri, and all celebrations.</span>
+            Premium ethnic wear for women from Jaipur's leading wholesale manufacturers. 
+            <span className="font-semibold text-gray-800"> Kalidaar for women, festive wear, and bulk ethnic wear supply for retailers and distributors.</span>
           </p>
           
           {/* Stats Section */}
@@ -221,13 +231,13 @@ export default function FestiveEthnicWearPage() {
               Our Collections
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Festive{" "}
+              Navratri{" "}
               <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
                 Collections 2025
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover our curated ethnic wear collections designed specifically for India's most celebrated festivals and occasions.
+              Discover our premium ethnic wear collections designed specifically for Navratri 2025, featuring kalidaar for women and festive wear for retailers.
             </p>
           </div>
           
@@ -285,11 +295,11 @@ export default function FestiveEthnicWearPage() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               Why Choose Us for{" "}
               <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-                Festive Ethnic Wear?
+                Navratri Ethnic Wear?
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Your trusted partner for premium ethnic wear during every festive season.
+              Your trusted partner for premium ethnic wear manufacturing and wholesale supply in Jaipur.
             </p>
           </div>
           
@@ -356,78 +366,78 @@ export default function FestiveEthnicWearPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-sm max-w-none">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Premium Festive Ethnic Wear Collection 2025 - Celebrate Every Occasion in Style
+              Navratri Ethnic Collection 2025 - Premium Ethnic Wear for Women from Jaipur's Leading Manufacturers
             </h2>
             
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Welcome to <strong>Ethnics by Aravalli's</strong> exclusive festive ethnic wear collection for 2025, where tradition meets contemporary fashion to create the perfect celebration attire. Our comprehensive range of festive ethnic wear is designed to cater to every major Indian festival and celebration, offering boutique owners, retailers, and wholesalers access to premium quality ethnic apparel that captures the essence of Indian festivities while meeting modern fashion demands.
+              Welcome to <strong>Ethnics by Aravalli's</strong> exclusive Navratri ethnic collection 2025, where traditional craftsmanship meets contemporary fashion to create the perfect festive attire for women. Our comprehensive range of ethnic wear for women is designed specifically for Navratri celebrations, offering retailers, boutiques, and wholesalers access to premium quality ethnic apparel including kalidaar for women, festive wear, and bulk ethnic wear supply that captures the essence of Indian traditions while meeting modern fashion demands.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Our festive ethnic wear collection 2025 encompasses everything from elegant Diwali ethnic wear and vibrant Navratri collection pieces to sophisticated wedding season ethnic wear and contemporary New Year celebration attire. Each piece in our festive collection is meticulously crafted using premium fabrics including silk, georgette, chiffon, and other luxurious materials that ensure both comfort and elegance during extended celebration periods. As a leading ethnic wear manufacturer specializing in festive collections, we understand the unique requirements of different celebrations and create designs that honor tradition while embracing contemporary styling.
+              Our Navratri ethnic collection 2025 encompasses everything from elegant kalidaar for women and vibrant festive wear to sophisticated ethnic dresses and traditional kurta sets. Each piece in our collection is meticulously crafted using premium fabrics including silk, georgette, chiffon, cotton, and other luxurious materials that ensure both comfort and elegance during extended celebration periods. As leading wholesale ethnic wear manufacturers in Jaipur specializing in Navratri collections, we understand the unique requirements of festive celebrations and create designs that honor tradition while embracing contemporary styling.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              The Diwali ethnic wear segment of our festive collection features traditional designs with modern twists, perfect for family gatherings, temple visits, and cultural celebrations. Our Navratri collection emphasizes comfort and movement, with designs that allow for easy participation in traditional dances like Garba and Dandiya while maintaining elegant aesthetics. The wedding season ethnic wear includes sophisticated pieces with intricate embroidery and luxury fabrics, ideal for various wedding-related celebrations including receptions, engagement parties, and sangeet ceremonies.
+              The kalidaar for women segment of our Navratri collection features traditional designs with modern twists, perfect for Garba, Dandiya, and religious ceremonies. Our festive wear for women emphasizes comfort and movement, with designs that allow for easy participation in traditional dances while maintaining elegant aesthetics. The ethnic wear collection includes sophisticated pieces with intricate embroidery and luxury fabrics, ideal for various Navratri celebrations including temple visits, cultural events, and traditional gatherings.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Our New Year ethnic wear collection offers contemporary ethnic fusion pieces that blend traditional Indian aesthetics with modern party wear sensibilities, perfect for corporate celebrations, social gatherings, and cocktail events. Each collection within our festive ethnic wear 2025 lineup is designed with careful attention to seasonal trends, cultural significance, and practical requirements, ensuring that retailers can offer their customers the perfect ethnic wear for every celebration throughout the year.
+              Our bulk ethnic wear supply services offer competitive pricing and fast delivery for retailers and distributors across India. Each collection within our Navratri ethnic wear 2025 lineup is designed with careful attention to seasonal trends, cultural significance, and practical requirements, ensuring that retailers can offer their customers the perfect ethnic wear for women during Navratri celebrations and throughout the festive season.
             </p>
 
             <div className="bg-orange-50 p-6 rounded-lg my-8">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Explore Our Comprehensive Festive Ethnic Wear Collections
+                Explore Our Comprehensive Navratri Ethnic Wear Collections
               </h3>
               <p className="text-gray-700 mb-4">
-                Our wholesale festive ethnic wear catalog includes:
+                Our wholesale Navratri ethnic wear catalog includes:
               </p>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  <Link href="/festive-wear" className="hover:text-orange-600 transition-colors">Diwali Ethnic Wear Collection</Link>
+                  <Link href="/festive-wear" className="hover:text-orange-600 transition-colors">Navratri Ethnic Collection 2025</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  <Link href="/kurta-manufacturer" className="hover:text-orange-600 transition-colors">Navratri Special Collection</Link>
+                  <Link href="/kurta-manufacturer" className="hover:text-orange-600 transition-colors">Kalidaar for Women</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  <Link href="/suit-sets-manufacturer" className="hover:text-orange-600 transition-colors">Wedding Season Ethnic Wear</Link>
+                  <Link href="/suit-sets-manufacturer" className="hover:text-orange-600 transition-colors">Festive Wear for Women</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  <Link href="/dress-manufacturer" className="hover:text-orange-600 transition-colors">New Year Celebration Wear</Link>
+                  <Link href="/dress-manufacturer" className="hover:text-orange-600 transition-colors">Ethnic Wear for Women</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  <Link href="/kurta-sets-manufacturer" className="hover:text-orange-600 transition-colors">Festive Kurtas & Kurta Sets</Link>
+                  <Link href="/kurta-sets-manufacturer" className="hover:text-orange-600 transition-colors">Bulk Ethnic Wear Supply</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  <Link href="/suit-sets-manufacturer" className="hover:text-orange-600 transition-colors">Designer Suit Sets</Link>
+                  <Link href="/suit-sets-manufacturer" className="hover:text-orange-600 transition-colors">Wholesale Ethnic Wear Manufacturers</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  <Link href="/kaftan-manufacturer" className="hover:text-orange-600 transition-colors">Ethnic Kaftans & Dresses</Link>
+                  <Link href="/kaftan-manufacturer" className="hover:text-orange-600 transition-colors">Export Quality Ethnic Wear</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" />
-                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-orange-600 transition-colors">Custom Festive Designs</Link>
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-orange-600 transition-colors">Custom Navratri Designs</Link>
                 </li>
               </ul>
             </div>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Shopping for wholesale festive ethnic wear has never been more convenient. Our comprehensive catalog system allows retailers and boutique owners to browse our extensive festive collection, select pieces that align with their customer preferences, and place bulk orders with competitive wholesale pricing. We understand the importance of timely delivery during festive seasons and ensure that all orders are processed and shipped well before celebrations begin, allowing retailers to stock their stores adequately for peak shopping periods.
+              Shopping for wholesale Navratri ethnic wear has never been more convenient. Our comprehensive catalog system allows retailers and boutique owners to browse our extensive Navratri collection, select pieces that align with their customer preferences, and place bulk orders with competitive wholesale pricing. We understand the importance of timely delivery during Navratri season and ensure that all orders are processed and shipped well before celebrations begin, allowing retailers to stock their stores adequately for peak shopping periods.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Our commitment to quality and authenticity in festive ethnic wear manufacturing sets us apart as a trusted partner for retailers across India. Each piece in our festive collection undergoes rigorous quality checks to ensure it meets our high standards for fabric quality, stitching precision, and finishing excellence. By choosing Ethnics by Aravalli as your festive ethnic wear supplier, you're partnering with a manufacturer that understands the cultural significance of Indian festivals and creates ethnic wear that honors these traditions while meeting contemporary fashion expectations.
+              Our commitment to quality and authenticity in Navratri ethnic wear manufacturing sets us apart as a trusted partner for retailers across India. Each piece in our collection undergoes rigorous quality checks to ensure it meets our high standards for fabric quality, stitching precision, and finishing excellence. By choosing Ethnics by Aravalli as your Navratri ethnic wear supplier, you're partnering with a manufacturer that understands the cultural significance of Navratri celebrations and creates ethnic wear that honors these traditions while meeting contemporary fashion expectations.
             </p>
 
             <p className="text-gray-700 leading-relaxed">
-              Experience the perfect blend of tradition and modernity with our exclusive festive ethnic wear collection 2025. Whether you're looking for traditional Diwali ethnic wear, comfortable Navratri collection pieces, sophisticated wedding season attire, or contemporary New Year celebration wear, our comprehensive festive collection has something for every occasion and customer preference. Partner with us, India's leading festive ethnic wear manufacturer, and elevate your retail business with premium quality ethnic apparel that celebrates the rich cultural heritage of Indian festivals while meeting the demands of modern fashion-conscious consumers. Explore our complete <Link href="/ethnic-wear-manufacturer" className="text-orange-600 hover:text-orange-700 underline font-medium">ethnic wear collection</Link> for year-round business opportunities.
+              Experience the perfect blend of tradition and modernity with our exclusive Navratri ethnic collection 2025. Whether you're looking for traditional kalidaar for women, comfortable festive wear, sophisticated ethnic dresses, or contemporary kurta sets, our comprehensive collection has something for every occasion and customer preference. Partner with us, Jaipur's leading wholesale ethnic wear manufacturers, and elevate your retail business with premium quality ethnic apparel that celebrates the rich cultural heritage of Navratri while meeting the demands of modern fashion-conscious consumers. Connect with Jaipur's leading ethnic wear manufacturers for Navratri 2025 and explore our complete <Link href="/ethnic-wear-manufacturer" className="text-orange-600 hover:text-orange-700 underline font-medium">ethnic wear collection</Link> for year-round business opportunities.
             </p>
           </div>
         </div>
@@ -437,11 +447,11 @@ export default function FestiveEthnicWearPage() {
       <section className="py-16 md:py-24 bg-gradient-to-r from-orange-600 to-red-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready for the Festive Season?
+            Ready for Navratri 2025?
           </h2>
           <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
-            Get your hands on our exclusive festive ethnic wear collection. 
-            Perfect for boutiques, retailers, and wholesalers.
+            Connect with Jaipur's leading ethnic wear manufacturers for Navratri 2025. 
+            Bulk festive wear supply directly from Jaipur manufacturers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary">

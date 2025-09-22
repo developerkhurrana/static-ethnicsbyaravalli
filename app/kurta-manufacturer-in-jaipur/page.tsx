@@ -8,12 +8,12 @@ import { CheckCircle, MapPin, Phone, Mail, Users, Award, Truck, Shield } from "l
 import { siteConfig } from "@/lib/constants"
 
 export const metadata: Metadata = {
-  title: "Wholesale Kurta Manufacturer in Jaipur | Cotton & Designer Kurtas",
-  description: "Premium kurta manufacturer in Jaipur. Cotton, silk, and designer kurtas at wholesale prices for boutiques. Fast delivery. Get your catalog now!",
-  keywords: "kurta manufacturer in Jaipur, wholesale kurta Jaipur, Jaipuri kurtas supplier, kurta manufacturer in India, cotton kurta manufacturer, kurta catalog WhatsApp, boutique kurta supplier, retail kurta wholesaler",
+  title: "Ethnic Wear for Women in Jaipur | Wholesale Manufacturers | Navratri 2025 Collection",
+  description: "Premium ethnic wear for women in Jaipur from leading wholesale manufacturers. Navratri 2025 collection, kalidaar for women, festive wear, bulk supply. Export quality.",
+  keywords: "ethnic wear for women in Jaipur, wholesale ethnic wear manufacturers Jaipur, kalidaar for women Jaipur, festive wear for women Jaipur, Navratri ethnic collection 2025 Jaipur, wholesale ethnic wear suppliers in Jaipur, Navratri festive wear manufacturers Jaipur, bulk kalidaar manufacturers Jaipur, ethnic wear wholesalers Jaipur Rajasthan, Jaipur festive wear for women bulk orders, B2B ethnic wear suppliers Jaipur, customized ethnic wear for women Jaipur manufacturers, Navratri 2025 ethnic wear manufacturers in Jaipur for bulk orders, best kalidaar for women wholesale suppliers Jaipur, festive ethnic wear for women manufacturers Jaipur Rajasthan, Jaipur-based ethnic wear manufacturers for Navratri retailers, export quality ethnic wear manufacturers Jaipur for Navratri 2025, bulk festive wear suppliers Jaipur for Navratri season, premium ethnic wear for women Jaipur manufacturers and exporters",
   openGraph: {
-    title: "Wholesale Kurta Manufacturer in Jaipur | Cotton & Designer Kurtas",
-    description: "Premium kurta manufacturer in Jaipur. Cotton, silk, and designer kurtas at wholesale prices for boutiques. Fast delivery. Get your catalog now!",
+    title: "Ethnic Wear for Women in Jaipur | Wholesale Manufacturers | Navratri 2025 Collection",
+    description: "Premium ethnic wear for women in Jaipur from leading wholesale manufacturers. Navratri 2025 collection, kalidaar for women, festive wear, bulk supply.",
     type: "website",
     locale: "en_IN",
   },
@@ -24,28 +24,28 @@ export const metadata: Metadata = {
 
 const bestSellingCategories = [
   {
-    name: "Cotton Kurta Sets",
-    description: "Breathable cotton kurtas perfect for daily wear",
+    name: "Kalidaar for Women",
+    description: "Exquisite kalidaar ethnic wear for women featuring traditional craftsmanship and contemporary styling",
     image: "/products/kurta_1.png",
-    features: ["Pure cotton fabric", "Comfortable fit", "Multiple colors", "Bulk pricing available"]
+    features: ["Traditional kalidaar cuts", "Premium fabrics", "Festive colors", "Bulk pricing available"]
   },
   {
-    name: "Designer Silk Kurtas",
-    description: "Premium silk kurtas for special occasions",
+    name: "Navratri Ethnic Collection 2025",
+    description: "Premium ethnic wear for women designed specifically for Navratri 2025 celebrations",
     image: "/products/kurta_2.png",
-    features: ["Pure silk fabric", "Embroidered designs", "Festive collection", "Wholesale rates"]
+    features: ["Navratri special designs", "Comfortable fit", "Festive collection", "Wholesale rates"]
   },
   {
-    name: "Printed Cotton Kurtas",
-    description: "Trendy printed patterns for modern men and women",
+    name: "Festive Wear for Women",
+    description: "Comprehensive festive wear collection for women including kurtas, suits, and ethnic dresses",
     image: "/products/kurta_3.png",
-    features: ["Latest prints", "Comfortable cotton", "Multiple sizes", "B2B pricing"]
+    features: ["Festive designs", "Contemporary styling", "Multiple sizes", "B2B pricing"]
   },
   {
-    name: "Kurta-Palazzo Sets",
-    description: "Complete ethnic sets for boutique collections",
+    name: "Ethnic Wear for Women",
+    description: "Handcrafted ethnic wear for women with intricate detailing and premium finishes",
     image: "/products/kurta_4.png",
-    features: ["Matching sets", "Co-ordinated designs", "Bulk orders", "Custom sizing"]
+    features: ["Hand embroidery", "Premium quality", "Designer pieces", "Custom sizing"]
   }
 ]
 
@@ -87,18 +87,18 @@ export default function KurtaManufacturerJaipur() {
                   {siteConfig.address}
                 </Badge>
                 <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-                  Wholesale Kurta Manufacturer in Jaipur
+                  Ethnic Wear for Women in Jaipur
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Premium wholesale kurta supplier for boutiques, retailers, and online sellers. 
-                  Quality cotton and silk kurtas with competitive bulk pricing. 
-                  <span className="font-semibold text-[#D9A8A0]"> 10+ years of trusted manufacturing.</span>
+                  Premium ethnic wear for women from Jaipur's leading wholesale manufacturers. 
+                  Navratri 2025 collection, kalidaar for women, festive wear, bulk supply. 
+                  <span className="font-semibold text-[#D9A8A0]"> Export quality, competitive pricing.</span>
                 </p>
               </div>
               
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in wholesale kurtas. Please share your catalog.`}>
+                  <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in ethnic wear for women. Please share your Navratri 2025 catalog.`}>
                     <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] w-full sm:w-auto">
                       <Phone className="w-5 h-5 mr-2" />
                       Get WhatsApp Catalog
@@ -170,10 +170,10 @@ export default function KurtaManufacturerJaipur() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Us as Your Kurta Supplier?
+              Why Choose Us as Your Ethnic Wear Supplier?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Trusted by 500+ boutiques and retailers across India for premium quality kurtas 
+              Trusted by 500+ boutiques and retailers across India for premium quality ethnic wear for women 
               and exceptional wholesale services.
             </p>
           </div>
@@ -205,10 +205,10 @@ export default function KurtaManufacturerJaipur() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              What We Make
+              Our Navratri Ethnic Collections
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore our best-selling kurta categories, crafted for quality and style. Customization and bulk orders available for boutiques and retailers.
+              Explore our best-selling ethnic wear for women categories, crafted for quality and style. Customization and bulk orders available for boutiques and retailers.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -239,7 +239,7 @@ export default function KurtaManufacturerJaipur() {
                       </li>
                     ))}
                   </ul>
-                  <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in your ${category.name.toLowerCase()}. Please share your kurta catalog.`}>
+                  <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in your ${category.name.toLowerCase()}. Please share your ethnic wear catalog.`}>
                     <Button size="sm" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] w-full">
                       Get Catalog
                     </Button>
@@ -255,13 +255,13 @@ export default function KurtaManufacturerJaipur() {
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Ready to Start Your Kurta Order?
+            Ready to Start Your Ethnic Wear Order?
           </h2>
           <p className="text-xl text-gray-600 mb-8">
             Contact us for a custom quote, catalog, or to discuss your requirements. We respond quickly on WhatsApp and email!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in wholesale kurtas. Please share your catalog.`}>
+            <Link href={`https://wa.me/${siteConfig.whatsappNumber.replace('+', '')}?text=Hi, I&apos;m interested in ethnic wear for women. Please share your Navratri 2025 catalog.`}>
               <Button size="lg" className="bg-[#D9A8A0] hover:bg-[#C08478] text-[#2E1B1B] w-full sm:w-auto">
                 <Phone className="w-5 h-5 mr-2" />
                 WhatsApp Us

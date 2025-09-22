@@ -7,21 +7,44 @@ import Script from "next/script"
 import { siteConfig } from "@/lib/constants"
 
 export const metadata = {
-  title: "Ethnic Wear Manufacturer India | Custom & Wholesale Supplier",
-  description: "India's leading ethnic wear manufacturer. Custom designs, sustainable fabrics, and fast turnaround for boutiques and designers. Contact us today!",
+  title: "Wholesale Ethnic Wear Manufacturers Jaipur | Navratri 2025 Collection | B2B Suppliers",
+  description: "Leading wholesale ethnic wear manufacturers in Jaipur. Navratri 2025 collection, kalidaar for women, festive wear, bulk supply. Export quality, competitive pricing.",
   openGraph: {
-    title: "Ethnic Wear Manufacturer India | Custom & Wholesale Supplier",
-    description: "India's leading ethnic wear manufacturer. Custom designs, sustainable fabrics, and fast turnaround for boutiques and designers. Contact us today!",
+    title: "Wholesale Ethnic Wear Manufacturers Jaipur | Navratri 2025 Collection | B2B Suppliers",
+    description: "Leading wholesale ethnic wear manufacturers in Jaipur. Navratri 2025 collection, kalidaar for women, festive wear, bulk supply. Export quality, competitive pricing.",
     images: [
       {
         url: "/og-ethnic-wear-manufacturer.jpg",
         width: 1200,
         height: 630,
-        alt: "Premium Ethnic Wear Manufacturer in India - Custom Ethnic Fashion Production",
+        alt: "Wholesale Ethnic Wear Manufacturers Jaipur - Navratri 2025 Collection",
       },
     ],
   },
   keywords: [
+    "wholesale ethnic wear manufacturers",
+    "ethnic wear for women",
+    "kalidaar for women",
+    "festive wear for women",
+    "Navratri ethnic collection 2025",
+    "wholesale ethnic wear manufacturers Jaipur",
+    "ethnic wear for women in Jaipur",
+    "kalidaar for women Jaipur",
+    "festive wear for women Jaipur",
+    "wholesale ethnic wear suppliers in Jaipur",
+    "Navratri festive wear manufacturers Jaipur",
+    "bulk kalidaar manufacturers Jaipur",
+    "ethnic wear wholesalers Jaipur Rajasthan",
+    "Jaipur festive wear for women bulk orders",
+    "B2B ethnic wear suppliers Jaipur",
+    "customized ethnic wear for women Jaipur manufacturers",
+    "Navratri 2025 ethnic wear manufacturers in Jaipur for bulk orders",
+    "best kalidaar for women wholesale suppliers Jaipur",
+    "festive ethnic wear for women manufacturers Jaipur Rajasthan",
+    "Jaipur-based ethnic wear manufacturers for Navratri retailers",
+    "export quality ethnic wear manufacturers Jaipur for Navratri 2025",
+    "bulk festive wear suppliers Jaipur for Navratri season",
+    "premium ethnic wear for women Jaipur manufacturers and exporters",
     "ethnic wear manufacturer",
     "premium ethnic wear",
     "custom ethnic fashion",
@@ -139,15 +162,15 @@ export default function EthnicWearManufacturerPage() {
             </div>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg mb-6 leading-tight">
-              Ethnic Wear Manufacturer in{" "}
+              Wholesale Ethnic Wear Manufacturers{" "}
               <span className="bg-gradient-to-r from-pink-200 to-rose-200 bg-clip-text text-transparent">
-                India
+                Jaipur
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
-              India's leading ethnic wear manufacturer. Custom designs, sustainable fabrics, and fast turnaround for boutiques and designers.
-              <span className="font-semibold text-white"> Premium quality, expert craftsmanship.</span>
+              Jaipur's leading wholesale ethnic wear manufacturers. Navratri 2025 collection, kalidaar for women, festive wear, bulk supply.
+              <span className="font-semibold text-white"> Export quality, competitive pricing.</span>
             </p>
             
             {/* Stats Section */}
@@ -211,11 +234,11 @@ export default function EthnicWearManufacturerPage() {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                 Why Choose Us for{" "}
                 <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
-                  Custom Ethnic Fashion?
+                  Navratri Ethnic Wear?
                 </span>
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Discover what makes us the preferred choice for premium ethnic wear manufacturing
+                Discover what makes us the preferred choice for wholesale ethnic wear manufacturing in Jaipur
               </p>
             </div>
             
@@ -480,28 +503,28 @@ export default function EthnicWearManufacturerPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="prose prose-sm max-w-none">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                Premium Ethnic Wear Manufacturer in India - Your Trusted Partner for Custom Ethnic Fashion
+                Wholesale Ethnic Wear Manufacturers Jaipur - Your Trusted Partner for Navratri 2025 Collection
               </h2>
               
               <p className="text-gray-700 mb-6 leading-relaxed">
-                Welcome to <strong>Ethnics by Aravalli</strong>, India's leading ethnic wear manufacturer specializing in custom ethnic fashion production for boutiques, designers, and retailers. We are dedicated to crafting exceptional ethnic wear that combines traditional Indian aesthetics with contemporary comfort, offering fashion entrepreneurs across India access to premium quality ethnic apparel at competitive wholesale prices.
+                Welcome to <strong>Ethnics by Aravalli</strong>, Jaipur's leading wholesale ethnic wear manufacturers specializing in Navratri 2025 collection, kalidaar for women, and festive wear production for retailers, boutiques, and distributors. We are dedicated to crafting exceptional ethnic wear for women that combines traditional Indian aesthetics with contemporary comfort, offering fashion businesses across India access to premium quality ethnic apparel including kalidaar for women, festive wear, and bulk ethnic wear supply at competitive wholesale prices.
               </p>
 
               <p className="text-gray-700 mb-6 leading-relaxed">
-                Our extensive collection of ethnic wear encompasses everything from elegant <Link href="/kurta-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">kurtas</Link> and traditional <Link href="/kurta-sets-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">kurta sets</Link> to modern <Link href="/suit-sets-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">suit sets</Link> and designer ethnic apparel. Each piece in our collection is meticulously crafted using premium fabrics including pure cotton, silk, georgette, chanderi, and other natural materials that ensure breathability, comfort, and durability. As a leading ethnic wear manufacturer in India, we understand the diverse needs of modern fashion and create designs that celebrate both tradition and contemporary trends.
+                Our extensive collection of ethnic wear for women encompasses everything from elegant <Link href="/kurta-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">kurtas</Link> and traditional <Link href="/kurta-sets-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">kurta sets</Link> to modern <Link href="/suit-sets-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">suit sets</Link> and designer ethnic apparel. Each piece in our collection is meticulously crafted using premium fabrics including pure cotton, silk, georgette, chanderi, and other natural materials that ensure breathability, comfort, and durability. As leading wholesale ethnic wear manufacturers in Jaipur, we understand the diverse needs of modern fashion and create designs that celebrate both tradition and contemporary trends.
               </p>
 
               <p className="text-gray-700 mb-6 leading-relaxed">
-                Whether you're a boutique owner looking to stock the latest ethnic wear trends, a retailer seeking reliable wholesale ethnic wear suppliers, or a fashion entrepreneur wanting to partner with a trusted ethnic wear manufacturer in India, our comprehensive range of ethnic apparel caters to every business requirement. Our ethnic wear collection is perfect for various occasions including daily wear, office wear, <Link href="/festive-ethnic-wear-2025" className="text-pink-600 hover:text-pink-700 underline font-medium">festivals</Link>, weddings, parties, and special celebrations, making them ideal for retailers serving diverse customer segments.
+                Whether you're a boutique owner looking to stock the latest Navratri ethnic collection 2025, a retailer seeking reliable wholesale ethnic wear suppliers, or a fashion entrepreneur wanting to partner with a trusted ethnic wear manufacturer in Jaipur, our comprehensive range of ethnic apparel caters to every business requirement. Our ethnic wear collection is perfect for various occasions including daily wear, office wear, <Link href="/festive-ethnic-wear-2025" className="text-pink-600 hover:text-pink-700 underline font-medium">Navratri celebrations</Link>, festivals, weddings, and special celebrations, making them ideal for retailers serving diverse customer segments.
               </p>
 
               <p className="text-gray-700 mb-6 leading-relaxed">
-                As a professional ethnic wear manufacturer, we prioritize quality control at every stage of production. From design and pattern making to fabric selection, cutting, stitching, and final finishing, each piece undergoes rigorous quality checks to ensure it meets our high standards. Our commitment to excellence has made us one of the most trusted ethnic wear manufacturers in India, serving clients across the country with reliable wholesale ethnic wear supply and timely delivery services.
+                As professional wholesale ethnic wear manufacturers in Jaipur, we prioritize quality control at every stage of production. From design and pattern making to fabric selection, cutting, stitching, and final finishing, each piece undergoes rigorous quality checks to ensure it meets our high standards. Our commitment to excellence has made us one of the most trusted ethnic wear manufacturers in Jaipur, serving clients across the country with reliable wholesale ethnic wear supply and timely delivery services.
               </p>
 
               <div className="bg-pink-50 p-6 rounded-lg my-8">
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  Explore Our Comprehensive Collection of Ethnic Wear
+                  Explore Our Comprehensive Navratri Ethnic Wear Collection
                 </h3>
                 <p className="text-gray-700 mb-4">
                   Our wholesale ethnic wear catalog includes:
@@ -509,49 +532,49 @@ export default function EthnicWearManufacturerPage() {
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    <Link href="/kurta-manufacturer" className="hover:text-pink-600 transition-colors">Kurtas</Link>
+                    <Link href="/festive-ethnic-wear-2025" className="hover:text-pink-600 transition-colors">Navratri Ethnic Collection 2025</Link>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    <Link href="/kurta-sets-manufacturer" className="hover:text-pink-600 transition-colors">Kurta Sets</Link>
+                    <Link href="/kurta-manufacturer" className="hover:text-pink-600 transition-colors">Kalidaar for Women</Link>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    <Link href="/suit-sets-manufacturer" className="hover:text-pink-600 transition-colors">Suit Sets</Link>
+                    <Link href="/suit-sets-manufacturer" className="hover:text-pink-600 transition-colors">Festive Wear for Women</Link>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    <Link href="/dress-manufacturer" className="hover:text-pink-600 transition-colors">Designer Ethnic Wear</Link>
+                    <Link href="/dress-manufacturer" className="hover:text-pink-600 transition-colors">Ethnic Wear for Women</Link>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    <Link href="/kaftan-manufacturer" className="hover:text-pink-600 transition-colors">Traditional Wear</Link>
+                    <Link href="/kaftan-manufacturer" className="hover:text-pink-600 transition-colors">Bulk Ethnic Wear Supply</Link>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-pink-600 transition-colors">Custom Designs</Link>
+                    <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-pink-600 transition-colors">Wholesale Ethnic Wear Manufacturers</Link>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    <Link href="/top-kurti-wholesaler-in-jaipur" className="hover:text-pink-600 transition-colors">Private Label</Link>
+                    <Link href="/top-kurti-wholesaler-in-jaipur" className="hover:text-pink-600 transition-colors">Export Quality Ethnic Wear</Link>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-4 h-4 text-pink-600 mr-2 flex-shrink-0" />
-                    <Link href="/festive-wear" className="hover:text-pink-600 transition-colors">Sustainable Ethnic Wear</Link>
+                    <Link href="/festive-wear" className="hover:text-pink-600 transition-colors">Custom Navratri Designs</Link>
                   </li>
                 </ul>
               </div>
 
               <p className="text-gray-700 mb-6 leading-relaxed">
-                Shopping for wholesale ethnic wear online has never been easier. Our user-friendly catalog system allows retailers and boutique owners to browse our extensive ethnic wear collection, select their preferred styles, and place bulk orders with just a few clicks. We understand the importance of seamless business operations and strive to provide a hassle-free wholesale shopping experience with detailed product information, size charts, and competitive pricing.
+                Shopping for wholesale ethnic wear from Jaipur's leading manufacturers has never been easier. Our user-friendly catalog system allows retailers and boutique owners to browse our extensive Navratri ethnic collection, select their preferred styles, and place bulk orders with just a few clicks. We understand the importance of seamless business operations and strive to provide a hassle-free wholesale shopping experience with detailed product information, size charts, and competitive pricing.
               </p>
 
               <p className="text-gray-700 mb-6 leading-relaxed">
-                Our commitment to sustainable and ethical fashion practices sets us apart as a responsible ethnic wear manufacturer. We work closely with trusted fabric suppliers who share our values, ensuring that all materials used in our ethnic wear are responsibly sourced and of the highest quality. By choosing Ethnics by Aravalli as your ethnic wear manufacturer, you're supporting ethical manufacturing practices while offering your customers premium quality ethnic apparel.
+                Our commitment to sustainable and ethical fashion practices sets us apart as a responsible ethnic wear manufacturer in Jaipur. We work closely with trusted fabric suppliers who share our values, ensuring that all materials used in our ethnic wear are responsibly sourced and of the highest quality. By choosing Ethnics by Aravalli as your ethnic wear manufacturer, you're supporting ethical manufacturing practices while offering your customers premium quality ethnic apparel.
               </p>
 
               <p className="text-gray-700 leading-relaxed">
-                Experience the perfect blend of tradition and modernity with our exclusive collection of ethnic wear. Whether you're looking for comfortable daily wear <Link href="/kurta-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">kurtas</Link>, elegant <Link href="/kurta-sets-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">kurta sets</Link> for special occasions, or modern <Link href="/suit-sets-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">suit sets</Link> for professional settings, our wholesale ethnic wear collection has something for every occasion and customer preference. Partner with us, India's leading ethnic wear manufacturer, and elevate your retail business with premium quality ethnic apparel that your customers will love.
+                Experience the perfect blend of tradition and modernity with our exclusive collection of ethnic wear for women. Whether you're looking for traditional <Link href="/festive-ethnic-wear-2025" className="text-pink-600 hover:text-pink-700 underline font-medium">kalidaar for women</Link>, elegant <Link href="/kurta-sets-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">festive wear for women</Link>, or modern <Link href="/suit-sets-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">ethnic wear for women</Link> for various occasions, our wholesale ethnic wear collection has something for every occasion and customer preference. Partner with us, Jaipur's leading wholesale ethnic wear manufacturers, and elevate your retail business with premium quality ethnic apparel that your customers will love. Connect with Jaipur's leading ethnic wear manufacturers for Navratri 2025 and order Navratri ethnic collection 2025 in wholesale from Jaipur.
               </p>
             </div>
           </div>

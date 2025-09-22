@@ -8,28 +8,12 @@ import { CheckCircle, Star, Truck, Clock, Users, Award, Shield, Sparkles, Leaf, 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 export const metadata: Metadata = {
-  title: "Dress Manufacturer in Jaipur | Wholesale Ethnic Dresses | Ethnics by Aravalli",
-  description: "Premium dress manufacturer in Jaipur. Designer ethnic dresses, party wear, and casual dresses at wholesale prices. Fast delivery across India for boutiques and retailers.",
-  keywords: [
-    "dress manufacturer",
-    "dress manufacturer in Jaipur",
-    "ethnic dress manufacturer",
-    "wholesale dresses",
-    "designer dress manufacturer",
-    "dress supplier Jaipur",
-    "ethnic dress supplier",
-    "dress wholesale",
-    "party wear dress manufacturer",
-    "casual dress manufacturer",
-    "dress manufacturer India",
-    "ethnic wear dresses",
-    "boutique dress supplier",
-    "dress manufacturer for retailers",
-    "women dress manufacturer"
-  ].join(', '),
+  title: "Ethnic Wear for Women Jaipur | Wholesale Dress Manufacturers | Navratri 2025 Collection",
+  description: "Premium ethnic wear for women in Jaipur from leading wholesale dress manufacturers. Navratri 2025 collection, kalidaar for women, festive wear, bulk supply. Export quality.",
+  keywords: "ethnic wear for women Jaipur, wholesale ethnic wear manufacturers Jaipur, kalidaar for women Jaipur, festive wear for women Jaipur, Navratri ethnic collection 2025 Jaipur, wholesale ethnic wear suppliers in Jaipur, Navratri festive wear manufacturers Jaipur, bulk kalidaar manufacturers Jaipur, ethnic wear wholesalers Jaipur Rajasthan, Jaipur festive wear for women bulk orders, B2B ethnic wear suppliers Jaipur, customized ethnic wear for women Jaipur manufacturers, Navratri 2025 ethnic wear manufacturers in Jaipur for bulk orders, best kalidaar for women wholesale suppliers Jaipur, festive ethnic wear for women manufacturers Jaipur Rajasthan, Jaipur-based ethnic wear manufacturers for Navratri retailers, export quality ethnic wear manufacturers Jaipur for Navratri 2025, bulk festive wear suppliers Jaipur for Navratri season, premium ethnic wear for women Jaipur manufacturers and exporters",
   openGraph: {
-    title: "Dress Manufacturer in Jaipur | Wholesale Ethnic Dresses | Ethnics by Aravalli",
-    description: "Premium dress manufacturer in Jaipur. Designer ethnic dresses, party wear, and casual dresses at wholesale prices.",
+    title: "Ethnic Wear for Women Jaipur | Wholesale Dress Manufacturers | Navratri 2025 Collection",
+    description: "Premium ethnic wear for women in Jaipur from leading wholesale dress manufacturers. Navratri 2025 collection, kalidaar for women, festive wear, bulk supply.",
     type: "website",
     locale: "en_IN",
     url: "https://ethnicsbyaravalli.com/dress-manufacturer",
@@ -39,7 +23,7 @@ export const metadata: Metadata = {
         url: "https://ethnicsbyaravalli.com/products/hero_banner_1.jpg",
         width: 1200,
         height: 630,
-        alt: "Dress Manufacturer in Jaipur - Ethnics by Aravalli",
+        alt: "Ethnic Wear for Women Jaipur - Wholesale Dress Manufacturers",
       },
     ],
   },
@@ -61,32 +45,32 @@ export const metadata: Metadata = {
 
 const dressCategories = [
   {
-    name: "Ethnic Dresses",
-    description: "Traditional ethnic dresses with modern styling and comfort",
+    name: "Ethnic Wear for Women",
+    description: "Premium ethnic wear for women featuring traditional designs with modern comfort",
     image: "/products/kurta_1.png",
     features: ["Traditional designs", "Comfortable fit", "Multiple colors", "Bulk pricing"],
-    occasions: ["Festivals", "Cultural events", "Traditional gatherings", "Religious ceremonies"]
+    occasions: ["Navratri", "Cultural events", "Traditional gatherings", "Religious ceremonies"]
   },
   {
-    name: "Party Wear Dresses",
-    description: "Elegant party wear dresses for special occasions and celebrations",
+    name: "Navratri Ethnic Collection 2025",
+    description: "Premium ethnic wear for women designed specifically for Navratri 2025 celebrations",
     image: "/products/kurta_2.png",
-    features: ["Designer pieces", "Premium fabrics", "Festive collection", "Wholesale rates"],
-    occasions: ["Weddings", "Parties", "Receptions", "Special occasions"]
+    features: ["Navratri special designs", "Premium fabrics", "Festive collection", "Wholesale rates"],
+    occasions: ["Navratri", "Festivals", "Cultural celebrations", "Religious events"]
   },
   {
-    name: "Casual Dresses",
-    description: "Comfortable casual dresses perfect for daily wear and outings",
+    name: "Kalidaar for Women",
+    description: "Exquisite kalidaar ethnic wear for women featuring traditional craftsmanship and contemporary styling",
     image: "/products/kurta_3.png",
-    features: ["Comfortable cotton", "Easy care", "Multiple sizes", "B2B pricing"],
-    occasions: ["Daily wear", "Office wear", "Casual outings", "Weekend wear"]
+    features: ["Traditional kalidaar cuts", "Premium fabrics", "Festive colors", "B2B pricing"],
+    occasions: ["Navratri", "Weddings", "Festivals", "Special occasions"]
   },
   {
-    name: "Indo-Western Dresses",
-    description: "Fusion dresses combining Indian and Western aesthetics",
+    name: "Festive Wear for Women",
+    description: "Comprehensive festive wear collection for women including kurtas, suits, and ethnic dresses",
     image: "/products/kurta_4.png",
-    features: ["Modern fusion", "Contemporary designs", "Versatile styling", "Custom sizing"],
-    occasions: ["Modern events", "Corporate functions", "Social gatherings", "Cocktail parties"]
+    features: ["Festive designs", "Contemporary styling", "Multiple sizes", "Bulk pricing available"],
+    occasions: ["Navratri", "Festivals", "Cultural events", "Religious ceremonies"]
   }
 ]
 
@@ -94,45 +78,45 @@ const whyChooseUs = [
   {
     icon: Award,
     title: "Premium Quality",
-    description: "We use only the finest fabrics and maintain strict quality control standards for every dress."
+    description: "We use only the finest fabrics and maintain strict quality control standards for every piece of ethnic wear for women."
   },
   {
     icon: Users,
     title: "B2B Specialists",
-    description: "Dedicated wholesale services for boutiques, retailers, and online sellers with bulk pricing."
+    description: "Dedicated wholesale services for boutiques, retailers, and online sellers with bulk pricing for Navratri 2025 collection."
   },
   {
     icon: Truck,
     title: "Pan India Delivery",
-    description: "Reliable shipping across India with tracking and timely delivery to your doorstep."
+    description: "Reliable shipping across India with tracking and timely delivery to your doorstep for wholesale ethnic wear manufacturers."
   },
   {
     icon: Shield,
     title: "Trusted Manufacturer",
-    description: "10+ years of experience in ethnic wear manufacturing with 500+ satisfied clients."
+    description: "10+ years of experience in ethnic wear manufacturing with 500+ satisfied clients for kalidaar for women and festive wear."
   }
 ]
 
 const dressFeatures = [
   {
     icon: Leaf,
-    title: "Quality Fabrics",
-    description: "Premium cotton, silk, georgette, and other natural fabrics for comfort and style."
+    title: "Premium Fabrics",
+    description: "Premium cotton, silk, georgette, and other natural fabrics for comfort and style in our ethnic wear for women."
   },
   {
     icon: Sparkles,
-    title: "Trendy Designs",
-    description: "Latest fashion trends combined with traditional ethnic aesthetics."
+    title: "Navratri Designs",
+    description: "Latest Navratri 2025 trends combined with traditional ethnic aesthetics for kalidaar for women."
   },
   {
     icon: Package,
     title: "Bulk Packaging",
-    description: "Professional packaging suitable for retail display and shipping."
+    description: "Professional packaging suitable for retail display and shipping for wholesale ethnic wear manufacturers."
   },
   {
     icon: Star,
     title: "Custom Sizing",
-    description: "Available in multiple sizes with custom sizing options for bulk orders."
+    description: "Available in multiple sizes with custom sizing options for bulk orders in festive wear for women."
   }
 ]
 
@@ -150,19 +134,19 @@ export default function DressManufacturerPage() {
         <div className="relative z-10 text-center px-4 py-24 max-w-6xl mx-auto">
           <Badge className="mb-6 bg-pink-100 text-pink-800 hover:bg-pink-200 border border-pink-200">
             <Sparkles className="w-4 h-4 mr-2" />
-            Premium Dress Manufacturer
+            Premium Ethnic Wear Manufacturers
           </Badge>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-            Dress Manufacturer in{" "}
+            Ethnic Wear for Women{" "}
             <span className="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
               Jaipur
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed">
-            Discover our collection of premium ethnic dresses. Stylish, comfortable, and perfect for every occasion. 
-            <span className="font-semibold text-gray-800"> Wholesale prices for boutiques and retailers.</span>
+            Premium ethnic wear for women from Jaipur's leading wholesale manufacturers. Navratri 2025 collection, kalidaar for women, festive wear, bulk supply. 
+            <span className="font-semibold text-gray-800"> Export quality, competitive pricing.</span>
           </p>
           
           {/* Stats Section */}
@@ -173,7 +157,7 @@ export default function DressManufacturerPage() {
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-indigo-600 mb-1">50+</div>
-              <div className="text-sm text-gray-600">Dress Styles</div>
+              <div className="text-sm text-gray-600">Ethnic Wear Styles</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-pink-600 mb-1">24/7</div>
@@ -183,10 +167,10 @@ export default function DressManufacturerPage() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button asChild size="lg" className="bg-pink-600 hover:bg-pink-700 text-lg px-8 py-3">
-              <Link href="/contact">Get Dress Catalog</Link>
+              <Link href="/contact">Get Navratri 2025 Catalog</Link>
             </Button>
             <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white text-lg px-8 py-3 flex items-center gap-2">
-              <Link href="https://wa.me/919828422208">
+              <Link href="https://wa.me/919828422208?text=Hi, I&apos;m interested in ethnic wear for women. Please share your Navratri 2025 catalog.">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
                 </svg>
@@ -199,11 +183,11 @@ export default function DressManufacturerPage() {
           <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-600">
             <div className="flex items-center">
               <Truck className="w-4 h-4 text-blue-500 mr-2" />
-              Worldwide Shipping
+              Pan India Delivery
             </div>
             <div className="flex items-center">
               <Shield className="w-4 h-4 text-purple-500 mr-2" />
-              Quality Guaranteed
+              Export Quality Guaranteed
             </div>
           </div>
         </div>
@@ -216,10 +200,10 @@ export default function DressManufacturerPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our Dress Collections
+              Our Navratri Ethnic Collections
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Explore our diverse range of dresses designed for style, comfort, and elegance.
+              Explore our diverse range of ethnic wear for women designed for Navratri celebrations, style, comfort, and elegance. Perfect for retailers and boutiques looking for quality ethnic wear.
             </p>
           </div>
           
@@ -253,7 +237,7 @@ export default function DressManufacturerPage() {
                   </div>
                   <div className="mt-auto pt-4">
                     <Button asChild className="w-full">
-                      <Link href="/contact">Inquire Now</Link>
+                      <Link href="/contact">Get Navratri 2025 Catalog</Link>
                     </Button>
                   </div>
                 </CardContent>
@@ -270,10 +254,10 @@ export default function DressManufacturerPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              What Makes Our Dresses Special?
+              Why Choose Us for Navratri Ethnic Wear?
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Features that set our dresses apart in the market.
+              Discover what makes us the preferred choice for wholesale ethnic wear manufacturing in Jaipur.
             </p>
           </div>
           
@@ -298,78 +282,78 @@ export default function DressManufacturerPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-sm max-w-none">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Premium Dress Manufacturer in Jaipur - Your Trusted Partner for Ethnic Wear
+              Ethnic Wear for Women Jaipur - Premium Wholesale Manufacturers for Navratri 2025 Collection
             </h2>
             
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Welcome to <strong>Ethnics by Aravalli</strong>, your premier dress manufacturer in Jaipur specializing in wholesale ethnic dresses for women. We are dedicated to crafting exceptional dresses that combine traditional Indian aesthetics with contemporary comfort, offering boutique owners and retailers across India access to premium quality ethnic wear at competitive wholesale prices.
+              Welcome to <strong>Ethnics by Aravalli</strong>, your premier wholesale ethnic wear manufacturers in Jaipur specializing in ethnic wear for women. We are dedicated to crafting exceptional ethnic wear that combines traditional Indian aesthetics with contemporary comfort, offering boutique owners and retailers across India access to premium quality ethnic wear for women at competitive wholesale prices. Our Navratri 2025 collection features the latest trends in kalidaar for women and festive wear for women.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Our extensive collection of dresses for women encompasses everything from elegant ethnic dresses and designer party wear to comfortable casual dresses and fusion indo-western styles. Each dress in our collection is meticulously crafted using premium fabrics including pure cotton, silk, georgette, and other natural materials that ensure breathability, comfort, and durability. As a leading dress manufacturer in Jaipur, we understand the diverse needs of modern women and create designs that celebrate both tradition and contemporary fashion trends.
+              Our extensive collection of ethnic wear for women encompasses everything from elegant kalidaar for women and designer festive wear to comfortable ethnic dresses and fusion styles. Each piece in our collection is meticulously crafted using premium fabrics including pure cotton, silk, georgette, and other natural materials that ensure breathability, comfort, and durability. As leading wholesale ethnic wear manufacturers in Jaipur, we understand the diverse needs of modern women and create designs that celebrate both tradition and contemporary fashion trends, perfect for Navratri celebrations.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Whether you're a boutique owner looking to stock the latest ethnic dress trends, a retailer seeking reliable wholesale dress suppliers, or a fashion entrepreneur wanting to partner with a trusted dress manufacturer in India, our comprehensive range of dresses caters to every business requirement. Our dresses are perfect for various occasions including <Link href="/festive-ethnic-wear-2025" className="text-pink-600 hover:text-pink-700 underline font-medium">festivals</Link>, weddings, cultural events, daily wear, and special celebrations, making them ideal for retailers serving diverse customer segments.
+              Whether you're a boutique owner looking to stock the latest ethnic wear for women trends, a retailer seeking reliable wholesale ethnic wear suppliers, or a fashion entrepreneur wanting to partner with a trusted wholesale ethnic wear manufacturers in Jaipur, our comprehensive range of ethnic wear caters to every business requirement. Our ethnic wear for women is perfect for various occasions including <Link href="/festive-ethnic-wear-2025" className="text-pink-600 hover:text-pink-700 underline font-medium">Navratri</Link>, festivals, weddings, cultural events, and special celebrations, making them ideal for retailers serving diverse customer segments.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              As a professional dress manufacturer, we prioritize quality control at every stage of production. From fabric selection and pattern making to cutting, stitching, and final finishing, each dress undergoes rigorous quality checks to ensure it meets our high standards. Our commitment to excellence has made us one of the most trusted dress manufacturers in Jaipur, serving clients across India with reliable wholesale dress supply and timely delivery services.
+              As professional wholesale ethnic wear manufacturers, we prioritize quality control at every stage of production. From fabric selection and pattern making to cutting, stitching, and final finishing, each piece of ethnic wear for women undergoes rigorous quality checks to ensure it meets our high standards. Our commitment to excellence has made us one of the most trusted wholesale ethnic wear manufacturers in Jaipur, serving clients across India with reliable bulk ethnic wear supply and timely delivery services.
             </p>
 
             <div className="bg-gray-50 p-6 rounded-lg my-8">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Explore Our Comprehensive Collection of Women's Dresses
+                Explore Our Comprehensive Collection of Ethnic Wear for Women
               </h3>
               <p className="text-gray-700 mb-4">
-                Our wholesale dress catalog includes:
+                Our wholesale ethnic wear catalog includes:
               </p>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  <Link href="/kurta-manufacturer" className="hover:text-green-600 transition-colors">Ethnic Dresses & Kurtas</Link>
+                  <Link href="/kurta-manufacturer" className="hover:text-green-600 transition-colors">Kalidaar for Women</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  <Link href="/festive-ethnic-wear-2025" className="hover:text-green-600 transition-colors">Designer Party Wear Dresses</Link>
+                  <Link href="/festive-ethnic-wear-2025" className="hover:text-green-600 transition-colors">Navratri Ethnic Collection 2025</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-green-600 transition-colors">Casual & Daily Wear Dresses</Link>
+                  <Link href="/top-kurti-manufacturer-in-jaipur" className="hover:text-green-600 transition-colors">Festive Wear for Women</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  <Link href="/kaftan-manufacturer" className="hover:text-green-600 transition-colors">Indo-Western Fusion Dresses</Link>
+                  <Link href="/kaftan-manufacturer" className="hover:text-green-600 transition-colors">Ethnic Wear for Women</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  <Link href="/suit-sets-manufacturer" className="hover:text-green-600 transition-colors">Co-ord Sets & Dress Sets</Link>
+                  <Link href="/suit-sets-manufacturer" className="hover:text-green-600 transition-colors">Bulk Ethnic Wear Supply</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  <Link href="/kaftan-manufacturer" className="hover:text-green-600 transition-colors">Kaftans & Leisure Wear</Link>
+                  <Link href="/kaftan-manufacturer" className="hover:text-green-600 transition-colors">Wholesale Ethnic Wear Manufacturers</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  <Link href="/festive-wear" className="hover:text-green-600 transition-colors">Home & Holiday Wear Dresses</Link>
+                  <Link href="/festive-wear" className="hover:text-green-600 transition-colors">Bulk Festive Wear Supply</Link>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                  <Link href="/ethnic-wear-manufacturer" className="hover:text-green-600 transition-colors">Dupattas & Accessories</Link>
+                  <Link href="/ethnic-wear-manufacturer" className="hover:text-green-600 transition-colors">Export Quality Ethnic Wear</Link>
                 </li>
               </ul>
             </div>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Shopping for wholesale dresses online has never been easier. Our user-friendly catalog system allows retailers and boutique owners to browse our extensive collection, select their preferred styles, and place bulk orders with just a few clicks. We understand the importance of seamless business operations and strive to provide a hassle-free wholesale shopping experience with detailed product information, size charts, and competitive pricing.
+              Shopping for wholesale ethnic wear for women online has never been easier. Our user-friendly catalog system allows retailers and boutique owners to browse our extensive collection, select their preferred styles, and place bulk orders with just a few clicks. We understand the importance of seamless business operations and strive to provide a hassle-free wholesale shopping experience with detailed product information, size charts, and competitive pricing for our Navratri 2025 collection.
             </p>
 
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Our commitment to sustainable and ethical fashion practices sets us apart as a responsible dress manufacturer. We work closely with trusted fabric suppliers who share our values, ensuring that all materials used in our dresses are responsibly sourced and of the highest quality. By choosing Ethnics by Aravalli as your dress manufacturer, you're supporting ethical manufacturing practices while offering your customers premium quality ethnic wear.
+              Our commitment to sustainable and ethical fashion practices sets us apart as a responsible wholesale ethnic wear manufacturers. We work closely with trusted fabric suppliers who share our values, ensuring that all materials used in our ethnic wear for women are responsibly sourced and of the highest quality. By choosing Ethnics by Aravalli as your wholesale ethnic wear manufacturers, you're supporting ethical manufacturing practices while offering your customers premium quality ethnic wear for women.
             </p>
 
             <p className="text-gray-700 leading-relaxed">
-              Experience the perfect blend of tradition and modernity with our exclusive collection of dresses for women. Whether you're looking for vibrant festival wear, elegant party dresses, or comfortable daily wear options, our wholesale dress collection has something for every occasion and customer preference. Partner with us, the leading dress manufacturer in Jaipur, and elevate your retail business with premium quality ethnic dresses that your customers will love. Explore our complete <Link href="/ethnic-wear-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">ethnic wear collection</Link> for comprehensive business solutions.
+              Experience the perfect blend of tradition and modernity with our exclusive collection of ethnic wear for women. Whether you're looking for vibrant Navratri festive wear, elegant kalidaar for women, or comfortable ethnic wear options, our wholesale ethnic wear collection has something for every occasion and customer preference. Partner with us, the leading wholesale ethnic wear manufacturers in Jaipur, and elevate your retail business with premium quality ethnic wear for women that your customers will love. Explore our complete <Link href="/ethnic-wear-manufacturer" className="text-pink-600 hover:text-pink-700 underline font-medium">ethnic wear collection</Link> for comprehensive business solutions.
             </p>
           </div>
         </div>
@@ -379,15 +363,15 @@ export default function DressManufacturerPage() {
       <section className="py-16 md:py-24 bg-gradient-to-r from-pink-600 to-purple-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Stock Premium Dresses?
+            Ready for Navratri 2025?
           </h2>
           <p className="text-xl text-pink-100 mb-8 max-w-2xl mx-auto">
-            Get your hands on our exclusive dress collection. 
-            Perfect for boutiques, retailers, and wholesalers.
+            Connect with Jaipur's leading ethnic wear manufacturers for Navratri 2025. 
+            Bulk festive wear supply directly from Jaipur manufacturers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary">
-              <Link href="/contact">Request Catalog</Link>
+              <Link href="/contact">Request Navratri 2025 Catalog</Link>
             </Button>
             <Button
               asChild
@@ -395,7 +379,7 @@ export default function DressManufacturerPage() {
               variant="outline"
               className="border-white text-pink-600 bg-white hover:bg-pink-50 hover:text-pink-700"
             >
-              <Link href="https://wa.me/919828422208">WhatsApp Us</Link>
+              <Link href="https://wa.me/919828422208?text=Hi, I&apos;m interested in ethnic wear for women. Please share your Navratri 2025 catalog.">WhatsApp Us</Link>
             </Button>
           </div>
         </div>
