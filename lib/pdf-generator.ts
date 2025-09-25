@@ -59,7 +59,7 @@ export function generatePurchaseOrderPDF(data: PurchaseOrderData): Buffer {
   doc.fontSize(16).font('Helvetica-Bold').text('Ethnics by Aravalli');
   doc.fontSize(10).font('Helvetica').text('Manufacturer of Ethnic Wear');
   doc.text('Jaipur, Rajasthan, India');
-  doc.text('Phone: +91 9828422208');
+  doc.text('Phone: +91 63770 12120');
   doc.text('Email: info@ethnicsbyaravalli.com');
   doc.moveDown();
 

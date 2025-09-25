@@ -197,7 +197,7 @@ export default function Home() {
                 Get in Touch
               </Link>
               <Link
-                href="https://wa.me/919828422208?text=Hi%20Ethnics%20by%20Aravalli%2C%20I%27m%20interested%20in%20your%20Kurtis%20and%20ethnic%20wear%20collection."
+                href="https://wa.me/916377012120?text=Hi%20Ethnics%20by%20Aravalli%2C%20I%27m%20interested%20in%20your%20Kurtis%20and%20ethnic%20wear%20collection."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-md border border-[#25D366] bg-[#25D366] px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[#128C7E] w-full md:w-auto"
@@ -314,7 +314,7 @@ export default function Home() {
               Contact Us
             </Link>
             <Link
-              href="https://wa.me/919828422208"
+              href="https://wa.me/916377012120"
           target="_blank"
               className="inline-flex items-center justify-center rounded-md border border-[#D9A8A0] bg-transparent px-6 py-3 text-sm font-medium text-[#D9A8A0] shadow-sm transition-colors hover:bg-[#D9A8A0]/10 w-full sm:w-auto"
             >
@@ -326,7 +326,7 @@ export default function Home() {
 
       {/* WhatsApp Button */}
       <Link
-        href="https://wa.me/919828422208"
+        href="https://wa.me/916377012120"
         target="_blank"
         className="fixed bottom-6 right-6 bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition-colors z-50"
       >

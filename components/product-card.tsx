@@ -53,7 +53,7 @@ export function ProductCard({ name, description, images }: ProductCardProps) {
               Contact Us
             </Link>
             <Link
-              href={`https://wa.me/919828422208?text=Hi, I'm interested in ${name}`}
+              href={`https://wa.me/916377012120?text=Hi, I'm interested in ${name}`}
               target="_blank"
               className="inline-flex items-center justify-center flex-1 rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 transition-colors"
             >

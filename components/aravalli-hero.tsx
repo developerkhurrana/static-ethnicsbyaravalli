@@ -55,7 +55,7 @@ export default function AravalliHero() {
             <Link href="/contact">Get Aravalli Catalog</Link>
           </Button>
           <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white text-lg px-8 py-3 flex items-center gap-2">
-            <Link href="https://wa.me/919828422208">
+            <Link href="https://wa.me/916377012120">
               <FaWhatsapp className="w-5 h-5" />
               WhatsApp Inquiry
             </Link>

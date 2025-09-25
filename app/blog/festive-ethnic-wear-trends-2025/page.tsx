@@ -236,7 +236,7 @@ export default function FestiveEthnicWearTrendsPage() {
                   <Link href="/contact">Request Catalog</Link>
                 </Button>
                 <Button asChild variant="outline" className="border-white text-white hover:bg-white hover:text-orange-600">
-                  <Link href="https://wa.me/919828422208">WhatsApp Us</Link>
+                  <Link href="https://wa.me/916377012120">WhatsApp Us</Link>
                 </Button>
               </div>
             </div>

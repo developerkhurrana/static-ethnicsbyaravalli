@@ -279,7 +279,7 @@ export default function AravalliClothingPage() {
               <Link href="/contact">Request Aravalli Catalog</Link>
             </Button>
             <Button asChild size="lg" className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white border-none shadow-md">
-              <Link href="https://wa.me/919828422208">
+              <Link href="https://wa.me/916377012120">
                 <FaWhatsapp className="w-5 h-5" /> WhatsApp Us
               </Link>
             </Button>

@@ -97,7 +97,7 @@ export default function RootLayout({
         <Toaster />
         {/* Floating WhatsApp Button */}
         <Link
-        href="https://wa.me/919828422208"
+        href="https://wa.me/916377012120"
           target="_blank"
         className="fixed bottom-6 right-6 bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition-colors z-50"
         >
